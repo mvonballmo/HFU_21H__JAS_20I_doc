@@ -1,4 +1,23 @@
+:root
+{
+  --r-heading1-size: 2em;
+  --r-heading2-size: 1.4em;
+  --r-heading3-size: 1.2em;
+}
+
 .notes
 {
   font-size: 50%;
 }
+
+.reveal .slides
+{
+  text-align: left;
+}
+
+.reveal table
+{
+  margin: 0;
+  width: 100%;
+}
+
