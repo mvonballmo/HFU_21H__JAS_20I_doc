@@ -42,6 +42,13 @@ Hauptmission ist JavaScript im Browser. Dazu gibt es "Side Quests", so wie CORS 
 - Case
 -
 
+### Demo 1
+
+- Show how to declare variables and add/multiply them in the console
+- Show how to set up a new project folder
+  - WebStorm creates a nice template
+
+
 ### Tools
 
 - [Deno Linter](https://deno.land/manual/tools/linter)
