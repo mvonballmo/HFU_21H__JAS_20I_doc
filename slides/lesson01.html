@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>Lesson 01: JavasScript 2021-2022</title>
+	<title>JavaScript: Lektion 01: Einführung, Setup &amp; Grundlagen</title>
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
@@ -19,15 +19,284 @@
 <body>
 	<div class="reveal">
 		<div class="slides">
-			<section data-background="assets/MonteRosa.jpg">
-				<h1>JS 2021-2022</h1>
-				<h2>Willkommen bei der Höheren Berufsbildung Uster</h2>
+			<section data-background="assets/MonteRosa.jpg" class="white-text">
+				<h1>JavaScript</h1>
+				<h2>Lektion 1</h2>
 				<p class="notes">
 					Ein Angebot der Berufsfachschule Uster und der Höheren Fachschule Uster
 				</p>
 			</section>
-			<section>
 
+      <section>
+				<h1>Dozent</h1>
+				<h2>Marco von Ballmoos</h2>
+        <ul>
+          <li>Partner & Senior Entwickler bei <a href="https://encodo.ch">Encodo Systems AG</a></li>
+          <li>BA Mathematics (<a href="https://hamilton.edu">Hamilton College</a>, USA)</li>
+          <li>Hobbies: Radfahren, Wandern, Camping</li>
+        </ul>
+			</section>
+
+      <section>
+				<h1>Vorstellung</h1>
+				<p>Bitte stellt euch kurz vor:</p>
+        <ul>
+          <li>Name</li>
+          <li>Beruf</li>
+          <li>Motivation</li>
+          <li>Vorkenntnisse / Erfahrung allgemein</li>
+          <li>Erfahrung mit JavaScript?</li>
+          <li>Ziele für das Modul</li>
+        </ul>
+			</section>
+
+      <section>
+        <h1>Was, wie, wann?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+				<h1>Sprachen</h1>
+				<p></p>
+        <ul>
+          <li>Deutsch
+            <ul>
+              <li>Folien</li>
+              <li>Unterricht</li>
+            </ul>
+          </li>
+          <li>Englisch
+            <ul>
+              <li>Beispiele und Referenzen (z.B. Blogs)</li>
+              <li>Referenzen sind leider nicht&mdash;oder schlecht/unvollständig&mdash;übersetzt</li>
+            </ul>
+          </li>
+        </ul>
+			</section>
+
+
+      <section>
+				<h1>Planung</h1>
+        <table class="compact">
+          <tr>
+            <th>Zeit</th>
+            <th>Dauer</th>
+            <th>Beschreibung</th>
+          </tr>
+          <tr>
+            <td>17:50</td>
+            <td>1h</td>
+            <td>Unterricht</td>
+          </tr>
+          <tr>
+            <td>18:50</td>
+            <td>10m</td>
+            <td>Pause</td>
+          </tr>
+          <tr>
+            <td>19:00</td>
+            <td>1h</td>
+            <td>Unterricht</td>
+          </tr>
+          <tr>
+            <td>20:00</td>
+            <td>10m</td>
+            <td>Pause</td>
+          </tr>
+          <tr>
+            <td>20:10</td>
+            <td>1h</td>
+            <td>Unterricht</td>
+          </tr>
+          <tr>
+            <td>21:10</td>
+            <td>10m</td>
+            <td>Pause</td>
+          </tr>
+          <tr>
+            <td>21:20</td>
+            <td>20m</td>
+            <td>Projekt-Arbeit & Fragen</td>
+          </tr>
+        </table>
+			</section>
+
+      <section>
+				<h1>Leistungskontrolle</h1>
+        <table>
+          <tr>
+            <th>Beschreibung</th>
+            <th>Datum</th>
+            <th>Anteil</th>
+          </tr>
+          <tr>
+            <td>Prüfung (LZ1)</td>
+            <td>10.01.2022</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Projekt (MLZ)</td>
+            <td>17.01.2022</td>
+            <td>75%</td>
+          </tr>
+        </table>
+        <p class="notes">Für das Runden wird die Aktive Beteiligung im Unterricht berücksichtigt</p>
+			</section>
+
+      <section>
+				<h1>Prüfung (LZ1)</h1>
+        <ul>
+          <li>Word Formular mit schreibbaren Feldern</li>
+          <li>Wird am Anfang der Lektion zugeschickt</li>
+          <li>1 Stunde Zeit</li>
+          <li>Digital auszufüllen und zurückzusenden</li>
+        </ul>
+			</section>
+
+      <section>
+				<h1>Projekt (MLZ)</h1>
+        <ul>
+          <li>Bis <b>22.11.2021</b>
+            <ul>
+              <li>Bewertungsdokument anschauen</li>
+              <li>Idee/Konzept per mail einreichen</li>
+            </ul>
+          </li>
+          <li>Bis <b>17.01.2022</b>
+            <ul>
+              <li>Ausbauen</li>
+              <li>Fertigstellen</li>
+              <li>Präsentieren</li>
+            </ul>
+          </li>
+        </ul>
+			</section>
+
+      <section>
+				<h1>Ziele des Moduls</h1>
+        <ul>
+          <li>Übersicht und Einarbeitung JavaScript</li>
+          <li>Schwerpunkt Web-Browser (aber auch Server/Node)</li>
+          <li>Übliche Prozesse und Werkzeuge kennenlernen</li>
+          <li>Übliche Einsatzgebiete anschauen</li>
+          <li>Testen, Debuggen, Ausführen</li>
+          <li>Lernen, wo andere Web-Technologien besser geeignet sind (z.B. CSS)</li>
+        </ul>
+			</section>
+
+      <section>
+				<h1>Materialien</h1>
+				<p>Die folgende Online-Referenzen sind sehr nützlich.</p>
+        <ul>
+          <li><a href="https://developer.mozilla.org/de/">MDN (Mozilla Developer Network)</a></li>
+          <li><a href="https://www.w3schools.com/">W3Schools</a> (<a href="https://www.w3schools.com/jsref/default.asp">Referenz</a> und <a href="https://www.w3schools.com/js/default.asp">Tutorials</a>)</li>
+          <li><a href="https://wesbos.com/javascript">Web Bos: JavaScript Notes &amp; References</a></li>
+          <li><a href="https://exlskills.com/learn-en/courses/javascript-fundamentals-basics_javascript/javascript-development-tools-SFZwSiykwYpR/debugging-tools-KdiLRpmvibsP/debugging-RIKtQhGqnwNL">EXL skills: JavaScript Fundamentals Course</a></li>
+        </ul>
+			</section>
+
+      <section>
+				<h1>Übersicht Lektionen</h1>
+        <ol class="compact">
+          <li class="selected">Einführung, IDE Aufsetzen &amp; Grundlagen</li>
+          <li>Grundlagen &amp; Code Organisation (Funktionen, Klassen &amp; Modulen)</li>
+          <li>DOM, Formulare, Eingaben &amp; Ereignisse</li>
+          <li>Persistenz (Cookies &amp; LocalStorage)</li>
+          <li>Externe Abfrage (JSON &amp; Fetch)</li>
+          <li>Komponenten (Web Components) &amp; Bibliotheken</li>
+          <li><b>LZ1</b>; Animationen &amp; Grafik</li>
+          <li>React (manipulation, aktualisierung)</li>
+          <li><b>MLZ Präsentationen</b></li>
+        </ol>
+			</section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section data-background="assets/YellowLeaves.jpeg" class="white-text">
+        <h1>Lektion 01</h1>
+        <h2>Einführung, IDE Aufsetzen &amp; Grundlagen</h2>
+      </section>
+
+      <section>
+        <h1>JavaScript 1.0</h1>
+        <div class="seventy-thirty-grid">
+          <ul>
+            <li>Als <a href="https://en.wikipedia.org/wiki/JavaScript#Creation_at_Netscape">"LiveScript" in 1995 von Brendan Eich</a> in 10 Tagen für Netscape entwickelt</li>
+            <li>Ursprünglich benutzt, um Java Applets in den Netscape Navigator einzubinden</li>
+            <li>Deshalb in JavaScript umbenannt</li>
+          </ul>
+          <img src="assets/Lesson01/NetscapeNavigator2.0.jpeg">
+        </div>
+      </section>
+
+      <section>
+        <h1>JavaScript 2.0</h1>
+        <ul>
+          <li>1996 integrierte Internet Explorer 3.0 eine eigene Version namens <a href="https://en.wikipedia.org/wiki/JScript">JScript</a></li>
+          <li>Zeit des ersten Browserkriegs</li>
+          <li>Vernachlässigung von Standards, viele Inkompatibilitäten</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Standardisierung</h1>
+        <ul>
+          <li>1997 als <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-262/">ECMA-262</a> standardisiert</li>
+          <li>Browserseitige Schnittstellen vom W3C (World Wide Web Consortium) standardisiert.</li>
+          <li>Seit 2015 gab es pro Jahr eine neue Version</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Vorteile</h1>
+        <ul>
+          <li>Logik im Client spart Roundtrips und Rechenzeit auf dem Server</li>
+          <li>Schnellere Antwortzeiten für den Client</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Nachteile</h1>
+        <ul>
+          <li>Browserinkompatibilitäten (immer weniger)</li>
+          <li>JavaScript kann deaktiviert werden (und nicht alle Browser unterstützen JavaScript)</li>
+          <li>Sicherheitsprobleme (fremder Code wird auf dem eigenen Computer ausgeführt, Ausbruch aus der Sandbox)</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Erster Blick</h1>
+            <ul>
+              <li>Im Browser Console</li>
+              <li>Aus einer HTML-Datei</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+				<h1>MLZ Aufsetzen</h1>
+        <ul>
+          <li>Ein Projekt in JavaScript</li>
+          <li>Wird am Ende des Moduls präsentiert</li>
+          <li>Github Konto einrichten</li>
+          <li>Github Repository einrichten
+            <ul>
+              <li><em>Entweder</em> veröffentlichen</li>
+              <li><em>Oder</em> mich (<b>mvonballmo</b>) einladen</li>
+            </ul>
+          </li>
+        </ul>
 			</section>
 		</div>
 	</div>
