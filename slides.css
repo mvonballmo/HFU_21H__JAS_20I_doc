@@ -27,6 +27,27 @@
   max-width: 300px;
 }
 
+.reveal img.screenshot
+{
+  max-width: 70%;
+}
+
+.reveal img.full-size
+{
+  max-width: none;
+}
+
+.reveal code
+{
+  background-color: aliceblue;
+  outline: 1px dotted lightskyblue;
+}
+
+.reveal .done
+{
+  opacity: 35%;
+}
+
 .reveal .fifty-fifty-grid
 {
   display: grid;
