@@ -42,13 +42,6 @@ Hauptmission ist JavaScript im Browser. Dazu gibt es "Side Quests", so wie CORS 
 - Case
 -
 
-### Demo 1
-
-- Show how to declare variables and add/multiply them in the console
-- Show how to set up a new project folder
-  - WebStorm creates a nice template
-
-
 ### Tools
 
 - [Deno Linter](https://deno.land/manual/tools/linter)
@@ -145,6 +138,7 @@ Note: move this earlier
 - [Spectrum Web Components](https://opensource.adobe.com/spectrum-web-components/components/color-handle/)
 - [Lit](https://lit.dev/)
 - [TAO of React](https://alexkondov.com/tao-of-react/) (move this down)
+- [CSS Full-Height Slideshow with Centered Slides thanks to grid-auto-rows](https://www.bram.us/2021/11/04/css-full-height-slideshow-with-centered-slides-thanks-to-grid-auto-rows/) (no JS needed for animation)
 
 ## Lektion 8: Animationen & Grafik
 
