@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="slides.css">
 
 	<!-- Theme used for syntax highlighted code -->
-	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	<link rel="stylesheet" href="plugin/highlight/github.css">
 </head>
 
 <body>
@@ -158,6 +158,8 @@
       <section>
 				<h1>Projekt (MLZ)</h1>
         <ul>
+          <li>Ist ein eigenes JavaScript Projekt</li>
+          <li>Wird am Ende des Moduls präsentiert</li>
           <li>Bis <b>22.11.2021</b>
             <ul>
               <li>Bewertungsdokument anschauen</li>
@@ -177,9 +179,9 @@
       <section>
 				<h1>Ziele des Moduls</h1>
         <ul>
+          <li>Allgemeine Software-Entwicklung: Prozesse und Werkzeuge kennenlernen</li>
           <li>Übersicht und Einarbeitung JavaScript</li>
           <li>Schwerpunkt Web-Browser (aber auch Server/Node)</li>
-          <li>Übliche Prozesse und Werkzeuge kennenlernen</li>
           <li>Übliche Einsatzgebiete anschauen</li>
           <li>Testen, Debuggen, Ausführen</li>
           <li>Lernen, wo andere Web-Technologien besser geeignet sind (z.B. CSS)</li>
@@ -278,6 +280,9 @@
             <ul>
               <li>Im Browser Console</li>
               <li>Aus einer HTML-Datei</li>
+              <li>Aus einer JS-Datei</li>
+              <li>Im System Console (Node)</li>
+              <li>Testing (Jest)</li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -285,20 +290,432 @@
       </section>
 
       <section>
-				<h1>MLZ Aufsetzen</h1>
+        <h1>Könnt ihr das auch?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/hahaha_please.jpg">
+          <div>
+            <p class="fragment">Noch nicht...</p>
+            <p class="fragment" style="text-align: right">...aber gleich!</p>
+            </div>
+        </div>
+      </section>
+
+      <section data-background="assets/Rusty_tools_dimmed.jpg">
+        <h1>Was benötigen wir?</h1>
+        <h2>Werkzeuge</h2>
         <ul>
-          <li>Ein Projekt in JavaScript</li>
-          <li>Wird am Ende des Moduls präsentiert</li>
-          <li>Github Konto einrichten</li>
-          <li>Github Repository einrichten
+          <li>Einfaches Tracking von Aufgaben: <a href="https://www.trello.com/">Trello</a></li>
+          <li>Source-Kontrolle: <a href="https://www.syntevo.com/smartgit/">SmartGit</a> und <a href="https://git-scm.com/">Git</a></li>
+          <li>Online Code Repo: <a href="https://github.com/">GitHub</a></li>
+          <li>IDE: <a href="https://code.visualstudio.com/">Visual Studio Code</a> (VSC) und <a href="https://www.jetbrains.com/webstorm/">WebStorm</a></li>
+          <li>Laufzeitumgebung & Package Manager: <a href="https://nodejs.org/">Node</a> und <a href="https://www.npmjs.com/">NPM</a></li>
+          <li>Testing Framework: <a href="https://jestjs.io/">Jest</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Einführung <a href="https://www.trello.com/">Trello</a></h1>
+        <ul>
+          <li>Gratis für nicht kommerzielle Zwecke</li>
+          <li>Unterstützt die Projektführung
+            <ul>
+              <li>Projekte</li>
+              <li>Boards</li>
+              <li>Karten</li>
+              <li>Spalten/Status</li>
+            </ul>
+          </li>
+          <li><b>Aufgaben:</b> Konto, Projekt, Board, und eine Karte erstellen</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Wo steht ihr?</h1>
+            <ul>
+              <li><em>Trello</em> ist eingerichtet</li>
+            </ul>
+          </div>
+          <img src="assets/checklist.png">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Einführung Git</h1>
+            <ul>
+              <li>Pull vs. Fetch</li>
+              <li>Push vs. Commit</li>
+              <li>Local vs. Remote</li>
+              <li>Merge vs. Rebase</li>
+              <li>Working Tree vs. Stage vs. Stash</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>GitHub Einrichten</h1>
+        <ul>
+          <li>Konto auf <a href="https://github.com/">GitHub</a> erstellen</li>
+          <li>Github Repository erstellen (z.B. "HFU_21H__JAS_20I_app")
             <ul>
               <li><em>Entweder</em> veröffentlichen</li>
               <li><em>Oder</em> mich (<b>mvonballmo</b>) einladen</li>
             </ul>
           </li>
         </ul>
+      </section>
+
+      <section>
+        <h1>SmartGit</h1>
+        <ul>
+          <li>Gratis für nicht kommerzielle Zwecke</li>
+          <li>GUI für Git
+            <ul>
+              <li>Git kann man auch mit VSC, WebStorm oder Kommandozeile benutzen</li>
+              <li>SmartGit ist <em>besser</em></li>
+            </ul>
+          </li>
+          <li><a href="https://www.syntevo.com/smartgit/download/">Herunterladen</a> und installieren</li>
+          <li>Ausführen</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>SmartGit Lizenz</h1>
+        <p>Letzte Option wählen und bestätigen.</p>
+        <img src="assets/Lesson01/smartgit_install_license.png" class="screenshot">
+      </section>
+
+      <section>
+        <h1>Repo(s) Herunterladen</h1>
+        <ul class="compact">
+          <li>Repos:
+            <ul>
+              <li><a href="https://github.com/mvonballmo/HFU_21H__JAS_20I_app.git">https://github.com/mvonballmo/HFU_21H__JAS_20I_app.git</a></li>
+              <li><a href="https://github.com/mvonballmo/HFU_21H__JAS_20I_doc.git">https://github.com/mvonballmo/HFU_21H__JAS_20I_doc.git</a></li>
+              <li>Eigenes Projekt-Repo</li>
+            </ul>
+          </li>
+          <li>In <em>SmartGit</em>, <code>Repository/Clone</code> selektieren und das URL eingeben</li>
+          <li>In <em>SmartGit</em>, <code>Repository/Clone</code> selektieren, GitHub als <em>Hosting Provider</em> einrichten, und dein eigenes Projekt selektieren</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Wo steht ihr?</h1>
+            <ul>
+              <li class="done"><em>Trello</em> ist eingerichtet</li>
+              <li><em>GitHub</em> ist eingerichtet</li>
+              <li><em>SmartGit</em> ist eingerichtet</li>
+              <li>"app" und "doc" Repositories sind bei euch lokal verfügbar</li>
+            </ul>
+          </div>
+          <img src="assets/checklist.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Node &amp; NPM</h1>
+        <ul>
+          <li>Gratis/Open-source</li>
+          <li>Laufzeitumgebung und Package Manager für JavaScript</li>
+          <li><a href="https://nodejs.org/">Herunterladen</a> und installieren</li>
+          <li>Im Terminal, <code>node -v</code> ausführen</li>
+          <li>Im Terminal, <code>npm -v</code> ausführen</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Visual Studio Code</h1>
+        <ul>
+          <li>Gratis/Open-source</li>
+          <li>Unterstützt Webentwicklung aller Art</li>
+          <li><a href="https://code.visualstudio.com/">Herunterladen</a> und installieren</li>
+          <li>Ausführen</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>JetBrains WebStorm</h1>
+        <p class="notes">Dieser Schritt ist <em>optional</em>, jedoch eine gute Idee sich mit verschiedenen Werkzeugen vertraut zu machen.</p>
+        <ul>
+          <li>Gratis für nicht kommerzielle Zwecke</li>
+          <li>Unterstützt Webentwicklung aller Art</li>
+          <li><a href="https://code.visualstudio.com/">Herunterladen</a> und installieren</li>
+          <li><a href="https://www.jetbrains.com/community/education/#students">Lizenz beantragen</a> (evtl. Konto erstellen)</li>
+          <li>Ausführen</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Wo steht ihr?</h1>
+        <div class="seventy-thirty-grid">
+          <div>
+            <ul>
+              <li class="done"><em>Trello</em> ist eingerichtet</li>
+              <li class="done"><em>GitHub</em> ist eingerichtet</li>
+              <li class="done"><em>SmartGit</em> ist eingerichtet</li>
+              <li class="done">"app" und "doc" Repositories sind lokal verfügbar</li>
+              <li><em>node</em> und <em>npm</em> können ausgeführt werden</li>
+              <li><em>VSC</em> ist installiert</li>
+              <li><em>WebStorm</em> ist installiert</li>
+            </ul>
+          </div>
+          <img src="assets/checklist.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Wir sind bereit!</h1>
+        <img src="assets/its_so_beautiful.png">
+      </section>
+
+      <section data-background="assets/legobricks-dimmed.jpg" class="white-text">
+        <h1>Bauen wir etwas zusammen!</h1>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>JS im Browser</h1>
+            <ul>
+              <li class="fragment highlight-current-blue">Projekt Ordner in WebStorm oder VSC öffnen</li>
+              <li class="fragment highlight-current-blue">HTML Datei erstellen</li>
+              <li class="fragment highlight-current-blue">JS im HTML schreiben</li>
+              <li class="fragment highlight-current-blue">Im Browser ein Breakpoint setzen und ausführen</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Commit und Push</h1>
+            <ul>
+              <li class="fragment highlight-current-blue">Änderungen in Git "committen"</li>
+              <li class="fragment highlight-current-blue">Commit nach GitHub "pushen"</li>
+            </ul>
+          </div>
+          <img src="assets/up_down.png">
+        </div>
+        <p class="notes">Um ein lokal erstelltes Projekt mit GitHub zu verbinden, siehe <a href="https://www.digitalocean.com/community/tutorials/how-to-push-an-existing-project-to-github">How to Push an Existing Project to GitHub</a>.</p>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Wo steht ihr?</h1>
+            <ul>
+              <li>Alle Werkzeuge sind installiert und eingerichtet</li>
+              <li>Eure Code ist auf GitHub gesichert</li>
+            </ul>
+          </div>
+          <img src="assets/checklist.png">
+        </div>
+      </section>
+      <section>
+        <div class="seventy-thirty-grid">
+          <div class="compact">
+            <h1>JS mit Jest testing</h1>
+            <ul>
+              <li>Im Terminal ausführen:
+                <ul>
+                  <li class="fragment highlight-current-blue"><code>npm init</code></li>
+                  <li class="fragment highlight-current-blue"><code>npm install --save-dev jest</code></li>
+                </ul>
+              </li>
+              <li class="fragment highlight-current-blue">In <code>package.json</code>, den "test" Script nach "jest" umstellen.</li>
+              <li class="fragment highlight-current-blue"><code>module.exports</code> definieren</li>
+              <li class="fragment highlight-current-blue">Test-Datei erstellen mit einem Test</li>
+              <li>Siehe <a href="https://jestjs.io/docs/getting-started">Jest "getting started" Doku</a></li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section>
+				<h1>Tests ausführen</h1>
+        <ul>
+          <li>Im VSC Terminal, <code>npm run test</code> ausführen</li>
+          <li>In WebStorm, <code>npm run test</code> ausführen</li>
+          <li>In WebStorm, rechtsklick auf der Testing-Datei und "Ausführen/Run" selektieren</li>
+        </ul>
 			</section>
-		</div>
+
+      <section>
+				<h1>Tests debuggen</h1>
+        <div class="seventy-thirty-grid">
+          <ul class="compact">
+            <li>In VSC oder WebStorm, Breakpoint setzen (links am Rand klicken)</li>
+            <li>In VSC, <code>package.json</code>, "Debug" klicken</li>
+            <li><b>Oder</b> in WebStorm, rechtsklick auf der Testing-Datei und "Debuggen" selektieren</li>
+            <li><b>Oder</b> In VSC, <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_javascript-debug-terminal">JavaScript Debug Terminal</a> öffnen und danach <code>npm run test</code> ausführen</li>
+          </ul>
+          <img src="assets/Lesson01/package.json-debug-code-lens.png" class="full-size">
+        </div>
+			</section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Wo steht ihr?</h1>
+            <ul>
+              <li class="done">Alle Werkzeuge sind installiert und eingerichtet</li>
+              <li class="done">Eure Code ist auf GitHub gesichert</li>
+              <li>Ihr könnt JavaScript tests
+                <ul>
+                  <li>schreiben</li>
+                  <li>ausführen</li>
+                  <li>debuggen</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <img src="assets/checklist.png">
+        </div>
+      </section>
+
+      <section>
+        <h1></h1>
+        <img src="assets/look_of_disapproval.jpg">
+        <p class="fragment" style="text-align: right">Können wir jetzt endlich mehr JavaScript lernen?</p>
+      </section>
+
+      <section data-background="assets/Dock.jpeg" class="white-text">
+        <h1>JavaScript<br>Grundlagen</h1>
+      </section>
+
+      <section>
+				<h1>Grundlagen</h1>
+        <ul>
+          <li>Typen</li>
+          <li><code>var</code>, <code>let</code> und <code>const</code></li>
+          <li>Zeichenketten</li>
+          <li>Operatoren
+          <li>Verzweigungen</li>
+          <li>Schleifen</li>
+          <li>Funktionen</li>
+        </ul>
+			</section>
+
+      <section>
+        <h1>Typen</h1>
+        <ul class="compact">
+          <li>JavaScript is eine <em>dynamische</em> Sprache</li>
+          <li>Der Entwickler kann Typen nicht zuweisen</li>
+          <li>Jede Variabel hat eine der folgenden <a href="https://wesbos.com/javascript/01-the-basics/types-introduction">Typen</a>:
+            <ul>
+              <li>Null</li>
+              <li>Undefined</li>
+              <li>Number</li>
+              <li>Boolean</li>
+              <li>String</li>
+              <li>Object</li>
+              <li>Symbol</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Null und Undefined</h1>
+        <ul>
+          <li>Ein Variabel mit Typ <code>Null</code> wurde <em>explizit</em> nicht zugewiesen</li>
+          <li>Ein Variabel mit Typ <code>Undefined</code> wurde <em>noch nicht</em> zugewiesen</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Zahlen (Numbers)</h1>
+        <ul>
+          <li>4</li>
+          <li>4.2</li>
+          <li>4.2e6</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>typeof</h1>
+        <ul>
+          <li>4</li>
+          <li>4.2</li>
+          <li>4.2</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Zeichenketten (Strings)</h1>
+
+      </section>
+
+      <section>
+        <hl><code>var</code></hl>
+        <pre>
+          <code data-trim>
+function varTest() {
+  var x = 1;
+  if (true) {
+    var x = 2;  // same variable!
+    console.log(x);  // 2
+  }
+  console.log(x);  // 2
+}
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <hl><code>let</code></hl>
+        <pre>
+          <code data-trim>
+function letTest() {
+  let x = 1;
+  if (true) {
+    let x = 2;  // different variable
+    console.log(x);  // 2
+  }
+  console.log(x);  // 1
+}
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <hl><code>const</code></hl>
+        <pre>
+          <code data-trim>
+function constTest() {
+  const x = 1;
+  if (true) {
+    const x = 2;  // different variable
+    console.log(x);  // 2
+  }
+  x = 2;  // Not allowed!
+  console.log(x);  // 1
+}
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>"use strict";</h1>
+        <ul>
+          <li>Einfach oben im Script reinschreiben</li>
+          <li>Hilft unerwünschte Ausdrücke zu finden</li>
+          <li>Siehe <a href="https://www.w3schools.com/js/js_strict.asp">W3Schools</a></li>
+        </ul>
+      </section>
+    </div>
 	</div>
 
 	<script src="dist/reveal.js"></script>
