@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Beschreibung und Bewertungskriterien MLZ</title>
+  <link rel="stylesheet" href="slides.css">
+  <style>
+    html {
+      max-width: 70ch;
+      padding: 3em 1em;
+      margin: auto;
+      line-height: 1.75;
+      font-size: 1.25em;
+    }
+
+    img {
+      width: 100%
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Bewertungskriterien MLZ</h1>
+  <p>Es soll ein App geben womit man:</p>
+  <ul>
+    <li>Daten von einem Server abfragen und anzeigen kann.</li>
+    <li>Die Daten können vom Benutzer geändert und gespeichert werden.</li>
+    <li>Die Daten können auch gelöscht werden.</li>
+  </ul>
+  <h2>Bewertung Aspekte</h2>
+  <h3>Der App beinhaltet zumindest die folgende Aspekte</h3>
+  <ul>
+    <li>Daten von mindestens einer Entität sollen vom Server abgeholt und in einer Liste angezeigt werden.</li>
+    <li>Details einer Entität können angezeigt werden (Liste/Detail)</li>
+    <li>Die Daten sollen aus verschiedenen Typen (z.B. Datum, Text, Zahlen, Boolean, usw.) bestehen.</li>
+    <li>Einen Datensatz kann in einem Formular editiert werden, mit Validierung von den verschiedenen Typen. Zumindest
+      ein Feld muss ein Zwangsfeld sein.</li>
+    <li>Die Validierung muss mindestens so ausgeprägt sein, dass Fehler auf der Seite beim Drücken des Speichern-Buttons
+      angezeigt werden. Dies darf nicht über einen <code>alert</code> geschehen, sondern die Infos müssen per JavaScript
+      dem DOM hinzugefügt werden.</li>
+    <li>Ist das Formular fehlerfrei und der Benutzer klickt auf den Speichern-Button soll ein JSON Objekt mit allen
+      eingegebenen Informationen anzeigt an dem lokalen Server gesendet werden.</li>
+    <li>Ein neues Objekt kann erstellt werden.</li>
+  </ul>
+  <h3>Zusatzpunkte gibt's für:</h3>
+  <h4>Ausgereifte Validierung</h4>
+  <ul>
+    <li>Die benötigten Felder müssen vorgängig validiert werden und der Button zum Abschicken des Kontaktformulars soll
+      nur aktiv sein, falls keine Fehler mehr vorhanden sind.</li>
+    <li>Fehler sollen direkt dort angezeigt werden wo sie entstehen (beispielsweise mit einem roten Rahmen und einem
+      Informationstext über dem Problem).</li>
+    <li>Einschränkung der Länge von Text-Feldern validieren (z.b. eine Maximallänge)</li>
+  </ul>
+  <h4>Suchen</h4>
+  <ul>
+    <li>Der Benutzer kann nach Freitext in den Feldern suchen, um passenden Entitäten zu finden. Die gefundene
+      Entitäten werden in einer Liste angezeigt.</li>
+    <li>Der Benutzer kann einschränken, welche Felder durchgesucht werden.</li>
+    <li>Die gefundene Texte aus den Entitäten werden angezeigt.</li>
+    <li>Der Suchtext wird in den gefundenen Texten hervorgehoben (highlighted)</li>
+  </ul>
+  <h4>Benutzerkomfort</h4>
+  <ul>
+    <li>Gewisse Felder mit localStorage im Browser des Users speichern, so dass. Wenn der User die Seite wieder aufruft,
+      sollen die Felder mit den gespeicherten Werten ausgefüllt werden.</li>
+    <li>Der Benutzer kann Test-Daten erstellen lassen.</li>
+    <li>Der Benutzer kann allen Daten löschen.</li>
+  </ul>
+  <h4>Multi-Entität</h4>
+  <ul>
+    <li>Die App hat mehrere miteinander verbundene Objekttypen (z.B. Firmen und Personen und Herkunftsländer). In dem
+      einen Formular kann Entitäten aus einer anderen Listen selektiert werden (z.B. bei einer Person die Firma
+      selektieren).</li>
+  </ul>
+  <h4>Mandantenfähigkeit/Mehrere Benutzer</h4>
+  <ul>
+    <li>Der Benutzer kann sich anmelden und nur die eigenen Daten anzeigen lassen.</li>
+    <li>Die Anmeldung ist mit einem Passwort gesichert.</li>
+  </ul>
+  <h2>Allgemeine Bewertung</h2>
+  <h3>Die Software hat eine ersichtliche Architektur</h3>
+  <ul>
+    <li>Ordner und Dateistruktur ist vorhanden und logisch</li>
+    <li>Die erlernten Pattern wurden angewendet</li>
+  </ul>
+  <h3>Die Benutzeroberfläche erfüllt ergonomische Grundregeln</h3>
+  <ul>
+    <li>Die Navigation ist logisch und konsistent</li>
+    <li>Das Styling wurde konsequent umgesetzt</li>
+    <li>Die Bedienung der App fühlt sich natürlich an</li>
+  </ul>
+  <h3>Die Implementation ist strukturiert</h3>
+  <ul>
+    <li>Es findet sich kein auskommentierter Code</li>
+    <li>Es wurde Code wo nötig und sinnvoll ausgelagert</li>
+    <li>Services wurden sinnvoll erstellt und eingesetzt</li>
+  </ul>
+  <h3>Die Applikation ist lauffähig und hat keine grösseren "Bugs"</h3>
+  <ul>
+    <li>Die App kann nicht sofort zum Absturz gebracht werden</li>
+    <li>Zu erwartende Exceptions sind gehandelt</li>
+  </ul>
+  <h3>Notwendige Code-Stellen sind dokumentiert</h3>
+  <ul>
+    <li>Öffentliche und nicht einfach verständliche Code-Stellen sind dokumentiert</li>
+  </ul>
+  <h3>Die richtige Funktionsweise ist mit Tests verifiziert</h3>
+  <ul>
+    <li>Es gibt Unit-Tests für die zentralen Punkte der App</li>
+    <li>Es wurde manuell getestet und dokumentiert</li>
+  </ul>
+  <h3>Allgemeiner Eindruck</h3>
+  <ul>
+    <li>Fachliche Umsetzung?</li>
+    <li>Offensichtliche Fehler?</li>
+    <li>Bad Practices?</li>
+    <li>Eigene Ideen?</li>
+    <li>Einheitliche Formatierung?</li>
+    <li>Sinnvolle Variablennamen?</li>
+  </ul>
+  <h2>Präsentation</h2>
+  <ul>
+    <li>Die Präsentation hat eine Einführung.</li>
+    <li>Die Präsentation ist sachlogisch aufgebaut.</li>
+    <li>Die wesentlichen Funktionen werden vorgeführt.</li>
+    <li>Die Zeit (10 Minuten) wird eingehalten.</li>
+  </ul>
+  <h2>Mockup/Beispiel</h2>
+  <img src="assets/Lesson01/MLZ_UI_Mockup.svg">
+</body>
+
+</html>
