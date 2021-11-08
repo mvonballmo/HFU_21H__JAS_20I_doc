@@ -4,18 +4,8 @@ Wir werden nicht nur JS lernen, sondern JS im kontext von der üblichen Umgebung
 
 Zuerst werden wir ein paar Sachen
 
-- Source Control (Github)
-- Project Management (Trello)
-- Debugging (VS Code / Browser)
-  - JS
-  - CSS
-- CSS und HTML und zusammenhang
 - Editing Unterstützung
-- Testing (Jest)
-- Ausführen (Browser)
 - Hot-reload? (Browser)
-
-Hauptmission ist JavaScript im Browser. Dazu gibt es "Side Quests", so wie CORS oder ...
 
 ## Lesson 01: Einführung, IDE Setup &amp; Grundlagen
 
@@ -37,21 +27,19 @@ Hauptmission ist JavaScript im Browser. Dazu gibt es "Side Quests", so wie CORS 
   - [Modern Javascript: Everything you missed over the last 10 years](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years)
 
 - Arrays
-- Loops
-- If
-- Case
--
 
 ### Tools
 
 - [Deno Linter](https://deno.land/manual/tools/linter)
-- [Jest Test Runner](https://jestjs.io/)
++ [Jest Test Runner](https://jestjs.io/)
 - [AVA Test Runner](https://github.com/avajs/ava)
 - [UVU Test Runner](https://github.com/lukeed/uvu)
 
 ### Lektion 2: Code Organisation (Funktionen, Klassen & Modulen)
 
 
+- Tagged template literals
+- Klassen
 
 ### Builders / Loaders
 
