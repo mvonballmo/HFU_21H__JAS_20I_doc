@@ -213,7 +213,7 @@ let temp;
       <section>
         <h1>Null und Undefined</h1>
         <ul>
-          <li>Ein Variable mit Typ <code>Null</code> wurde <em>explizit</em> nicht zugewiesen</li>
+          <li>Ein Variable mit Typ <code>Null</code> wurde <em>explizit</em> zugewiesen</li>
           <li>Ein Variable mit Typ <code>Undefined</code> wurde <em>noch nicht</em> zugewiesen</li>
         </ul>
       </section>
@@ -308,7 +308,7 @@ const a = `Das
 
       <section>
         <h1><a href="https://wesbos.com/javascript/01-the-basics/types-objects">Objekte</a></h1>
-        <p>Gruppierungen von Variablen.</p>
+        <p>Gruppierungen von Variablen</p>
         <pre>
           <code data-trim class="language-javascript hljs">
             const empty = {};
@@ -330,7 +330,7 @@ const a = `Das
         <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Arrays</a>
         </h1>
         <ul>
-          <li>Ein Liste von Werten mit irgendwelchen Typen (Zahlen, Strings, Objekte, andere Arrays, usw.).</li>
+          <li>Eine Liste von Werten mit irgendwelchen Typen (Zahlen, Strings, Objekte, andere Arrays, usw.).</li>
           <li>Kann <a href="https://dmitripavlutin.com/javascript-sparse-dense-arrays/">"Sparse" oder "Dense"</a> sein.
           </li>
           <li>Kann mit initialen Werten gefüllt werden.</li>
@@ -348,10 +348,75 @@ const a = `Das
       </section>
 
       <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Map">Maps</a>
+        </h1>
+        <ul>
+          <li>Eine Liste von Schlüsseln/Werten</li>
+          <li>Erhaltet Einfügungsreihenfolge bei Iteration</li>
+          <li>Schlüssel kann irgendwelcher Typ sein.</li>
+          <li>Wird mit <code>set</code> geschrieben und <code>get</code> gelesen.</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const m = new Map();
+
+            m.set('a', 1);
+            m.set('b', 2);
+            m.set('c', 3);
+
+            // m.get('a') == 1, etc.
+          </code>
+        </pre>
+        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Map#objects_vs._maps">Vergleich mit Objekt</a>.</p>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Map#iterating_map_with_for..of">Maps: Iteration</a>
+        </h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const m = new Map();
+
+            m.set('a', 1);
+            m.set('b', 2);
+            m.set('c', 3);
+
+            // kann mit for..of iteriert werden
+            for (const [key, value] of m) {
+              console.log(key + ' = ' + value)
+            }
+            // [key, value] benutzt "destructuring" (kommt später)
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Set">Sets</a>
+        </h1>
+        <p>Speichert eindeutige Werte jedes beliebigen Typs.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const s = new Set([1, 2, 3]);
+
+            s.add('a', 5);
+
+            const one = s.has(1); // one == true
+            const four = s.has(4); // four == false
+            const five = s.has(5); // five == true
+
+            // kann mit for..of iteriert werden
+            for (const item of s) {
+              console.log(item)
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
         <h1><a
             href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbolen</a>
         </h1>
-        <p>Erstellt eine eindeutige Referenz statt ein Objekt</p>
+        <p>Erstellt eine eindeutige Referenz statt ein Objekt.</p>
         <pre>
           <code data-trim class="language-javascript hljs">
             const symbol1 = Symbol('foo');
@@ -371,6 +436,7 @@ const a = `Das
               <li>Symbolen Testen</li>
               <li>Objekte Testen</li>
               <li>Strings Testen</li>
+              <li>Map-Iteration Testen</li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -387,7 +453,7 @@ const a = `Das
       <section>
         <div class="seventy-thirty-grid">
           <div>
-            <h2>Ihr sind an der Reihe</h2>
+            <h1>Übungen</h1>
             <ul>
               <li>Test mit Objekten schreiben</li>
               <li>Test mit Arrays schreiben</li>
@@ -403,6 +469,7 @@ const a = `Das
           <li>Rechenoperatoren</li>
           <li>Vergleichsoperatoren</li>
           <li>Boolesche Operatoren</li>
+          <li>Nullesche Operatoren</li>
           <li>Zuweisungsoperatoren</li>
           <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax">Spread
               (...)</a> Operator</li>
@@ -583,6 +650,63 @@ const a = `Das
       </section>
 
       <section>
+        <h1><a
+            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">Destructuring</a></h1>
+        <p>Mit <code>[]</code> können Daten aus Arrays extrahiert werden.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const items = [10, 20, 30, 40, 50];
+            const [a, b, ...rest] = items;
+            // a == 10, b == 20, rest == [30, 40, 50]
+
+            // Mit Standardwerte
+            const [c, d, e = -1, f = -1] = rest;
+            // c == 30, d == 40, e = 50, f = -1
+          </code>
+        </pre>
+        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#array-destrukturierung">weitere Beispiele</a>.</p>
+      </section>
+
+      <section>
+        <h1><a
+            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">Destructuring</a></h1>
+        <p>Mit <code>{}</code> können Daten aus Objekten extrahiert werden.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const obj = { name: "bob", age: 10, country: "CH" };
+            const { name, age } = obj;
+            // name == "bob", age == 10
+
+            let name2, age2;          // Semicolon nötig
+            ({ name2, age2 } = obj);  // Klammern nötig
+            // name2  = "bob", age2 = 10
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a
+            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">Destructuring</a></h1>
+        <p>Daten aus Objekten zu anderen Eigenschaften zuweisen.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const obj = { name: "bob", age: 10, country: "CH" };
+            const { name: firstName, age: years } = obj;
+            // firstName == "bob", years == 10
+
+            // Mit Standardwerte
+            const {name: firstName = "John", lastName = "Doe"} = obj;
+            // firstName  = "bob", lastName = "Doe"
+
+            // Mit "rest"
+            const {name, ...obj2} = obj;
+            // name = "bob", obj2 = { age: 10, country: "CH" }
+          </code>
+        </pre>
+        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#objektdestrukturierung">weitere Beispiele</a>.</p>
+      </section>
+
+      <section>
         <div class="seventy-thirty-grid">
           <div>
             <h1>Operatoren</h1>
@@ -590,6 +714,7 @@ const a = `Das
               <li>Nullesche Operatoren Testen</li>
               <li>Vergleichsoperatoren Testen</li>
               <li>Spread Operatoren Testen</li>
+              <li>Destructuring Operatoren Testen</li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -606,10 +731,11 @@ const a = `Das
       <section>
         <div class="seventy-thirty-grid">
           <div>
-            <h2>Ihr sind an der Reihe</h2>
+            <h1>Übungen</h1>
             <ul>
               <li>Test mit Nullsche Operatoren</li>
               <li>Test mit Spread Operatoren</li>
+              <li>Test mit Destructuring Operatoren</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
@@ -622,6 +748,7 @@ const a = `Das
           <li>Verzweigungen:
             <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/if...else">if</a></code>/<code>else</code>
           </li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">Ternäre</a> Operator (<code>?:</code>)</li>
           <li>Verzweigungen:
             <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/switch">switch</a></code>
           </li>
@@ -801,7 +928,7 @@ const a = `Das
       <section>
         <div class="seventy-thirty-grid">
           <div>
-            <h2>Ihr sind an der Reihe</h2>
+            <h1>Übungen</h1>
             <ul>
               <li>Test mit <code>for..of</code></li>
               <li>Test mit <code>switch</code></li>
@@ -1081,10 +1208,138 @@ const a = `Das
       <section>
         <div class="seventy-thirty-grid">
           <div>
-            <h2>Ihr sind an der Reihe</h2>
+            <h1>Übungen</h1>
             <ul>
-              <li>Test mit Array</li>
-              <li>Test mit Objekt/Methoden</li>
+              <li>Test mit Array Funktionen schreiben</li>
+              <li>Test mit Objekt/Methoden schreiben</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1>Struktur</h1>
+        <ul>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">Modulen</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a></h1>
+        <ul>
+          <li>Definieren eine Vorlage für Objekt-Definitionen</li>
+          <li>Können, wie Objekte, Methoden und Variablen beinhalten</li>
+          <li>Können auch Konstruktoren definieren</li>
+          <li>Können, wie Funktionen, deklariert oder als <i>Ausdrücke</i> definiert werden</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a>: Deklarieren</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            class Person {
+              firstName = "John";
+              lastName = "Doe";
+
+              constructor(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+              }
+
+              fullName() {
+                return `${this.firstName} ${this.lastName}`
+              }
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a>: Erstellen</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const p1 = new Person("Bob");
+            // p1.fullName() == "Bob Doe"
+            const p2 = new Person("Bob", "Smith");
+            // p2.fullName() == "Bob Smith"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a>: Vererbung</h1>
+        <p>Klassen können von einander vererben.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            class Teacher extends Person {
+              schoolName = "unknown";
+
+              constructor(firstName, lastName, schoolName) {
+                super(firstName, lastName);
+                this.schoolName = schoolName;
+              }
+
+              fullName() {
+                return `${super.fullName()} @ ${this.schoolName}`
+              }
+            }
+
+            const p3 = new Teacher("Bob", "Smith", "HFU");
+            // p3.fullName() == "Bob Smith @ HFU"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a>: Private</h1>
+        <p>Eigenschaften/Methoden mit <code>#</code>-Präfix sind <em>privat</em>.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            class Teacher2 extends Teacher {
+              #homeAddress = "unknown";
+
+              #getFullNameWithHomeAddress() {
+                return `${this.fullName()} (${this.homeAddress})`;
+              }
+            }
+
+            const p4 = new Teacher2("Bob", "Smith", "HFU");
+            const x = p4.homeAddress;                   // Error
+            const y = p4.getFullNameWithHomeAddress();  // Error
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Klassen</h1>
+            <ul>
+              <li>Klasse Testen</li>
+              <li>Vererbung Testen</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Test mit Konstruktoren mit default Parametern</li>
+              <li>Test mit Vererbungen</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
@@ -1092,28 +1347,44 @@ const a = `Das
       </section>
 
       <section>
-        <h1>Klassen</h1>
-      </section>
-
-      <section>
-        <h1>Modulen</h1>
+        <h1>Modulen: CommonJS</h1>
         <ul>
-          <li></li>
+          <li>Default System für Node</li>
+          <li>Browsers verstehen es nicht</li>
+          <li>Exportieren mit <code>exports</code> oder <code>module.exports</code></li>
+          <li>Importieren mit <code>require()  </code></li>
         </ul>
       </section>
 
       <section>
-        <h1>Builders</h1>
+        <h1>Modulen: <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">ES6/JavaScript</a></h1>
         <ul>
-          <li></li>
+          <li>Ist <em>standardisiert</em></li>
+          <li>Das einzige System für Browsers</li>
+          <li>Geht mit <code>file://</code> nicht (wegen <a href="https://developer.mozilla.org/de/docs/Web/HTTP/CORS">CORS</a>)</li>
+          <li>Node versteht es nur mit Hilfe von <em><a href="https://babeljs.io/">Babel</a></em></li>
+          <li>Exportieren mit <code>export</code></li>
+          <li>Importieren mit <code>import</code></li>
         </ul>
       </section>
 
       <section>
+        <h1>Konvertieren nach ES6</h1>
+        <ul>
+          <li><code>library.js</code> soll <code>export</code> benutzen</li>
+          <li><code>library.test.js</code> soll <code>import</code> benutzen</li>
+          <li><em>Jest</em> muss mit <em><a href="https://babeljs.io/">Babel</a></em> ausgeführt werden</li>
+          <li><code>index.html</code> muss von <code>http://localhost</code> gelesen werden</li>
+          <li>Click-handlers umschreiben (imports sind nicht global verfügbar)</li>
+        </ul>
+      </section>
+
+      <section class="compact">
         <h1>Babel Installieren</h1>
         <ul>
           <li>Im Terminal <code>npm install --save-dev babel-jest @babel/core @babel/node @babel/preset-env</code>
             ausführen</li>
+          <li>Datei <code>babel.config.js</code> mit folgendem Inhalt erstellen</li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -1122,23 +1393,97 @@ const a = `Das
             };
           </code>
         </pre>
+        <ul class="notes">
+          <li><a href="https://jestjs.io/docs/getting-started#using-babel">Using Babel (with Jest)</a></li>
+          <li><a href="https://linkstraffic.net/using-jest-with-es6-modules/">Using Jest with ES6 Modules</a></li>
+          <li><a href="https://masteringjs.io/tutorials/node/import">Using <code>import</code> Statements in Node.js</a></li>
+        </ul>
       </section>
 
       <section>
+        <h1>Syntax anpassen</h1>
         <ul>
-          <li>Execute <code>npx http-server</code></li>
-          <li>Browse to <a href="http://localhost:8080">http://localhost:8080</a></li>
+          <li><kbd>Ctrl</kbd> + <kbd>.</kbd> auf <code>require</code> in <code>library.test.js</code> betätigen, um nach <code>import</code> zu konvertieren</li>
+          <li><kbd>Ctrl</kbd> + <kbd>.</kbd> auf <code>module.exports</code> in <code>library.js</code> betätigen, um nach <code>export</code> zu konvertieren</li>
+          <li>Tests ausführen</li>
         </ul>
-        <a href="https://masteringjs.io/tutorials/node/import">Using <code>import</code> Statements in Node.js</a>
-        <a href="https://www.npmjs.com/package/http-server">http-server</a> NPM package
-        <a href="https://linkstraffic.net/using-jest-with-es6-modules/">Using Jest with ES6 Modules</a>
-        <a href="https://jestjs.io/docs/getting-started#using-babel">Using Babel (with Jest)</a>
+      </section>
 
-        <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">JavaScript modules</a>
-        (MDN/current)
-        <a href="https://medium.com/ghostcoder/using-es6-modules-in-the-browser-5dce9ca9e911">Using ES6 modules in the
-          browser</a> (2018)
-        <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">JavaScript modules</a> (2018)
+      <section>
+        <h1>Localhost benutzen</h1>
+        <ul>
+          <li><a href="https://www.npmjs.com/package/http-server">http-server</a> NPM package installieren</li>
+          <li><code>npx http-server</code> ausführen</li>
+          <li><a href="http://localhost:8080">http://localhost:8080</a> im Browser öffnen</li>
+        </ul>
+        <p class="notes">Siehe <a href="https://medium.com/ghostcoder/using-es6-modules-in-the-browser-5dce9ca9e911">Using ES6 modules in the
+          browser</a> (2018) für weitere Infos.</p>
+      </section>
+
+      <section>
+        <h1>Modulen: Click-Handlers</h1>
+        <ul>
+          <li>Click-Handlers werden im Kontext vom <code>window</code>-Objekt ausgeführt</li>
+          <li>Importierte Methoden sind nur lokal verfügbar und können nicht mehr direkt aufgerufen werden</li>
+          <li><code>window</code> Objekt muss angepasst werden</li>
+          <li>Wir sehen später, wie das Problem mit Event-Handlers gelöst werden kann</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1>Click-Handlers anpassen</h1>
+        <p>In <code>index.html</code></p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button onclick="add()">+</button>
+            <button onclick="subtract()">-</button>
+          </code>
+        </pre>
+        <p>In <code>main.js</code></p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            import * as library from './library.js';
+
+            window.add = () => {
+              library.show(library.increment())
+            };
+
+            window.subtract = () => {
+              library.show(library.decrement())
+            };
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Modulen</h1>
+            <ul>
+              <li>Nach ES6-Modulen konvertieren</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Eigenes Projekt nach ES6-Modulen konvertieren</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
       </section>
 
     </div>
