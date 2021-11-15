@@ -1,21 +1,6 @@
 # Notes
 
-Wir werden nicht nur JS lernen, sondern JS im kontext von der üblichen Umgebung: Der Browser.
-
-Zuerst werden wir ein paar Sachen
-
-- Editing Unterstützung
-- Hot-reload? (Browser)
-
 ## Lesson 01: Einführung, IDE Setup &amp; Grundlagen
-
-- Simple example w/just browser and with more and more code
-  - Just program and make functions
-  - Make classes?
-  - Move code to separate file
-    - Why? Because I want to use it from multiple pages
-    - Or ... I want to pull in code from another provider
-    - REUSE
 
 - Grundlagen
   - [Robustness and least power](https://adactio.com/journal/14327?skin=default)
@@ -26,20 +11,14 @@ Zuerst werden wir ein paar Sachen
   - [Features: Maps, Hashtables, etc.](https://2020.stateofjs.com/en-US/features/)
   - [Modern Javascript: Everything you missed over the last 10 years](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years)
 
-- Arrays
-
 ### Tools
 
 - [Deno Linter](https://deno.land/manual/tools/linter)
-+ [Jest Test Runner](https://jestjs.io/)
+- [Jest Test Runner](https://jestjs.io/)
 - [AVA Test Runner](https://github.com/avajs/ava)
 - [UVU Test Runner](https://github.com/lukeed/uvu)
 
 ### Lektion 2: Code Organisation (Funktionen, Klassen & Modulen)
-
-
-- Tagged template literals
-- Klassen
 
 ### Builders / Loaders
 
@@ -57,8 +36,6 @@ Zuerst werden wir ein paar Sachen
   - [Snowpack Demo](https://github.com/sitepoint-editors/snowpack-demo)
   - [Learn Snowpack](https://www.sitepoint.com/learn-snowpack/)
 - [ESBuild Content Types](https://esbuild.github.io/content-types/)
-
-
 
 - [Javascript Card Trick - Computerphile](https://www.youtube.com/watch?v=rkrjo4IIb1I) ([code](https://pastebin.com/YheE3kJQ))
 - [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) (native i18n)
@@ -168,6 +145,3 @@ Note: move this earlier
 - ELM
 - Svelte
 - [Upgrading to Typescript (book)](https://exploringjs.com/tackling-ts/)
-
-
-- MLZ Presentieren
