@@ -1,0 +1,711 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Lektion 03: JavaScript: DOM, Formulare, Eingaben &amp; Ereignisse</title>
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/white.css">
+  <link rel="stylesheet" href="slides.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/github.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-background="assets/MonteRosa.jpg">
+        <h1>JavaScript</h1>
+        <h2>Lektion 3</h2>
+        <p class="notes">
+          Ein Angebot der Berufsfachschule Uster und der Höheren Fachschule Uster
+        </p>
+      </section>
+
+      <section data-background="assets/looking-back-dimmed.jpg">
+        <h1>Rückblick</h1>
+        <ul>
+          <li>Grundlagen:
+            <ul>
+              <li><a href="https://wesbos.com/javascript/01-the-basics/variables-and-statements">Variablen</a>:
+                <code>var</code>, <code>let</code> und <code>const</code></li>
+              <li><a href="https://wesbos.com/javascript/01-the-basics/types-introduction">Typen</a></li>
+              <li><a href="https://wesbos.com/javascript/01-the-basics/types-strings">Zeichenketten</a></li>
+              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a>
+              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Verzweigungen</a>
+              </li>
+              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Schleifen</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Übersicht Lektionen</h1>
+        <ol class="compact">
+          <li>Einführung &amp; IDE Aufsetzen</li>
+          <li>Grundlagen: Typen, Operatoren, Statements, usw.</li>
+          <li class="selected">DOM, Formulare, Eingaben &amp; Ereignisse</li>
+          <li>Externe Abfrage (JSON &amp; Fetch)</li>
+          <li>Persistenz (Cookies, Web storage &amp; IndexedDB)</li>
+          <li>Komponenten (Web Components) &amp; Bibliotheken</li>
+          <li><b>LZ1</b>; Animationen &amp; Grafik</li>
+          <li>React (manipulation, aktualisierung)</li>
+          <li><b>MLZ Präsentationen</b></li>
+        </ol>
+      </section>
+
+      <section>
+        <h1>Grundlagen</h1>
+        <ul>
+          <li>✅ <a href="https://wesbos.com/javascript/01-the-basics/variables-and-statements">Variablen</a>:
+            <code>var</code>, <code>let</code> und <code>const</code></li>
+          <li>✅ <a href="https://wesbos.com/javascript/01-the-basics/types-introduction">Typen</a></li>
+          <li>✅ <a href="https://wesbos.com/javascript/01-the-basics/types-strings">Zeichenketten</a></li>
+          <li>✅ <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a>
+          <li>✅ <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Verzweigungen</a>
+          </li>
+          <li>✅ <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Schleifen</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">Modulen</a></li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1><a
+            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
+          (mutating)</h1>
+        <p>Die folgende Methoden ändern das Array ("mutating methods").</p>
+        <ul>
+          <li><code>push()</code> Element am Ende hinzufügen</li>
+          <li><code>pop()</code> Element am Ende entfernen</li>
+          <li><code>unshift()</code> Element am Anfang hinzufügen</li>
+          <li><code>shift()</code> Element am Anfang entfernen</li>
+          <li><code>splice()</code> Element im Array hinzufügen oder löschen</li>
+          <li><code>sort()</code> Elemente sortieren</li>
+          <li><code>reverse()</code> Reihenfolge der Elemente umkehren</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1><a
+            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
+          (immutable)</h1>
+        <p>Die folgende Methoden ändern das Array <em>nicht</em> ("immutable methods").</p>
+        <ul>
+          <li><code>slice()</code> Erzeugt ein neues Array aus bestimmten Elementen des ersten</li>
+          <li><code>concat()</code> Arrays verbinden</li>
+          <li><code>join()</code> Erzeugt einen String aus allen Elementen</li>
+          <li><code>flat()</code> Erstellt rekursiv ein neues Array mit allen Elementen von Unterarrays</li>
+          <li><code>includes()</code> Prüft, ob ein Array ein bestimmtes Element enthält</li>
+          <li><code>indexOf()</code> Gibt den Index zurück, an dem ein bestimmtes Element im Array</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1><a
+            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
+          (immutable)</h1>
+        <p>Die folgende Methoden ändern das Array <em>nicht</em> ("immutable methods").</p>
+        <ul>
+          <li><code>find()</code> Gibt den Wert, welches als erstes die Bedingung einer Funktion erfüllt</li>
+          <li><code>map()</code> Wendet auf jedes Element des Arrays eine Funktion an und gibt das Ergebnis in einem
+            neuen Array zurück.</li>
+          <li><code>reduce()</code> Ähnlich zu <code>map()</code>, aber mit Akkumulator</li>
+          <li><code>filter()</code> Erstellt ein neues Array mit allen Elementen, die den von einer Funktion
+            implementierten Bedingung bestehen.</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1><a
+            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
+          (immutable)</h1>
+        <p>Die folgende Methoden ändern das Array <em>nicht</em> ("immutable methods").</p>
+        <ul>
+          <li><code>find()</code> Gibt den Wert, welches als erstes die Bedingung einer Funktion erfüllt</li>
+          <li><code>map()</code> Wendet auf jedes Element des Arrays eine Funktion an und gibt das Ergebnis in einem
+            neuen Array zurück.</li>
+          <li><code>reduce()</code> Ähnlich zu <code>map()</code>, aber mit Akkumulator</li>
+          <li><code>filter()</code> Erstellt ein neues Array mit allen Elementen, die den von einer Funktion
+            implementierten Bedingung bestehen.</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Funktionen</h1>
+            <ul>
+              <li>Funktionen aller Arten Testen</li>
+              <li>Methoden Testen</li>
+              <li>Math Testen</li>
+              <li>Date Testen</li>
+              <li>Array Testen</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Test mit Array Funktionen schreiben</li>
+              <li>Test mit Objekt/Methoden schreiben</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1>Struktur</h1>
+        <ul>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">Modulen</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a></h1>
+        <ul>
+          <li>Definieren eine Vorlage für Objekt-Definitionen</li>
+          <li>Können, wie Objekte, Methoden und Variablen beinhalten</li>
+          <li>Können auch Konstruktoren definieren, um die Initialisierung eines Objekts zu übersteuern</li>
+          <li>Können, wie Funktionen, deklariert oder als <i>Ausdrücke</i> definiert werden</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a>: Deklarieren</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            class Person {
+              firstName = "John";
+              lastName = "Doe";
+
+              constructor(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+              }
+
+              fullName() {
+                return `${this.firstName} ${this.lastName}`
+              }
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a>: Erstellen</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const p1 = new Person("Bob");
+            // p1.fullName() == "Bob Doe"
+            const p2 = new Person("Bob", "Smith");
+            // p2.fullName() == "Bob Smith"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a>: Vererbung</h1>
+        <p>Klassen können von einander vererben.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            class Teacher extends Person {
+              schoolName = "unknown";
+
+              constructor(firstName, lastName, schoolName) {
+                super(firstName, lastName);
+                this.schoolName = schoolName;
+              }
+
+              fullName() {
+                return `${super.fullName()} @ ${this.schoolName}`
+              }
+            }
+
+            const p3 = new Teacher("Bob", "Smith", "HFU");
+            // p3.fullName() == "Bob Smith @ HFU"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a>: Private</h1>
+        <p>Eigenschaften/Methoden mit <code>#</code>-Präfix sind <em>privat</em>.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            class Teacher2 extends Teacher {
+              #homeAddress = "unknown";
+
+              #getFullNameWithHomeAddress() {
+                return `${this.fullName()} (${this.homeAddress})`;
+              }
+            }
+
+            const p4 = new Teacher2("Bob", "Smith", "HFU");
+            const x = p4.homeAddress;                   // Error
+            const y = p4.getFullNameWithHomeAddress();  // Error
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Klassen</h1>
+            <ul>
+              <li>Klasse Testen</li>
+              <li>Vererbung Testen</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Test mit Konstruktoren mit default Parametern</li>
+              <li>Test mit Vererbungen</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Modulen: CommonJS</h1>
+        <ul>
+          <li>Default System für Node</li>
+          <li>Browsers verstehen es nicht</li>
+          <li>Exportieren mit <code>exports</code> oder <code>module.exports</code></li>
+          <li>Importieren mit <code>require()  </code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Modulen: <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">ES6/JavaScript</a></h1>
+        <ul>
+          <li>Ist <em>standardisiert</em></li>
+          <li>Das einzige System für Browsers</li>
+          <li>Geht mit <code>file://</code> nicht (wegen <a href="https://developer.mozilla.org/de/docs/Web/HTTP/CORS">CORS</a>)</li>
+          <li>Node versteht es nur mit Hilfe von <em><a href="https://babeljs.io/">Babel</a></em></li>
+          <li>Exportieren mit <code>export</code></li>
+          <li>Importieren mit <code>import</code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Konvertieren nach ES6</h1>
+        <ul>
+          <li><code>library.js</code> soll <code>export</code> benutzen</li>
+          <li><code>library.test.js</code> soll <code>import</code> benutzen</li>
+          <li><em>Jest</em> muss mit <em><a href="https://babeljs.io/">Babel</a></em> ausgeführt werden</li>
+          <li><code>index.html</code> muss von <code>http://localhost</code> gelesen werden</li>
+          <li>Click-handlers umschreiben (imports sind nicht global verfügbar)</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1>Babel Installieren</h1>
+        <ul>
+          <li>Im Terminal <code>npm install --save-dev babel-jest @babel/core @babel/node @babel/preset-env</code>
+            ausführen</li>
+          <li>Datei <code>babel.config.js</code> mit folgendem Inhalt erstellen</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            module.exports = {
+              presets: [['@babel/preset-env', {targets: {node: 'current'}}]],
+            };
+          </code>
+        </pre>
+        <ul class="notes">
+          <li><a href="https://jestjs.io/docs/getting-started#using-babel">Using Babel (with Jest)</a></li>
+          <li><a href="https://linkstraffic.net/using-jest-with-es6-modules/">Using Jest with ES6 Modules</a></li>
+          <li><a href="https://masteringjs.io/tutorials/node/import">Using <code>import</code> Statements in Node.js</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Syntax anpassen</h1>
+        <ul>
+          <li><kbd>Ctrl</kbd> + <kbd>.</kbd> auf <code>require</code> in <code>library.test.js</code> betätigen, um nach <code>import</code> zu konvertieren</li>
+          <li><kbd>Ctrl</kbd> + <kbd>.</kbd> auf <code>module.exports</code> in <code>library.js</code> betätigen, um nach <code>export</code> zu konvertieren</li>
+          <li>Tests ausführen</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Localhost benutzen</h1>
+        <ul>
+          <li><a href="https://www.npmjs.com/package/http-server">http-server</a> NPM package installieren</li>
+          <li><code>npx http-server</code> ausführen</li>
+          <li><a href="http://localhost:8080">http://localhost:8080</a> im Browser öffnen</li>
+        </ul>
+        <p class="notes">Siehe <a href="https://medium.com/ghostcoder/using-es6-modules-in-the-browser-5dce9ca9e911">Using ES6 modules in the
+          browser</a> (2018) für weitere Infos.</p>
+      </section>
+
+      <section>
+        <h1>Modulen: Click-Handlers</h1>
+        <ul>
+          <li>Click-Handlers werden im Kontext vom <code>window</code>-Objekt ausgeführt</li>
+          <li>Importierte Methoden sind nur lokal verfügbar und können nicht mehr direkt aufgerufen werden</li>
+          <li><code>window</code> Objekt muss angepasst werden</li>
+          <li>Wir sehen später, wie das Problem mit Event-Handlers gelöst werden kann</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1>Click-Handlers anpassen</h1>
+        <p>In <code>index.html</code></p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button onclick="add()">+</button>
+            <button onclick="subtract()">-</button>
+          </code>
+        </pre>
+        <p>In <code>main.js</code></p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            import * as library from './library.js';
+
+            window.add = () => {
+              library.show(library.increment())
+            };
+
+            window.subtract = () => {
+              library.show(library.decrement())
+            };
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Modulen</h1>
+            <ul>
+              <li>Nach ES6-Modulen konvertieren</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Eigenes Projekt nach ES6-Modulen konvertieren</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section data-background="assets/Rusty_tools_dimmed.jpg">
+        <h1>Tools ergänzen</h1>
+        <p>Code Linting und Formatierung</p>
+      </section>
+
+      <section>
+        <h1>Code Style &amp; "Linting"</h1>
+        <p><em>Linting Werkzeuge</em> suchen nach und beheben semantischen Fehlern.</p>
+        <ul>
+          <li>Zugriff auf nicht initialisierte Variablen verhindern</li>
+          <li>Nicht erreichbare Code hervorheben (z.B. nach einem <code>return</code>)</li>
+          <li>Siehe <a href="https://eslint.org/docs/rules/">ESLint Rules</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Formatierung</h1>
+        <p><em>Formatierungswerkzeuge</em> helfen, eine einheitliche Code Style und Formatierung einzuhalten.</p>
+        <ul>
+          <li>Namenskonventionen einhalten</li>
+          <li>Positionen von Klammern standardisieren</li>
+          <li>Einrückung mit tabs/spaces</li>
+          <li>Siehe <a href="https://prettier.io/docs/en/options.html">Prettier Optionen</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://prettier.io/docs/en/install.html">Prettier installieren</a></h1>
+        <ul>
+          <li><code>npm install --save-dev prettier</code> ausführen</li>
+          <li>Datei <code>/.prettierignore</code> mit folgendem Inhalt erstellen</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-properties hljs">
+            node_modules
+            package-lock.json
+            *.html
+            *.md
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://prettier.io/docs/en/configuration.html">Prettier konfigurieren</a></h1>
+        <ul>
+          <li>Datei <code>/.prettierrc</code> mit folgendem Inhalt erstellen</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            {
+              "printWidth": 120,
+              "singleQuote": false,
+              "useTabs": false,
+              "tabWidth": 2,
+              "semi": true,
+              "bracketSpacing": true,
+              "trailingComma": "all"
+            }
+          </code>
+        </pre>
+        <p class="notes">Siehe <a href="https://prettier.io/docs/en/options.html">Prettier Optionen</a> für weitere Infos.</p>
+      </section>
+
+      <section>
+        <h1>Prettier ausführen</h1>
+        <ul>
+          <li><code>npx prettier --write .</code></li>
+          <li>Die Änderungen in SmartGit anschauen.</li>
+          <li>Einfacher geht's mit <em>IDE-Integration</em></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Prettier &amp; <a href="https://prettier.io/docs/en/configuration.html">WebStorm</a></h1>
+        <div class="seventy-thirty-grid">
+          <div>
+            <ul>
+              <li>Einstellungen öffnen</li>
+              <li>Nach <em>Languages &amp; Frameworks | JavaScript | Prettier</em> navigieren</li>
+              <li>Ankreuzen: On 'Reformat Code' action</li>
+              <li>Ankreuzen: On save</li>
+            </ul>
+          </div>
+          <img src="assets/Lesson03/WebStormPrettierSettings.png" style="max-width: 400px">
+        </div>
+      </section>
+
+      <section>
+        <h1>Prettier &amp; <a href="https://prettier.io/docs/en/editors.html">VSC</a></h1>
+        <div class="seventy-thirty-grid">
+          <div>
+            <ul>
+              <li>Extension <code><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">prettier-vscode</a></code> installieren</li>
+              <li>Format auslösen; "Prettier Format" auswählen</li>
+              <li>Einstellungen öffnen</li>
+              <li>Nach "format on save" suchen</li>
+              <li>Option ankreuzen</li>
+            </ul>
+          </div>
+          <img src="assets/Lesson03/PrettierCodeFormatterVSCode.png" style="max-width: 400px">
+        </div>
+      </section>
+
+      <section class="compact">
+        <h1><a href="https://eslint.org/docs/user-guide/getting-started">ESLint installieren</a></h1>
+        <ul>
+          <li><code>npm install --save-dev eslint eslint-config-prettier</code> ausführen</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1><a href="https://eslint.org/docs/user-guide/getting-started">ESLint konfigurieren</a></h1>
+        <ul>
+          <li>Konfigurationsdatei mittels <code>npx eslint --init</code> erstellen</li>
+          <li><em>Oder</em> Datei <code>/.eslintrc.json</code> mit folgendem Inhalt erstellen</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            {
+              "env": {
+                "browser": true,
+                "commonjs": true,
+                "es2021": true
+              },
+              "extends": ["eslint:recommended", "prettier"],
+              "parserOptions": {
+                "ecmaVersion": 2021
+              },
+              "rules": {}
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>ESLint &amp; VSC</h1>
+        <div class="seventy-thirty-grid">
+          <div>
+            <ul>
+              <li><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint Extension</a> installieren.</li>
+              <li>Fehler sollten in <code>.js</code> Dateien sofort ersichtlich sein.</li>
+              <li>Siehe <a href="https://eslint.org/docs/rules/">ESLint Rules</a> für weitere Einstellungen.</li>
+            </ul>
+          </div>
+          <img src="assets/Lesson03/ESLintExtension.png" style="max-width: 400px">
+        </div>
+      </section>
+
+      <section>
+        <h1>ESLint &amp; <a href="https://www.jetbrains.com/help/webstorm/eslint.html">WebStorm</a></h1>
+        <div class="seventy-thirty-grid">
+          <div>
+            <ul>
+              <li>Einstellungen öffnen</li>
+              <li>Zu <em>Languages &amp; Frameworks | JavaScript | Code Quality Tools | ESLint</em> navigieren</li>
+              <li><em>Automatic ESLint configuration</em> auswählen</li>
+            </ul>
+          </div>
+          <img src="assets/Lesson03/ESLintWebStorm.png" style="max-width: 400px">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Tools</h1>
+            <ul>
+              <li>Prettier &amp; ESLint einrichten</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Prettier einrichten</li>
+              <li>ESLint einrichten</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1>JSON &amp; Fetch</h1>
+        <ul>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/API/Fetch_API">Fetch</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"><code>JSON.parse()</code></a></li>
+        <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>JSON.stringify()</code></a></li>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>JSON</h1>
+            <ul>
+              <li>Konvertieren nach und von JSON</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Test mit JSON.stringify() schreiben</li>
+              <li>Test mit JSON.parse() schreiben</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+
+      <section>
+        <h1></h1>
+        <ul>
+          <li></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
+</html>
