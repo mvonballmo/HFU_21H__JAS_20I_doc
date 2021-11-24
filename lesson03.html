@@ -987,7 +987,9 @@
       <section>
         <h1><code>json-server</code>: ID</h1>
         <ul>
-          <li>Um Entitäten aktualisieren oder löschen zu können </li>
+          <li>Um Entitäten aktualisieren oder löschen zu können muss man einen <code>ID</code> zuweisen</li>
+          <li>Beim erstellen einer Entität wird ein <code>ID</code> automatisch zugewiesen</li>
+          <li>Eine Adresse mit <code>ID == 1</code> holen: http://localhost:3000/addresses/1</li>
         </ul>
       </section>
 
@@ -1036,6 +1038,26 @@
         </ul>
       </section>
 
+      <section>
+        <h1><code>fetch()</code>: Response</h1>
+        <ul>
+          <li>Bei gravierendem Fehler kommt ein <code>Error</code></li>
+          <li>Einen <code>404</code> Fehler ist nicht gravierend</li>
+          <li>Response testen, ob der Resultat vorhanden ist</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const response = await fetch(`http://localhost:3000/addresses/1`);
+
+            if (response.ok) {
+              const address = await response.json();
+            } else {
+              // "response.statusCode"
+              // "response.statusText"
+            }
+          </code>
+        </pre>
+      </section>
 
       <section>
         <div class="seventy-thirty-grid">
@@ -1063,7 +1085,7 @@
             <h1>Übungen</h1>
             <ul>
               <li>Test für <code>GET</code> für alle Entitäten</li>
-              <li>Test für <code>GET</code> für ein einziges Entität</li>
+              <li>Test für <code>GET</code> für eine einzige Entität</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
