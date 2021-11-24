@@ -1,93 +1,87 @@
-:root
-{
+:root {
   --r-heading1-size: 2em;
   --r-heading2-size: 1.4em;
   --r-heading3-size: 1.2em;
   --r-heading-text-transform: inherit;
 }
 
-.notes
-{
+.notes {
   font-size: 65%;
 }
 
-.reveal .slides
-{
+.reveal .slides {
   text-align: left;
 }
 
-.reveal table
-{
+.reveal table {
   margin: 0;
   width: 100%;
 }
 
-.reveal img
-{
+.reveal img {
   max-width: 300px;
 }
 
-.reveal img.screenshot
-{
+.reveal img.screenshot {
   max-width: 70%;
 }
 
-.reveal img.full-size
-{
+.reveal img.full-size {
   max-width: none;
 }
 
-.reveal code
-{
+.reveal code {
   background-color: aliceblue;
   outline: 1px dotted lightskyblue;
 }
 
-.reveal .done
-{
+.reveal .done {
   opacity: 35%;
 }
 
-.reveal .fifty-fifty-grid
-{
+.reveal .fifty-fifty-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 1em;
 }
 
-.reveal .seventy-thirty-grid
-{
+.reveal .seventy-thirty-grid {
   display: grid;
   grid-template-columns: 70% 30%;
   grid-column-gap: 1em;
 }
 
-.reveal .white-text
-{
+.reveal .white-text {
   --r-heading-color: white;
   color: white;
 }
 
-.reveal .compact
-{
+.reveal .compact {
   --r-main-font-size: 36px;
   font-size: var(--r-main-font-size);
 }
 
-.reveal .selected
-{
+.reveal .selected {
   color: coral;
 }
 
 .reveal kbd {
   display: inline-block;
   font-family: monospace;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   border-radius: 4px;
   border: 1px solid silver;
-  border-bottom: medium none #FFFFFF;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.196), 0 0 0 1px #FFFFFF inset;
+  border-bottom: medium none #ffffff;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.196), 0 0 0 1px #ffffff inset;
   padding: 0 5px;
   white-space: nowrap;
   margin-bottom: 5px;
+}
+
+.reveal .slides section .fragment.highlight-green.visible {
+  color: rgb(48, 168, 48);
+}
+
+.reveal .slides section .fragment.highlight-red.visible {
+  color: rgb(173, 32, 32);
 }
