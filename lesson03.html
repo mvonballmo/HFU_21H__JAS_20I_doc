@@ -1079,7 +1079,23 @@
 
       <section>
         <h1><a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-flow">Event Flow</a></h1>
+        <p>"Capture" zuerst und danach "Bubbling"</p>
         <img src="assets/Lesson03/eventflow.svg" style="max-width: 400px">
+      </section>
+
+      <section>
+        <h1>👉 Funktionen: Kurzform</h1>
+        <p>Bei einer benannten Funktion kann man das auflisten von Parametern weglassen, wenn die Parameter einfach weitergegeben werden sollen.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const log = e => console.log(e);
+
+            // Die folgende Aufrufe sind Equivalent
+            document.AddEventListener("click", e => console.log(e))
+            document.addEventListener("click", e => log(e));
+            document.addEventListener("click", log);
+          </code>
+        </pre>
       </section>
 
       <section>
