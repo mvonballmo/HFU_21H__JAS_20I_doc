@@ -305,7 +305,7 @@
       <section>
         <h1>Modulen: CommonJS</h1>
         <ul>
-          <li>Default System für Node</li>
+          <li>Default System für <a href="https://nodejs.org">Node</a></li>
           <li>Browsers verstehen es nicht</li>
           <li>Exportieren mit <code>exports</code> oder <code>module.exports</code></li>
           <li>Importieren mit <code>require()  </code></li>
@@ -318,7 +318,7 @@
           <li>Ist <em>standardisiert</em></li>
           <li>Das einzige System für Browsers</li>
           <li>Geht mit <code>file://</code> nicht (wegen <a href="https://developer.mozilla.org/de/docs/Web/HTTP/CORS">CORS</a>)</li>
-          <li>Node versteht es nur mit Hilfe von <em><a href="https://babeljs.io/">Babel</a></em></li>
+          <li><a href="https://nodejs.org">Node</a> versteht es nur mit Hilfe von <em><a href="https://babeljs.io/">Babel</a></em></li>
           <li>Exportieren mit <code>export</code></li>
           <li>Importieren mit <code>import</code></li>
         </ul>
@@ -638,15 +638,108 @@
 
       <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
         <h1>JSON &amp; Fetch</h1>
+        <p>Hier geht es um Daten mit anderen Systemen auszutauschen.</p>
         <ul>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a></li>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/API/Fetch_API">Fetch</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a>: standardisiertes Austauschformat</li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/API/Fetch_API">Fetch</a>: Kommunikations-API</li>
         </ul>
       </section>
 
       <section>
-        <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"><code>JSON.parse()</code></a></li>
-        <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>JSON.stringify()</code></a></li>
+        <h1>JSON: Einführung</h1>
+        <ul>
+          <li>Akronym für "JavaScript Object Notation"</li>
+          <li>Unterstützt mittlerweile überall</li>
+          <li>Repräsentiert JavaScript Strukturen, inklusive:
+            <ul>
+              <li>Objekte <code>{}</code></li>
+              <li>Arrays <code>[]</code></li>
+              <li>Felder (Null, Undefined, Strings, Numbers, Booleans)</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>JSON: Einschränkungen</h1>
+        <ul>
+          <li><code>NaN</code> wird zu <code>null</code></li>
+          <li><code>Date</code> wird zu <code>String</code></li>
+          <li><code>Function</code>, <code>RegExp</code> und <code>Error</code> Objekte werden nicht nach JSON übertragen.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>JSON: Beispiel</h1>
+        <p>Sieht aus wie JavaScript ausserdem Eigenschafts&shy;namen werden mit Strings geschrieben.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            {
+              "firstName": "John",
+              "lastName": "Doe",
+              "age": 42,
+              "active": true
+              "cars": [
+                { "make": "VW", "model": "Golf" },
+                { "make": "BMW", "model": "M3" }
+              ]
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>JSON: Lesen/Schreiben</h1>
+        <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"><code>JSON.parse()</code></a> wandelt JSON in JS um</li>
+        <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>JSON.stringify()</code></a> wandelt JS in JSON um</li>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const obj = { color: "red", speed: 50.2 };
+
+            const json = JSON.stringify(obj);
+            // json == '{"color":"red","speed":50.2}'
+
+            const obj2 = JSON.parse(json);
+            // obj === obj2
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>JSON.stringify()</code></a></h1>
+        <p>Das Ausgabeformat kann mit optionalen Parametern angepasst werden.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const isString = v => typeof v === "string"
+            const replacer = (k, v) => isString(v) ? undefined : v;
+            const obj = { color: "red", speed: 50.2 };
+            const json = JSON.stringify(obj, replacer);
+            // json == '{"speed":50.2}'
+            const json2 = JSON.stringify(obj, replacer, /* space: */ 2);
+            /* json2 == `{
+              "speed": 50.2
+            }`*/
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>toJSON()</code></a></h1>
+        <p>Zu exportierenden Objekten können das Ausgabe&shy;format mit einer <code>toJSON()</code> Methode selbst steuern.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const obj = {
+              password: "password123",
+              speed: 50.2,
+              toJSON(key) {
+                const { password, ...rest } = this;
+                return rest;  // without "password"
+              }
+            };
+            const json = JSON.stringify(obj);
+            // json == '{"speed":50.2}'
+          </code>
+        </pre>
       </section>
 
       <section>
@@ -654,7 +747,13 @@
           <div>
             <h1>JSON</h1>
             <ul>
-              <li>Konvertieren nach und von JSON</li>
+              <li><code>JSON.stringify()</code>
+                <ul>
+                  <li>Mit Formatierung</li>
+                  <li>Mit <code>toJSON()</code></li>
+                </ul>
+              </li>
+              <li><code>JSON.parse()</code></li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -681,13 +780,435 @@
         </div>
       </section>
 
-
-      <section>
-        <h1></h1>
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"><code>fetch()</code></a></h1>
+        <p>Hier geht es um Daten mit einem Server auszutauschen.</p>
         <ul>
-          <li></li>
+          <li>Einführung</li>
+          <li><code>GET</code></li>
+          <li><code>POST</code></li>
+          <li><code>DELETE</code></li>
         </ul>
       </section>
+
+      <section>
+
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">DOM</a></h1>
+        <p>Hier geht es um Elemente aus dem Dokument zu selektieren und manipulieren.</p>
+        <ul>
+          <li>Beispiele</li>
+          <li>APIs</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>DOM: "data" Attributen</h1>
+        <ul>
+          <li>Attributen mit Präfix "data-" sind erlaubt</li>
+          <li>Auf dem Element als <code>dataset</code> verfügbar</li>
+          <li>Wert ist ein <code>Map</code> von allen Attribut-Werten mit Präfix als Schlüssel</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a" data-test="b" data-data="c">Test</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const element = document.getElementById("a");
+            // element.dataset == DOMStringMap {test: 'a', data: 'c'}
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>DOM: <code>textContent</code></h1>
+        <ul>
+          <li>Text-Inhalt eines Elements ist auf dem Element als <code>textContent</code> oder <code>outerText</code> verfügbar</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a" data-test="b" data-data="c">Test</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const element = document.getElementById("a");
+            // element.textContent == "Test"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>DOM</h1>
+            <ul>
+              <li><code>getElementsByTagName()</code></li>
+              <li><code>getElementById()</code></li>
+              <li><code>querySelector()</code></li>
+              <li><code>querySelectorAll()</code></li>
+              <li><code>querySelectorAll()</code></li>
+              <li>document.createTextNode()</li>
+              <li>document.createElement()</li>
+              <li>myNode.appendChild()</li>
+              <li>myNode.setAttribute()</li>
+              <li>myNode.insertBefore()</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/Events#standard_events">Ereignisse</a></h1>
+        <p>Hier geht es um Ereignisse aus der Laufzeitumgebung abzufangen und darauf zu reagieren.</p>
+        <ul>
+          <li>Beispiele</li>
+          <li>Abfangen</li>
+          <li>Reihenfolge</li>
+          <li>Verhindern</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Ereignisse: Beispiele</h1>
+        <table>
+          <tr>
+            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick">onclick</td>
+            <td>Element wurde geklickt</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseenter">onmouseenter</td>
+            <td>Maus schwebte über das Element</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseleave">onmouseleave</td>
+            <td>Maus schwebte weg vom Element</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onkeypress">onkeypress</td>
+            <td>Taste wurde betätigt</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/oninput">oninput</td>
+            <td>Wert wurde geändert</td>
+          </tr>
+        </table>
+        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/API/GlobalEventHandlers">GlobalEventHandlers</a> für eine vollständige Liste.</p>
+      </section>
+
+      <section>
+        <h1>Ereignisse abfangen</h1>
+        <ul>
+          <li>Ereignisse werden vom Browser ausgelöst.</li>
+          <li>Z.B. Mausklicks oder -bewegungen, Wert-Änderungen, usw.</li>
+          <li>Mögliche Ereignisbehandlungsmethoden:
+            <ul>
+              <li>🤨 EventHandler, direkt auf Element</li>
+              <li>🤨 EventHandler, aus JavaScript</li>
+              <li>😎 EventListener, aus JavaScript </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Funktionen und <code>this</code></h1>
+        <table>
+          <tr>
+            <td><code>function</code></td>
+            <td><code>this</code> referenziert das Ereignis&shy;element</td>
+          </tr>
+          <tr>
+            <td><code>=></code></td>
+            <td><code>this</code> referenziert das umliegende Kontext
+              <table>
+                <tr>
+                  <td>im Dokument</td>
+                  <td><code>window</code></td>
+                </tr>
+                <tr>
+                  <td>im Modul</td>
+                  <td><code>undefined</code></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Ereignisobjekt (<code>e</code>)</h1>
+        <table>
+          <tr>
+            <td><code>target</code></td>
+            <td>Auslösendes Element</td>
+          </tr>
+          <tr>
+            <td><code>currentTarget</code></td>
+            <td>Element mit EventHandler</td>
+          </tr>
+          <tr>
+            <td><code>timeStamp</code></td>
+            <td>Zeitpunkt des Ereignisses</td>
+          </tr>
+          <tr>
+            <td><code>view</code></td>
+            <td>Referenz auf <code>window</code> (oder <code>frame</code>)</td>
+          </tr>
+          <tr>
+            <td><code>offsetX</code>/<code>offsetY</code></td>
+            <td>relative Mausposition</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>EventHandler, direkt</h1>
+        <ul>
+          <li>😎 Ist klar welcher Script ausgeführt wird</li>
+          <li>🤨 Wird im globalen Kontext ausgeführt</li>
+          <li>🤨 Mischt Darstellung mit Logik</li>
+          <li>🤨 Führt zu dupliziertem Code</li>
+          <li>🤨 Kein Zugriff auf dem Ereigniselement</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button onclick="console.log(this.id)" id="a">Log Value</button>
+            <button onclick="console.log(this.id)" id="b">Log Value</button>
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>EventHandler, Script</h1>
+        <ul>
+          <li>😎 Wird im Funktionskontext ausgeführt</li>
+          <li>😎 Darstellung und Logik sind separat</li>
+          <li>😎 Meidet dupliziertes Code</li>
+          <li>🤨 Überschreibt andere EventHandlers</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a">Log Value</button>
+            <button id="b">Log Value</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const buttons = document.getElementsByTagName("button");
+            for (const button of buttons) {
+              button.onclick = e => console.log(e.target.id);
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>EventListener</h1>
+        <ul>
+          <li>😎 Wird im Funktionskontext ausgeführt</li>
+          <li>😎 Darstellung und Logik sind separat</li>
+          <li>😎 Meidet dupliziertes Code</li>
+          <li>😎 Lässt andere EventHandlers</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a">Log Value</button>
+            <button id="b">Log Value</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const buttons = document.getElementsByTagName("button");
+            for (const button of buttons) {
+              button.addEventListener("click", e => console.log(e.target.id));
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>EventListener: Entfernen</h1>
+        <ul>
+          <li>Können mit <code>removeEventListener()</code> entfernt werden</li>
+          <li>Dazu ist eine fixe Referenz nötig (z.B. eine Funktion)</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const logId = e => console.log(e.target.id);
+            const button = document.getElementById("a");
+            button.addEventListener("click", logId);
+            button.removeEventListener("click", logId);
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Event Reihenfolge</h1>
+        <ul>
+          <li>Normalerweise werden Ereignisse werden bei allen "Parent"-Elementen ausgelöst</li>
+          <li>In <code>addEventListener</code> kann man mit dem dritten Parameter <code>capture</code> auf <code>true</code> sicherstellen, dass das Ereignis zuerst bei diesem Element ausgelöst wird.</li>
+          <li>Mit <code>stopPropagation()</code> kann man das <em>propagieren</em> verhindern</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-flow">Event Flow</a></h1>
+        <img src="assets/Lesson03/eventflow.svg" style="max-width: 400px">
+      </section>
+
+      <section>
+        <h1>Normale Reihenfolge</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const log = e => console.log(
+              `${e.target.nodeName}, ${e.currentTarget.nodeName}`
+            );
+            document.addEventListener("click", log);
+            form.addEventListener("click", log);
+            button.addEventListener("click", log);
+          </code>
+        </pre>
+        <p>Bei einem Klick kommt:</p>
+        <pre>
+          <code data-trim class="language-text hljs">
+            BUTTON, BUTTON
+            BUTTON, FORM
+            BUTTON, #document
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Umgekehrte Reihenfolge</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const log = e => console.log(
+              `${e.target.nodeName}, ${e.currentTarget.nodeName}`
+            );
+            document.addEventListener("click", log, { capture: true });
+            form.addEventListener("click", log);
+            button.addEventListener("click", log);
+          </code>
+        </pre>
+        <p>Bei einem Klick kommt:</p>
+        <pre>
+          <code data-trim class="language-text hljs">
+            BUTTON, #document
+            BUTTON, BUTTON
+            BUTTON, FORM
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Propagieren verhindern</h1>
+        <ul>
+          <li><code>stopPropagation()</code> bricht Event-Handling ab</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const log = e => {
+              console.log(`${e.target.nodeName}, ${e.currentTarget.nodeName}`);
+              e.stopPropagation();
+            };
+            document.addEventListener("click", log, { capture: true });
+            form.addEventListener("click", log);
+            button.addEventListener("click", log);
+          </code>
+        </pre>
+        <p>Bei einem Klick kommt:</p>
+        <pre>
+          <code data-trim class="language-text hljs">
+            BUTTON, #document
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Default Verhalten</h1>
+        <ul>
+          <li><code>preventDefault()</code> unterdrückt das Default Verhalten des Browsers (z.B. Navigieren bei einem <code>a</code> Element)</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <a href="https://duckduckgo.com" id="search">DuckDuckGo</a>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const duckDuckGo = document.getElementById("search");
+
+            duckDuckGo.addEventListener("click", e => {
+              if (!confirm("Are you sure?")) {
+                e.preventDefault();
+              }
+            });
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Ereignisse</h1>
+            <ul>
+              <li>Event Handlers</li>
+              <li>Event Listeners</li>
+              <li>Data Attributen</li>
+              <li>Reihenfolge</li>
+              <li>Propagieren verhindern</li>
+              <li>Default verhindern</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Klick-Handler für einen Link schreiben</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
     </div>
   </div>
 
