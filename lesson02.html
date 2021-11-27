@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>Lektion 02: JavaScript: Grundlagen: Typen, Operatoren, Statements, usw.</title>
+  <title>JavaScript, Lektion 02, Grundlagen: Typen, Operatoren, Statements, usw.</title>
 
   <link rel="stylesheet" href="dist/reset.css">
   <link rel="stylesheet" href="dist/reveal.css">
@@ -86,7 +86,8 @@
         <h1>Übersicht Lektionen</h1>
         <ol class="compact">
           <li>Einführung &amp; IDE Aufsetzen</li>
-          <li class="selected">Grundlagen: Typen, Operatoren, Statements, usw.</li>
+          <li class="selected">Grundlagen: Typen, Operatoren, Statements</li>
+          <li>Grundlagen: Funktionen, Klassen, Modulen</li>
           <li>Externe Abfrage (JSON &amp; Fetch)</li>
           <li>DOM, Formulare, Eingaben &amp; Ereignisse</li>
           <li>Persistenz (Cookies, Web storage &amp; IndexedDB)</li>
@@ -1114,11 +1115,13 @@ const a = `Das
         </h1>
         <pre>
           <code data-trim class="language-javascript hljs">
-            const date = Date.parse('04 Dec 2021 00:10:00 GMT')
-            const month = date.getMonth();  // 12
-            const hour = date.getHours();   // 10
+            const date = new Date(Date.parse('04 Dec 2021 00:10:00 GMT'));
+            const month = date.getUTCMonth();     // 11
+            const hour = date.getUTCHours();      // 0
+            const minutes = date.getUTCMinutes(); // 10
 
-            const now = new Date();         // jetzt
+            const now = Date.now();
+            const now2 = new Date();              // jetzt
           </code>
         </pre>
       </section>
