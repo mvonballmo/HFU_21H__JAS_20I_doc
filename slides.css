@@ -61,8 +61,21 @@
   font-size: var(--r-main-font-size);
 }
 
-.reveal .selected {
+.reveal li.selected {
   color: coral;
+}
+
+.reveal li.selected:before {
+  content: "👉 ";
+}
+
+.reveal li.completed {
+  color: forestgreen;
+  opacity: 50%;
+}
+
+.reveal li.completed:before {
+  content: "✅ ";
 }
 
 .reveal kbd {
