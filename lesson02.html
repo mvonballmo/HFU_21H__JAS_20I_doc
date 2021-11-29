@@ -1113,15 +1113,53 @@ const a = `Das
         <h1><a
             href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date">Datumsmethoden</a>
         </h1>
+        <ul>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date"><code>Date</code></a> hat verschiedene Konstruktoren</li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date/parse"><code>Date.parse()</code></a> unterstützt verschiedene Formate</li>
+        </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
-            const date = new Date(Date.parse('04 Dec 2021 00:10:00 GMT'));
+            const dateText = "04 Dec 2021 00:10:00 GMT";
+            const date = new Date(dateText);
             const month = date.getUTCMonth();     // 11
             const hour = date.getUTCHours();      // 0
             const minutes = date.getUTCMinutes(); // 10
 
-            const now = Date.now();
-            const now2 = new Date();              // jetzt
+            const milliseconds = Date.parse(dateText);
+            const unixDate = new Date(milliseconds);
+            // unixDate = date
+            const date2 = new Date(2021, 11, 4, 0, 10, 0);
+            // date2 ist Lokal, nicht GMT
+
+            const now = Date.now();  // jetzt (in Millisekunden)
+            const now2 = new Date(); // jetzt
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Intl">Intl</a></h1>
+        <ul class="compact">
+          <li>Unterstützt das Formatieren in <em>locales</em> (z.B. "de-CH")</li>
+          <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat">DateTimeFormat</a></code> formatiert absoluten Datums- und Zeitangaben</li>
+          <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat">RelativeTimeFormat</a></code> formatiert relativen Zeitangaben</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const date = new Date('04 Dec 2021 00:10:00 GMT');
+            const dateTimeFormat = new Intl.DateTimeFormat("de-CH");
+            const formattedDate = dateTimeFormat.format(date);
+            // formattedDate == "4.12.2021"
+
+            const timeFormat = new Intl.RelativeTimeFormat("de-CH");
+            const formatted = timeFormat.format(1, "day");
+            // formatted == "in 1 Tag"
+
+            const timeFormat2 = new Intl.RelativeTimeFormat("de-CH", {
+              numeric: "auto",
+            });
+            const formatted2 = timeFormat.format(1, "day");
+            // formatted2 == "morgen"
           </code>
         </pre>
       </section>
