@@ -106,3 +106,11 @@
 .reveal .slides section .fragment.highlight-red.visible {
   color: rgb(173, 32, 32);
 }
+
+.reveal .pro {
+  color: rgb(48, 168, 48);
+}
+
+.reveal .contra {
+  color: rgb(173, 32, 32);
+}

@@ -277,6 +277,94 @@
       </section>
 
       <section>
+        <h1>Externe Abhängigkeiten</h1>
+        <ul>
+          <li>Durch <code>fetch()</code> wird die Applikation von einem Externen Server abhängig</li>
+          <li>Den könnte man in Tests mit einem "Fake" oder "Mock" ersetzen</li>
+          <li>Mit einem "Mock" bleiben wir bei <em>unit tests</em></li>
+          <li>Ansonsten bauen wir <em>integration tests</em>, die einen externen Server benötigen</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Mocking: pro/contra</h1>
+        <table>
+          <tr>
+            <td class="pro">pro</td>
+            <td>Keine externe Abhängigkeiten</td>
+          </tr>
+          <tr>
+            <td class="pro">pro</td>
+            <td>Generell schneller (weil lokal)</td>
+          </tr>
+          <tr>
+            <td class="pro">pro</td>
+            <td>Einfach einzubinden</td>
+          </tr>
+          <tr>
+            <td class="contra">contra</td>
+            <td>Kann aufwendig sein zu schreiben</td>
+          </tr>
+          <tr>
+            <td class="contra">contra</td>
+            <td>Kann <em>falsch</em> sein</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Integration: pro/contra</h1>
+        <table>
+          <tr>
+            <td class="pro">pro</td>
+            <td>Muss nicht geschrieben werden</td>
+          </tr>
+          <tr>
+            <td class="pro">pro</td>
+            <td>Kann <em>nicht</em> falsch sein</td>
+          </tr>
+          <tr>
+            <td class="contra">contra</td>
+            <td>Kann aufwendiger sein einzubinden</td>
+          </tr>
+          <tr>
+            <td class="contra">contra</td>
+            <td>Externe Abhängigkeit muss vorhanden sein</td>
+          </tr>
+          <tr>
+            <td class="contra">contra</td>
+            <td>Kann langsamer sein</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1><code>json-server</code>: pro/contra</h1>
+        <table>
+          <tr>
+            <td class="pro">pro</td>
+            <td>Muss nicht geschrieben werden</td>
+          </tr>
+          <tr>
+            <td class="pro">pro</td>
+            <td>Ist der gleiche Server wie Produktion</td>
+          </tr>
+          <tr>
+            <td class="pro">pro</td>
+            <td>Muss nicht in die Tests eingebunden werden</td>
+          </tr>
+          <tr>
+            <td class="pro">pro</td>
+            <td>Leicht aufzusetzen (auch für CI/CD)</td>
+          </tr>
+          <tr>
+            <td class="pro">pro</td>
+            <td>Macht die Tests nicht langsam</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
         <h1><code>fetch()</code> testen</h1>
         <ul>
           <li>Bei <em>node</em> gibt es kein <code>fetch</code></li>
@@ -482,6 +570,45 @@
         </pre>
       </section>
 
+      <section class="compact">
+        <h1><code>fetch()</code>: Timeout</h1>
+        <ul>
+          <li>Kann mit einem <code><a href="https://developer.mozilla.org/de/docs/Web/API/AbortController">AbortController</a></code> und <code><a href="https://developer.mozilla.org/de/docs/Web/API/setTimeout">SetTimeout</a></code> implementiert werden</li>
+          <li><code>AbortError</code> im <code>catch</code>-Statement abfangen</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 500);
+
+            try {
+              await fetch("http://localhost:3020/addresses", {
+                signal: controller.signal,
+              });
+            } catch(error) {
+              if (error.name === "AbortError") {
+                // timeout
+              }
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://axios-http.com/docs/api_intro">Axios</a></h1>
+        <p>Ist ein bekanntes NPM Kommunikationsmodul</p>
+        <ul>
+          <li>Gleiches Code in Node und im Browser</li>
+          <li>Ist mit älteren Browsers rückwärtskompatibel</li>
+          <li>Unterstützt "request pipeline" Erweiterungen</li>
+          <li>Fortschritt-Events für Download <em>und</em> Upload</li>
+          <li>Direkte Unterstützung für Timeouts</li>
+          <li>Alle HTTP-Fehler sind Exceptions</li>
+          <li>JSON ist natives Format</li>
+        </ul>
+        <p class="notes">Siehe <a href="https://betterprogramming.pub/why-javascript-developers-should-prefer-axios-over-fetch-294b28a96e2c">Why JavaScript Developers Should Prefer Axios Over Fetch</a> für weitere Infos.</p>
+      </section>
+
       <section>
         <div class="seventy-thirty-grid">
           <div>
@@ -516,23 +643,93 @@
       </section>
 
       <section>
+        <h1 class="insertion">Refactoring</h1>
+        <p>Code lesbarer und weniger komplex machen</p>
+        <ul>
+          <li>Mit genügender Test-Abdeckung und grünen Tests</li>
+          <li>Schritt für Schritt machen</li>
+          <li>Nicht mit anderen Fixes mischen</li>
+          <li>In klaren Git-Commits aufteilen, vor allem
+            <ul>
+              <li>Das Umbenennen von Dateien</li>
+              <li>Das verschieben von grösseren Code-Mengen</li>
+              <li>Grössere Umformatierungen</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h1 class="insertion"><a href="https://jsdoc.app/">JSDoc</a></h1>
+        <p>Bekannter Dokumentationswerkzeug für JS</p>
+        <ul>
+          <li>Werden in Kommentaren an JS-Elementen "angehängt"</li>
+          <li>Typen, Parametern, Rückgabewerten, usw.</li>
+          <li>Typen werden mit <code>{}</code> angegeben</li>
+          <li>Wird in VS und WebStorm erkennt und angezeigt
+            <ul>
+              <li>WebStorm prüft Code damit</li>
+              <li>WebStorm schlägt Typen für JSDoc vor</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>JSDoc: Beispiel</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            /**
+            * Updates the given `entity` in the database.
+            *
+            * @param {{ id: number }} entity The object to update.
+            * @return {Promise&lt;{ id: number }&gt;} The updated entity
+            */
+           update(entity) {/* ... */}
+
+           /**
+           * @param {string} url The URL to call
+           * @param {{}} entity The object to update
+           * @param {string} method The HTTP method
+           * @return {Promise&lt;any&gt;} The inserted or updated entity
+           */
+          #insertOrUpdate(url, entity, method) {/* ... */}
+          </code>
+        </pre>
+      </section>
+
+      <section>
         <div class="seventy-thirty-grid">
           <div>
-            <h1>Übungen</h1>
+            <h1><code>Refactoring</code></h1>
             <ul>
-              <li>Test für <code>GET</code> für alle Entitäten</li>
-              <li>Test für <code>GET</code> für eine einzige Entität</li>
+              <li>Hilfsmethoden in <code>fetch.test.js</code> auslagern</li>
+              <li>Duplizierungen vermeiden/zusammenführen</li>
+              <li>Hilfsmethoden in eine Hilfsklasse einbauen</li>
             </ul>
           </div>
-          <img src="assets/cog-wheels.png">
+          <img src="assets/demo.png">
         </div>
       </section>
 
       <section>
-        <h1 class="insertion">Refactoring</h1>
-        <ul>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
 
-        </ul>
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Eine Komponente für <code>fetch()</code> erstellen und testen</li>
+              <li>Dokumentation nicht vergessen. 🙃</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
       </section>
 
     </div>
