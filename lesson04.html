@@ -207,34 +207,12 @@
         <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"><code>fetch()</code></a></h1>
         <p>Hier geht es um Daten mit einem Server auszutauschen.</p>
         <ul>
-          <li><code>json-server</code> aufsetzen</li>
           <li>Promises</li>
+          <li><code>json-server</code> aufsetzen</li>
           <li><code>async</code>/<code>await</code></li>
           <li><code>GET</code></li>
           <li><code>POST</code></li>
           <li><code>DELETE</code></li>
-        </ul>
-      </section>
-
-      <section class="compact">
-        <h1><code>json-server</code> aufsetzen</h1>
-        <ul>
-          <li><code>npm install --save-dev json-server</code> ausführen</li>
-          <li>JSON-Datei (z.B. <code>./data.json</code>) mit Daten füllen</li>
-        </ul>
-        <pre>
-          <code data-trim class="language-javascript hljs">
-            {
-              "addresses": [
-                { "name": "Maria" },
-                { "name": "Johann" }
-              ]
-            }
-          </code>
-        </pre>
-        <ul>
-          <li><code>json-server ./data.json</code> ausführen</li>
-          <li>Nach <a href="http://localhost:3000">http://localhost:3000</a> im Browser navigieren</li>
         </ul>
       </section>
 
@@ -258,7 +236,7 @@
       </section>
 
       <section>
-        <h1><code>fetch()</code>: Daten holen</h1>
+        <h1><code>fetch()</code>: Daten lesen</h1>
         <ul>
           <li>Gibt zwei verschachtelten <code>Promises</code> zurück</li>
           <li>URL an <code>fetch()</code> mitgeben</li>
@@ -338,6 +316,28 @@
         </table>
       </section>
 
+      <section>
+        <h1><code>fetch()</code> "mocken"</h1>
+        <ul>
+          <li>Das API mit einer eigenen JS-Funktion definieren</li>
+          <li>Ist nicht ganz ohne...</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            function fetch(url) {
+              return {
+                then(f) {
+                  return {
+                    json() {}
+                  }
+                }
+                catch(f) {}
+              }
+            }
+          </code>
+        </pre>
+      </section>
+
       <section class="compact">
         <h1><code>json-server</code>: pro/contra</h1>
         <table>
@@ -364,10 +364,32 @@
         </table>
       </section>
 
+      <section class="compact">
+        <h1><code>json-server</code> aufsetzen</h1>
+        <ul>
+          <li><code>npm install --save-dev json-server</code> ausführen</li>
+          <li>JSON-Datei (z.B. <code>./data.json</code>) mit Daten füllen</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            {
+              "addresses": [
+                { "name": "Maria" },
+                { "name": "Johann" }
+              ]
+            }
+          </code>
+        </pre>
+        <ul>
+          <li><code>json-server ./data.json</code> ausführen</li>
+          <li>Nach <a href="http://localhost:3000">http://localhost:3000</a> im Browser navigieren</li>
+        </ul>
+      </section>
+
       <section>
         <h1><code>fetch()</code> testen</h1>
         <ul>
-          <li>Bei <em>node</em> gibt es kein <code>fetch</code></li>
+          <li>Bei <em>node</em> gibt es kein <code>fetch()</code></li>
           <li><code>npm install --save-dev isomorphic-fetch</code> ausführen, um <code>fetch</code> für <em>node</em> zu installieren</li>
         </ul>
       </section>
@@ -406,13 +428,13 @@
         <h1>Test mit <code>async</code>/<code>await</code></h1>
         <ul>
           <li>Die zwei <code>Promises</code> sind klarer zu sehen</li>
-          <li><code>expect()</code> funktioniert wie erwartet (ohne ein <code>Promise</code> aus dem inneren Kontext zurückgeben zu müssen</li>
+          <li><code>expect()</code> funktioniert wie erwartet (ohne ein <code>Promise</code> aus dem inneren Kontext zurückgeben zu müssen)</li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
             test("call fetch with async/await", async () => {
-              const promise = await fetch("http://localhost:3000/addresses");
-              const addresses = await promise.json();
+              const response = await fetch("http://localhost:3000/addresses");
+              const addresses = await response.json();
 
               expect(addresses.length).toBe(12);
             });
@@ -448,7 +470,7 @@
                 const promise = await fetch("http://localhost:3000/addresses");
                 return await promise.json();
               } catch(error) {
-                console.log(error);
+                // Wird im Fehlerfall ausgeführt
               } finally {
                 // Wird immer ausgeführt (cleanup, logging, usw.)
               }
@@ -463,10 +485,10 @@
         <pre>
           <code data-trim class="language-javascript hljs">
             test("wait for multiple fetch calls", async () => {
-              const addressPromise = getAddresses();
-              const carPromise = getCars();
+              const p1 = getAddresses();
+              const p2 = getCars();
 
-              const [addresses, cars] = await Promise.all([addressPromise, carPromise]);
+              const [addresses, cars] = await Promise.all([p1, p2]);
 
               expect(addresses.length).toBe(12);
               expect(cars.length).toBe(2);
@@ -476,11 +498,21 @@
       </section>
 
       <section>
+        <h1><code>json-server</code>: ID</h1>
+        <ul>
+          <li>Um Entitäten aktualisieren oder löschen zu können muss man einen <code>ID</code> zuweisen</li>
+          <li>Beim erstellen einer Entität wird ein <code>ID</code> automatisch zugewiesen</li>
+          <li>Eine Adresse mit <code>ID == 1</code> lesen: <code>http://localhost:3000/addresses/1</code></li>
+        </ul>
+      </section>
+
+      <section >
         <h1><code>fetch()</code> mit <code>POST</code></h1>
         <ul>
           <li>Einen neuen Eintrag kann mit der Methode <code>POST</code> erstellt werden</li>
           <li>Der <code>Content-Type</code> Header muss gesetzt werden</li>
           <li>Das <code>body</code> muss als JSON gesetzt werden</li>
+          <li>Auf dem Resultat wird ein ID gesetzt</li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -493,15 +525,6 @@
             });
           </code>
         </pre>
-      </section>
-
-      <section>
-        <h1><code>json-server</code>: ID</h1>
-        <ul>
-          <li>Um Entitäten aktualisieren oder löschen zu können muss man einen <code>ID</code> zuweisen</li>
-          <li>Beim erstellen einer Entität wird ein <code>ID</code> automatisch zugewiesen</li>
-          <li>Eine Adresse mit <code>ID == 1</code> holen: http://localhost:3000/addresses/1</li>
-        </ul>
       </section>
 
       <section>
@@ -663,13 +686,14 @@
         <h1 class="insertion"><a href="https://jsdoc.app/">JSDoc</a></h1>
         <p>Bekannter Dokumentationswerkzeug für JS</p>
         <ul>
-          <li>Werden in Kommentaren an JS-Elementen "angehängt"</li>
+          <li>Wird in Kommentaren an JS "angehängt"</li>
           <li>Typen, Parametern, Rückgabewerten, usw.</li>
           <li>Typen werden mit <code>{}</code> angegeben</li>
           <li>Wird in VS und WebStorm erkennt und angezeigt
             <ul>
               <li>WebStorm prüft Code damit</li>
               <li>WebStorm schlägt Typen für JSDoc vor</li>
+              <li>Wird bei WebStorm-Refactoring berücksichtigt</li>
             </ul>
           </li>
         </ul>
@@ -705,7 +729,7 @@
             <ul>
               <li>Hilfsmethoden in <code>fetch.test.js</code> auslagern</li>
               <li>Duplizierungen vermeiden/zusammenführen</li>
-              <li>Hilfsmethoden in eine Hilfsklasse einbauen</li>
+              <li>Hilfsmethoden in einer Hilfsklasse einbauen</li>
             </ul>
           </div>
           <img src="assets/demo.png">
