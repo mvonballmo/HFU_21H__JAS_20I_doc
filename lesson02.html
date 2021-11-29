@@ -1141,8 +1141,8 @@ const a = `Das
         <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Intl">Intl</a></h1>
         <ul class="compact">
           <li>Unterstützt das Formatieren in <em>locales</em> (z.B. "de-CH")</li>
-          <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat">DateTimeFormat</a></code> formatiert absoluten Datums- und Zeitangaben</li>
-          <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat">RelativeTimeFormat</a></code> formatiert relativen Zeitangaben</li>
+          <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat">DateTimeFormat</a></code> formatiert absoluten Daten</li>
+          <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat">RelativeTimeFormat</a></code> formatiert relativen Zeiten</li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -1150,11 +1150,9 @@ const a = `Das
             const dateTimeFormat = new Intl.DateTimeFormat("de-CH");
             const formattedDate = dateTimeFormat.format(date);
             // formattedDate == "4.12.2021"
-
             const timeFormat = new Intl.RelativeTimeFormat("de-CH");
             const formatted = timeFormat.format(1, "day");
             // formatted == "in 1 Tag"
-
             const timeFormat2 = new Intl.RelativeTimeFormat("de-CH", {
               numeric: "auto",
             });
