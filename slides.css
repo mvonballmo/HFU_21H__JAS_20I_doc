@@ -13,6 +13,10 @@
   text-align: left;
 }
 
+.reveal h1.insertion:before {
+  content: "👉 ";
+}
+
 .reveal table {
   margin: 0;
   width: 100%;

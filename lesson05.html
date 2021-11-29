@@ -1,0 +1,511 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Lektion 04: JavaScript: DOM, Formulare, Eingaben &amp; Ereignisse</title>
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/white.css">
+  <link rel="stylesheet" href="slides.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/github.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-background="assets/MonteRosa.jpg">
+        <h1>JavaScript</h1>
+        <h2>Lektion 4</h2>
+        <p class="notes">
+          Ein Angebot der Berufsfachschule Uster und der Höheren Fachschule Uster
+        </p>
+      </section>
+
+      <section data-background="assets/looking-back-dimmed.jpg">
+        <h1>Rückblick</h1>
+        <ul>
+          <li>Grundlagen:
+            <ul>
+              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen</a></li>
+              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a></li>
+              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">Modulen</a></li>
+            </ul>
+          </li>
+          <li><a href="https://prettier.io/">Prettier</a> &amp; <a href="https://eslint.org/">ESLint</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/API/Fetch_API"><code>fetch()</code></a>, <code>async</code>/<code>await</code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Übersicht Lektionen</h1>
+        <ol class="compact">
+          <li>Einführung &amp; IDE Aufsetzen</li>
+          <li>Grundlagen: Typen, Operatoren, Statements</li>
+          <li>Grundlagen: Funktionen, Klassen, Modulen</li>
+          <li class="selected">Externe Abfrage: JSON &amp; Fetch</li>
+          <li>DOM, Formulare, Eingaben &amp; Ereignisse</li>
+          <li>Persistenz (Cookies, Web storage &amp; IndexedDB)</li>
+          <li>Komponenten (Web Components) &amp; Bibliotheken</li>
+          <li><b>LZ1</b>; Animationen &amp; Grafik</li>
+          <li>React (manipulation, aktualisierung)</li>
+          <li><b>MLZ Präsentationen</b></li>
+        </ol>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">DOM</a></h1>
+        <p>Hier geht es um Elemente aus dem Dokument zu selektieren und manipulieren.</p>
+        <ul>
+          <li>Beispiele</li>
+          <li>APIs</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>DOM: "data" Attributen</h1>
+        <ul>
+          <li>Attributen mit Präfix "data-" sind erlaubt</li>
+          <li>Auf dem Element als <code>dataset</code> verfügbar</li>
+          <li>Wert ist ein <code>Map</code> von allen Attribut-Werten mit Präfix als Schlüssel</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a" data-test="b" data-data="c">Test</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const element = document.getElementById("a");
+            // element.dataset == DOMStringMap {test: 'a', data: 'c'}
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>DOM: <code>textContent</code></h1>
+        <ul>
+          <li>Text-Inhalt eines Elements ist auf dem Element als <code>textContent</code> oder <code>outerText</code> verfügbar</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a" data-test="b" data-data="c">Test</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const element = document.getElementById("a");
+            // element.textContent == "Test"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>DOM</h1>
+            <ul class="compact">
+              <li><code>getElementsByTagName()</code></li>
+              <li><code>getElementById()</code></li>
+              <li><code>querySelector()</code></li>
+              <li><code>querySelectorAll()</code></li>
+              <li><code>createTextNode()</code></li>
+              <li><code>createElement()</code></li>
+              <li><code>appendChild()</code></li>
+              <li><code>insertBefore()</code></li>
+              <li><code>setAttribute()</code></li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/Events#standard_events">Ereignisse</a></h1>
+        <p>Hier geht es um Ereignisse aus der Laufzeitumgebung abzufangen und darauf zu reagieren.</p>
+        <ul>
+          <li>Beispiele</li>
+          <li>Abfangen</li>
+          <li>Reihenfolge</li>
+          <li>Verhindern</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Ereignisse: Beispiele</h1>
+        <table>
+          <tr>
+            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick">onclick</td>
+            <td>Element wurde geklickt</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseenter">onmouseenter</td>
+            <td>Maus schwebte über das Element</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseleave">onmouseleave</td>
+            <td>Maus schwebte weg vom Element</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onkeypress">onkeypress</td>
+            <td>Taste wurde betätigt</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/oninput">oninput</td>
+            <td>Wert wurde geändert</td>
+          </tr>
+        </table>
+        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/API/GlobalEventHandlers">GlobalEventHandlers</a> für eine vollständige Liste.</p>
+      </section>
+
+      <section>
+        <h1>Ereignisse abfangen</h1>
+        <ul>
+          <li>Ereignisse werden vom Browser ausgelöst.</li>
+          <li>Z.B. Mausklicks oder -bewegungen, Wert-Änderungen, usw.</li>
+          <li>Mögliche Ereignisbehandlungsmethoden:
+            <ul>
+              <li>🤨 EventHandler, direkt auf Element</li>
+              <li>🤨 EventHandler, aus JavaScript</li>
+              <li>😎 EventListener, aus JavaScript </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Funktionen und <code>this</code></h1>
+        <table>
+          <tr>
+            <td><code>function</code></td>
+            <td><code>this</code> referenziert das Ereignis&shy;element</td>
+          </tr>
+          <tr>
+            <td><code>=></code></td>
+            <td><code>this</code> referenziert das umliegende Kontext
+              <table>
+                <tr>
+                  <td>im Dokument</td>
+                  <td><code>window</code></td>
+                </tr>
+                <tr>
+                  <td>im Modul</td>
+                  <td><code>undefined</code></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Ereignisobjekt (<code>e</code>)</h1>
+        <table>
+          <tr>
+            <td><code>target</code></td>
+            <td>Auslösendes Element</td>
+          </tr>
+          <tr>
+            <td><code>currentTarget</code></td>
+            <td>Element mit EventHandler</td>
+          </tr>
+          <tr>
+            <td><code>timeStamp</code></td>
+            <td>Zeitpunkt des Ereignisses</td>
+          </tr>
+          <tr>
+            <td><code>view</code></td>
+            <td>Referenz auf <code>window</code> (oder <code>frame</code>)</td>
+          </tr>
+          <tr>
+            <td><code>offsetX</code>/<code>offsetY</code></td>
+            <td>relative Mausposition</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>EventHandler, direkt</h1>
+        <ul>
+          <li>😎 Ist klar welcher Script ausgeführt wird</li>
+          <li>🤨 Wird im globalen Kontext ausgeführt</li>
+          <li>🤨 Mischt Darstellung mit Logik</li>
+          <li>🤨 Führt zu dupliziertem Code</li>
+          <li>🤨 Kein Zugriff auf dem Ereigniselement</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button onclick="console.log(this.id)" id="a">Log Value</button>
+            <button onclick="console.log(this.id)" id="b">Log Value</button>
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>EventHandler, Script</h1>
+        <ul>
+          <li>😎 Wird im Funktionskontext ausgeführt</li>
+          <li>😎 Darstellung und Logik sind separat</li>
+          <li>😎 Meidet dupliziertes Code</li>
+          <li>🤨 Überschreibt andere EventHandlers</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a">Log Value</button>
+            <button id="b">Log Value</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const buttons = document.getElementsByTagName("button");
+            for (const button of buttons) {
+              button.onclick = e => console.log(e.target.id);
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>EventListener</h1>
+        <ul>
+          <li>😎 Wird im Funktionskontext ausgeführt</li>
+          <li>😎 Darstellung und Logik sind separat</li>
+          <li>😎 Meidet dupliziertes Code</li>
+          <li>😎 Lässt andere EventHandlers</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a">Log Value</button>
+            <button id="b">Log Value</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const buttons = document.getElementsByTagName("button");
+            for (const button of buttons) {
+              button.addEventListener("click", e => console.log(e.target.id));
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>EventListener: Entfernen</h1>
+        <ul>
+          <li>Können mit <code>removeEventListener()</code> entfernt werden</li>
+          <li>Dazu ist eine fixe Referenz nötig (z.B. eine Funktion)</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const logId = e => console.log(e.target.id);
+            const button = document.getElementById("a");
+            button.addEventListener("click", logId);
+            button.removeEventListener("click", logId);
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Event Reihenfolge</h1>
+        <ul>
+          <li>Normalerweise werden Ereignisse werden bei allen "Parent"-Elementen ausgelöst</li>
+          <li>In <code>addEventListener</code> kann man mit dem dritten Parameter <code>capture</code> auf <code>true</code> sicherstellen, dass das Ereignis zuerst bei diesem Element ausgelöst wird.</li>
+          <li>Mit <code>stopPropagation()</code> kann man das <em>propagieren</em> verhindern</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-flow">Event Flow</a></h1>
+        <p>"Capture" zuerst und danach "Bubbling"</p>
+        <img src="assets/Lesson03/eventflow.svg" style="max-width: 400px">
+      </section>
+
+      <section>
+        <h1 class="insertion">Funktionen: Kurzform</h1>
+        <p>Bei einer benannten Funktion kann man das auflisten von Parametern weglassen, wenn die Parameter einfach weitergegeben werden sollen.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const log = e => console.log(e);
+
+            // Die folgende Aufrufe sind Equivalent
+            document.AddEventListener("click", e => console.log(e))
+            document.addEventListener("click", e => log(e));
+            document.addEventListener("click", log);
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Normale Reihenfolge</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const log = e => console.log(
+              `${e.target.nodeName}, ${e.currentTarget.nodeName}`
+            );
+            document.addEventListener("click", log);
+            form.addEventListener("click", log);
+            button.addEventListener("click", log);
+          </code>
+        </pre>
+        <p>Bei einem Klick kommt:</p>
+        <pre>
+          <code data-trim class="language-text hljs">
+            BUTTON, BUTTON
+            BUTTON, FORM
+            BUTTON, #document
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Umgekehrte Reihenfolge</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const log = e => console.log(
+              `${e.target.nodeName}, ${e.currentTarget.nodeName}`
+            );
+            document.addEventListener("click", log, { capture: true });
+            form.addEventListener("click", log);
+            button.addEventListener("click", log);
+          </code>
+        </pre>
+        <p>Bei einem Klick kommt:</p>
+        <pre>
+          <code data-trim class="language-text hljs">
+            BUTTON, #document
+            BUTTON, BUTTON
+            BUTTON, FORM
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Propagieren verhindern</h1>
+        <ul>
+          <li><code>stopPropagation()</code> bricht Event-Handling ab</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const log = e => {
+              console.log(`${e.target.nodeName}, ${e.currentTarget.nodeName}`);
+              e.stopPropagation();
+            };
+            document.addEventListener("click", log, { capture: true });
+            form.addEventListener("click", log);
+            button.addEventListener("click", log);
+          </code>
+        </pre>
+        <p>Bei einem Klick kommt:</p>
+        <pre>
+          <code data-trim class="language-text hljs">
+            BUTTON, #document
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Default Verhalten</h1>
+        <ul>
+          <li><code>preventDefault()</code> unterdrückt das Default Verhalten des Browsers (z.B. Navigieren bei einem <code>a</code> Element)</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <a href="https://duckduckgo.com" id="search">DuckDuckGo</a>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const duckDuckGo = document.getElementById("search");
+
+            duckDuckGo.addEventListener("click", e => {
+              if (!confirm("Are you sure?")) {
+                e.preventDefault();
+              }
+            });
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Ereignisse</h1>
+            <ul>
+              <li>Event Handlers</li>
+              <li>Event Listeners</li>
+              <li>Data Attributen</li>
+              <li>Reihenfolge</li>
+              <li>Propagieren verhindern</li>
+              <li>Default verhindern</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Klick-Handler für einen Link schreiben</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
+</html>
