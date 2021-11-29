@@ -26,6 +26,10 @@
   max-width: 70%;
 }
 
+.reveal img.full-width {
+  max-width: 100%;
+}
+
 .reveal img.full-size {
   max-width: none;
 }
