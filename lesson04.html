@@ -381,7 +381,7 @@
           </code>
         </pre>
         <ul>
-          <li><code>json-server ./data.json</code> ausführen</li>
+          <li><code>npx json-server ./data.json</code> ausführen</li>
           <li>Nach <a href="http://localhost:3000">http://localhost:3000</a> im Browser navigieren</li>
         </ul>
       </section>
@@ -516,7 +516,7 @@
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
-            await fetch(`http://localhost:3000/addresses/`, {
+            await fetch("http://localhost:3000/addresses/", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -537,8 +537,8 @@
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
-            await fetch(`http://localhost:3000/addresses/`, {
-              method: "POST",
+            await fetch("http://localhost:3000/addresses/1", {
+              method: "PUT",
               headers: {
                 "Content-Type": "application/json",
               },
@@ -556,7 +556,7 @@
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
-            await fetch(`http://localhost:3000/addresses/1`, {
+            await fetch("http://localhost:3000/addresses/1", {
               method: "DELETE" }
             );
           </code>
