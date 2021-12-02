@@ -703,24 +703,75 @@
       </section>
 
       <section>
-        <h1>JSDoc: Beispiel</h1>
+        <h1>JSDoc: Arrays/Generics</h1>
+        <ul>
+          <li>Arrays: <code>string[]</code> oder <code>[string]</code></li>
+          <li>Promises/Generics: Mit spitzigen Klammern</li>
+        </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
             /**
-            * Updates the given `entity` in the database.
-            *
-            * @param {{ id: number }} entity The object to update.
-            * @return {Promise&lt;{ id: number }&gt;} The updated entity
-            */
-           update(entity) {/* ... */}
+             * Gets an array of all entities from the database.
+             *
+             * @return {Promise&lt;[{ id: number }]&gt;} Array of all entities
+             */
+            getAll() {/* ... */}
+          </code>
+        </pre>
+      </section>
 
-           /**
-           * @param {string} url The URL to call
-           * @param {{}} entity The object to update
-           * @param {string} method The HTTP method
-           * @return {Promise&lt;any&gt;} The inserted or updated entity
-           */
-          #insertOrUpdate(url, entity, method) {/* ... */}
+      <section>
+        <h1>JSDoc: Klassen/Objekte</h1>
+        <ul>
+          <li>Name der Klasse womöglich benutzen </li>
+          <li>Objekteigenschaften mit Namen und Typen innerhalb geschweiften Klammern schreiben</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            /**
+             * Updates the given `entity` in the database.
+             *
+             * @param {{ id: number }} entity The object to update.
+             * @return {Promise&lt;{ id: number }&gt;} The updated entity
+             */
+            update(entity) {/* ... */}
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>JSDoc: Callbacks</h1>
+        <ul>
+          <li>Ein Funktionsparameter beschreibt man mit <code>function</code>, klammern, Parametertypen und einem Doppelpunkt vor dem Resultat</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            /**
+             * @param {string[]} items Array of strings to modify
+             * @param {string} seed The object to update
+             * @param {function(string, string):boolean} f The function to apply
+             * @return string[]
+             */
+            apply(items, seed, f) {/* ... */}
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>JSDoc: Restparameter</h1>
+        <ul>
+          <li>Ein Restparameter beschreibt man mit <code>...</code> und einem Typ</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            /**
+              * Finds text in the given object.
+              *
+              * @param {any} obj
+              * @param {...string} searchTexts
+              * @return {boolean}
+              */
+            export function* findText(obj, ...searchTexts) {
           </code>
         </pre>
       </section>
