@@ -764,6 +764,9 @@ const a = `Das
           <li>Schleifen:
             <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/do...while">do..while</a></code>
           </li>
+          <li>Exception-Handling:
+            <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/try...catch">try..catch..finally</a></code>
+          </li>
         </ul>
       </section>
 
@@ -900,6 +903,50 @@ const a = `Das
               result = result + i;
             } while (i < 5);
             // result ist "12345"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Exception-Handling</h1>
+        <table>
+          <tr>
+            <th><code>try</code></th>
+            <td>wird bis einen <span class="fragment highlight-red">Fehler</span> vorkommt ausgeführt</td>
+          </tr>
+          <tr>
+            <th><code>catch(error)</code></th>
+            <td>wird nur bei einem <span class="fragment highlight-red">Fehler im <code>try {}</code></span> ausgeführt
+            </td>
+          </tr>
+          <tr>
+            <th><code>finally</code></th>
+            <td>wird <span class="fragment highlight-blue">immer</span> ausgeführt</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Exception-Handling</h1>
+        <ul>
+          <li><code>throw</code> erzeugt ein <em>Exception</em></li>
+          <li>Aufrufe werden "aufgerollt" bis zu einem <code>catch</code></li>
+          <li>Mangels ein <code>catch</code> wird die Applikation beendet</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const divide = (a, b) => {
+              if (b === 0) { throw "Divide by zero"; }
+
+              return a / b;
+            };
+
+            try {
+              divide(1, 0);
+            }
+            catch (error) {
+              console.log(error);
+            }
           </code>
         </pre>
       </section>
