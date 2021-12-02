@@ -114,3 +114,11 @@
 .reveal .contra {
   color: rgb(173, 32, 32);
 }
+
+.reveal table.labeled-images th {
+  vertical-align: middle;
+}
+
+.reveal table.labeled-images td img {
+  max-width: 100%;
+}
