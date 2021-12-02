@@ -76,6 +76,16 @@
         </ul>
       </section>
 
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen</a></h1>
+        <ul>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String">String-Methoden</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*">Generator-Funktionen</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#recursion">Rekursive-Funktionen</a></li>
+        </ul>
+      </section>
+
       <section class="compact">
         <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
           (mutating)</h1>
@@ -158,6 +168,260 @@
             <h1>Übungen</h1>
             <ul>
               <li>Test mit Array Methoden schreiben</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>String: Suchen</h1>
+        <table class="compact">
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/substr">substr()</a></code></td>
+            <td>Extrahiert von Position bis Länge</td>
+          </tr>
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/substring">substring()</a></code>,
+              <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/slice">slice()</a></code>
+            </td>
+            <td>Extrahiert zwischen zwei Positionen</td>
+          </tr>
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/includes">includes()</a></code></td>
+            <td><code>true</code> falls ein Sub-String vorkommt</td>
+          </tr>
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/indexof">indexOf()</a></code>, <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/lastindexof">lastIndexOf()</a></code></td>
+            <td>Position des ersten oder letzten Vorkommens eines Sub-Strings</td>
+          </tr>
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/startswith">startsWith()</a></code>,
+              <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith">endsWith()</a></code>
+            </td>
+            <td><code>true</code> falls ein String mit einem anderen beginnt oder endet</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Strings: Transformieren</h1>
+        <table class="compact">
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase">toLowerCase()</a></code>,
+              <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/toLocaleLowerCase">toLocaleLowerCase()</a></code>
+            </td>
+            <td>Wandeln ein String in Kleinbuchstaben um</td>
+          </tr>
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase">toUpperCase()</a></code>,
+              <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/toLocaleUpperCase">toLocaleUpperCase()</a></code>
+            </td>
+            <td>Wandeln ein String in Grossbuchstaben um</td>
+          </tr>
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/trim">trim()</a></code>,
+              <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/trimStart">trimStart()</a></code>,
+              <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/trimStart">trimEnd()</a></code>
+            </td>
+            <td>Entfernt Whitespace von einem String</td>
+          </tr>
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/split">split()</a></code>
+            </td>
+            <td>Liefert ein Array von Sub-Strings</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Strings: Matching</h1>
+        <p>Suchen und ersetzen mit Regulären Ausdrücken.</p>
+        <table class="compact">
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/match">match()</a></code>,
+              <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll">matchAll()</a></code>
+            </td>
+            <td>Findet Sub-Strings, die zu einem regulären Ausdruck passen</td>
+          </tr>
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/replace">replace()</a></code>,
+              <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll">replaceAll()</a></code>
+            </td>
+            <td>Ersetzt ein SubString oder Regulären Ausdruck mit einem anderen String</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1 class="insertion">"Zeichen"</h1>
+        <ul>
+          <li>JavaScript unterstützt Unicode, aber...Funktionen wie <code>substr()</code> eher nicht</li>
+          <li>Bei Emojis besteht ein <em>Grapheme</em> aus mehreren <em>Code Points</em></li>
+          <li><code><a href="https://github.com/orling/grapheme-splitter">grapheme-splitter</a></code> npm package kann helfen</li>
+        </ul>
+        <p>Für weitere Infos, siehe:</p>
+        <ul class="notes">
+          <li><a href="https://dmitripavlutin.com/what-every-javascript-developer-should-know-about-unicode/">What every
+              JavaScript developer should know about Unicode</a> (2021)</li>
+          <li><a href="https://flaviocopes.com/javascript-unicode/">Unicode in JavaScript</a> (2018)</li>
+          <li><a href="https://stackoverflow.com/questions/27331819/whats-the-difference-between-a-character-a-code-point-a-glyph-and-a-grapheme">What's
+              the difference between a character, a code point, a glyph and a grapheme?</a> (2017)</li>
+          <li><a href="https://mathiasbynens.be/notes/javascript-unicode">JavaScript has a Unicode problem</a> (2013)</li>
+          <li><a href="https://stackoverflow.com/questions/4547609/how-to-get-character-array-from-a-string/34717402#34717402">How to get character array from a string?</a> (2010)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Strings: Unicode</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            function* getLetters() {
+              yield "a";
+              yield "b";
+            }
+
+            const letters = getLetters();
+            const a = letters.next(); // { done: false, value: "a" }
+            const b = letters.next(); // { done: false, value: "b" }
+            const c = letters.next(); // { done: true, value: undefined }
+          </code>
+        </pre>
+
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>String-Funktionen</h1>
+            <ul>
+              <li><code>match()</code>/<code>matchAll()</code> Testen</li>
+              <li><code>replace()</code>/<code>replaceAll()</code> Testen</li>
+              <li>UPPER/lower-case Testen</li>
+              <li><code>trim()</code>/<code>split()</code> Testen</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Test mit <code>split()</code> und <code>trim()</code> schreiben</li>
+              <li>Test mit <code>replace()</code> oder <code>replaceAll()</code> schreiben</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Funktionen: Advanced</h1>
+        <ul>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/function*">Generator Funktionen</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#recursion">Rekursive Funktionen</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Generator Funktionen</h1>
+        <ul>
+          <li>Beschreibt ein Algorithmus, welches eine <em>Sequenz</em> definiert</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            function* getLetters() {
+              yield "a";
+              yield "b";
+            }
+
+            const letters = getLetters();
+            const a = letters.next(); // { done: false, value: "a" }
+            const b = letters.next(); // { done: false, value: "b" }
+            const c = letters.next(); // { done: true, value: undefined }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Generators: Iterieren</h1>
+        <ul>
+          <li>Können iteriert werden</li>
+          <li>Können zu Arrays konvertiert werden</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            function* getLetters() {
+              yield "a";
+              yield "b";
+            }
+
+            for (const letter of getLetters()) {
+              // Work with each letter
+            }
+
+            const letterArray = [...getLetters()];
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Rekursive Funktionen</h1>
+        <ul>
+          <li>Eine <em>rekursive</em> Funktion ruft sich selbst auf.</li>
+          <li>Diese Funktionen ermöglichen das effiziente Abbilden offenen Algorithmen.</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const getFibonacci = n => {
+              if (n === 0 || n === 1) {
+                return n;
+              }
+
+              return getFibonacci(n - 1) + getFibonacci(n - 2);
+            };
+          </code>
+        </pre>
+
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Funktionen: Advanced</h1>
+            <ul>
+              <li>Generators Testen</li>
+              <li>Rekursive Funktionen Testen</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Test mit einem Generator schreiben</li>
+              <li>Eine rekursive Funktion schreiben</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
