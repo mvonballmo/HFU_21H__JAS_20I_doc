@@ -5,15 +5,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>JavaScript, Lektion 02, Grundlagen: Typen, Operatoren, Statements, usw.</title>
+  <title>JavaScript, Lektion 02, Grundlagen: Typen, Operatoren, Statements, Funktionen I/title>
 
-  <link rel="stylesheet" href="dist/reset.css">
-  <link rel="stylesheet" href="dist/reveal.css">
-  <link rel="stylesheet" href="dist/theme/white.css">
-  <link rel="stylesheet" href="slides.css">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/white.css">
+    <link rel="stylesheet" href="slides.css">
 
-  <!-- Theme used for syntax highlighted code -->
-  <link rel="stylesheet" href="plugin/highlight/github.css">
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/github.css">
 </head>
 
 <body>
@@ -86,9 +86,9 @@
         <h1>Übersicht Lektionen</h1>
         <ol class="compact">
           <li class="completed">Einführung &amp; IDE Aufsetzen</li>
-          <li class="selected">Grundlagen: Typen, Operatoren, Statements</li>
-          <li>Grundlagen: Funktionen, Klassen, Modulen</li>
-          <li>Externe Abfrage (JSON &amp; Fetch)</li>
+          <li class="selected">Grundlagen: Typen, Operatoren, Statements, Funktionen I</li>
+          <li>Grundlagen: Funktionen II, Klassen, Modulen</li>
+          <li>Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
           <li>DOM, Formulare, Eingaben &amp; Ereignisse</li>
           <li>Persistenz (Cookies, Web storage &amp; IndexedDB)</li>
           <li>Komponenten (Web Components) &amp; Bibliotheken</li>
@@ -102,14 +102,12 @@
         <h1>Grundlagen</h1>
         <ul>
           <li><a href="https://wesbos.com/javascript/01-the-basics/variables-and-statements">Variablen</a>:
-            <code>var</code>, <code>let</code> und <code>const</code></li>
-          <li><a href="https://wesbos.com/javascript/01-the-basics/types-introduction">Typen</a></li>
-          <li><a href="https://wesbos.com/javascript/01-the-basics/types-strings">Zeichenketten</a></li>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Verzweigungen</a>
+            <code>var</code>, <code>let</code> und <code>const</code>
           </li>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Schleifen</a></li>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen</a></li>
+          <li><a href="https://wesbos.com/javascript/01-the-basics/types-introduction">Typen</a>, <a href="https://wesbos.com/javascript/01-the-basics/types-strings">Zeichenketten</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Statements</a>: Verzweigungen, Schleifen</li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen I</a>: Grundlagen, Methoden, Math, Daten</li>
         </ul>
       </section>
 
@@ -167,8 +165,7 @@ function constTest() {
         <ul class="compact">
           <li>JavaScript is eine <em>dynamische</em> Sprache</li>
           <li>Der Entwickler kann Typen nicht zuweisen</li>
-          <li>Jede Variable hat eine der folgenden <a
-              href="https://wesbos.com/javascript/01-the-basics/types-introduction">Typen</a>:
+          <li>Jede Variable hat eine der folgenden <a href="https://wesbos.com/javascript/01-the-basics/types-introduction">Typen</a>:
             <ul>
               <li><a href="https://wesbos.com/javascript/01-the-basics/types-null-and-undefined">Null</a></li>
               <li><a href="https://wesbos.com/javascript/01-the-basics/types-null-and-undefined">Undefined</a></li>
@@ -177,8 +174,7 @@ function constTest() {
               <li><a href="https://wesbos.com/javascript/01-the-basics/types-strings">String</a></li>
               <li><a href="https://wesbos.com/javascript/01-the-basics/types-objects">Object</a></li>
               <li><a href="https://wesbos.com/javascript/08-data-types/arrays">Array</a></li>
-              <li><a
-                  href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a>
+              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a>
               </li>
             </ul>
           </li>
@@ -273,7 +269,8 @@ const a = `Das
 
       <section>
         <h1>Template-Strings</h1>
-        <p><em><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Template_literals">Backticks</a></em> unterstützen das Auflösen von eingebauten Variablen.</p>
+        <p><em><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Template_literals">Backticks</a></em>
+          unterstützen das Auflösen von eingebauten Variablen.</p>
         <pre>
           <code data-trim class="language-javascript hljs">
 const name = "Bob";
@@ -290,7 +287,8 @@ const a = `Das
 
       <section>
         <h1>Tagged Template-Strings</h1>
-        <p><em><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Template_literals">Tagged Template-Strings</a></em> können die Ausgabe von Template-Strings mit einer Funktion ändern.</p>
+        <p><em><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Template_literals">Tagged
+              Template-Strings</a></em> können die Ausgabe von Template-Strings mit einer Funktion ändern.</p>
         <pre>
           <code data-trim class="language-javascript hljs">
             function Bio(t, name, age) {
@@ -368,11 +366,13 @@ const a = `Das
             // m.get('a') == 1, etc.
           </code>
         </pre>
-        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Map#objects_vs._maps">Vergleich mit Objekt</a>.</p>
+        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Map#objects_vs._maps">Vergleich
+            mit Objekt</a>.</p>
       </section>
 
       <section>
-        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Map#iterating_map_with_for..of">Maps: Iteration</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Map#iterating_map_with_for..of">Maps:
+            Iteration</a>
         </h1>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -414,8 +414,7 @@ const a = `Das
       </section>
 
       <section>
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbolen</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbolen</a>
         </h1>
         <p>Erstellt eine eindeutige Referenz statt ein Objekt.</p>
         <pre>
@@ -494,8 +493,7 @@ const a = `Das
       </section>
 
       <section>
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Vergleichsoperatoren</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Vergleichsoperatoren</a>
         </h1>
         <ul>
           <li>==, !=, >, <, <=,>=, ===, !==</li>
@@ -509,8 +507,8 @@ const a = `Das
       </section>
 
       <section>
-        <h1>Boolesche <a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a></h1>
+        <h1>Boolesche <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a>
+        </h1>
         <ul>
           <li>&&, ||, !</li>
         </ul>
@@ -526,8 +524,8 @@ const a = `Das
       </section>
 
       <section>
-        <h1>Nullesche <a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a></h1>
+        <h1>Nullesche <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a>
+        </h1>
         <ul>
           <li>?., ??</li>
         </ul>
@@ -550,8 +548,7 @@ const a = `Das
       </section>
 
       <section>
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators"></a>Zuweisungsoperatoren</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators"></a>Zuweisungsoperatoren</a>
         </h1>
         <ul>
           <li>x = 1</li>
@@ -568,8 +565,7 @@ const a = `Das
             x += 1;         // x == 5; Kurzschreibweise für x = x + 1;
           </code>
         </pre>
-        <p class="notes">Siehe <a
-            href="https://www.codeproject.com/Articles/1208666/Why-Does-x-equals-plusplusx-plus-xplusplus-Give-Me">Why
+        <p class="notes">Siehe <a href="https://www.codeproject.com/Articles/1208666/Why-Does-x-equals-plusplusx-plus-xplusplus-Give-Me">Why
             Does x = ++x + x++ Give Me the Wrong Answer?</a> für weitere Infos.</p>
       </section>
 
@@ -597,8 +593,7 @@ const a = `Das
       </section>
 
       <section>
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax">Spread</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax">Spread</a>
           mit Anpassungen </h1>
         <p>Kann mit explizitem Setzen von Eigenschaften kombiniert werden.</p>
         <pre>
@@ -617,8 +612,7 @@ const a = `Das
       </section>
 
       <section>
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax">Spread</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax">Spread</a>
           mit Arrays</h1>
         <p>Kopiert nicht nur Objekte sondern auch <em>Arrays</em>.</p>
         <pre>
@@ -635,8 +629,7 @@ const a = `Das
       </section>
 
       <section>
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax">Spread</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax">Spread</a>
           mit Parametern</h1>
         <p>Kann auch als Funktionsparametern benutzt werden.</p>
         <pre>
@@ -651,8 +644,8 @@ const a = `Das
       </section>
 
       <section>
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">Destructuring</a></h1>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">Destructuring</a>
+        </h1>
         <p>Mit <code>[]</code> können Daten aus Arrays extrahiert werden.</p>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -665,12 +658,13 @@ const a = `Das
             // c == 30, d == 40, e = 50, f = -1
           </code>
         </pre>
-        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#array-destrukturierung">weitere Beispiele</a>.</p>
+        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#array-destrukturierung">weitere
+            Beispiele</a>.</p>
       </section>
 
       <section>
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">Destructuring</a></h1>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">Destructuring</a>
+        </h1>
         <p>Mit <code>{}</code> können Daten aus Objekten extrahiert werden.</p>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -686,8 +680,8 @@ const a = `Das
       </section>
 
       <section>
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">Destructuring</a></h1>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">Destructuring</a>
+        </h1>
         <p>Daten aus Objekten zu anderen Eigenschaften zuweisen.</p>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -704,7 +698,8 @@ const a = `Das
             // name = "bob", obj2 = { age: 10, country: "CH" }
           </code>
         </pre>
-        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#objektdestrukturierung">weitere Beispiele</a>.</p>
+        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#objektdestrukturierung">weitere
+            Beispiele</a>.</p>
       </section>
 
       <section>
@@ -749,7 +744,8 @@ const a = `Das
           <li>Verzweigungen:
             <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/if...else">if</a></code>/<code>else</code>
           </li>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">Ternäre</a> Operator (<code>?:</code>)</li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">Ternäre</a>
+            Operator (<code>?:</code>)</li>
           <li>Verzweigungen:
             <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/switch">switch</a></code>
           </li>
@@ -791,7 +787,8 @@ const a = `Das
 
       <section>
         <h1>
-          <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">Ternäre</a> Operator (<code>?:</code>)
+          <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">Ternäre</a>
+          Operator (<code>?:</code>)
         </h1>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -915,6 +912,7 @@ const a = `Das
               <li><code>for..in</code> Testen</li>
               <li><code>for..of</code> Testen</li>
               <li><code>switch</code> Testen</li>
+              <li><code>try..catch..finally</code> Testen</li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -935,41 +933,28 @@ const a = `Das
             <ul>
               <li>Test mit <code>for..of</code></li>
               <li>Test mit <code>switch</code></li>
+              <li>Test mit <code>try..catch..finally</code></li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
         </div>
       </section>
 
-      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg" class="compact">
         <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen</a></h1>
         <ul>
-          <li>Gewöhnliche <a
-              href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen</a></li>
-          <li><a
-              href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/Method_definitions">Methoden</a>
-          </li>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/get">Getters</a>/<a
-              href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/set">Setters</a></li>
-          <li><a
-              href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow
-              Funktionen</a></li>
+          <li>Gewöhnliche <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/Method_definitions">Methoden</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/get">Getters</a>/<a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/set">Setters</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow Funktionen</a></li>
           <li>Umwandlungsfunktionen</li>
-          <li><a
-              href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math">Mathematische</a>
-            Funktionen</li>
-          <li><a
-              href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date">Datumsmethoden</a>
-          </li>
-          <li><a
-              href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
-          </li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math">Mathematische</a> Funktionen</li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date">Datumsmethoden</a></li>
         </ul>
       </section>
 
       <section class="compact">
-        <h1>Gewöhnliche <a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen</a></h1>
+        <h1>Gewöhnliche <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen</a></h1>
         <ul>
           <li>Kann mehrere Parameter haben</li>
           <li>"rest" Parameter wird mit "..." geschrieben</li>
@@ -997,8 +982,7 @@ const a = `Das
       </section>
 
       <section>
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/Method_definitions">Methoden</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/Method_definitions">Methoden</a>
         </h1>
         <p>Funktionen, die an einem Objekt gebunden sind.</p>
         <pre>
@@ -1022,8 +1006,7 @@ const a = `Das
       </section>
 
       <section>
-        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/get">Getters</a>/<a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/set">Setters</a></h1>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/get">Getters</a>/<a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/set">Setters</a></h1>
         <p>Ermöglicht berechnete Eigenschaften.</p>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -1050,8 +1033,7 @@ const a = `Das
             Funktionen</a></h1>
         <ul>
           <li>Eine kompaktere Definitionsform für Funktionen.</li>
-          <li><a
-              href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/Arrow_functions#arrow_functions_used_as_methods">Für
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/Arrow_functions#arrow_functions_used_as_methods">Für
               Methoden nicht gut geeignet</a> (weil <code>this</code> eine andere Bedeutung hat).</li>
         </ul>
         <pre>
@@ -1093,8 +1075,7 @@ const a = `Das
       </section>
 
       <section class="compact">
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math">Mathematische</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math">Mathematische</a>
           Funktionen</h1>
         <ul>
           <li><code>isNaN()</code> prüft ob eine Variable keine Zahl ist (gibt true zurück, wenn es keine Zahl ist).
@@ -1110,12 +1091,13 @@ const a = `Das
       </section>
 
       <section>
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date">Datumsmethoden</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date">Datumsmethoden</a>
         </h1>
         <ul>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date"><code>Date</code></a> hat verschiedene Konstruktoren</li>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date/parse"><code>Date.parse()</code></a> unterstützt verschiedene Formate</li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date"><code>Date</code></a>
+            hat verschiedene Konstruktoren</li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date/parse"><code>Date.parse()</code></a>
+            unterstützt verschiedene Formate</li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -1141,8 +1123,14 @@ const a = `Das
         <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Intl">Intl</a></h1>
         <ul class="compact">
           <li>Unterstützt das Formatieren in <em>locales</em> (z.B. "de-CH")</li>
-          <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat">DateTimeFormat</a></code> formatiert absoluten Daten</li>
-          <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat">RelativeTimeFormat</a></code> formatiert relativen Zeiten</li>
+          <li>
+            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat">DateTimeFormat</a></code>
+            formatiert absoluten Daten
+          </li>
+          <li>
+            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat">RelativeTimeFormat</a></code>
+            formatiert relativen Zeiten
+          </li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">

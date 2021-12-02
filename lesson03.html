@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>JavaScript, Lektion 03, Grundlagen: Funktionen, Klassen, Modulen</title>
+  <title>JavaScript, Lektion 03, Grundlagen: Funktionen II, Klassen, Modulen</title>
 
   <link rel="stylesheet" href="dist/reset.css">
   <link rel="stylesheet" href="dist/reveal.css">
@@ -32,14 +32,13 @@
         <ul>
           <li>Grundlagen:
             <ul>
-              <li><a href="https://wesbos.com/javascript/01-the-basics/variables-and-statements">Variablen</a>:
-                <code>var</code>, <code>let</code> und <code>const</code></li>
+              <li><a href="https://wesbos.com/javascript/01-the-basics/variables-and-statements">Variablen</a>: <code>var</code>, <code>let</code> und <code>const</code></li>
               <li><a href="https://wesbos.com/javascript/01-the-basics/types-introduction">Typen</a></li>
               <li><a href="https://wesbos.com/javascript/01-the-basics/types-strings">Zeichenketten</a></li>
-              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a>
-              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Verzweigungen</a>
-              </li>
+              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a></li>
+              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Verzweigungen</a></li>
               <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Schleifen</a></li>
+              <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen</a></li>
             </ul>
           </li>
         </ul>
@@ -49,9 +48,9 @@
         <h1>Übersicht Lektionen</h1>
         <ol class="compact">
           <li class="completed">Einführung &amp; IDE Aufsetzen</li>
-          <li class="completed">Grundlagen: Typen, Operatoren, Statements, usw.</li>
-          <li class="selected">Grundlagen: Funktionen, Klassen, Modulen</li>
-          <li>Externe Abfrage (JSON &amp; Fetch)</li>
+          <li class="completed">Grundlagen: Typen, Operatoren, Statements, Funktionen I</li>
+          <li class="selected">Grundlagen: Funktionen II, Klassen, Modulen</li>
+          <li>Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
           <li>DOM, Formulare, Eingaben &amp; Ereignisse</li>
           <li>Persistenz (Cookies, Web storage &amp; IndexedDB)</li>
           <li>Komponenten (Web Components) &amp; Bibliotheken</li>
@@ -63,26 +62,24 @@
 
       <section>
         <h1>Grundlagen</h1>
-        <ul>
+        <ul class="compact">
           <li class="completed"><a href="https://wesbos.com/javascript/01-the-basics/variables-and-statements">Variablen</a>:
-            <code>var</code>, <code>let</code> und <code>const</code></li>
-          <li class="completed"><a href="https://wesbos.com/javascript/01-the-basics/types-introduction">Typen</a></li>
-          <li class="completed"><a href="https://wesbos.com/javascript/01-the-basics/types-strings">Zeichenketten</a></li>
-          <li class="completed"><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a>
-          <li class="completed"><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Verzweigungen</a>
+            <code>var</code>, <code>let</code> und <code>const</code>
           </li>
-          <li class="completed"><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Schleifen</a></li>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen</a></li>
+          <li class="completed"><a href="https://wesbos.com/javascript/01-the-basics/types-introduction">Typen</a>, <a href="https://wesbos.com/javascript/01-the-basics/types-strings">Zeichenketten</a></li>
+          <li class="completed"><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a></li>
+          <li class="completed"><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements">Statements</a>: Verzweigungen, Schleifen</li>
+          <li class="completed"><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen I</a>: Grundlagen, Methoden, Math, Daten</li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions">Funktionen II</a>: Arrays, Strings, Generators, Rekursion</li>
           <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a></li>
           <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">Modulen</a></li>
         </ul>
       </section>
 
       <section class="compact">
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
           (mutating)</h1>
-        <p>Die folgende Methoden ändern das Array ("mutating methods").</p>
+        <p>Die folgende Methoden <em>ändern</em> das Array.</p>
         <ul>
           <li><code>push()</code> Element am Ende hinzufügen</li>
           <li><code>pop()</code> Element am Ende entfernen</li>
@@ -95,10 +92,9 @@
       </section>
 
       <section class="compact">
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
           (immutable)</h1>
-        <p>Die folgende Methoden ändern das Array <em>nicht</em> ("immutable methods").</p>
+        <p>Die folgende Methoden ändern das Array <em>nicht</em>.</p>
         <ul>
           <li><code>slice()</code> Erzeugt ein neues Array aus bestimmten Elementen des ersten</li>
           <li><code>concat()</code> Arrays verbinden</li>
@@ -110,10 +106,9 @@
       </section>
 
       <section class="compact">
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
           (immutable)</h1>
-        <p>Die folgende Methoden ändern das Array <em>nicht</em> ("immutable methods").</p>
+        <p>Die folgende Methoden ändern das Array <em>nicht</em>.</p>
         <ul>
           <li><code>find()</code> Gibt den Wert, welches als erstes die Bedingung einer Funktion erfüllt</li>
           <li><code>map()</code> Wendet auf jedes Element des Arrays eine Funktion an und gibt das Ergebnis in einem
@@ -125,10 +120,9 @@
       </section>
 
       <section class="compact">
-        <h1><a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array">Array-Methoden</a>
           (immutable)</h1>
-        <p>Die folgende Methoden ändern das Array <em>nicht</em> ("immutable methods").</p>
+        <p>Die folgende Methoden ändern das Array <em>nicht</em>.</p>
         <ul>
           <li><code>find()</code> Gibt den Wert, welches als erstes die Bedingung einer Funktion erfüllt</li>
           <li><code>map()</code> Wendet auf jedes Element des Arrays eine Funktion an und gibt das Ergebnis in einem
@@ -144,11 +138,7 @@
           <div>
             <h1>Funktionen</h1>
             <ul>
-              <li>Funktionen aller Arten Testen</li>
-              <li>Methoden Testen</li>
-              <li>Math Testen</li>
-              <li>Date Testen</li>
-              <li>Array Testen</li>
+              <li>Array-Funktionen Testen</li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -167,8 +157,7 @@
           <div>
             <h1>Übungen</h1>
             <ul>
-              <li>Test mit Array Funktionen schreiben</li>
-              <li>Test mit Objekt/Methoden schreiben</li>
+              <li>Test mit Array Methoden schreiben</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
@@ -194,7 +183,8 @@
       </section>
 
       <section>
-        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a>: Deklarieren</h1>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes">Klassen</a>: Deklarieren
+        </h1>
         <pre>
           <code data-trim class="language-javascript hljs">
             class Person {
@@ -314,7 +304,8 @@
       </section>
 
       <section>
-        <h1>Modulen: <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">ES6/JavaScript</a></h1>
+        <h1>Modulen: <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">ES6/JavaScript</a>
+        </h1>
         <ul>
           <li>Ist <em>standardisiert</em></li>
           <li>Das einzige System für Browsers</li>
@@ -353,15 +344,19 @@
         <ul class="notes">
           <li><a href="https://jestjs.io/docs/getting-started#using-babel">Using Babel (with Jest)</a></li>
           <li><a href="https://linkstraffic.net/using-jest-with-es6-modules/">Using Jest with ES6 Modules</a></li>
-          <li><a href="https://masteringjs.io/tutorials/node/import">Using <code>import</code> Statements in Node.js</a></li>
+          <li><a href="https://masteringjs.io/tutorials/node/import">Using <code>import</code> Statements in Node.js</a>
+          </li>
         </ul>
       </section>
 
       <section>
         <h1>Syntax anpassen</h1>
         <ul>
-          <li><kbd>Ctrl</kbd> + <kbd>.</kbd> auf <code>require</code> in <code>library.test.js</code> betätigen, um nach <code>import</code> zu konvertieren</li>
-          <li><kbd>Ctrl</kbd> + <kbd>.</kbd> auf <code>module.exports</code> in <code>library.js</code> betätigen, um nach <code>export</code> zu konvertieren</li>
+          <li><kbd>Ctrl</kbd> + <kbd>.</kbd> auf <code>require</code> in <code>library.test.js</code> betätigen, um nach
+            <code>import</code> zu konvertieren
+          </li>
+          <li><kbd>Ctrl</kbd> + <kbd>.</kbd> auf <code>module.exports</code> in <code>library.js</code> betätigen, um
+            nach <code>export</code> zu konvertieren</li>
           <li>Tests ausführen</li>
         </ul>
       </section>
@@ -374,7 +369,7 @@
           <li><a href="http://localhost:8080">http://localhost:8080</a> im Browser öffnen</li>
         </ul>
         <p class="notes">Siehe <a href="https://medium.com/ghostcoder/using-es6-modules-in-the-browser-5dce9ca9e911">Using ES6 modules in the
-          browser</a> (2018) für weitere Infos.</p>
+            browser</a> (2018) für weitere Infos.</p>
       </section>
 
       <section>
@@ -519,7 +514,8 @@
             }
           </code>
         </pre>
-        <p class="notes">Siehe <a href="https://prettier.io/docs/en/options.html">Prettier Optionen</a> für weitere Infos.</p>
+        <p class="notes">Siehe <a href="https://prettier.io/docs/en/options.html">Prettier Optionen</a> für weitere
+          Infos.</p>
       </section>
 
       <section>
@@ -551,7 +547,10 @@
         <div class="seventy-thirty-grid">
           <div>
             <ul>
-              <li>Extension <code><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">prettier-vscode</a></code> installieren</li>
+              <li>Extension
+                <code><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">prettier-vscode</a></code>
+                installieren
+              </li>
               <li>Format auslösen; "Prettier Format" auswählen</li>
               <li>Einstellungen öffnen</li>
               <li>Nach "format on save" suchen</li>
@@ -598,7 +597,8 @@
         <div class="seventy-thirty-grid">
           <div>
             <ul>
-              <li><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint Extension</a> installieren.</li>
+              <li><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint
+                  Extension</a> installieren.</li>
               <li>Fehler sollten in <code>.js</code> Dateien sofort ersichtlich sein.</li>
               <li>Siehe <a href="https://eslint.org/docs/rules/">ESLint Rules</a> für weitere Einstellungen.</li>
             </ul>

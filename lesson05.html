@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>Lektion 04: JavaScript: DOM, Formulare, Eingaben &amp; Ereignisse</title>
+  <title>Lektion 05: JavaScript: DOM, Formulare, Eingaben &amp; Ereignisse</title>
 
   <link rel="stylesheet" href="dist/reset.css">
   <link rel="stylesheet" href="dist/reveal.css">
@@ -21,7 +21,7 @@
     <div class="slides">
       <section data-background="assets/MonteRosa.jpg">
         <h1>JavaScript</h1>
-        <h2>Lektion 4</h2>
+        <h2>Lektion 5</h2>
         <p class="notes">
           Ein Angebot der Berufsfachschule Uster und der Höheren Fachschule Uster
         </p>
@@ -31,18 +31,21 @@
         <h1>Rückblick</h1>
         <ul>
           <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a></li>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/API/Fetch_API"><code>fetch()</code></a>, <code>async</code>/<code>await</code></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/API/Fetch_API"><code>fetch()</code></a>,
+            <code>async</code>/<code>await</code>
+          </li>
+          <li>Refactoring</li>
         </ul>
       </section>
 
       <section>
         <h1>Übersicht Lektionen</h1>
         <ol class="compact">
-          <li>Einführung &amp; IDE Aufsetzen</li>
-          <li>Grundlagen: Typen, Operatoren, Statements</li>
-          <li>Grundlagen: Funktionen, Klassen, Modulen</li>
-          <li class="selected">Externe Abfrage: JSON &amp; Fetch</li>
-          <li>DOM, Formulare, Eingaben &amp; Ereignisse</li>
+          <li class="completed">Einführung &amp; IDE Aufsetzen</li>
+          <li class="completed">Grundlagen: Typen, Operatoren, Statements, Funktionen I</li>
+          <li class="completed">Grundlagen: Funktionen II, Klassen, Modulen; Linting</li>
+          <li class="completed">Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
+          <li class="selected">DOM, Ereignisse, Formulare &amp; Eingaben</li>
           <li>Persistenz (Cookies, Web storage &amp; IndexedDB)</li>
           <li>Komponenten (Web Components) &amp; Bibliotheken</li>
           <li><b>LZ1</b>; Animationen &amp; Grafik</li>
@@ -153,27 +156,31 @@
         <h1>Ereignisse: Beispiele</h1>
         <table>
           <tr>
-            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick">onclick</td>
+            <th><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick">onclick</th>
             <td>Element wurde geklickt</td>
           </tr>
           <tr>
-            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseenter">onmouseenter</td>
+            <th><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseenter">onmouseenter
+            </th>
             <td>Maus schwebte über das Element</td>
           </tr>
           <tr>
-            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseleave">onmouseleave</td>
+            <th><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseleave">onmouseleave
+            </th>
             <td>Maus schwebte weg vom Element</td>
           </tr>
           <tr>
-            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onkeypress">onkeypress</td>
+            <th><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onkeypress">onkeypress
+            </th>
             <td>Taste wurde betätigt</td>
           </tr>
           <tr>
-            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/oninput">oninput</td>
+            <th><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/oninput">oninput</th>
             <td>Wert wurde geändert</td>
           </tr>
         </table>
-        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/API/GlobalEventHandlers">GlobalEventHandlers</a> für eine vollständige Liste.</p>
+        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Web/API/GlobalEventHandlers">GlobalEventHandlers</a> für eine
+          vollständige Liste.</p>
       </section>
 
       <section>
@@ -192,22 +199,22 @@
       </section>
 
       <section>
-        <h1>Funktionen und <code>this</code></h1>
+        <h1 class="inserted">Funktionen und <code>this</code></h1>
         <table>
           <tr>
-            <td><code>function</code></td>
+            <th><code>function</code></th>
             <td><code>this</code> referenziert das Ereignis&shy;element</td>
           </tr>
           <tr>
-            <td><code>=></code></td>
+            <th><code>=></code></th>
             <td><code>this</code> referenziert das umliegende Kontext
               <table>
                 <tr>
-                  <td>im Dokument</td>
+                  <th>im Dokument</th>
                   <td><code>window</code></td>
                 </tr>
                 <tr>
-                  <td>im Modul</td>
+                  <th>im Modul</th>
                   <td><code>undefined</code></td>
                 </tr>
               </table>
@@ -220,23 +227,23 @@
         <h1>Ereignisobjekt (<code>e</code>)</h1>
         <table>
           <tr>
-            <td><code>target</code></td>
+            <th><code>target</code></th>
             <td>Auslösendes Element</td>
           </tr>
           <tr>
-            <td><code>currentTarget</code></td>
+            <th><code>currentTarget</code></th>
             <td>Element mit EventHandler</td>
           </tr>
           <tr>
-            <td><code>timeStamp</code></td>
+            <th><code>timeStamp</code></th>
             <td>Zeitpunkt des Ereignisses</td>
           </tr>
           <tr>
-            <td><code>view</code></td>
+            <th><code>view</code></th>
             <td>Referenz auf <code>window</code> (oder <code>frame</code>)</td>
           </tr>
           <tr>
-            <td><code>offsetX</code>/<code>offsetY</code></td>
+            <th><code>offsetX</code>/<code>offsetY</code></th>
             <td>relative Mausposition</td>
           </tr>
         </table>
@@ -327,7 +334,9 @@
         <h1>Event Reihenfolge</h1>
         <ul>
           <li>Normalerweise werden Ereignisse werden bei allen "Parent"-Elementen ausgelöst</li>
-          <li>In <code>addEventListener</code> kann man mit dem dritten Parameter <code>capture</code> auf <code>true</code> sicherstellen, dass das Ereignis zuerst bei diesem Element ausgelöst wird.</li>
+          <li>In <code>addEventListener</code> kann man mit dem dritten Parameter <code>capture</code> auf
+            <code>true</code> sicherstellen, dass das Ereignis zuerst bei diesem Element ausgelöst wird.
+          </li>
           <li>Mit <code>stopPropagation()</code> kann man das <em>propagieren</em> verhindern</li>
         </ul>
       </section>
@@ -340,7 +349,8 @@
 
       <section>
         <h1 class="insertion">Funktionen: Kurzform</h1>
-        <p>Bei einer benannten Funktion kann man das auflisten von Parametern weglassen, wenn die Parameter einfach weitergegeben werden sollen.</p>
+        <p>Bei einer benannten Funktion kann man das auflisten von Parametern weglassen, wenn die Parameter einfach
+          weitergegeben werden sollen.</p>
         <pre>
           <code data-trim class="language-javascript hljs">
             const log = e => console.log(e);
@@ -424,7 +434,9 @@
       <section>
         <h1>Default Verhalten</h1>
         <ul>
-          <li><code>preventDefault()</code> unterdrückt das Default Verhalten des Browsers (z.B. Navigieren bei einem <code>a</code> Element)</li>
+          <li><code>preventDefault()</code> unterdrückt das Default Verhalten des Browsers (z.B. Navigieren bei einem
+            <code>a</code> Element)
+          </li>
         </ul>
         <pre>
           <code data-trim class="language-xml hljs">

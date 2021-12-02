@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>JavaScript, Lektion 04, Externe Abfrage: JSON &amp; Fetch</title>
+  <title>JavaScript, Lektion 04, Externe Abfrage: JSON &amp; Fetch; Refactoring</title>
 
   <link rel="stylesheet" href="dist/reset.css">
   <link rel="stylesheet" href="dist/reveal.css">
@@ -45,9 +45,9 @@
         <h1>Übersicht Lektionen</h1>
         <ol class="compact">
           <li class="completed">Einführung &amp; IDE Aufsetzen</li>
-          <li class="completed">Grundlagen: Typen, Operatoren, Statements, usw.</li>
-          <li class="completed">Grundlagen: Funktionen, Klassen, Modulen</li>
-          <li class="selected">Externe Abfrage (JSON &amp; Fetch)</li>
+          <li class="completed">Grundlagen: Typen, Operatoren, Statements, Funktionen I</li>
+          <li class="completed">Grundlagen: Funktionen II, Klassen, Modulen</li>
+          <li class="selected">Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
           <li>DOM, Formulare, Eingaben &amp; Ereignisse</li>
           <li>Persistenz (Cookies, Web storage &amp; IndexedDB)</li>
           <li>Komponenten (Web Components) &amp; Bibliotheken</li>
@@ -61,7 +61,8 @@
         <h1>JSON &amp; Fetch</h1>
         <p>Hier geht es um Daten mit anderen Systemen auszutauschen.</p>
         <ul>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a>: standardisiertes Austauschformat</li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a>:
+            standardisiertes Austauschformat</li>
           <li><a href="https://developer.mozilla.org/de/docs/Web/API/Fetch_API">Fetch</a>: Kommunikations-API</li>
         </ul>
       </section>
@@ -86,7 +87,8 @@
         <ul>
           <li><code>NaN</code> wird zu <code>null</code></li>
           <li><code>Date</code> wird zu <code>String</code></li>
-          <li><code>Function</code>, <code>RegExp</code> und <code>Error</code> Objekte werden nicht nach JSON übertragen.</li>
+          <li><code>Function</code>, <code>RegExp</code> und <code>Error</code> Objekte werden nicht nach JSON
+            übertragen.</li>
         </ul>
       </section>
 
@@ -111,8 +113,10 @@
 
       <section>
         <h1>JSON: Lesen/Schreiben</h1>
-        <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"><code>JSON.parse()</code></a> wandelt JSON in JS um</li>
-        <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>JSON.stringify()</code></a> wandelt JS in JSON um</li>
+        <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"><code>JSON.parse()</code></a>
+          wandelt JSON in JS um</li>
+        <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>JSON.stringify()</code></a>
+          wandelt JS in JSON um</li>
         <pre>
           <code data-trim class="language-javascript hljs">
             const obj = { color: "red", speed: 50.2 };
@@ -127,7 +131,8 @@
       </section>
 
       <section>
-        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>JSON.stringify()</code></a></h1>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>JSON.stringify()</code></a>
+        </h1>
         <p>Das Ausgabeformat kann mit optionalen Parametern angepasst werden.</p>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -145,8 +150,10 @@
       </section>
 
       <section>
-        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>toJSON()</code></a></h1>
-        <p>Zu exportierenden Objekten können das Ausgabe&shy;format mit einer <code>toJSON()</code> Methode selbst steuern.</p>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>toJSON()</code></a>
+        </h1>
+        <p>Zu exportierenden Objekten können das Ausgabe&shy;format mit einer <code>toJSON()</code> Methode selbst
+          steuern.</p>
         <pre>
           <code data-trim class="language-javascript hljs">
             const obj = {
@@ -202,7 +209,8 @@
       </section>
 
       <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
-        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"><code>fetch()</code></a></h1>
+        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"><code>fetch()</code></a>
+        </h1>
         <p>Hier geht es um Daten mit einem Server auszutauschen.</p>
         <ul>
           <li>Promises</li>
@@ -220,15 +228,17 @@
         <p>Platzhalter für einen asynchronen Funktionsaufruf</p>
         <table>
           <tr>
-            <td><code>then()</code></td>
-            <td>wird beim <span class="fragment highlight-green">erfolgreichen</span> Ausführen der Funktion ausgeführt</td>
+            <th><code>then()</code></th>
+            <td>wird beim <span class="fragment highlight-green">erfolgreichen</span> Ausführen der Funktion ausgeführt
+            </td>
           </tr>
           <tr>
-            <td><code>catch()</code></td>
-            <td>wird beim <span class="fragment highlight-red">fehlgeschlagenen</span> Ausführen der Funktion ausgeführt</td>
+            <th><code>catch()</code></th>
+            <td>wird beim <span class="fragment highlight-red">fehlgeschlagenen</span> Ausführen der Funktion ausgeführt
+            </td>
           </tr>
           <tr>
-            <td><code>finally()</code></td>
+            <th><code>finally()</code></th>
             <td>wird <span class="fragment highlight-blue">immer</span> ausgeführt</td>
           </tr>
         </table>
@@ -267,23 +277,23 @@
         <h1>Mocking: pro/contra</h1>
         <table>
           <tr>
-            <td class="pro">pro</td>
+            <th><span class="pro">pro</span></th>
             <td>Keine externe Abhängigkeiten</td>
           </tr>
           <tr>
-            <td class="pro">pro</td>
+            <th><span class="pro">pro</span></th>
             <td>Generell schneller (weil lokal)</td>
           </tr>
           <tr>
-            <td class="pro">pro</td>
+            <th><span class="pro">pro</span></th>
             <td>Einfach einzubinden</td>
           </tr>
           <tr>
-            <td class="contra">contra</td>
+            <th><span class="contra">contra</span></th>
             <td>Kann aufwendig sein zu schreiben</td>
           </tr>
           <tr>
-            <td class="contra">contra</td>
+            <th><span class="contra">contra</span></th>
             <td>Kann <em>falsch</em> sein</td>
           </tr>
         </table>
@@ -293,23 +303,23 @@
         <h1>Integration: pro/contra</h1>
         <table>
           <tr>
-            <td class="pro">pro</td>
+            <th><span class="pro">pro</span></th>
             <td>Muss nicht geschrieben werden</td>
           </tr>
           <tr>
-            <td class="pro">pro</td>
+            <th><span class="pro">pro</span></th>
             <td>Kann <em>nicht</em> falsch sein</td>
           </tr>
           <tr>
-            <td class="contra">contra</td>
+            <th><span class="contra">contra</span></th>
             <td>Kann aufwendiger sein einzubinden</td>
           </tr>
           <tr>
-            <td class="contra">contra</td>
+            <th><span class="contra">contra</span></th>
             <td>Externe Abhängigkeit muss vorhanden sein</td>
           </tr>
           <tr>
-            <td class="contra">contra</td>
+            <th><span class="contra">contra</span></th>
             <td>Kann langsamer sein</td>
           </tr>
         </table>
@@ -341,23 +351,23 @@
         <h1><code>json-server</code>: pro/contra</h1>
         <table>
           <tr>
-            <td class="pro">pro</td>
+            <th><span class="pro">pro</span></th>
             <td>Muss nicht geschrieben werden</td>
           </tr>
           <tr>
-            <td class="pro">pro</td>
+            <th><span class="pro">pro</span></th>
             <td>Ist der gleiche Server wie Produktion</td>
           </tr>
           <tr>
-            <td class="pro">pro</td>
+            <th><span class="pro">pro</span></th>
             <td>Muss nicht in die Tests eingebunden werden</td>
           </tr>
           <tr>
-            <td class="pro">pro</td>
+            <th><span class="pro">pro</span></th>
             <td>Leicht aufzusetzen (auch für CI/CD)</td>
           </tr>
           <tr>
-            <td class="pro">pro</td>
+            <th><span class="pro">pro</span></th>
             <td>Macht die Tests nicht langsam</td>
           </tr>
         </table>
@@ -389,7 +399,8 @@
         <h1><code>fetch()</code> testen</h1>
         <ul>
           <li>Bei <em>node</em> gibt es kein <code>fetch()</code></li>
-          <li><code>npm install --save-dev isomorphic-fetch</code> ausführen, um <code>fetch</code> für <em>node</em> zu installieren</li>
+          <li><code>npm install --save-dev isomorphic-fetch</code> ausführen, um <code>fetch</code> für <em>node</em> zu
+            installieren</li>
         </ul>
       </section>
 
@@ -411,7 +422,8 @@
             });
           </code>
         </pre>
-        <p class="notes">Siehe <a href="https://jestjs.io/docs/asynchronous">Testing Asynchronous Code</a> für mehr Information.</p>
+        <p class="notes">Siehe <a href="https://jestjs.io/docs/asynchronous">Testing Asynchronous Code</a> für mehr
+          Information.</p>
       </section>
 
       <section>
@@ -419,7 +431,8 @@
         <ul>
           <li>Verschachtelte Aufrufe sind nicht besonders lesbar oder nachvollziehbar</li>
           <li>Stattdessen kann man ein <code>Promise</code> mit <code>await</code> "abwarten"</li>
-          <li>Funktionen, die zumindest ein <code>await</code> beinhalten müssen mit <code>async</code> bezeichnet werden</li>
+          <li>Funktionen, die zumindest ein <code>await</code> beinhalten müssen mit <code>async</code> bezeichnet
+            werden</li>
         </ul>
       </section>
 
@@ -427,7 +440,8 @@
         <h1>Test mit <code>async</code>/<code>await</code></h1>
         <ul>
           <li>Die zwei <code>Promises</code> sind klarer zu sehen</li>
-          <li><code>expect()</code> funktioniert wie erwartet (ohne ein <code>Promise</code> aus dem inneren Kontext zurückgeben zu müssen)</li>
+          <li><code>expect()</code> funktioniert wie erwartet (ohne ein <code>Promise</code> aus dem inneren Kontext
+            zurückgeben zu müssen)</li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -461,7 +475,9 @@
 
       <section>
         <h1><code>Promises</code> mit Fehlern</h1>
-        <p>Die <code>catch()</code> und <code>finally()</code> Methoden eines <code>Promises</code> werden mit Exception-Handling ersetzt</p>
+        <p>Die <code>catch()</code> und <code>finally()</code> Methoden eines <code>Promises</code> werden mit
+          <em>Exception-Handling</em> ersetzt
+        </p>
         <pre>
           <code data-trim class="language-javascript hljs">
             async function getAddresses() {
@@ -505,7 +521,7 @@
         </ul>
       </section>
 
-      <section >
+      <section>
         <h1><code>fetch()</code> mit <code>POST</code></h1>
         <ul>
           <li>Einen neuen Eintrag kann mit der Methode <code>POST</code> erstellt werden</li>
@@ -565,7 +581,8 @@
       <section>
         <h1><code>json-server</code> mit "watch"</h1>
         <ul>
-          <li>Änderungen an die lokale Datei (z.B. bei einem "Revert" in Git) werden von <code>json-server</code> nicht wahrgenommen</li>
+          <li>Änderungen an die lokale Datei (z.B. bei einem "Revert" in Git) werden von <code>json-server</code> nicht
+            wahrgenommen</li>
           <li>Mit der <code>--watch</code> Option lädt sich <code>json-server</code> bei Änderungen neu</li>
           <li><code>json-server ./data.json --watch</code> ausführen</li>
         </ul>
@@ -595,7 +612,11 @@
       <section class="compact">
         <h1><code>fetch()</code>: Timeout</h1>
         <ul>
-          <li>Kann mit einem <code><a href="https://developer.mozilla.org/de/docs/Web/API/AbortController">AbortController</a></code> und <code><a href="https://developer.mozilla.org/de/docs/Web/API/setTimeout">SetTimeout</a></code> implementiert werden</li>
+          <li>Kann mit einem
+            <code><a href="https://developer.mozilla.org/de/docs/Web/API/AbortController">AbortController</a></code> und
+            <code><a href="https://developer.mozilla.org/de/docs/Web/API/setTimeout">SetTimeout</a></code> implementiert
+            werden
+          </li>
           <li><code>AbortError</code> im <code>catch</code>-Statement abfangen</li>
         </ul>
         <pre>
@@ -628,7 +649,8 @@
           <li>Alle HTTP-Fehler sind Exceptions</li>
           <li>JSON ist natives Format</li>
         </ul>
-        <p class="notes">Siehe <a href="https://betterprogramming.pub/why-javascript-developers-should-prefer-axios-over-fetch-294b28a96e2c">Why JavaScript Developers Should Prefer Axios Over Fetch</a> für weitere Infos.</p>
+        <p class="notes">Siehe <a href="https://betterprogramming.pub/why-javascript-developers-should-prefer-axios-over-fetch-294b28a96e2c">Why
+            JavaScript Developers Should Prefer Axios Over Fetch</a> für weitere Infos.</p>
       </section>
 
       <section>
