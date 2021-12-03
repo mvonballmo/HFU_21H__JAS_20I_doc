@@ -49,13 +49,13 @@
 
 .reveal .fifty-fifty-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(minmax(0, 1fr));
   grid-column-gap: 1em;
 }
 
 .reveal .seventy-thirty-grid {
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: minmax(0, 70%) minmax(0, 30%);
   grid-column-gap: 1em;
 }
 
