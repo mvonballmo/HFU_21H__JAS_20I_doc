@@ -45,10 +45,10 @@
           <li class="completed">Grundlagen: Typen, Operatoren, Statements, Funktionen I</li>
           <li class="completed">Grundlagen: Funktionen II, Klassen, Modulen; Linting</li>
           <li class="completed">Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
-          <li class="selected">DOM, Ereignisse, Formulare &amp; Eingaben</li>
-          <li>Persistenz (Cookies, Web storage &amp; IndexedDB)</li>
-          <li>Komponenten (Web Components) &amp; Bibliotheken</li>
-          <li><b>LZ1</b>; Animationen &amp; Grafik</li>
+          <li class="selected">DOM &amp; Ereignisse</li>
+          <li>Formulare &amp; Persistenz (Cookies, Web storage &amp; IndexedDB)</li>
+          <li>Komponenten (Web Components)</li>
+          <li><b>LZ1</b>; Animationen &amp; Grafik (Audio/Video)</li>
           <li>React (manipulation, aktualisierung)</li>
           <li><b>MLZ Präsentationen</b></li>
         </ol>
@@ -56,10 +56,11 @@
 
       <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
         <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">DOM</a></h1>
-        <p>Hier geht es um Elemente aus dem Dokument zu selektieren und manipulieren.</p>
+        <p>Hier geht es um Elemente aus dem Dokument selektieren, manipulieren und darauf zu reagieren.</p>
         <ul>
-          <li>Beispiele</li>
-          <li>APIs</li>
+          <li>Einführung</li>
+          <li>Lesen</li>
+          <li>Modifizieren</li>
         </ul>
       </section>
 
@@ -71,10 +72,336 @@
             <li>DOM ist eine Hierarchie</li>
             <li>Das <code>document</code> Objekt ist die Wurzel des Baums</li>
           </ul>
-          <img class="full-width" src="assets/Lesson05/Interactive_design_in_relation_to_other_fields_of_study_dimmed.png">
+          <img class="screenshot" src="assets/Lesson05/Interactive_design_in_relation_to_other_fields_of_study_dimmed.png">
         </div>
         <p class="notes">Quelle für das Diagramm: <a href="https://mrvirk.com/html-dom-diagram-and-explanation.html">HTML DOM Diagram, Coded Example and
             Explanation</a></p>
+      </section>
+
+      <section>
+        <h1>DOM: Der Kern</h1>
+        <ul>
+          <li>Das DOM-API formt die Basis für <em>Rendering</em> vielen bekannten Bibliotheken wie React, Angular, Vue, Next.js, Elm, Svelte, usw.</li>
+          <li>Andere Rendering-Möglichkeiten sind <a href="https://developer.mozilla.org/de/docs/Web/API/Canvas_API"><code>canvas</code></a>
+            oder <a href=""><code>WebGL</code></a></li>
+          <li>Z.B. <em>Flutter</em> benutzt <code>canvas</code> und weicht das DOM komplett aus</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>DOM: ein riesiges API</h1>
+        <ul>
+          <li>Das DOM-API ist vielfältig; wir schauen die <strong>Basics</strong> an</li>
+          <li>Aufgaben können auf unterschiedliche Art und Weise erledigt werden</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            button.setAttribute("class", "primary");  // oder...
+            button.className = "primary";             // oder...
+            button.classList.add("primary");          // oder...
+
+            const attr = document.createAttribute("class");
+            attr.value = "primary";
+            button.attributes.setNamedItem(attr);
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Element-Typen</h1>
+        <table>
+          <tr>
+            <th>Element</th>
+            <td>Entspricht ein Tag im Dokument</td>
+          </tr>
+          <tr>
+            <th>Attribut</th>
+            <td>Entspricht ein Attribut eines Tags</td>
+          </tr>
+          <tr>
+            <th>Text</th>
+            <td>Entspricht Text zwischen Elementen (inkl. Whitespace)</td>
+          </tr>
+          <tr>
+            <th>Kommentar</th>
+            <td>Entspricht ein HTML Kommentar</td>
+          </tr>
+        </table>
+        <p class="notes">Siehe <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">Node</a> für mehr Information und anderen Typen.</p>
+      </section>
+
+      <section class="compact">
+        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a> Eigenschaften</h1>
+        <p>Können gelesen und geschrieben werden</p>
+        <table>
+          <tr>
+            <th><code>id</code></th>
+            <td>Eindeutiger Name</td>
+          </tr>
+          <tr>
+            <th><code>tagName</code></th>
+            <td>Name des Tags im Dokument</td>
+          </tr>
+          <tr>
+            <th><code>className</code></th>
+            <td>Text-Repräsentation von allen CSS-Klassen</td>
+          </tr>
+          <tr>
+            <th><code>classList</code></th>
+            <td>Liste von allen CSS-Klassen</td>
+          </tr>
+          <tr>
+            <th><code>innerHTML</code></th>
+            <td>Text-Repräsentation allen Unterelementen</td>
+          </tr>
+          <tr>
+            <th><code>outerHTML</code></th>
+            <td>Text-Repräsentation vom Tag mit Unterelementen</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a> Eigenschaften</h1>
+        <p>Können gelesen und geschrieben werden</p>
+        <table>
+          <tr>
+            <th><code>children</code></th>
+            <td>Alle Unterelementen (nur Tags)</td>
+          </tr>
+          <tr>
+            <th><code>firstElementChild</code></th>
+            <td>Erstes Unterelement (nur Tags)</td>
+          </tr>
+          <tr>
+            <th><code>lastElementChild</code></th>
+            <td>Letztes Unterelement (nur Tags)</td>
+          </tr>
+          <tr>
+            <th><code>childNodes</code></th>
+            <td>Alle Unterelementen (Alle)</td>
+          </tr>
+          <tr>
+            <th><code>firstChild</code></th>
+            <td>Erstes Unterelement (Alle)</td>
+          </tr>
+          <tr>
+            <th><code>lastChild</code></th>
+            <td>Letztes Unterelement (Alle)</td>
+          </tr>
+        </table>
+        <p class="notes">"Alle" entspricht ein Tag, Text oder Kommentar Element</p>
+      </section>
+
+      <section class="compact">
+        <h1>Elemente lesen</h1>
+        <table>
+          <tr>
+            <th><code>getElementById()</code></th>
+            <td>Liefert das Element mit einem bestimmten ID</td>
+          </tr>
+          <tr>
+            <th><code>getElementsByTagName()</code></th>
+            <td>Liefert alle Elemente eines Tags</td>
+          </tr>
+          <tr>
+            <th><code>getElementsByClassName()</code></th>
+            <td>Liefert alle Elemente mit einem or mehreren CSS-Klassen</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Lesen: Beispiel</h1>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a" class="primary">Test</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const btn1 = document.getElementById("a");
+            const [btn2] = document.getElementsByTagName("button");
+            const [btn3] = document.getElementsByClassName("primary");
+            // btn1 === btn2 === btn3
+            // btn1.id == "a"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Elemente selektieren</h1>
+        <table>
+          <tr>
+            <th><code>querySelector()</code></th>
+            <td>Liefert das erste Element für einen CSS-Selektor</td>
+          </tr>
+          <tr>
+            <th><code>querySelectorAll()</code></th>
+            <td>Liefert alle Elemente für einen CSS-Selektor</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Einfaches Selektieren</h1>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a" class="primary">Test</button>
+            <button id="b" class="secondary">Run</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const btn1 = document.querySelector("#a");
+            const [btn2, btn3] = document.querySelectorAll("button");
+            // btn1 === btn2
+            // btn1.id == "a"
+            // btn3.id == "b"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Komplexeres Selektieren</h1>
+        <p>Unterstützt Kombinationen von CSS-Selektoren</p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <div>
+              <button id="a" class="primary">
+                <span class="strong">Test</span>
+              </button>
+              <button id="b" class="secondary">Run</button>
+            </div>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const span = document.querySelector(
+              "div > button#a > span.strong"
+            );
+            // span.className == "strong"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <div class="fifty-fifty-grid">
+          <img src="assets/look_of_disapproval.jpg">
+          <div style="text-align: right">
+            <p class="fragment" data-fragment-index="0">Das API ist echt riesig!</p>
+            <p class="fragment" data-fragment-index="1">...also, tief durchatmen. Holt euch einen Tee 🍵. Macht's euch gemütlich. Wir steigen durch!*</p>
+            <p class="fragment notes" data-fragment-index="1">*Für die, die <a href="https://www.youtube.com/channel/UCyHDQ5C6z1NDmJ4g6SerW8g">MaiLab</a> kennen...</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h1>DOM: <code>textContent</code></h1>
+        <ul>
+          <li><code>textContent</code> entspricht dem Text-Inhalt eines Elements</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a" data-test="b" data-data="c">Test</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const element = document.getElementById("a");
+            // element.textContent == "Test"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>DOM: HTML Text</h1>
+        <ul>
+          <li><code><a href="https://developer.mozilla.org/de/docs/Web/API/Element/outerHTML">outerHTML</a></code> entspricht dem HTML-formatierten Inhalt eines Elements</li>
+          <li><code><a href="https://developer.mozilla.org/de/docs/Web/API/Element/innerHTML">innerHTML</a></code> entspricht dem HTML-formatierten Inhalt <em>aller Unterknoten</em> eines Elements</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button><span>Test</span></button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const [btn] = document.getElementsByTagName("button");
+            // btn.innerHTML == "<span>Test</span>"
+            // btn.outerHTML == "<button><span>Test</span></button>"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>DOM: Attributen</h1>
+        <table>
+          <tr>
+            <th><code>attributes</code></th>
+            <td>Liste alle Attributen</td>
+          </tr>
+          <tr>
+            <th><code>getAttribute()</code></th>
+            <td>Liefert das Attribut mit einem bestimmten Namen</td>
+          </tr>
+          <tr>
+            <th><code>hasAttribute()</code></th>
+            <td><code>true</code> wenn ein Attribut mit einem bestimmten Namen vorhanden ist</td>
+          </tr>
+          <tr>
+            <th><code>setAttribute()</code></th>
+            <td>Setzt oder ersetzt ein Attribut</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1>DOM: Hinzufügen</h1>
+        <table>
+          <tr>
+            <th><code>createTextNode()</code></th>
+            <td>Erstellt einen neuen Textknoten</td>
+          </tr>
+          <tr>
+            <th><code>createElement()</code></th>
+            <td>Erstellt ein neues Element</td>
+          </tr>
+          <tr>
+            <th><code>appendChild()</code></th>
+            <td>Fügt ein Element am Ende der Liste hinzu</td>
+          </tr>
+          <tr>
+            <th><code>cloneNode(deep)</code></th>
+            <td>Erstellt eine Kopie eines Elements</td>
+          </tr>
+          <tr>
+            <th><code>insertBefore()</code></th>
+            <td>Fügt ein Element vor einem anderen hinzu</td>
+          </tr>
+          <tr>
+            <th><code>replaceChild()</code></th>
+            <td>Ersetzt ein bestehendes Element</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1>DOM: Löschen</h1>
+        <table>
+          <tr>
+            <th><code>removeChild()</code></th>
+            <td>Entfernt ein Element aus einer Sub-Liste</td>
+          </tr>
+          <tr>
+            <th><code>removeAttribute()</code></th>
+            <td>Entfernt ein Attribut</td>
+          </tr>
+          <tr>
+            <th><code>remove()</code></th>
+            <td>Entfernt eine Element selbst</td>
+          </tr>
+        </table>
       </section>
 
       <section>
@@ -98,37 +425,14 @@
       </section>
 
       <section>
-        <h1>DOM: <code>textContent</code></h1>
-        <ul>
-          <li>Text-Inhalt eines Elements ist auf dem Element als <code>textContent</code> oder <code>outerText</code> verfügbar</li>
-        </ul>
-        <pre>
-          <code data-trim class="language-xml hljs">
-            <button id="a" data-test="b" data-data="c">Test</button>
-          </code>
-        </pre>
-        <pre>
-          <code data-trim class="language-javascript hljs">
-            const element = document.getElementById("a");
-            // element.textContent == "Test"
-          </code>
-        </pre>
-      </section>
-
-      <section>
         <div class="seventy-thirty-grid">
           <div>
             <h1>DOM</h1>
             <ul class="compact">
-              <li><code>getElementsByTagName()</code></li>
-              <li><code>getElementById()</code></li>
-              <li><code>querySelector()</code></li>
-              <li><code>querySelectorAll()</code></li>
-              <li><code>createTextNode()</code></li>
-              <li><code>createElement()</code></li>
-              <li><code>appendChild()</code></li>
-              <li><code>insertBefore()</code></li>
-              <li><code>setAttribute()</code></li>
+              <li>Lesen</li>
+              <li>Selektieren</li>
+              <li>Erstellen</li>
+              <li>Ändern</li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -147,8 +451,8 @@
           <div>
             <h1>Übungen</h1>
             <ul>
-              <li></li>
-              <li></li>
+              <li>Element selektieren und dessen Inhalt anpassen</li>
+              <li>Daten vom Server abfragen und einem Dokument hinzufügen</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
