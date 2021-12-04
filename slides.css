@@ -107,6 +107,10 @@
   color: rgb(173, 32, 32);
 }
 
+.reveal .slides section .fragment.semi-fade-out.visible {
+  opacity: 0.2;
+}
+
 .reveal .pro {
   color: rgb(48, 168, 48);
 }
