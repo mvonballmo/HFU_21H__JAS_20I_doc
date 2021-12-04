@@ -54,6 +54,136 @@
         </ol>
       </section>
 
+      <section>
+        <div class="fifty-fifty-grid">
+          <img class="fragment" data-fragment-index="2" src="assets/troll_whyyou.jpg">
+          <div>
+            <p class="fragment semi-fade-out" data-fragment-index="2">Vor dem wir mit DOM beginnen...</p>
+            <p class="fragment" data-fragment-index="1"><span class="fragment semi-fade-out" data-fragment-index="2">Können wir die <strong>Typenerkennung</strong> verbessern?</span></p>
+            <p class="fragment" data-fragment-index="2">Warum geht das nicht richtig?</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="compact">
+        <h1>JSDoc &amp; Generics</h1>
+        <p>Die JSDoc-Definition ist nicht wirklich generisch und führt zu Problemen in die Typ-Erkennung.</p>
+        <div class="fifty-fifty-grid">
+          <img src="assets/Lesson05/GetDefinition.png" class="full-width">
+          <img src="assets/Lesson05/ResultNotAnAddress.png" class="full-width">
+        </div>
+        <ul>
+          <li>Das kann man mit <em>TypeScript</em> verbessern!</li>
+          <li>Wir bleiben bei JavaScript für <em>Code</em>, ergänzen die <em>Typen</em> in JSDoc mit TypeScript</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1><code>*.d.ts</code> Definitionen</h1>
+        <ul>
+          <li>VSC und WebStorm erkennen und setzen <code>*.d.ts</code> Dateien für Modulen ein</li>
+          <li>In <code>crud.d.ts</code> schreibt man TypeScript Definitionen für die Typen in <code>crud.js</code></li>
+        </ul>
+        <p>Für weitere Infos, siehe:</p>
+        <ul class="notes">
+          <li><a href="https://typescript-eslint.io/docs/linting/linting">Linting your TypeScript Codebase</a></li>
+          <li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#import-types">TypeScript: JSDoc Reference</a></li>
+          <li><a href="https://medium.com/jspoint/typescript-type-declaration-files-4b29077c43">A quick introduction to “Type Declaration” files and adding type support to your JavaScript packages</a> (2020)</li>
+          <li><a href="https://medium.com/@antonkrinitsyn/jsdoc-generic-types-typescript-db213cf48640">JSDoc & Generic types. Typescript</a> (2019)</li>
+          <li><a href="https://stackoverflow.com/questions/57597142/how-to-run-typescript-eslint-on-ts-files-and-eslint-on-js-files-in-the-same-pr">How to run typescript-eslint on .ts files and eslint on .js files in the same project in VSCode</a> (2019)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>ESLint &amp; TypeScript</h1>
+        <ul>
+          <li>ESLint erkennt <code>*.ts</code> Dateien noch nicht richtig</li>
+          <li>Wir installieren TypeScript, um ESLint auch in die Definitionsdateien benutzen zu können</li>
+          <li>In einem Terminal <code>npm i --save-dev
+            <a href="https://www.npmjs.com/package/@tsconfig/typescript">typescript</a>
+            <a href="https://www.npmjs.com/package/@tsconfig/@typescript-eslint/parser">@typescript-eslint/parser</a>
+            <a href="https://www.npmjs.com/package/@tsconfig/@typescript-eslint/eslint-plugin">@typescript-eslint/eslint-plugin</a>
+            <a href="https://www.npmjs.com/package/@tsconfig/recommended">@tsconfig/recommended</a></code> ausführen</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1>ESLint Konfiguration</h1>
+        <ul>
+          <li><code>.eslintrc.json</code> Datei mit folgenden <em>overrides</em> ergänzen</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            {
+              "overrides": [
+                {
+                  "files": [ "**/*.ts", "**/*.tsx" ],
+                  "plugins": [ "@typescript-eslint" ],
+                  "extends": [
+                    "eslint:recommended", "prettier", "plugin:@typescript-eslint/recommended"
+                  ],
+                  "parser": "@typescript-eslint/parser",
+                  "parserOptions": {
+                    "project": [ "./tsconfig.json" ]
+                  }
+                }
+              ]
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section class="compact">
+        <h1>TypeScript Konfiguration</h1>
+        <ul>
+          <li><code>tsconfig.json</code> Datei mit folgendem Inhalt erstellen</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            {
+              "extends": "@tsconfig/recommended/tsconfig.json",
+              "compilerOptions": {
+                "sourceMap": true
+              },
+              "exclude": [
+                "node_modules"
+              ]
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section class="compact">
+        <h1>Definition einsetzen</h1>
+        <ul>
+          <li>Typ des Variables mit JSDoc beschreiben</li>
+          <li>Wird von VSC und WebStorm richtig erkannt und angewendet</li>
+        </ul>
+        <img src="assets/Lesson05/JSDocGenericTypeWorks.png" class="full-width">
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>JSDoc, ESLint &amp; TypeScript</h1>
+            <ul class="compact">
+              <li>Definitionsdatei für <code>crud.js</code> erstellen</li>
+              <li>ESLint mit TypeScript einrichten</li>
+              <li><code>main.js</code> verbessern</li>
+              <li><code>address</code> definieren und einsetzen</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
       <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
         <h1><a href="https://developer.mozilla.org/de/docs/Web/API/Document_Object_Model">DOM</a></h1>
         <p>Hier geht es um Elemente aus dem Dokument selektieren, manipulieren und darauf zu reagieren.</p>
