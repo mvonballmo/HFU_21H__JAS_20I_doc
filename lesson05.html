@@ -672,32 +672,7 @@
       </section>
 
       <section>
-        <h1 class="inserted">Funktionen und <code>this</code></h1>
-        <table>
-          <tr>
-            <th><code>function</code></th>
-            <td><code>this</code> referenziert das Ereignis&shy;element</td>
-          </tr>
-          <tr>
-            <th><code>=></code></th>
-            <td><code>this</code> referenziert das umliegende Kontext
-              <table>
-                <tr>
-                  <th>im Dokument</th>
-                  <td><code>window</code></td>
-                </tr>
-                <tr>
-                  <th>im Modul</th>
-                  <td><code>undefined</code></td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-      </section>
-
-      <section>
-        <h1>Ereignisobjekt (<code>e</code>)</h1>
+        <h1>Ereignisobjekt</h1>
         <table>
           <tr>
             <th><code>target</code></th>
@@ -723,13 +698,13 @@
       </section>
 
       <section>
-        <h1>EventHandler, direkt</h1>
+        <h1><code>onclick</code> Attribut</h1>
         <ul>
           <li>😎 Ist klar welcher Script ausgeführt wird</li>
           <li>🤨 Wird im globalen Kontext ausgeführt</li>
           <li>🤨 Mischt Darstellung mit Logik</li>
           <li>🤨 Führt zu dupliziertem Code</li>
-          <li>🤨 Kein Zugriff auf dem Ereigniselement</li>
+          <li>🤨 Obsoleter Zugriff auf dem Ereignisobjekt</li>
         </ul>
         <pre>
           <code data-trim class="language-xml hljs">
@@ -740,12 +715,12 @@
       </section>
 
       <section>
-        <h1>EventHandler, Script</h1>
+        <h1><code>onclick</code> EventHandler</h1>
         <ul>
           <li>😎 Wird im Funktionskontext ausgeführt</li>
           <li>😎 Darstellung und Logik sind separat</li>
           <li>😎 Meidet dupliziertes Code</li>
-          <li>🤨 Überschreibt andere EventHandlers</li>
+          <li>🤨 Überschreibt andere <em>EventHandlers</em></li>
         </ul>
         <pre>
           <code data-trim class="language-xml hljs">
@@ -764,12 +739,12 @@
       </section>
 
       <section>
-        <h1>EventListener</h1>
+        <h1><code>click</code> EventListener</h1>
         <ul>
           <li>😎 Wird im Funktionskontext ausgeführt</li>
           <li>😎 Darstellung und Logik sind separat</li>
           <li>😎 Meidet dupliziertes Code</li>
-          <li>😎 Lässt andere EventHandlers</li>
+          <li>😎 Lässt andere <em>EventListeners</em> stehen</li>
         </ul>
         <pre>
           <code data-trim class="language-xml hljs">
@@ -804,20 +779,28 @@
       </section>
 
       <section>
-        <h1>Event Reihenfolge</h1>
-        <ul>
-          <li>Normalerweise werden Ereignisse werden bei allen "Parent"-Elementen ausgelöst</li>
-          <li>In <code>addEventListener</code> kann man mit dem dritten Parameter <code>capture</code> auf
-            <code>true</code> sicherstellen, dass das Ereignis zuerst bei diesem Element ausgelöst wird.
-          </li>
-          <li>Mit <code>stopPropagation()</code> kann man das <em>propagieren</em> verhindern</li>
-        </ul>
-      </section>
-
-      <section>
-        <h1><a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-flow">Event Flow</a></h1>
-        <p>"Capture" zuerst und danach "Bubbling"</p>
-        <img src="assets/Lesson03/eventflow.svg" style="max-width: 400px">
+        <h1 class="insertion">Funktionen und <code>this</code></h1>
+        <table>
+          <tr>
+            <th><code>function</code></th>
+            <td><code>this</code> referenziert das Ereignis&shy;element</td>
+          </tr>
+          <tr>
+            <th><code>=></code></th>
+            <td><code>this</code> referenziert das umliegende Kontext
+              <table>
+                <tr>
+                  <th>im Dokument</th>
+                  <td><code>window</code></td>
+                </tr>
+                <tr>
+                  <th>im Modul</th>
+                  <td><code>undefined</code></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
       </section>
 
       <section>
@@ -837,12 +820,27 @@
       </section>
 
       <section>
+        <h1>Event Reihenfolge</h1>
+        <ul>
+          <li>Normalerweise werden Ereignisse werden bei allen "Parent"-Elementen ausgelöst</li>
+          <li>In <code>addEventListener</code> kann man mit dem dritten Parameter <code>capture</code> auf
+            <code>true</code> sicherstellen, dass das Ereignis zuerst bei diesem Element ausgelöst wird.
+          </li>
+          <li>Mit <code>stopPropagation()</code> kann man das <em>propagieren</em> verhindern</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-flow">Event Flow</a></h1>
+        <p>"Capture" zuerst und danach "Bubbling"</p>
+        <img src="assets/Lesson03/eventflow.svg" style="max-width: 400px">
+      </section>
+
+      <section>
         <h1>Normale Reihenfolge</h1>
         <pre>
           <code data-trim class="language-javascript hljs">
-            const log = e => console.log(
-              `${e.target.nodeName}, ${e.currentTarget.nodeName}`
-            );
+            const log = e => console.log(e.currentTarget.nodeName);
             document.addEventListener("click", log);
             form.addEventListener("click", log);
             button.addEventListener("click", log);
@@ -851,20 +849,18 @@
         <p>Bei einem Klick kommt:</p>
         <pre>
           <code data-trim class="language-text hljs">
-            BUTTON, BUTTON
-            BUTTON, FORM
-            BUTTON, #document
+            BUTTON
+            FORM
+            #document
           </code>
         </pre>
       </section>
 
       <section>
-        <h1>Umgekehrte Reihenfolge</h1>
+        <h1>Angepasste Reihenfolge</h1>
         <pre>
           <code data-trim class="language-javascript hljs">
-            const log = e => console.log(
-              `${e.target.nodeName}, ${e.currentTarget.nodeName}`
-            );
+            const log = e => console.log(e.currentTarget.nodeName);
             document.addEventListener("click", log, { capture: true });
             form.addEventListener("click", log);
             button.addEventListener("click", log);
@@ -873,9 +869,9 @@
         <p>Bei einem Klick kommt:</p>
         <pre>
           <code data-trim class="language-text hljs">
-            BUTTON, #document
-            BUTTON, BUTTON
-            BUTTON, FORM
+            #document
+            BUTTON
+            FORM
           </code>
         </pre>
       </section>
@@ -888,7 +884,7 @@
         <pre>
           <code data-trim class="language-javascript hljs">
             const log = e => {
-              console.log(`${e.target.nodeName}, ${e.currentTarget.nodeName}`);
+              console.log(e.currentTarget.nodeName);
               e.stopPropagation();
             };
             document.addEventListener("click", log, { capture: true });
@@ -899,7 +895,7 @@
         <p>Bei einem Klick kommt:</p>
         <pre>
           <code data-trim class="language-text hljs">
-            BUTTON, #document
+            #document
           </code>
         </pre>
       </section>
@@ -936,7 +932,6 @@
             <ul>
               <li>Event Handlers</li>
               <li>Event Listeners</li>
-              <li>Data Attributen</li>
               <li>Reihenfolge</li>
               <li>Propagieren verhindern</li>
               <li>Default verhindern</li>
@@ -958,7 +953,8 @@
           <div>
             <h1>Übungen</h1>
             <ul>
-              <li>Klick-Handler für einen Link schreiben</li>
+              <li>Klick-Handler für ein Button schreiben</li>
+              <li>Klick-Handler für ein Link schreiben</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
