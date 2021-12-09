@@ -1,0 +1,14 @@
+name: gh-pages publisher 🚀
+
+on:
+push:
+  branches: [ master ]
+
+jobs:
+publish-gh-pages:
+  runs-on: ubuntu-latest
+  steps:
+     - uses: actions/checkout@v2
+     - run: gh-pages -d . -r https://$GH_TOKEN@github.com/mvonballmo/HFU_21H__JAS_20I_doc.git
+     env:
+        GH_TOKEN: ${{secrets.SECRET_GITHUB_TOKEN}}
