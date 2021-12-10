@@ -282,7 +282,7 @@
           </tr>
           <tr>
             <th><code><a href="https://developer.mozilla.org/de/docs/Web/API/HTMLElement/style">style</a></code></th>
-            <td>Alle auf dem Objekt definierten Styles</td>
+            <td>Alle auf dem Objekt definierten CSS-Styles</td>
           </tr>
           <tr>
             <th><code><a href="https://developer.mozilla.org/de/docs/Web/API/Element/innerhtml">innerHTML</a></code></th>
@@ -375,6 +375,10 @@
             <td>Liefert alle Elemente für einen CSS-Selektor</td>
           </tr>
         </table>
+        <p class="notes">Siehe <a href="https://developer.mozilla.org/de/docs/Learn/Getting_started_with_the_web/CSS_basics">CSS-Grundlagen</a>
+          und <a href="https://developer.mozilla.org/de/docs/Web/CSS/CSS_Selectors">CSS Selektoren</a> (MDN)</a>
+          für eine CSS-Einführung bzw. Auffrischung.
+        </p>
       </section>
 
       <section>
@@ -464,6 +468,28 @@
             const [btn] = document.getElementsByTagName("button");
             // btn.innerHTML == "<span>Test</span>"
             // btn.outerHTML == "<button><span>Test</span></button>"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style">style</a></code></h1>
+        <ul>
+          <li>Alle auf dem Objekt definierten CSS-Styles</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const links = document.getElementsByTagName("a");
+
+            for (const link of links) {
+              const style = link.style;
+
+              style.fontSize = "12px";
+              style.textDecoration = "underline";
+              style.textOverflow = "ellipsis";
+
+              console.log(window.getComputedStyle(link));
+            }
           </code>
         </pre>
       </section>
