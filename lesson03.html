@@ -325,8 +325,8 @@
         </div>
       </section>
 
-      <section>
-        <h1>Funktionen: Advanced</h1>
+      <section class="compact">
+        <h1>Fortgeschrittene Funktionen</h1>
         <ul>
           <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/function*">Generator Funktionen</a></li>
           <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Functions#recursion">Rekursive Funktionen</a></li>
@@ -354,7 +354,7 @@
       </section>
 
       <section>
-        <h1>Generators: Iterieren</h1>
+        <h1>Generatoren: Iterieren</h1>
         <ul>
           <li>Können iteriert werden</li>
           <li>Können zu Arrays konvertiert werden</li>
@@ -376,11 +376,19 @@
       </section>
 
       <section>
-        <h1>Rekursive Funktionen</h1>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Functions#rekursion">Rekursion</a></h1>
         <ul>
-          <li>Eine <em>rekursive</em> Funktion ruft sich selbst auf.</li>
-          <li>Diese Funktionen ermöglichen das effiziente Abbilden offenen Algorithmen.</li>
+          <li>Ein <em>rekursive</em> Algorithmus besteht aus einer Funktion, die sich sich selbst aufruft (oder mehrere Funktionen, die sich gegenseitig aufrufen).</li>
+          <li>Diese Funktionen ermöglichen das effiziente Abbilden offenen Algorithmen (z.B. Fibonacci).</li>
+          <li>⚠️ Ein rekursives Programm ohne Abbruchbedingung läuft theoretisch unendlich.</li>
         </ul>
+      </section>
+
+      <section>
+        <h1>Rekursion: Fibonacci</h1>
+        <p>Die Sequenz fängt so an:</p>
+        <p><code>0, 1, 1, 2, 3, 5, 8, 13, 21, ...</code></p>
+        <p>Der Algorithmus kann rekursiv geschrieben werden:</p>
         <pre>
           <code data-trim class="language-javascript hljs">
             const getFibonacci = n => {
@@ -398,7 +406,7 @@
       <section>
         <div class="seventy-thirty-grid">
           <div>
-            <h1>Funktionen: Advanced</h1>
+            <h1>Fortgeschrittene Funktionen</h1>
             <ul>
               <li>Generators Testen</li>
               <li>Rekursive Funktionen Testen</li>
