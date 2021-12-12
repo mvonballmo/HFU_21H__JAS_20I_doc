@@ -3,6 +3,7 @@
   --r-heading2-size: 1.4em;
   --r-heading3-size: 1.2em;
   --r-heading-text-transform: inherit;
+  --standard-spacing: 10px;
 }
 
 .notes {
@@ -125,4 +126,21 @@
 
 .reveal table.labeled-images td img {
   max-width: 100%;
+}
+
+.reveal form {
+  box-sizing: border-box;
+  width: 90%;
+  margin: var(--r-block-margin) auto;
+  padding: var(--standard-spacing);
+  font-size: 0.55em;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--standard-spacing);
+}
+
+.reveal form input {
+  align-self: center;
 }
