@@ -136,23 +136,6 @@ function constTest() {
       </section>
 
       <section>
-        <h1>typeof</h1>
-        <pre>
-          <code data-trim class="language-javascript hljs">
-const age = 42;
-const text = `I am ${age}`;
-let temp;
-          </code>
-        </pre>
-
-        <ul>
-          <li><code>typeof age</code> ergibt <code>number</code></li>
-          <li><code>typeof text</code> ergibt <code>string</code></li>
-          <li><code>typeof temp</code> ergibt <code>undefined</code></li>
-        </ul>
-      </section>
-
-      <section>
         <h1>"use strict";</h1>
         <ul>
           <li>Einfach oben im Script reinschreiben</li>
@@ -420,6 +403,7 @@ const a = `Das
       <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
         <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a></h1>
         <ul>
+          <li>Typ-operatoren</li>
           <li>Rechenoperatoren</li>
           <li>Vergleichsoperatoren</li>
           <li>Boolesche Operatoren</li>
@@ -431,18 +415,84 @@ const a = `Das
       </section>
 
       <section>
+        <h1>Typ-operatoren</h1>
+        <ul>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/typeof">typeof</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/instanceof">instanceof</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/typeof">typeof</a></h1>
+        <p>Liefert den Typ einer Variable</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const age = 42;
+            const text = `I am ${age}`;
+            let temp;
+          </code>
+        </pre>
+
+        <ul>
+          <li><code>typeof age</code> ergibt <code>number</code></li>
+          <li><code>typeof text</code> ergibt <code>string</code></li>
+          <li><code>typeof temp</code> ergibt <code>undefined</code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/instanceof">instanceof</a></h1>
+        <p>Prüft, ob ein Objekt durch eine bestimmte <em>Constructor-Funktion</em> erstellt wurde.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            function person(firstName, lastName) {
+              this.firstName = firstName;
+              this.lastName = lastName;
+            }
+            const bob = new person('John', 'Doe');
+            const isPerson = bob instanceof person; // true
+            const isObject = bob instanceof Object; // true
+            const isNumber = bob instanceof Number; // false
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/instanceof">instanceof</a> (Klassen)</h1>
+        <p>Prüft, ob ein Objekt von einer bestimmten <em>Klasse</em> abgeleitet ist.</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            class person {
+              constructor(name) {
+                this.name = name;
+              }
+            }
+            class employee extends person {
+              constructor(name) { super(name); }
+            }
+
+            const bob = new employee('John', 'Doe');
+            const isPerson = bob instanceof employee; // true
+            const isPerson = bob instanceof person;   // true
+            const isObject = bob instanceof Object;   // true
+            const isNumber = bob instanceof Number;   // false
+          </code>
+        </pre>
+      </section>
+
+      <section>
         <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Rechenoperatoren</a>
         </h1>
         <ul class="compact">
-          <li>+, -, *, /, %, **</li>
-          <li>% berechnet den Restwert einer ganzzahligen Division (Modulo) 5 % 2 == 1.</li>
-          <li>5 ** 2 is 5 hoch 2 = 25</li>
-          <li>++ ist wie +1; -- ist wie -1</li>
-          <li>++zahl erhöht zahl vor der Auswertung um 1.</li>
-          <li>zahl++ erhöht zahl nach der Auswertung um 1.</li>
-          <li>Negative Zahlen werden mit - geschrieben -zahl.</li>
+          <li><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>**</code></li>
+          <li><code>%</code> berechnet den Restwert einer ganzzahligen Division (Modulo): <code>5 % 2 == 1</code>.</li>
+          <li><code>5 ** 2</code> ist 5 hoch 2 = 25</li>
+          <li><code>++</code> ist wie <code>+1</code>; <code>--</code> ist wie <code>-1</code></li>
+          <li><code>++zahl</code> erhöht zahl vor der Auswertung um 1.</li>
+          <li><code>zahl++</code> erhöht zahl nach der Auswertung um 1.</li>
+          <li>Negative Zahlen werden mit <code>-</code> geschrieben -zahl.</li>
           <li>Es gilt Punkt vor Strich und dann links vor rechts.</li>
-          <li>Um die Reihenfolge zu ändern können Klammern () gesetzt werden.</li>
+          <li>Um die Reihenfolge zu ändern können Klammern <code>()</code> gesetzt werden.</li>
         </ul>
       </section>
 
@@ -450,7 +500,7 @@ const a = `Das
         <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Vergleichsoperatoren</a>
         </h1>
         <ul>
-          <li>==, !=, >, <, <=,>=, ===, !==</li>
+          <li><code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>===</code>, <code>!==</code></li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -464,7 +514,7 @@ const a = `Das
         <h1>Boolesche <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a>
         </h1>
         <ul>
-          <li>&&, ||, !</li>
+          <li><code>&&</code>, <code>||</code>, <code>!</code></li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -481,7 +531,7 @@ const a = `Das
         <h1>Nullesche <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators">Operatoren</a>
         </h1>
         <ul>
-          <li>?., ??</li>
+          <li><code>?.</code>, <code>??</code></li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -505,10 +555,10 @@ const a = `Das
         <h1><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators"></a>Zuweisungsoperatoren</a>
         </h1>
         <ul>
-          <li>x = 1</li>
-          <li>x++, ++x</li>
-          <li>x--, --x</li>
-          <li>+=, -=, *=, /=, %=, &&=, ||=, ??=, **=</li>
+          <li><code>x = 1</code></li>
+          <li><code>x++</code>, <code>++x</code></li>
+          <li><code>x--</code>, <code>--x</code></li>
+          <li><code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>, <code>&&=</code>, <code>||=</code>, <code>??=</code>, <code>**=</code></li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
