@@ -993,6 +993,22 @@
         </div>
       </section>
 
+      <section>
+        <h1 class="insertion"><a href="https://jestjs.io/docs/snapshot-testing">Jest Snapshots</a></h1>
+        <p>Die Erwartungsfunktion <code>toMatchSnapshot()</code> speichert Text in einer Datei</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            test("initialize", async () => {
+              const l = document.getElementById("l");
+              await new application().initialize();
+              expect(listItems.innerHTML).toMatchSnapshot();
+            });
+          </code>
+        </pre>
+        <p>Bei Änderungen schlagt der Test fehl.</p>
+        <img src="assets/Lesson06/ws_jest_update_snapshot.png" class="screenshot">
+      </section>
+
     </div>
   </div>
 
