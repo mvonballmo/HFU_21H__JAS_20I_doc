@@ -2,6 +2,8 @@
 
 This project contains slides for a 9-lesson course in JavaScript, taking you from the absolute basics to building a simple CRUD application.
 
+See [the accompanying code repository](https://github.com/mvonballmo/HFU_21H__JAS_20I_app).
+
 This page is also [published online for public browsing](https://mvonballmo.github.io/HFU_21H__JAS_20I_doc/).
 
 The course is in German.
