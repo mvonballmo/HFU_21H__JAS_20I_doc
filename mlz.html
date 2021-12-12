@@ -17,53 +17,67 @@
     img {
       width: 100%
     }
+
+    .notes {
+      font-size: 65%;
+    }
+
+    .notes:before {
+      content: "👉"
+    }
+
+    a:link,
+    a:visited {
+      text-decoration: none;
+    }
   </style>
 </head>
 
 <body>
   <h1>Bewertungskriterien MLZ</h1>
+  <p class="notes">Die Angaben <a href="lesson04.html">4️⃣</a>, <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a> weisen auf die Lektionen hin, wo die benötigte Technologien werden vorgestellt.</p>
   <p>Es soll ein App geben womit man:</p>
   <ul>
-    <li>Daten von einem Server abfragen und anzeigen kann.</li>
-    <li>Die Daten können vom Benutzer geändert und gespeichert werden.</li>
-    <li>Die Daten können auch gelöscht werden.</li>
+    <li>Daten von einem Server abfragen und anzeigen kann. <a href="lesson04.html">4️⃣</a></li>
+    <li>Die Daten können vom Benutzer geändert und gespeichert werden. <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
+    <li>Die Daten können auch gelöscht werden. <a href="lesson04.html">4️⃣</a></li>
   </ul>
   <h2>Bewertung Aspekte</h2>
   <h3>Der App beinhaltet zumindest die folgende Aspekte</h3>
   <ul>
-    <li>Daten von mindestens einer Entität sollen vom Server abgeholt und in einer Liste angezeigt werden.</li>
-    <li>Details einer Entität können angezeigt werden (Liste/Detail)</li>
-    <li>Die Daten sollen aus verschiedenen Typen (z.B. Datum, Text, Zahlen, Boolean, usw.) bestehen.</li>
+    <li>Daten von mindestens einer Entität sollen vom Server abgeholt und in einer Liste angezeigt werden. <a href="lesson04.html">4️⃣</a></li>
+    <li>Details einer Entität können angezeigt werden (Liste/Detail). <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
+    <li>Die Daten sollen aus verschiedenen Typen (z.B. Datum, Text, Zahlen, Boolean, usw.) bestehen. <a href="lesson06.html">6️⃣</a></li>
     <li>Einen Datensatz kann in einem Formular editiert werden, mit Validierung von den verschiedenen Typen. Zumindest
-      ein Feld muss ein Zwangsfeld sein.</li>
+      ein Feld muss ein Zwangsfeld sein. <a href="lesson06.html">6️⃣</a></li>
     <li>Die Validierung muss mindestens so ausgeprägt sein, dass Fehler auf der Seite beim Drücken des Speichern-Buttons
       angezeigt werden. Dies darf nicht über einen <code>alert</code> geschehen, sondern die Infos müssen per JavaScript
-      dem DOM hinzugefügt werden.</li>
+      dem DOM hinzugefügt werden. <a href="lesson06.html">6️⃣</a></li>
     <li>Ist das Formular fehlerfrei und der Benutzer klickt auf den Speichern-Button soll ein JSON Objekt mit allen
-      eingegebenen Informationen anzeigt an dem lokalen Server gesendet werden.</li>
-    <li>Ein neues Objekt kann erstellt werden.</li>
+      eingegebenen Informationen anzeigt an dem lokalen Server gesendet werden. <a href="lesson04.html">4️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
+    <li>Ein neues Objekt kann erstellt werden. <a href="lesson04.html">4️⃣</a></li>
   </ul>
   <h3>Zusatzpunkte gibt's für:</h3>
   <h4>Ausgereifte Validierung</h4>
   <ul>
     <li>Die benötigten Felder müssen vorgängig validiert werden und der Button zum Abschicken des Kontaktformulars soll
-      nur aktiv sein, falls keine Fehler mehr vorhanden sind.</li>
+      nur aktiv sein, falls keine Fehler mehr vorhanden sind. <a href="lesson06.html">6️⃣</a></li>
     <li>Fehler sollen direkt dort angezeigt werden wo sie entstehen (beispielsweise mit einem roten Rahmen und einem
-      Informationstext über dem Problem).</li>
-    <li>Einschränkung der Länge von Text-Feldern validieren (z.b. eine Maximallänge)</li>
+      Informationstext über dem Problem). <a href="lesson06.html">6️⃣</a></li>
+    <li>Einschränkung der Länge von Text-Feldern validieren (z.b. eine Maximallänge) <a href="lesson06.html">6️⃣</a></li>
   </ul>
   <h4>Suchen</h4>
   <ul>
     <li>Der Benutzer kann nach Freitext in den Feldern suchen, um passenden Entitäten zu finden. Die gefundene
-      Entitäten werden in einer Liste angezeigt.</li>
-    <li>Der Benutzer kann einschränken, welche Felder durchgesucht werden.</li>
-    <li>Die gefundene Texte aus den Entitäten werden angezeigt.</li>
-    <li>Der Suchtext wird in den gefundenen Texten hervorgehoben (highlighted)</li>
+      Entitäten werden in einer Liste angezeigt. <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
+    <li>Der Benutzer kann einschränken, welche Felder durchgesucht werden. <a href="lesson06.html">6️⃣</a></li>
+    <li>Die gefundene Texte aus den Entitäten werden angezeigt. <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
+    <li>Der Suchtext wird in den gefundenen Texten hervorgehoben (highlighted) <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
   </ul>
   <h4>Benutzerkomfort</h4>
   <ul>
     <li>Gewisse Felder mit localStorage im Browser des Users speichern, so dass. Wenn der User die Seite wieder aufruft,
-      sollen die Felder mit den gespeicherten Werten ausgefüllt werden.</li>
+      sollen die Felder mit den gespeicherten Werten ausgefüllt werden. <a href="lesson06.html">6️⃣</a></li>
     <li>Der Benutzer kann Test-Daten erstellen lassen.</li>
     <li>Der Benutzer kann allen Daten löschen.</li>
   </ul>
