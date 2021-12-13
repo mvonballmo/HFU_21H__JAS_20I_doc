@@ -855,11 +855,172 @@
       </section>
 
       <section>
-        <h1>Ereignisse</h1>
+        <h1>Validierungen</h1>
         <ul>
-          <li><code><a href="https://developer.mozilla.org/de/docs/Web/API/HTMLElement/change_event">change</a></code></li>
-          <li><code><a href="https://developer.mozilla.org/de/docs/Web/API/HTMLElement/input_event">input</a></code></li>
+          <li>Wird beim "submit" automatisch ausgelöst</li>
+          <li>Kann auf einer Eingabe oder ein Formular mit <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/checkValidity">checkValidity()</a></code>
+            oder <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/reportValidity">reportValidity()</a></code>
+            ausgelöst werden</li>
+          <li>Mit <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setCustomValidity">setCustomValidity()</a></code> kann die Validierungsnachricht angepasst werden</li>
         </ul>
+      </section>
+
+      <section>
+        <h1>Validierung: Beispiel</h1>
+        <form>
+          <label>Age</label>
+          <input id="age2" type="number" value="30" min="0" max="130">
+          <span></span>
+          <button type="submit">Check</button>
+        </form>
+        <pre>
+          <code data-trim class="language-html hljs">
+            <form>
+              <label>Age</label>
+              <input id="age2" type="number" value="30" min="0" max="130">
+              <span></span>
+              <button type="submit">Check</button>
+            </form>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-css hljs">
+            input:invalid {
+              outline: 1px dotted red;
+              background-color: mistyrose;
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Ereignisse</h1>
+        <table>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/API/HTMLElement/input_event">input</a></code></th>
+            <td>Wird bei jeder Änderung des Werts ausgelöst</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/API/HTMLElement/change_event">change</a></code></th>
+            <td>Wird erst bei einer Änderung des Werts ausgelöst, wenn wenn Änderungen "abgeschlossen" sind</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/API/HTMLElement/invalid_event">invalid</a></code></th>
+            <td>Wird bei einer fehlgeschlagenen Validierung ausgelöst</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Ereignis: <code>input</code></h1>
+        <ul>
+          <li>Kann benutzt werden, um "live" Änderungen anzuzeigen</li>
+        </ul>
+        <form>
+          <label>Foreground</label>
+          <div>
+            <input id="foreground" type="color" value="#FFFF00">
+            <output id="foregroundOutput">#FFFF00</output>
+          </div>
+        </form>
+        <script>
+          const foreground = document.getElementById("foreground");
+          const foregroundOutput = document.getElementById("foregroundOutput");
+
+          foreground.addEventListener("input", e => {
+            foregroundOutput.value = e.target.value;
+          });
+        </script>
+      </section>
+
+      <section>
+        <h1>Ereignis: <code>change</code></h1>
+        <ul>
+          <li>Kann benutzt werden, um nur explizite Änderungen anzuzeigen</li>
+        </ul>
+        <form>
+          <label>Foreground</label>
+          <div>
+            <input id="foreground2" type="color" value="#FFFF00">
+            <output id="foreground2Output">#FFFF00</output>
+          </div>
+        </form>
+        <script>
+          const foreground2 = document.getElementById("foreground2");
+          const foregroundOutput2 = document.getElementById("foreground2Output");
+
+          foreground2.addEventListener("change", e => {
+            foregroundOutput2.value = e.target.value;
+          });
+        </script>
+      </section>
+
+      <section>
+        <h1>Ereignis: <code>invalid</code></h1>
+        <ul>
+          <li>Mit <code>preventDefault()</code> kann das Anzeigen von der Browser-Default Validierung unterdrückt werden</li>
+        </ul>
+        <form>
+          <label>Age</label>
+          <div>
+            <input id="age3" type="number" value="30" min="0" max="130">
+            <output id="age3Output">Valid</output>
+          </div>
+          <span></span>
+          <button type="submit">Check</button>
+        </form>
+        <script>
+          const age3 = document.getElementById("age3");
+          const age3Output = document.getElementById("age3Output");
+
+          age3.addEventListener("input", e => {
+            age3Output.value = "Valid";
+          });
+
+          age3.addEventListener("invalid", e => {
+            age3Output.value = "Invalid!";
+            e.preventDefault();
+          });
+        </script>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            age.addEventListener("invalid", e => {
+              ageOutput.value = "Invalid!";
+              e.preventDefault();
+            });
+            age.addEventListener("input", e => {
+              ageOutput.value = "Valid";
+            });
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Validierung Ausführen</h1>
+        <form>
+          <label>Age</label>
+          <input id="age4" type="number" value="30" min="0" max="130">
+          <span></span>
+          <button id="submit4" type="submit">Submit</button>
+        </form>
+        <script>
+          const age4 = document.getElementById("age4");
+          const submit4 = document.getElementById("submit4");
+
+          age4.addEventListener("input", e => {
+            submit4.disabled = !e.target.checkValidity();
+          });
+        </script>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const age4 = document.getElementById("age4");
+            const submit4 = document.getElementById("submit4");
+
+            age4.addEventListener("input", e => {
+              submit4.disabled = !e.target.checkValidity();
+            });
+          </code>
+        </pre>
       </section>
 
       <section>
