@@ -46,9 +46,9 @@
           <li class="completed">Grundlagen: Funktionen II, Klassen, Modulen; Linting</li>
           <li class="completed">Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
           <li class="selected">DOM &amp; Ereignisse</li>
-          <li>Formulare, Eingaben, Validierung &amp; Lokale Persistenz</li>
-          <li>Web Komponenten, JSX &amp; React</li>
-          <li><b>LZ1</b>; Animationen &amp; Grafik (Audio/Video)</li>
+          <li>Formulare, Eingaben &amp; Validierung</li>
+          <li>Browser-Objekte, Persistenz, Animationen, Grafik</li>
+          <li><b>LZ1</b>; Web Komponenten, JSX &amp; React</li>
           <li><b>MLZ Präsentationen</b>; TypeScript</li>
         </ol>
       </section>
@@ -347,7 +347,7 @@
       <section>
         <h1>Lesen: Beispiel</h1>
         <pre>
-          <code data-trim class="language-xml hljs">
+          <code data-trim class="language-html hljs">
             <button id="a" class="primary">Test</button>
           </code>
         </pre>
@@ -383,7 +383,7 @@
       <section>
         <h1>Einfaches Selektieren</h1>
         <pre>
-          <code data-trim class="language-xml hljs">
+          <code data-trim class="language-html hljs">
             <button id="a" class="primary">Test</button>
             <button id="b" class="secondary">Run</button>
           </code>
@@ -403,7 +403,7 @@
         <h1>Komplexeres Selektieren</h1>
         <p>Unterstützt Kombinationen von CSS-Selektoren</p>
         <pre>
-          <code data-trim class="language-xml hljs">
+          <code data-trim class="language-html hljs">
             <div>
               <button id="a" class="primary">
                 <span class="strong">Test</span>
@@ -439,7 +439,7 @@
           <li><code>textContent</code> entspricht dem Text-Inhalt eines Elements</li>
         </ul>
         <pre>
-          <code data-trim class="language-xml hljs">
+          <code data-trim class="language-html hljs">
             <button id="a" data-test="b" data-data="c">Test</button>
           </code>
         </pre>
@@ -458,7 +458,7 @@
           <li><code><a href="https://developer.mozilla.org/de/docs/Web/API/Element/innerHTML">innerHTML</a></code> entspricht dem HTML-formatierten Inhalt <em>aller Unterknoten</em> eines Elements</li>
         </ul>
         <pre>
-          <code data-trim class="language-xml hljs">
+          <code data-trim class="language-html hljs">
             <button><span>Test</span></button>
           </code>
         </pre>
@@ -571,7 +571,7 @@
           <li>Wert ist ein <code>Map</code> von allen Attribut-Werten mit <em>Suffix</em> als Schlüssel</li>
         </ul>
         <pre>
-          <code data-trim class="language-xml hljs">
+          <code data-trim class="language-html hljs">
             <button id="a" data-test="b" data-data="c">Test</button>
           </code>
         </pre>
@@ -736,7 +736,7 @@
           <li>🤨 Obsoleter Zugriff auf dem Ereignisobjekt</li>
         </ul>
         <pre>
-          <code data-trim class="language-xml hljs">
+          <code data-trim class="language-html hljs">
             <button onclick="console.log(this.id)" id="a">Log Value</button>
             <button onclick="console.log(this.id)" id="b">Log Value</button>
           </code>
@@ -752,7 +752,7 @@
           <li>🤨 Überschreibt andere <em>EventHandlers</em></li>
         </ul>
         <pre>
-          <code data-trim class="language-xml hljs">
+          <code data-trim class="language-html hljs">
             <button id="a">Log Value</button>
             <button id="b">Log Value</button>
           </code>
@@ -776,7 +776,7 @@
           <li>😎 Lässt andere <em>EventListeners</em> stehen</li>
         </ul>
         <pre>
-          <code data-trim class="language-xml hljs">
+          <code data-trim class="language-html hljs">
             <button id="a">Log Value</button>
             <button id="b">Log Value</button>
           </code>
@@ -939,7 +939,7 @@
           </li>
         </ul>
         <pre>
-          <code data-trim class="language-xml hljs">
+          <code data-trim class="language-html hljs">
             <a href="https://duckduckgo.com" id="search">DuckDuckGo</a>
           </code>
         </pre>
