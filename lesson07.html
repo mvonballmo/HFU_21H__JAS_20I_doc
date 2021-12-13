@@ -89,6 +89,184 @@
       </section>
 
       <section>
+        <h1>Browserobjekte</h1>
+        <ul>
+          <li>Diese sind Eigenschaften und Methoden, die nur im Kontext eines Browsers ausgeführt werden können</li>
+          <li>Dafür gibt es Mocks in Jest. Die können leider nicht wirklich zur Prüfung benutzt werden</li>
+          <li>Methoden des Window-Objekts können direkt, ohne nennung von <code>window</code> aufgerufen werden</li>
+        </ul>
+
+      </section>
+
+      <section>
+        alert() • prompt() • confirm()
+      </section>
+
+      <section>
+        <table>
+          <tr>
+            <th><code>outerHeight</code> &amp; <code>outerWidth</code></th>
+            <td>äussere Fenstergrösse in Pixeln</td>
+          </tr>
+          <tr>
+            <th><code>innerHeight</code> &amp; <code>innerWidth</code></th>
+            <td>innere Festergrösse in Pixeln. Dies entspricht der Grösse des Viewports</td>
+          </tr>
+          <tr>
+            <th>screenX &amp; screenY</th>
+            <td>Abstand der linken oberen Ecke vom linken resp. oberen Rand.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        open / close
+
+        können Fenster/Tabs geöffnet und geschlossen werden.
+
+        var fenster = window.open(URL, name, [strWindowFeatures]);
+        fenster.document.close();
+      </section>
+
+      <section>
+        getSelection() Markierter Text
+
+        <pre>
+          <code data-trim class="language-html hljs">
+            <button id="a">Log Value</button>
+            <button id="b">Log Value</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const selection = window.getSelection();
+            const buttons = document.getElementsByTagName("button");
+            for (const button of buttons) {
+              button.onclick = e => console.log(e.target.id);
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <p><code><a href="https://developer.mozilla.org/de/docs/Web/API/Screen">screen</a></code> liefert Informationen über den Bildschirm.</p>
+        <table>
+          <tr>
+            <th><code>height</code>, <code>width</code></th>
+            <td>Höhe, Breite</td>
+          </tr>
+          <tr>
+            <th><code>availHeight</code>, <code>availWidth</code></th>
+            <td>verfügbare Höhe, Breite (Grösse ohne feste Elemente wie Taskleisten).</td>
+          </tr>
+          <tr>
+            <th><code>colorDepth</code>, <code>pixelDepth</code></th>
+            <td>Farbtiefe, Pixeltiefe</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        Das Objekt history gibt zugriff auf die Browserhistory
+        <ul>
+          <code>length</code>: gibt die Länge der aktuellen Browserhistory an.
+          <code>forward()</code>: geht zur nächsten Seite
+          <code>back()</code>: geht zur vorherigen Seite
+          <code>go(i)</code>: Springt zum Historyeintrag mit Index i.
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1><code>location</code></h1>
+        <pre>
+          <code>https://earthli.com:80/news/?searchText=logic#chapter1</code>
+        </pre>
+        <table>
+          <tr>
+            <th><code>href</code></th>
+            <td style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">https://earthli.com/news/?searchText=logic#chapter1</td>
+          </tr>
+          <tr>
+            <th><code>protocol</code></th>
+            <td>https</td>
+          <tr>
+          <tr>
+            <th><code>host</code></th>
+            <td>earthli.com:80</td>
+          </tr>
+          <tr>
+            <th><code>hostname</code></th>
+            <td>earthli.com</td>
+          </tr>
+          <tr>
+            <th><code>pathname</code></th>
+            <td>/news</td>
+          <tr>
+          <tr>
+            <th><code>hash</code></th>
+            <td>chapter1</td>
+          </tr>
+          <tr>
+            <th><code>search</code></th>
+            <td>searchText=logic</td>
+          </tr>
+        </table>
+      </section>
+
+
+      <section>
+        cookie
+
+        Cookies sind Strings, die mit dem Browser auf dem Gerät des Users gespeichert werden.
+        • Cookies sind über document.cookie zugänglich
+        • Cookies können ein Ablaufdatum haben.
+        • User/Browser können das Ablaufdatum übersteuern
+        und Cookie vorzeitig löschen.
+        • User können das Setzen von Cookies verhindern.
+        • Die Cookies für eine Domain sind in einem String,
+        durch Semikola getrennt.
+
+        Mit <code>navigator.cookieEnabled</code>
+      </section>
+
+      <section>
+        Cookies löschen
+        Cookies werden gelöscht, in dem man ihr
+        Ablaufdatum in die Vergangenheit setzt.
+        <script>
+          var zeit = new Date(1);
+          document.cookie = "ErstesCookie=;expires=" +
+            zeit.toUTCString();
+        </script>
+
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/API/Web_Storage_API">Web Storage</a></h1>
+
+        • Mit HTML5 wurde clientseitiges Speichern, sogenanntes Web Storage, eingeführt.
+        • Heute ist Webstorage eine eigene API.
+        • Web Storage stellt zwei Objekte zur Verfügung: • window.localStorage für unbegrenzte
+        Speicherung.
+        • window.sessionStorage zum Speichern von
+        Daten für eine Session.
+
+        localStorage und sessionStorage sind, bis auf das Verfallsdatum, identisch.
+        • localStorage und sessionStorage sind nicht nur von der Domain sondern auch vom Protokoll abhängig. Daten, die in http erstellt werden stehen in https nicht zur verfügung.
+        • Die Speicherkapazität ist Browserabhängig
+        Test (min 5MB): http://dev-test.nemikor.com/web-storage/support-test/
+        • Der User kann den Web Storage jederzeit löschen.
+
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/API/Storage">Storage-Objekt</a></h1>
+
+        <code><a href="https://developer.mozilla.org/de/docs/Web/API/StorageEvent">StorageEvent</a></code>
+
+      </section>
+
+      <section>
         <div class="seventy-thirty-grid">
           <div>
             <h1>Ereignisse</h1>

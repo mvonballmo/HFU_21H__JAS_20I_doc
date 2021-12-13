@@ -137,8 +137,12 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(250px, auto) 1fr;
   gap: var(--standard-spacing);
+}
+
+.reveal form *:nth-child(odd) {
+  justify-self: end;
 }
 
 .reveal form input {
