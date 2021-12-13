@@ -45,8 +45,8 @@
           <li class="completed">Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
           <li class="completed">DOM &amp; Ereignisse</li>
           <li class="selected">Formulare, Eingaben &amp; Validierung</li>
-          <li>Web Komponenten, JSX &amp; React</li>
-          <li><b>LZ1</b>; Animationen &amp; Grafik (Audio/Video)</li>
+          <li>Browser-Objekte, Persistenz, Animationen, Grafik</li>
+          <li><b>LZ1</b>; Web Komponenten, JSX &amp; React</li>
           <li><b>MLZ Präsentationen</b>; TypeScript</li>
         </ol>
       </section>
@@ -384,7 +384,7 @@
         <h1>Eingabe: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input/checkbox">checkbox</a></h1>
         <ul>
           <li>Stellt eine Eingabe für ein Boolescher Wert dar</li>
-          <li><code>indeterminate</code> nur in JS unterstützt/li>
+          <li><code>indeterminate</code> nur in JS unterstützt</li>
         </ul>
         <p>Beispiel</p>
         <form>
@@ -438,7 +438,7 @@
         <p>Definiert eine Liste mit einer fixen Liste von Elementen</p>
         <form>
           <label for="petSelect">Pet</label>
-          <select list="pets" id="petSelect">
+          <select id="petSelect">
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
             <option value="rabbit">Rabbit</option>
@@ -450,7 +450,7 @@
           <code data-trim class="language-html hljs">
             <form>
               <label for="pet">Pet</label>
-              <select list="pets" id="pet">
+              <select id="pet">
                 <option value="dog">Dog</option>
                 <option value="cat">Cat</option>
                 <option value="rabbit">Rabbit</option>
@@ -566,13 +566,13 @@
         <p>Beispiel</p>
         <form>
           <label for="b">Mobile</label>
-          <input id="b" type="tel" pattern="\+ \(0\)[\d]{2} [\d]{3} [\d]{4}" value="+41 (0)66 212 0000">
+          <input id="b" type="tel" pattern="\+[\d]{2} \(0\)[\d]{2} [\d]{3} [\d]{4}" value="+41 (0)66 212 0000">
         </form>
         <p>Code</p>
         <pre>
           <code data-trim class="language-html hljs">
             <label for="b">Mobile</label>
-            <input id="b" type="tel" pattern="\+ \(0\)[\d]{2} [\d]{3} [\d]{4}" value="+41 (0)66 212 0000">
+            <input id="b" type="tel" pattern="\+[\d]{2} \(0\)[\d]{2} [\d]{3} [\d]{4}" value="+41 (0)66 212 0000">
           </code>
         </pre>
       </section>
@@ -672,7 +672,7 @@
         <pre>
           <code data-trim class="language-html hljs">
             <label for="c">Membership Begin</label>
-            <input id="c" type="month" value="2000-02">
+            <input id="c" type="week" value="2000-W05">
           </code>
         </pre>
       </section>
