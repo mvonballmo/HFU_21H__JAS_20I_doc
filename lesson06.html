@@ -1,0 +1,587 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Lektion 06: JavaScript: Formulare, Eingaben, Validierung &amp; Lokale Persistenz</title>
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/white.css">
+  <link rel="stylesheet" href="slides.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/github.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-background="assets/MonteRosa.jpg">
+        <h1>JavaScript</h1>
+        <h2>Lektion 6</h2>
+        <p>
+          Formulare, Eingaben, Validierung &amp; Lokale Persistenz
+        </p>
+      </section>
+
+      <section data-background="assets/looking-back-dimmed.jpg">
+        <h1>Rückblick</h1>
+        <ul>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/API/Document_Object_Model">DOM</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/Events#standard_events">Ereignisse</a></li>
+          <li>Typisierung mit TypeScript</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Übersicht Lektionen</h1>
+        <ol class="compact">
+          <li class="completed">Einführung &amp; IDE Aufsetzen</li>
+          <li class="completed">Grundlagen: Typen, Operatoren, Statements, Funktionen I</li>
+          <li class="completed">Grundlagen: Funktionen II, Klassen, Modulen; Linting</li>
+          <li class="completed">Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
+          <li class="completed">DOM &amp; Ereignisse</li>
+          <li class="selected">Formulare, Eingaben, Validierung &amp; Lokale Persistenz</li>
+          <li>Komponenten (Web Components)</li>
+          <li><b>LZ1</b>; Animationen &amp; Grafik (Audio/Video)</li>
+          <li>React (manipulation, aktualisierung)</li>
+          <li><b>MLZ Präsentationen</b>; TypeScript</li>
+        </ol>
+      </section>
+
+      <section>
+        <h1>Formulare und </h1>
+      </section>
+
+      <section>
+        forms
+        - Named items
+
+        Die Eigenschaft forms des Objekts documents ist ein Array, der sämtliche Formulare des Dokuments enthält.
+        • Die Eigenschaft elements eines Eintrag im Array forms ist ein Array, das sämtliche Felder des Formulars enthält.
+        • In selects Feldern beinhaltet das Array options die Auswahloptionen.
+      </section>
+
+      <section>
+        <h1>HTML5 Eingaben</h1>
+        <ul>
+          <li>Ein modernes Browser bietet eine sehr ausgereifte Komponentenbibliothek an</li>
+          <li>Zudem ist eine ausgereifte Validierung vorhanden</li>
+          <li>Vieles kann im HTML direkt spezifiziert werden</li>
+          <li>Das API in JavaScript deckt noch mehr ab (Ereignisse, Methoden, Eigenschaften)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Input: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input/checkbox">checkbox</a></h1>
+        <ul>
+          <li>Stellt eine Eingabe für ein Boolescher Wert dar</li>
+          <li><code>indeterminate</code> nur in JS unterstützt/li>
+        </ul>
+        <p>Beispiel</p>
+        <form>
+          <label for="biking">Radfahren</label>
+          <input id="biking" type="checkbox" name="sports" checked value="biking">
+          <label for="hiking">Wandern</label>
+          <input id="hiking" type="checkbox" name="sports" value="hiking">
+        </form>
+        <script>
+          document.getElementById("hiking").indeterminate = true;
+        </script>
+        <p>Code</p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <label for="biking">Radfahren</label>
+            <input id="biking" type="checkbox" name="sports" checked value="biking">
+            <label for="hiking">Wandern</label>
+            <input id="hiking" type="checkbox" name="sports" value="hiking">
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Input: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input/radio">radio</a></h1>
+        <ul>
+          <li>Stellt eine Eingabe für ein Auswahlliste dar</li>
+        </ul>
+        <p>Beispiel</p>
+        <form>
+          <label for="biking">Radfahren</label>
+          <input id="biking" type="radio" name="sports" value="biking">
+          <label for="hiking">Wandern</label>
+          <input id="hiking" type="radio" name="sports" checked value="hiking">
+        </form>
+        <script>
+          document.getElementById("hiking").indeterminate = true;
+        </script>
+        <p>Code</p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <label for="biking">Radfahren</label>
+            <input id="biking" type="radio" name="sports" value="biking">
+            <label for="hiking">Wandern</label>
+            <input id="hiking" type="radio" name="sports" checked value="hiking">
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Input: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input/date">date</a></h1>
+        <ul>
+          <li>Stellt eine Eingabe für ein Datum dar</li>
+          <li>Default <code>step</code> ist ein Tag</li>
+        </ul>
+        <p>Beispiel</p>
+        <form>
+          <label for="dob">Date of Birth</label>
+          <input id="dob" type="date" value="2000-02-28">
+        </form>
+        <p>Code</p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <label for="dob">Date of Birth</label>
+            <input id="dob" type="date" value="2000-02-28">
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Input: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input/date">time</a></h1>
+        <ul>
+          <li>Stellt eine Eingabe für eine Zeit dar</li>
+          <li>Default <code>step</code> ist eine Sekunde</li>
+        </ul>
+        <p>Beispiel</p>
+        <form>
+          <label for="start">Start</label>
+          <input id="start" type="time" value="17:50">
+        </form>
+        <p>Code</p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <label for="start">Start</label>
+            <input id="start" type="time" value="17:50">
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Input: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input/datetime-local">datetime-local</a></h1>
+        <ul>
+          <li>Stellt eine Eingabe für ein Datum und eine Zeit dar</li>
+          <li>Default <code>step</code> ist eine Sekunde</li>
+        </ul>
+        <p>Beispiel</p>
+        <form>
+          <label for="c">Created</label>
+          <input id="c" type="datetime-local" value="2000-02-28T17:50">
+        </form>
+        <p>Code</p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <label for="c">Created</label>
+            <input id="c" type="datetime-local" value="2000-02-28T17:50">
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Input: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input/month">month</a></h1>
+        <ul>
+          <li>Stellt eine Eingabe für einen Monat dar</li>
+          <li>Default <code>step</code> ist ein Monat</li>
+        </ul>
+        <p>Beispiel</p>
+        <form>
+          <label for="c">Membership Begin</label>
+          <input id="c" type="month" value="2000-02">
+        </form>
+        <p>Code</p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <label for="c">Membership Begin</label>
+            <input id="c" type="month" value="2000-02">
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Input: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input/week">week</a></h1>
+        <ul>
+          <li>Stellt eine Eingabe für eine Woche dar</li>
+          <li>Default <code>step</code> ist eine Woche</li>
+        </ul>
+        <p>Beispiel</p>
+        <form>
+          <label for="c">Starting Week</label>
+          <input id="c" type="week" value="2000-W05">
+        </form>
+        <p>Code</p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <label for="c">Membership Begin</label>
+            <input id="c" type="month" value="2000-02">
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Input: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input/number">number</a></h1>
+        <ul>
+          <li>Stellt eine Eingabe für eine Zahl dar</li>
+          <li>Default <code>step</code> ist <code>1</code></li>
+        </ul>
+        <p>Beispiel</p>
+        <form>
+          <label for="age">Age</label>
+          <input id="age" type="number" min="0" max="130" value="25">
+        </form>
+        <p>Code</p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <label for="age">Age</label>
+            <input id="age" type="number" min="0" max="130" value="25">
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Input: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input/color">color</a></h1>
+        <ul>
+          <li>Stellt eine Eingabe für eine Farbe dar</li>
+          <li><code>value</code> ist einen Hex-Wert (z.B. "#FF0000" ist rot)</li>
+        </ul>
+        <p>Beispiel</p>
+        <form>
+          <label for="b">Background</label>
+          <input id="b" type="color" value="#FF0000">
+        </form>
+        <p>Code</p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <label for="b">Background</label>
+            <input id="b" type="color" value="#FF0000">
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Input: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input/range">range</a></h1>
+        <ul>
+          <li>Stellt eine Eingabe für eine Spannbreite dar</li>
+          <li>Unterstützt <code>value</code>, <code>min</code>, <code>max</code> und <code>step</code></li>
+        </ul>
+        <p>Beispiel</p>
+        <form>
+          <input type="range" id="volume" id="volume" min="0" max="1" value=".45" step=".05">
+          <label id="volumeLabel" for="volume">Volume (0.45)</label>
+        </form>
+        <p>Code</p>
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <input type="range" id="volume" name="volume" min="0" max="1" value=".45" step=".05">
+            <label for="volume">Volume (0.45)</label>
+          </code>
+        </pre>
+        <script>
+          const volume = document.getElementById("volume");
+          const label = document.getElementById("volumeLabel");
+
+          volume.addEventListener("input", e => {
+            label.textContent = `Volume (${e.target.value})`;
+          });
+        </script>
+      </section>
+
+      <section>
+        <h1><code>Input</code> Typen</h1>
+        <ul>
+          Suche
+          Datei
+          Select
+          • Telefonnummern
+          • URL
+          • E-Mail-Adressen
+          • Texte
+          • Passwörter
+          output
+          fieldset
+          datalist
+          meter
+          progress
+        </ul>
+        Diese funktionieren auf alle Browsers, auf Desktop und Mobile
+      </section>
+
+      <section>
+        <h1>Allgemeine Eigenschaften</h1>
+        <table>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-required">required</a></code></th>
+            <td>Gibt an, ob die Eingabe zwingend ist</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-readonly">readonly</a></code></th>
+            <td>Gibt an, ob die Eingabe geändert werden kann</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-autocomplete">autocomplete</a></code></th>
+            <td>Gibt an, ob eine Vorschlagsliste angezeigt werden soll</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-list">list</a></code></th>
+            <td>Weist auf eine Liste von möglichen Werten zu</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-value">value</a></code></th>
+            <td>Initialer oder aktueller Wert</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-min">min</a></code></th>
+            <td>Minimaler Wert (Zahl, Datum, Monat, usw.)</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-max">max</a></code></th>
+            <td>Maximaler Wert (Zahl, Datum, Monat, usw.)</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-step">step</a></code></th>
+            <td>Gibt an, welche Abstufung für Werte benutzt werden soll (ist spezifisch pro Eingabetyp)</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-disabled">disabled</a></code></th>
+            <td>Gibt an, ob die Eingabe <em>nicht</em> manipuliert werden kann</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-name">name</a></code></th>
+            <td>Der Name der Eingabe (wird mit dem Formular am Server gesendet)</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-minlength">minlength</a></code></th>
+            <td>Minimale Länge des Werts einer Text-Eingabe</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-placeholder">placeholder</a></code></th>
+            <td>Der Text, der in einer leeren Eingabe angezeigt werden soll</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-spellcheck">spellcheck</a></code></th>
+            <td>Gibt an, ob die Rechtschreibung geprüft werden soll</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-maxlength">maxlength</a></code></th>
+            <td>Maximale Länge des Werts einer Text-Eingabe</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-pattern">pattern</a></code></th>
+            <td>Gibt an, welcher Reguläre Ausdruck den Wert entsprechen muss</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-autocomplete">autocomplete</a></code></th>
+            <td>Gibt an, welcher Art von Vervollständigung benutzt werden soll</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-autofocus">autofocus</a></code></th>
+            <td>Gibt an, ob die Eingabe beim Laden der Seite den Tastatur-fokus bekommen soll</td>
+          </tr>
+          <tr>
+            <th><code><a href="https://developer.mozilla.org/de/docs/Web/HTML/Element/input#attr-inputmode">inputmode</a></code></th>
+            <td>Ein Hinweis welche Tastatur angezeigt werden soll</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Ereignisse</h1>
+        <ul>
+          <li><code><a href="https://developer.mozilla.org/de/docs/Web/API/HTMLElement/change_event">change</a></code></li>
+          <li><code><a href="https://developer.mozilla.org/de/docs/Web/API/HTMLElement/input_event">input</a></code></li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Eingaben</h1>
+            <ul>
+              <li>Ereignisse</li>
+              <li>Event Listeners</li>
+              <li>Reihenfolge</li>
+              <li>Propagieren verhindern</li>
+              <li>Default verhindern</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Klick-Handler für ein Button schreiben</li>
+              <li>Klick-Handler für ein Link schreiben</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+
+      <section>
+        <h1>Browserobjekte</h1>
+        <ul>
+          <li>Diese sind Eigenschaften und Methoden, die nur im Kontext eines Browsers ausgeführt werden können</li>
+          <li>Dafür gibt es Mocks in Jest. Die können leider nicht wirklich zur Prüfung benutzt werden</li>
+          <li>Methoden des Window-Objekts können direkt, ohne nennung von <code>window</code> aufgerufen werden</li>
+        </ul>
+
+      </section>
+
+      <section>
+        alert() • prompt() • confirm()
+      </section>
+
+      <section>
+        <table>
+          <tr>
+            <th><code>outerHeight</code> &amp; <code>outerWidth</code></th>
+            <td>äussere Fenstergrösse in Pixeln</td>
+          </tr>
+          <tr>
+            <th><code>innerHeight</code> &amp; <code>innerWidth</code></th>
+            <td>innere Festergrösse in Pixeln. Dies entspricht der Grösse des Viewports</td>
+          </tr>
+          <tr>
+            <th>screenX &amp; screenY</th>
+            <td>Abstand der linken oberen Ecke vom linken resp. oberen Rand.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        open / close
+
+        können Fenster/Tabs geöffnet und geschlossen werden.
+
+        var fenster = window.open(URL, name, [strWindowFeatures]);
+        fenster.document.close();
+      </section>
+
+      <section>
+        getSelection() Markierter Text
+
+        <pre>
+          <code data-trim class="language-xml hljs">
+            <button id="a">Log Value</button>
+            <button id="b">Log Value</button>
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const selection = window.getSelection();
+            const buttons = document.getElementsByTagName("button");
+            for (const button of buttons) {
+              button.onclick = e => console.log(e.target.id);
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <p><code><a href="https://developer.mozilla.org/de/docs/Web/API/Screen">screen</a></code> liefert Informationen über den Bildschirm.</p>
+        <table>
+          <tr>
+            <th><code>height</code>, <code>width</code></th>
+            <td>Höhe, Breite</td>
+          </tr>
+          <tr>
+            <th><code>availHeight</code>, <code>availWidth</code></th>
+            <td>verfügbare Höhe, Breite (Grösse ohne feste Elemente wie Taskleisten).</td>
+          </tr>
+          <tr>
+            <th><code>colorDepth</code>, <code>pixelDepth</code></th>
+            <td>Farbtiefe, Pixeltiefe</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        Das Objekt history gibt zugriff auf die Browserhistory
+        <ul>
+          <code>length</code>: gibt die Länge der aktuellen Browserhistory an.
+          <code>forward()</code>: geht zur nächsten Seite
+          <code>back()</code>: geht zur vorherigen Seite
+          <code>go(i)</code>: Springt zum Historyeintrag mit Index i.
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1><code>location</code></h1>
+        <pre>
+          <code>https://earthli.com:80/news/?searchText=logic#chapter1</code>
+        </pre>
+        <table>
+          <tr>
+            <th><code>href</code></th>
+            <td style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">https://earthli.com/news/?searchText=logic#chapter1</td>
+          </tr>
+          <tr>
+            <th><code>protocol</code></th>
+            <td>https</td>
+          <tr>
+          <tr>
+            <th><code>host</code></th>
+            <td>earthli.com:80</td>
+          </tr>
+          <tr>
+            <th><code>hostname</code></th>
+            <td>earthli.com</td>
+          </tr>
+          <tr>
+            <th><code>pathname</code></th>
+            <td>/news</td>
+          <tr>
+          <tr>
+            <th><code>hash</code></th>
+            <td>chapter1</td>
+          </tr>
+          <tr>
+            <th><code>search</code></th>
+            <td>searchText=logic</td>
+          </tr>
+        </table>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
+</html>

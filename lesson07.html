@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Lektion 07: JavaScript: LZ1; Animationen &amp; Grafik (Audio/Video)</title>
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/white.css">
+  <link rel="stylesheet" href="slides.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/github.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-background="assets/MonteRosa.jpg">
+        <h1>JavaScript</h1>
+        <h2>Lektion 7</h2>
+      </section>
+
+      <section data-background="assets/looking-back-dimmed.jpg">
+        <h1>Rückblick</h1>
+        <ul>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a></li>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/API/Fetch_API"><code>fetch()</code></a>,
+            <code>async</code>/<code>await</code>
+          </li>
+          <li>Refactoring</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Übersicht Lektionen</h1>
+        <ol class="compact">
+          <li class="completed">Einführung &amp; IDE Aufsetzen</li>
+          <li class="completed">Grundlagen: Typen, Operatoren, Statements, Funktionen I</li>
+          <li class="completed">Grundlagen: Funktionen II, Klassen, Modulen; Linting</li>
+          <li class="completed">Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
+          <li class="completed">DOM &amp; Ereignisse</li>
+          <li class="completed">Formulare, Eingaben, Validierung &amp; Lokale Persistenz</li>
+          <li class="selected">Komponenten (Web Components)</li>
+          <li><b>LZ1</b>; Animationen &amp; Grafik (Audio/Video)</li>
+          <li>React (manipulation, aktualisierung)</li>
+          <li><b>MLZ Präsentationen</b>; TypeScript</li>
+        </ol>
+      </section>
+
+      <section>
+        <h1 class="insertion">Sicherheit</h1>
+        <ul>
+          <li>Sicherheit war ein Thema im vorherigen Curriculum</li>
+          <li>Das Thema ist aber sehr breit</li>
+        </ul>
+        <div class="fifty-fifty-grid">
+          <ul>
+            <li>HTTPS</li>
+            <li>TLS</li>
+            <li>Verschlüsselung</li>
+            <li>Signierung</li>
+            <li>Autorisierung vs. Authentifizierung</li>
+            <li>Biometrie</li>
+          </ul>
+          <ul>
+            <li>Hash Algorithmen</li>
+            <li>Angriffe: "Man in the Middle", XSS</li>
+            <li>CSP (Content Security Policy)</li>
+            <li>CORS (Cross-Origin Resource Sharing)</li>
+            <li>SOP (Same Origin Policy)</li>
+            <li>SQL Injection</li>
+          </ul>
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/API/Document_Object_Model">Browser API</a></h1>
+        <p>Hier geht es um Elemente aus dem Dokument selektieren, manipulieren und darauf zu reagieren.</p>
+        <ul>
+          <li>Einführung</li>
+          <li>Lesen</li>
+          <li>Modifizieren</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Ereignisse</h1>
+            <ul>
+              <li>Event Handlers</li>
+              <li>Event Listeners</li>
+              <li>Reihenfolge</li>
+              <li>Propagieren verhindern</li>
+              <li>Default verhindern</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Klick-Handler für ein Button schreiben</li>
+              <li>Klick-Handler für ein Link schreiben</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
+</html>
