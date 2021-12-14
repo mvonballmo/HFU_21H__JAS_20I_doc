@@ -992,20 +992,32 @@
         </div>
       </section>
 
-      <section>
+      <section class="compact">
         <h1 class="insertion"><a href="https://jestjs.io/docs/snapshot-testing">Jest Snapshots</a></h1>
-        <p>Die Erwartungsfunktion <code>toMatchSnapshot()</code> speichert Text in einer Datei</p>
+        <ul>
+          <li>Die Funktion <code>toMatchSnapshot()</code> speichert die Erwartung in einer Datei</li>
+          <li>Beim ersten Ausführen wird die Datei einfach geschrieben</li>
+        </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
             test("initialize", async () => {
               const l = document.getElementById("l");
               await new application().initialize();
-              expect(listItems.innerHTML).toMatchSnapshot();
+              expect(listItems.innerHTML).toMatchSnapshot(); // <-- Snapshot
             });
           </code>
         </pre>
-        <p>Bei Änderungen schlagt der Test fehl.</p>
-        <img src="assets/Lesson06/ws_jest_update_snapshot.png" class="screenshot">
+      </section>
+
+      <section>
+        <h1 class="insertion"><a href="https://jestjs.io/docs/snapshot-testing">Updating Snapshots</a></h1>
+        <ul>
+          <li>Bei Änderungen schlägt der Test fehl</li>
+          <li>Snapshots aktualisieren mit <code>jest -u</code> im Terminal</li>
+          <li>WebStorm zeigt Links im Test-Runner an<br>
+            <img src="assets/Lesson06/ws_jest_update_snapshot.png" class="screenshot">
+          </li>
+        </ul>
       </section>
 
     </div>
