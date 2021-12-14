@@ -4,14 +4,75 @@
 <head>
   <meta charset="UTF-8">
   <title>Beschreibung und Bewertungskriterien MLZ</title>
+  <script>
+    class tocBuilder {
+      applyToc() {
+        const headings = document.querySelectorAll("h2,h3,h4");
+
+        let listStarted = false;
+        let toc = "<ul>";
+        /** @type Element */
+        let current = undefined;
+        let currentLevel = 2;
+
+        const getLevel = n => n[1];
+
+        for (const heading of headings) {
+          const headingLevel = getLevel(heading.tagName);
+
+          if (current) {
+            if (currentLevel === headingLevel) {
+              if (listStarted) {
+                toc += "</ul>\n";
+                listStarted = false;
+              }
+            } else if (currentLevel < headingLevel) {
+              if (!listStarted) {
+                toc += "<ul>\n";
+              }
+            } else {
+              for (let index = 0; index < currentLevel; index++) {
+                toc += "</ul>\n";
+              }
+              currentLevel = headingLevel;
+              toc += "<ul>";
+            }
+          }
+
+          heading.id = heading.textContent.replaceAll(/[^A-Zöäü0-9]/gi, "-");
+
+          toc += `<li><a href="#${heading.id}">${heading.textContent}</a></li>\n`;
+
+          current = heading;
+          currentLevel = headingLevel;
+        }
+
+        toc += "</ul>";
+
+        const tocElement = document.querySelector("#toc");
+        if (tocElement) {
+          tocElement.innerHTML = toc;
+        }
+      }
+    }
+
+  </script>
   <link rel="stylesheet" href="slides.css">
   <style>
-    html {
-      max-width: 70ch;
-      padding: 3em 1em;
-      margin: auto;
+    body {
+      display: grid;
+      grid-template-rows: 250px minmax(100px, 1fr);
+      gap: 1rem;
       line-height: 1.75;
       font-size: 1.25em;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    }
+
+    @media (min-width: 600px) {
+      body {
+        grid-template-rows: auto;
+        grid-template-columns: 300px minmax(10px, 70ch);
+      }
     }
 
     img {
@@ -19,132 +80,151 @@
     }
 
     .notes {
-      font-size: 65%;
+      font-size: 75%;
     }
 
     .notes:before {
-      content: "👉"
+      content: "👉 "
     }
 
     a:link,
     a:visited {
       text-decoration: none;
     }
+
+    nav {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      font-size: 85%;
+    }
+
+    nav ul {
+      padding-inline-start: 1.5rem;
+    }
   </style>
 </head>
 
 <body>
-  <h1>Bewertungskriterien MLZ</h1>
-  <p class="notes">Die Angaben <a href="lesson03.html">3️⃣</a>, <a href="lesson04.html">4️⃣</a>, <a href="lesson05.html">5️⃣</a>,
-    <a href="lesson06.html">6️⃣</a>, <a href="lesson07.html">7️⃣</a> weisen auf die Lektionen hin, wo die benötigte
-    Technologien vorgestellt werden.
-  </p>
-  <p>Es soll ein App geben womit man:</p>
-  <ul>
-    <li>Daten von einem Server abfragen und anzeigen kann. <a href="lesson04.html">4️⃣</a></li>
-    <li>Die Daten können vom Benutzer geändert und gespeichert werden. <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
-    <li>Die Daten können auch gelöscht werden. <a href="lesson04.html">4️⃣</a></li>
-  </ul>
-  <h2>Bewertung Aspekte</h2>
-  <h3>Der App beinhaltet zumindest die folgende Aspekte</h3>
-  <ul>
-    <li>Daten von mindestens einer Entität sollen vom Server abgeholt und in einer Liste angezeigt werden. <a href="lesson04.html">4️⃣</a></li>
-    <li>Details einer Entität können angezeigt werden (Liste/Detail). <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
-    <li>Die Daten sollen aus verschiedenen Typen (z.B. Datum, Text, Zahlen, Boolean, usw.) bestehen. <a href="lesson06.html">6️⃣</a></li>
-    <li>Einen Datensatz kann in einem Formular editiert werden, mit Validierung von den verschiedenen Typen. Zumindest
-      ein Feld muss ein Zwangsfeld sein. <a href="lesson06.html">6️⃣</a></li>
-    <li>Die Validierung muss mindestens so ausgeprägt sein, dass Fehler auf der Seite beim Drücken des Speichern-Buttons
-      angezeigt werden. Dies darf nicht über einen <code>alert</code> geschehen, sondern die Infos müssen per JavaScript
-      dem DOM hinzugefügt werden. <a href="lesson06.html">6️⃣</a></li>
-    <li>Ist das Formular fehlerfrei und der Benutzer klickt auf den Speichern-Button soll ein JSON Objekt mit allen
-      eingegebenen Informationen anzeigt an dem lokalen Server gesendet werden. <a href="lesson04.html">4️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
-    <li>Ein neues Objekt kann erstellt werden. <a href="lesson04.html">4️⃣</a></li>
-  </ul>
-  <h3>Zusatzpunkte gibt's für:</h3>
-  <h4>Ausgereifte Validierung</h4>
-  <ul>
-    <li>Die benötigten Felder müssen vorgängig validiert werden und der Button zum Abschicken des Kontaktformulars soll
-      nur aktiv sein, falls keine Fehler mehr vorhanden sind. <a href="lesson06.html">6️⃣</a></li>
-    <li>Fehler sollen direkt dort angezeigt werden wo sie entstehen (beispielsweise mit einem roten Rahmen und einem
-      Informationstext über dem Problem). <a href="lesson06.html">6️⃣</a></li>
-    <li>Einschränkung der Länge von Text-Feldern validieren (z.b. eine Maximallänge) <a href="lesson06.html">6️⃣</a></li>
-  </ul>
-  <h4>Suchen</h4>
-  <ul>
-    <li>Der Benutzer kann nach Freitext in den Feldern suchen, um passenden Entitäten zu finden. Die gefundene
-      Entitäten werden in einer Liste angezeigt. <a href="lesson03.html">3️⃣</a>, <a href="lesson05.html">5️⃣</a></li>
-    <li>Der Benutzer kann einschränken, welche Felder durchgesucht werden. <a href="lesson03.html">3️⃣</a></li>
-    <li>Die gefundene Texte aus den Entitäten werden angezeigt. <a href="lesson03.html">3️⃣</a>, <a href="lesson05.html">5️⃣</a></li>
-    <li>Der Suchtext wird in den gefundenen Texten hervorgehoben (highlighted) <a href="lesson03.html">3️⃣</a>, <a href="lesson05.html">5️⃣</a></li>
-  </ul>
-  <h4>Benutzerkomfort</h4>
-  <ul>
-    <li>Gewisse Felder mit localStorage im Browser des Users speichern, so dass. Wenn der User die Seite wieder aufruft,
-      sollen die Felder mit den gespeicherten Werten ausgefüllt werden. <a href="lesson07.html">7️⃣</a></li>
-    <li>Der Benutzer kann Test-Daten erstellen lassen.</li>
-    <li>Der Benutzer kann allen Daten löschen.</li>
-  </ul>
-  <h4>Multi-Entität</h4>
-  <ul>
-    <li>Die App hat mehrere miteinander verbundene Objekttypen (z.B. Firmen und Personen und Herkunftsländer). In dem
-      einen Formular kann Entitäten aus einer anderen Listen selektiert werden (z.B. bei einer Person die Firma
-      selektieren).</li>
-  </ul>
-  <h4>Mandantenfähigkeit/Mehrere Benutzer</h4>
-  <ul>
-    <li>Der Benutzer kann sich anmelden und nur die eigenen Daten anzeigen lassen.</li>
-    <li>Die Anmeldung ist mit einem Passwort gesichert.</li>
-  </ul>
-  <h2>Allgemeine Bewertung</h2>
-  <h3>Die Software hat eine ersichtliche Architektur</h3>
-  <ul>
-    <li>Ordner und Dateistruktur ist vorhanden und logisch</li>
-    <li>Die erlernten Pattern wurden angewendet</li>
-  </ul>
-  <h3>Die Benutzeroberfläche erfüllt ergonomische Grundregeln</h3>
-  <ul>
-    <li>Die Navigation ist logisch und konsistent</li>
-    <li>Das Styling wurde konsequent umgesetzt</li>
-    <li>Die Bedienung der App fühlt sich natürlich an</li>
-  </ul>
-  <h3>Die Implementation ist strukturiert</h3>
-  <ul>
-    <li>Es findet sich kein auskommentierter Code</li>
-    <li>Es wurde Code wo nötig und sinnvoll ausgelagert</li>
-    <li>Services wurden sinnvoll erstellt und eingesetzt</li>
-  </ul>
-  <h3>Die Applikation ist lauffähig und hat keine grösseren "Bugs"</h3>
-  <ul>
-    <li>Die App kann nicht sofort zum Absturz gebracht werden</li>
-    <li>Zu erwartende Exceptions sind gehandelt</li>
-  </ul>
-  <h3>Notwendige Code-Stellen sind dokumentiert</h3>
-  <ul>
-    <li>Öffentliche und nicht einfach verständliche Code-Stellen sind dokumentiert</li>
-  </ul>
-  <h3>Die richtige Funktionsweise ist mit Tests verifiziert</h3>
-  <ul>
-    <li>Es gibt Unit-Tests für die zentralen Punkte der App</li>
-    <li>Es wurde manuell getestet und dokumentiert</li>
-  </ul>
-  <h3>Allgemeiner Eindruck</h3>
-  <ul>
-    <li>Fachliche Umsetzung?</li>
-    <li>Offensichtliche Fehler?</li>
-    <li>Bad Practices?</li>
-    <li>Eigene Ideen?</li>
-    <li>Einheitliche Formatierung?</li>
-    <li>Sinnvolle Variablennamen?</li>
-  </ul>
-  <h2>Präsentation</h2>
-  <ul>
-    <li>Die Präsentation hat eine Einführung.</li>
-    <li>Die Präsentation ist sachlogisch aufgebaut.</li>
-    <li>Die wesentlichen Funktionen werden vorgeführt.</li>
-    <li>Die Zeit (10 Minuten) wird eingehalten.</li>
-  </ul>
-  <h2>Mockup/Beispiel</h2>
-  <img src="assets/Lesson01/MLZ_UI_Mockup.svg">
+  <nav id="toc"></nav>
+  <main>
+    <h1>Bewertungskriterien MLZ</h1>
+    <p class="notes">Die Angaben <a href="lesson03.html">3️⃣</a>, <a href="lesson04.html">4️⃣</a>, <a href="lesson05.html">5️⃣</a>,
+      <a href="lesson06.html">6️⃣</a>, <a href="lesson07.html">7️⃣</a> weisen auf die Lektionen hin, wo die dafür benötigte
+      Technologien vorgestellt werden.
+    </p>
+    <h2 id="übersicht">Übersicht</h2>
+    <p>Es soll ein App geben womit man:</p>
+    <ul>
+      <li>Daten von einem Server abfragen und anzeigen kann. <a href="lesson04.html">4️⃣</a></li>
+      <li>Die Daten können vom Benutzer geändert und gespeichert werden. <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
+      <li>Die Daten können auch gelöscht werden. <a href="lesson04.html">4️⃣</a></li>
+    </ul>
+    <h2 id="bewertung-aspekte">Bewertung Aspekte</h2>
+    <h3 id="erfolderlich">Erforderlich</h3>
+    <p>Der App beinhaltet zumindest die folgende Aspekte</p>
+    <ul>
+      <li>Daten von mindestens einer Entität sollen vom Server abgeholt und in einer Liste angezeigt werden. <a href="lesson04.html">4️⃣</a></li>
+      <li>Details einer Entität können angezeigt werden (Liste/Detail). <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
+      <li>Die Daten sollen aus verschiedenen Typen (z.B. Datum, Text, Zahlen, Boolean, usw.) bestehen. <a href="lesson06.html">6️⃣</a></li>
+      <li>Einen Datensatz kann in einem Formular editiert werden, mit Validierung von den verschiedenen Typen. Zumindest
+        ein Feld muss ein Zwangsfeld sein. <a href="lesson06.html">6️⃣</a></li>
+      <li>Die Validierung muss mindestens so ausgeprägt sein, dass Fehler auf der Seite beim Drücken des Speichern-Buttons
+        angezeigt werden. Dies darf nicht über einen <code>alert</code> geschehen, sondern die Infos müssen per JavaScript
+        dem DOM hinzugefügt werden. <a href="lesson06.html">6️⃣</a></li>
+      <li>Ist das Formular fehlerfrei und der Benutzer klickt auf den Speichern-Button soll ein JSON Objekt mit allen
+        eingegebenen Informationen anzeigt an dem lokalen Server gesendet werden. <a href="lesson04.html">4️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
+      <li>Ein neues Objekt kann erstellt werden. <a href="lesson04.html">4️⃣</a></li>
+    </ul>
+    <h3 id="optional">Zusatzpunkte gibt's für:</h3>
+    <h4>Ausgereifte Validierung</h4>
+    <ul>
+      <li>Die benötigten Felder müssen vorgängig validiert werden und der Button zum Abschicken des Kontaktformulars soll
+        nur aktiv sein, falls keine Fehler mehr vorhanden sind. <a href="lesson06.html">6️⃣</a></li>
+      <li>Fehler sollen direkt dort angezeigt werden wo sie entstehen (beispielsweise mit einem roten Rahmen und einem
+        Informationstext über dem Problem). <a href="lesson06.html">6️⃣</a></li>
+      <li>Einschränkung der Länge von Text-Feldern validieren (z.b. eine Maximallänge) <a href="lesson06.html">6️⃣</a></li>
+    </ul>
+    <h4>Suchen</h4>
+    <ul>
+      <li>Der Benutzer kann nach Freitext in den Feldern suchen, um passenden Entitäten zu finden. Die gefundene
+        Entitäten werden in einer Liste angezeigt. <a href="lesson03.html">3️⃣</a>, <a href="lesson05.html">5️⃣</a></li>
+      <li>Der Benutzer kann einschränken, welche Felder durchgesucht werden. <a href="lesson03.html">3️⃣</a></li>
+      <li>Die gefundene Texte aus den Entitäten werden angezeigt. <a href="lesson03.html">3️⃣</a>, <a href="lesson05.html">5️⃣</a></li>
+      <li>Der Suchtext wird in den gefundenen Texten hervorgehoben (highlighted) <a href="lesson03.html">3️⃣</a>, <a href="lesson05.html">5️⃣</a></li>
+    </ul>
+    <h4>Benutzerkomfort</h4>
+    <ul>
+      <li>Gewisse Felder mit localStorage im Browser des Users speichern, so dass. Wenn der User die Seite wieder aufruft,
+        sollen die Felder mit den gespeicherten Werten ausgefüllt werden. <a href="lesson07.html">7️⃣</a></li>
+      <li>Der Benutzer kann Test-Daten erstellen lassen.</li>
+      <li>Der Benutzer kann allen Daten löschen.</li>
+    </ul>
+    <h4>Multi-Entität</h4>
+    <ul>
+      <li>Die App hat mehrere miteinander verbundene Objekttypen (z.B. Firmen und Personen und Herkunftsländer). In dem
+        einen Formular kann Entitäten aus einer anderen Listen selektiert werden (z.B. bei einer Person die Firma
+        selektieren).</li>
+    </ul>
+    <h4>Mandantenfähigkeit oder Mehrere Benutzer</h4>
+    <ul>
+      <li>Der Benutzer kann sich anmelden und nur die eigenen Daten anzeigen lassen.</li>
+      <li>Die Anmeldung ist mit einem Passwort gesichert.</li>
+    </ul>
+    <h2 id="allgemeine-bewertung">Allgemeine Bewertung</h2>
+    <h3 id="architektur">Die Software hat eine ersichtliche Architektur</h3>
+    <ul>
+      <li>Ordner und Dateistruktur ist vorhanden und logisch</li>
+      <li>Die erlernten Pattern wurden angewendet</li>
+    </ul>
+    <h3 id="benutzeroberfläche">Die Benutzeroberfläche erfüllt ergonomische Grundregeln</h3>
+    <ul>
+      <li>Die Navigation ist logisch und konsistent</li>
+      <li>Das Styling wurde konsequent umgesetzt</li>
+      <li>Die Bedienung der App fühlt sich natürlich an</li>
+    </ul>
+    <h3 id="strukturiert">Die Implementation ist strukturiert</h3>
+    <ul>
+      <li>Es findet sich kein auskommentierter Code</li>
+      <li>Es wurde Code wo nötig und sinnvoll ausgelagert</li>
+      <li>Services wurden sinnvoll erstellt und eingesetzt</li>
+    </ul>
+    <h3 id="lauffähig">Die Applikation ist lauffähig und hat keine grösseren "Bugs"</h3>
+    <ul>
+      <li>Die App kann nicht sofort zum Absturz gebracht werden</li>
+      <li>Zu erwartende Exceptions sind gehandelt</li>
+    </ul>
+    <h3 id="dokumentier">Notwendige Code-Stellen sind dokumentiert</h3>
+    <ul>
+      <li>Öffentliche und nicht einfach verständliche Code-Stellen sind dokumentiert</li>
+    </ul>
+    <h3 id="tests">Die richtige Funktionsweise ist mit Tests verifiziert</h3>
+    <ul>
+      <li>Es gibt Unit-Tests für die zentralen Punkte der App</li>
+      <li>Es wurde manuell getestet und dokumentiert</li>
+    </ul>
+    <h3 id="allgemeiner-eindruck">Allgemeiner Eindruck</h3>
+    <ul>
+      <li>Fachliche Umsetzung?</li>
+      <li>Offensichtliche Fehler?</li>
+      <li>Bad Practices?</li>
+      <li>Eigene Ideen?</li>
+      <li>Einheitliche Formatierung?</li>
+      <li>Sinnvolle Variablennamen?</li>
+    </ul>
+    <h2 id="presentation">Präsentation</h2>
+    <ul>
+      <li>Die Präsentation hat eine Einführung.</li>
+      <li>Die Präsentation ist sachlogisch aufgebaut.</li>
+      <li>Die wesentlichen Funktionen werden vorgeführt.</li>
+      <li>Die Zeit (10 Minuten) wird eingehalten.</li>
+    </ul>
+    <h2 id="mockup">Mockup/Beispiel</h2>
+    <img src="assets/Lesson01/MLZ_UI_Mockup.svg">
+    <script>
+      new tocBuilder().applyToc();
+    </script>
+  </main>
 </body>
 
 </html>
