@@ -237,6 +237,24 @@
       </section>
 
       <section>
+        <h1 class="insertion">Jest mit DOM</h1>
+        <ul>
+          <li>Jest unterstützt DOM nur in die <code>jsdom</code> Umgebung</li>
+          <li>Die Umgebung kann pro Datei eingeschaltet werden</li>
+          <li>Oben in der Datei kann die <code>@jest-environment</code> mit einem Kommentar gesetzt werden</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            /**
+             * @jest-environment jsdom
+             */
+
+             import { describe, expect, test } from "@jest/globals";
+          </code>
+        </pre>
+      </section>
+
+      <section>
         <h1>Element-Typen</h1>
         <table>
           <tr>
