@@ -1010,6 +1010,9 @@
           age4.addEventListener("input", e => {
             submit4.disabled = !e.target.checkValidity();
           });
+          submit4.addEventListener("click", e => {
+            e.preventDefault();
+          });
         </script>
         <pre>
           <code data-trim class="language-javascript hljs">
