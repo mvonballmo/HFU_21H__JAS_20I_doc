@@ -50,7 +50,7 @@
           <li class="selected">Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
           <li>DOM &amp; Ereignisse</li>
           <li>Formulare, Eingaben &amp; Validierung</li>
-          <li>Browser-Objekte, Persistenz, Animationen, Grafik</li>
+          <li>Browser-Objekte, Persistenz, Animationen, Media</li>
           <li><b>LZ1</b>; Web Komponenten, JSX &amp; React</li>
           <li><b>MLZ Präsentationen</b>; TypeScript</li>
         </ol>
@@ -165,6 +165,28 @@
             };
             const json = JSON.stringify(obj);
             // json == '{"speed":50.2}'
+          </code>
+        </pre>
+      </section>
+
+      <section class="compact">
+        <h1 class="insertion"><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Object/toString"><code>toString()</code></a></h1>
+        <ul>
+          <li><code>toString()</code> gibt ein Objekt als Text aus.</li>
+          <li>Default <code>toString()</code> gibt der Typ des Objekts aus (oft <code>[object Object]</code>).</li>
+          <li><code>toString()</code> kann in Klassen und Objekten überschrieben werden</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const obj = {
+              password: "password123",
+              speed: 50.2,
+              toString() {
+                return speed;
+              }
+            };
+            const s = obj.toString();
+            // s == "50.2"
           </code>
         </pre>
       </section>
