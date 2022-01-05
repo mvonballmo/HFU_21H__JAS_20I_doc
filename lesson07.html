@@ -516,15 +516,15 @@
         <h1>Timers</h1>
         <table>
           <tr>
-            <th><a href="https://developer.mozilla.org/en-US/docs/Web/API/setTimeout"><code>setTimeout()</code></a></th>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/setTimeout"><code>setTimeout()</code></a></th>
             <td>führt eine Funktion nach einer gewisse Zeitspanne aus</td>
           </tr>
           <tr>
-            <th><a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval"><code>setInterval()</code></a></th>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/setInterval"><code>setInterval()</code></a></th>
             <td>führt eine Funktion <em>wiederholend</em> nach einer gewisse Zeitspanne aus</td>
           </tr>
           <tr>
-            <th><a href="https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout"><code>clearTimeout()</code></a></th>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/clearTimeout"><code>clearTimeout()</code></a></th>
             <td>bricht ein Timer ab</td>
           </tr>
         </table>
@@ -938,8 +938,8 @@
         <ul>
           <li>Ist eine vollständige Objekt-Datenbank mit einem Schema, Schlüsseln, Indexes, Transaktionen, usw.</li>
           <li>Nützlich für Offline-Apps</li>
-          <li>Ist ein <em>low-level</em> API und <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology">viel komplexer</a> als die andere Lösungen</li>
-          <li>Siehe <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB">Using IndexedDB</a> für weitere Infos</li>
+          <li>Ist ein <em>low-level</em> API und <a href="https://developer.mozilla.org/docs/Web/API/IndexedDB_API/Basic_Terminology">viel komplexer</a> als die andere Lösungen</li>
+          <li>Siehe <a href="https://developer.mozilla.org/docs/Web/API/IndexedDB_API/Using_IndexedDB">Using IndexedDB</a> für weitere Infos</li>
           <li>Evtl. ein Wrapper wie <a href="https://dexie.org/">Dexie</a> wäre nützlich</li>
         </ul>
       </section>
@@ -995,75 +995,414 @@
           <li><code>requestAnimationFrame</code></li>
           <li>CSS Transitions</li>
           <li>CSS Transforms</li>
-          <li>WebAnimations API</li>
+          <li>CSS Keyframes</li>
+          <li>Web Animations API</li>
         </ul>
       </section>
 
       <section>
         <h1>Naives Animieren</h1>
+        <ul>
+          <li>Man kann das DOM direkt manipulieren</li>
+          <li>Mit <code>setInterval()</code> und <code>clearTimeout()</code> kann man iterative einen Wert anpassen</li>
+          <li>Ist weder effizient für die Entwickler/in zu schreiben noch das Browser auszuführen (skaliert nicht)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Naives Beispiel</h1>
+        <form id="naiveAnimation">
+          <label style="background-color: darkseagreen; width: 100%"></label><button>Start</button>
+        </form>
+        <script>
+          {
+            const naiveAnimation = document.getElementById("naiveAnimation");
+            const [start] = naiveAnimation.getElementsByTagName("button");
+            const [startLabel] = naiveAnimation.getElementsByTagName("label");
+
+            start.addEventListener("click", () => {
+              function changeOpacity() {
+                startLabel.style.opacity -= 0.01;
+
+                if (startLabel.style.opacity <= 0.3) {
+                  window.clearInterval(timeoutHandle);
+                }
+              }
+
+              startLabel.style.opacity = 1;
+              const timeoutHandle = window.setInterval(changeOpacity, 20);
+            });
+          }
+        </script>
         <pre>
           <code data-trim class="language-javascript hljs">
-            var transparenzVerweis, transparenzWert = 1;
-            function aendernTransparenz()
-            {
-                 if (transparenzWert <= 0.3)
-                 window.clearInterval(transparenzVerweis);
-                 else
-                 {
-                 transparenzWert -= 0.01;
-                 document.getElementById("idSofi").style.opacity =
-                     transparenzWert;
-                 document.getElementById("idSofi").style.filter =
-                     "alpha(opacity=" + (transparenzWert * 100) + ")";
-                 }
-       }
-            function animiereTransparenz()
-            {
-                 transparenzVerweis = window.setInterval(aendernTransparenz, 20);
+            const element = document.getElementById("naiveBlock");
+
+            function changeOpacity() {
+              element.style.opacity -= 0.01;
+
+              if (element.style.opacity &lt;= 0.3) {
+                window.clearInterval(timeoutHandle);
+              }
             }
+
+            element.style.opacity = 1;
+            const timeoutHandle = window.setInterval(changeOpacity, 20);
           </code>
         </pre>
       </section>
 
       <section>
         <h1><code><a href="https://developer.mozilla.org/docs/Web/API/window/requestAnimationFrame">requestAnimationFrame</a></code></h1>
+        <ul>
+          <li>Gliedert ein Animation in die Aktualisierung des Browsers ein</li>
+          <li>Ist effizienter als mit <em>intervals</em> zu arbeiten</li>
+          <li>Man muss den Zwischenwerten weiterhin selbst berechnen ("tweening")</li>
+          <li>Ist immer noch sehr aufwendig für eine Entwickler/in zu schreiben</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>RAF Beispiel</h1>
+        <form id="rafAnimation">
+          <label style="background-color: darkseagreen; width: 100%"></label><button>Start</button>
+        </form>
+        <script>
+          {
+            const rafAnimation = document.getElementById("rafAnimation");
+            const [start] = rafAnimation.getElementsByTagName("button");
+            const [startLabel] = rafAnimation.getElementsByTagName("label");
+
+            start.addEventListener("click", () => {
+              function step() {
+                startLabel.style.opacity -= 0.01;
+
+                if (startLabel.style.opacity > 0.3) {
+                  window.requestAnimationFrame(step);
+                }
+              }
+
+              startLabel.style.opacity = 1;
+              window.requestAnimationFrame(step);
+            });
+          }
+        </script>
         <pre>
           <code data-trim class="language-javascript hljs">
-            const element = document.getElementById('some-element-you-want-to-animate');
-let start, previousTimeStamp;
+            const element = document.getElementById("rafBlock");
 
-function step(timestamp) {
-  if (start === undefined)
-    start = timestamp;
-  const elapsed = timestamp - start;
+            function step() {
+              element.style.opacity -= 0.01;
 
-  if (previousTimeStamp !== timestamp) {
-    // Math.min() is used here to make sure the element stops at exactly 200px
-    const count = Math.min(0.1 * elapsed, 200);
-    element.style.transform = 'translateX(' + count + 'px)';
-  }
+              if (element.style.opacity > 0.3) {
+                window.requestAnimationFrame(step);
+              }
+            }
 
-  if (elapsed < 2000) { // Stop the animation after 2 seconds
-    previousTimeStamp = timestamp
-    window.requestAnimationFrame(step);
-  }
-}
-
-window.requestAnimationFrame(step);
+            element.style.opacity = 1;
+            window.requestAnimationFrame(step);
           </code>
         </pre>
       </section>
 
       <section>
+        <h1><a href="https://developer.mozilla.org/docs/Web/CSS/transition">CSS Transitions</a></h1>
+        <ul>
+          <li>Animationen werden in CSS geschrieben</li>
+          <li>Wird animiert beim Anpassen des Werts der Eigenschaft</li>
+          <li>Werden automatisch unterbrochen, wenn der Wert wieder geändert wird</li>
+          <li>Können <a href="https://developer.mozilla.org/docs/Web/CSS/CSS_animated_properties">mit sehr vielen Eigenschaften</a> eingesetzt werden</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1>CSS Transition Properties</h1>
+        <p>Folgende Eigenschaften können kontrolliert werden</p>
+        <table>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/transition-delay">transition-delay</a></th>
+            <td>Zeit bis eine Animation starten soll</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/transition-duration">transition-duration</a></th>
+            <td>Wie lange soll animiert werden</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/transition-property">transition-property</a></th>
+            <td>Welche CSS Eigenschaft soll animiert werden?</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/transition-timing-function">transition-timing-function</a></th>
+            <td>Wie soll animiert werden (z.B. <code>ease-in</code>)</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>CSS Transition Auslösen</h1>
+        <ul>
+          <li>Eine CSS-Transition wird bei allen Änderungen eingesetzt</li>
+          <li>Wenn in JavaScript direkt geändert (z.B. mit <code>element.style.width</code>)</li>
+          <li>Wenn ein Wert durch einer CSS Pseudo-Klasse angepasst wird (z.B. beim <code>:hover</code>)</li>
+        </ul>
+      </section>
+
+      <section>
         <h1>CSS Transitions</h1>
+        <form id="cssTransitionsAnimation">
+          <label>&nbsp;</label><button>Start</button>
+          <label>Hover me!</label><button>Reset</button>
+        </form>
+        <style>
+          #cssTransitionsAnimation label {
+            background-color: darkseagreen;
+            width: 100%;
+            transition: opacity 1s;
+          }
+
+          #cssTransitionsAnimation label:hover {
+            opacity: 0.3;
+          }
+        </style>
+        <script>
+          {
+            const form = document.getElementById("cssTransitionsAnimation");
+            const [start, reset] = form.getElementsByTagName("button");
+            const [startLabel] = form.getElementsByTagName("label");
+
+            start.addEventListener("click", () => {
+              startLabel.style.opacity = 0.3;
+            });
+            reset.addEventListener("click", () => {
+              startLabel.style.opacity = 1;
+            });
+          }
+        </script>
+        <pre>
+          <code data-trim class="language-css hljs">
+            #cssTransitionsAnimation label {
+              transition: opacity 1s;
+            }
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            start.addEventListener("click", () => {
+              startLabel.style.opacity = 0.3;
+            });
+          </code>
+        </pre>
       </section>
 
-      <section>
+      <section class="compact">
         <h1>CSS Transforms</h1>
+        <ul>
+          <li>Die <code><a href="https://developer.mozilla.org/docs/Web/CSS/transform">transform</a></code> Eigenschaft definiert wie ein Element transformiert werden soll</li>
+          <li>Dazu gibt es zahlreiche Möglichkeiten. Z.B.
+            <code><a href="https://developer.mozilla.org/docs/Web/CSS/transform-function/scale()">scale</a></code>,
+            <code><a href="https://developer.mozilla.org/docs/Web/CSS/transform-function/translate()">translate</a></code>,
+            <code><a href="https://developer.mozilla.org/docs/Web/CSS/transform-function/rotate()">rotate</a></code>,
+            <code><a href="https://developer.mozilla.org/docs/Web/CSS/transform-function/skew()">skew</a></code>, usw.
+          </li>
+          <li>Viele Funktionen haben eine 3D Variante (z.B. <code><a href="https://developer.mozilla.org/docs/Web/CSS/transform-function/scale3d()">scale3d</a></code>)</li>
+          <li>Es können mehrere Transformation gleichzeitig gesetzt werden</li>
+          <li>Diese Transformationen können alle animiert werden (siehe Links oben)</li>
+        </ul>
       </section>
 
       <section>
-        <h1>WebAnimations API</h1>
+        <h1><a href="https://developer.mozilla.org/docs/Web/CSS/@keyframes">CSS Keyframes</a></h1>
+        <ul>
+          <li>Erlaubt nicht nur Start und Ende, sondern beliebige Zwischenstufen</li>
+          <li>Erlaubt eine präzise Mischung diversen Animationen</li>
+          <li>Können ein Mal in CSS definiert und danach per Name referenziert werden</li>
+          <li>Werden mit <code><a href="https://developer.mozilla.org/docs/Web/CSS/animation-name">animation</a></code> angesprochen</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1>CSS Keyframes Properties</h1>
+        <p>Folgende Eigenschaften können kontrolliert werden</p>
+        <table>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/animation-delay">animation-delay</a></th>
+            <td>Zeit bis eine Animation starten soll</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/animation-duration">animation-duration</a></th>
+            <td>Wie lange soll animiert werden</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/animation-name">animation-name</a></th>
+            <td>Welche CSS Eigenschaft soll animiert werden?</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/animation-timing-function">animation-timing-function</a></th>
+            <td>Wie soll animiert werden (z.B. <code>ease-in</code>)</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1>CSS Keyframes Properties II</h1>
+        <p>Folgende weitere Eigenschaften können kontrolliert werden</p>
+        <table>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/animation-delay">animation-direction</a></th>
+            <td>Vorwärts, Rückwärts, Abwechselnd, usw.</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/animation-duration">animation-fill-mode</a></th>
+            <td>Wie soll eine Animation beenden?</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/animation-name">animation-iteration-count</a></th>
+            <td>Wie oft soll animiert werden?</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/CSS/animation-timing-function">animation-play-state</a></th>
+            <td>Pausiert oder laufend?</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1>CSS Keyframes Beispiel</h1>
+        <form id="cssAnimations">
+          <label>&nbsp;</label><button>Start</button>
+          <label>&nbsp;</label><button>Reset</button>
+        </form>
+        <script>
+          {
+            const form = document.getElementById("cssAnimations");
+            const [start, reset] = form.getElementsByTagName("button");
+            const [startLabel] = form.getElementsByTagName("label");
+
+            start.addEventListener("click", () => {
+              startLabel.style.animationName = "fadeOut";
+              startLabel.style.animationPlayState = "running";
+            });
+            reset.addEventListener("click", () => {
+              startLabel.style.animationName = "fadeIn";
+            });
+          }
+        </script>
+        <style>
+          #cssAnimations label {
+            background-color: darkseagreen;
+            width: 100%;
+            animation: 1s fadeOut paused forwards;
+          }
+
+          @keyframes fadeOut {
+            0% {
+              opacity: 1
+            }
+
+            100% {
+              opacity: .3
+            }
+          }
+
+          @keyframes fadeIn {
+            0% {
+              opacity: 0.3
+            }
+
+            100% {
+              opacity: 1
+            }
+          }
+        </style>
+        <pre>
+          <code data-trim class="language-css hljs">
+            #cssAnimations label {
+              animation: 1s fadeOut paused forwards;
+            }
+
+            @keyframes fadeOut {
+              0% { opacity: 1 }
+              100% { opacity: .3 }
+            }
+          </code>
+        </pre>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            start.addEventListener("click", () => {
+              startLabel.style.animationPlayState = "running";
+            });
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/docs/Web/API/Web_Animations_API">Web Animations API</a></h1>
+        <ul>
+          <li>Ein sehr umfangreiches API für alle Animationen in einem Dokument</li>
+          <li>Mit <code>document.getAnimations()</code> bekommt man alle Animationen (inkl. CSS definierte)</li>
+          <li>Mit <code>Element.animate()</code> kann eine Animation für ein bestehendes Element definiert werden</li>
+          <li>Mit <code><a href="https://developer.mozilla.org/docs/Web/API/Animation/play">play()</a></code>,
+            <code><a href="https://developer.mozilla.org/docs/Web/API/Animation/pause">pause()</a></code>,
+            <code><a href="https://developer.mozilla.org/docs/Web/API/Animation/cancel">cancel()</a></code>,
+            <code><a href="https://developer.mozilla.org/docs/Web/API/Animation/finish">finish()</a></code>,
+            <code><a href="https://developer.mozilla.org/docs/Web/API/Animation/reverse">reverse()</a></code>,
+            usw. können Animationen kontrolliert werden
+          </li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1>Web Animations Beispiel</h1>
+        <form id="webAnimationAPI">
+          <label>&nbsp;</label><button>Start</button>
+        </form>
+        <script>
+          {
+            const form = document.getElementById("webAnimationAPI");
+            const [start, reset] = form.getElementsByTagName("button");
+            const [startLabel] = form.getElementsByTagName("label");
+
+            let animation;
+            start.addEventListener("click", () => {
+              const options = {
+                duration: 1000,
+                fill: "forwards"
+              };
+              const keyFrames = [{ opacity: 1 }, { opacity: 0.3 }];
+              if (!animation) {
+                animation = startLabel.animate(keyFrames, options);
+              } else {
+                animation.reverse();
+              }
+            });
+            reset.addEventListener("click", () => {
+              animation.reverse();
+            });
+          }
+        </script>
+        <style>
+          #webAnimationAPI label {
+            background-color: darkseagreen;
+            width: 100%;
+          }
+        </style>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            let animation;
+            start.addEventListener("click", () => {
+              const options = { duration: 1000, fill: "forwards" };
+              const keyFrames = [{ opacity: 1 }, { opacity: 0.3 }];
+              if (!animation) {
+                animation = startLabel.animate(keyFrames, options);
+              } else {
+                animation.reverse();
+              }
+            });
+            reset.addEventListener("click", () => {
+              animation.reverse();
+            });
+          </code>
+        </pre>
       </section>
 
       <section>
@@ -1071,9 +1410,11 @@ window.requestAnimationFrame(step);
           <div>
             <h1>Animationen</h1>
             <ul>
+              <li><code>requestAnimationFrame</code></li>
               <li>CSS Transitions</li>
               <li>CSS Transforms</li>
-              <li>WebAnimations API</li>
+              <li>CSS Animations</li>
+              <li>Web Animations API</li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -1104,7 +1445,6 @@ window.requestAnimationFrame(step);
         <h1>Media</h1>
         <p>Hier geht es um eine Übersicht von Media Unterstützung im Browser.</p>
         <ul>
-          <li>Grafikformate</li>
           <li>SVG</li>
           <li>Canvas</li>
           <li>Video</li>
@@ -1114,15 +1454,114 @@ window.requestAnimationFrame(step);
       </section>
 
       <section>
+        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG</a></h1>
+        <ul>
+          <li>[S]calable [V]ector [G]raphics definiert Zweidimensionale Grafiken</li>
+          <li>Sind XML-Basiert und können in HTML eingebettet oder in eigenen SVG-Dateien gespeichert werden</li>
+          <li>Elemente in SVG-Grafiken sind im DOM und können gleich zugegriffen werden wie auf HTML-Elemente</li>
+          <li>Ebenso können SVG-Elemente mit JavaScript erzeugt werden</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>SVG: Beispiel</h1>
+        <svg xmlns="http://www.w3.org/2000/svg" width="400" height="150">
+          <rect x="10" y="10" width="100" height="50" fill="darkseagreen" />
+        </svg>
+        <pre>
+          <code data-trim class="language-svg hljs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="400" height="150">
+              <rect x="10" y="10" width="100" height="50" fill="darkseagreen" />
+            </svg>
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">Canvas</a></h1>
+        <ul>
+          <li><code>&lt;canvas&gt;</code> Tag erstellt eine leere Leinwand</li>
+          <li>Bietet ein sehr umfangreiches API</li>
+          <li>Das API ist ziemlich "low-level" und ermöglicht fast alles was ein auf einem modernen Betriebssystem zu Verfügung steht</li>
+          <li>Siehe <a href="https://developer.mozilla.org/docs/Web/API/Canvas_API/Tutorial">Canvas tutorial</a> für eine vertiefte Anleitung</li>
+          <li>Dazu gibt es zahlreiche <a href="https://developer.mozilla.org/docs/Web/API/Canvas_API#libraries">Libraries</a> die das Arbeiten mit einem Canvas vereinfachen</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Canvas: Beispiel</h1>
+        <canvas id="canvasExample" style="height: 200px"></canvas>
+        <script>
+          const canvas = document.getElementById("canvasExample");
+
+          const context = canvas.getContext("2d");
+
+          context.fillStyle = "darkseagreen";
+          context.fillRect(10, 10, 100, 50);
+        </script>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const canvas = document.getElementById("canvasExample");
+
+            const context = canvas.getContext("2d");
+
+            context.fillStyle = "darkseagreen";
+            context.fillRect(10, 10, 100, 50);
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/docs/Web/HTML/Element/video">Video</a></h1>
+        <div class="seventy-thirty-grid">
+          <ul>
+            <li>Unterstützt mehrere Quellen</li>
+            <li>Bietet Umfangreichen Controls an, die mit <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement">HTMLMediaElement</a> angepasst werden können</li>
+            <li>Kann mit JavaScript manipuliert und mit <a href="https://developer.mozilla.org/docs/Web/Guide/Audio_and_video_delivery/Video_player_styling_basics">CSS gestylt</a> werden</li>
+            <li>Child-Elemente werden im Fallback-Modus angezeigt</li>
+          </ul>
+          <video controls src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217">
+            Sorry, your browser doesn't support embedded videos,
+            but don't worry, you can <a href="https://archive.org/details/BigBuckBunny_124">download it</a>
+            and watch it with your favorite video player!
+          </video>
+        </div>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/docs/Web/HTML/Element/audio">Audio</a></h1>
+        <div class="seventy-thirty-grid">
+          <ul>
+            <li>Unterstützt mehrere Quellen</li>
+            <li>Bietet Umfangreichen Controls an, die mit <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement">HTMLMediaElement</a> angepasst werden können</li>
+            <li>Kann mit JavaScript manipuliert und mit <a href="https://developer.mozilla.org/docs/Web/Guide/Audio_and_video_delivery/Video_player_styling_basics">CSS gestylt</a> werden</li>
+            <li>Child-Elemente werden im Fallback-Modus angezeigt</li>
+          </ul>
+          <audio src="https://archive.org/download/testmp3testfile/mpthreetest.mp3" controls></audio>
+        </div>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL</a></h1>
+        <ul>
+          <li>Ermöglicht 3D-Rendering in einem Browser</li>
+          <li>Bietet ein sehr umfangreiches API</li>
+          <li>Das API ist ziemlich "low-level" und ermöglicht fast alles was ein auf einem modernen 3D-Rendering zu Verfügung steht</li>
+          <li>Siehe <a href="https://developer.mozilla.org/docs/Web/API/WebGL_API/Tutorial">WebGL tutorial</a> für eine vertiefte Anleitung</li>
+          <li>Dazu gibt es zahlreiche <a href="https://developer.mozilla.org/docs/Web/API/WebGL_API#libraries">Libraries</a> die das Arbeiten mit WebGL vereinfachen (z.B. <a href="https://threejs.org/">three.js</a>)</li>
+        </ul>
+      </section>
+
+      <section>
         <div class="seventy-thirty-grid">
           <div>
             <h1>Media</h1>
             <ul>
               <li>Canvas</li>
-              <li>Grafikformate</li>
               <li>SVG</li>
               <li>Video</li>
               <li>Audio</li>
+              <li>WebGL</li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -1141,7 +1580,7 @@ window.requestAnimationFrame(step);
           <div>
             <h1>Übungen</h1>
             <ul>
-              <li>SVG Grafik definieren und mit CSS animieren</li>
+              <li>SVG Grafik definieren und mit CSS oder Web Animation API animieren</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
