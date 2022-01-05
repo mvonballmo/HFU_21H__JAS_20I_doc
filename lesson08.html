@@ -53,83 +53,6 @@
         </ol>
       </section>
 
-      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
-        <h1><a href="https://developer.mozilla.org/de/docs/Web/API/Document_Object_Model">Browser API</a></h1>
-        <p>Hier geht es um Elemente aus dem Dokument selektieren, manipulieren und darauf zu reagieren.</p>
-        <ul>
-          <li>Einführung</li>
-          <li>Lesen</li>
-          <li>Modifizieren</li>
-        </ul>
-      </section>
-
-      <section>
-        <h1>Naives Animieren</h1>
-        <pre>
-          <code data-trim class="language-javascript hljs">
-            var transparenzVerweis, transparenzWert = 1;
-            function aendernTransparenz()
-            {
-                 if (transparenzWert <= 0.3)
-                 window.clearInterval(transparenzVerweis);
-                 else
-                 {
-                 transparenzWert -= 0.01;
-                 document.getElementById("idSofi").style.opacity =
-                     transparenzWert;
-                 document.getElementById("idSofi").style.filter =
-                     "alpha(opacity=" + (transparenzWert * 100) + ")";
-                 }
-       }
-            function animiereTransparenz()
-            {
-                 transparenzVerweis = window.setInterval(aendernTransparenz, 20);
-            }
-          </code>
-        </pre>
-      </section>
-
-      <section>
-        <h1><code><a href="https://developer.mozilla.org/de/docs/Web/API/window/requestAnimationFrame">requestAnimationFrame</a></code></h1>
-        <pre>
-          <code data-trim class="language-javascript hljs">
-            const element = document.getElementById('some-element-you-want-to-animate');
-let start, previousTimeStamp;
-
-function step(timestamp) {
-  if (start === undefined)
-    start = timestamp;
-  const elapsed = timestamp - start;
-
-  if (previousTimeStamp !== timestamp) {
-    // Math.min() is used here to make sure the element stops at exactly 200px
-    const count = Math.min(0.1 * elapsed, 200);
-    element.style.transform = 'translateX(' + count + 'px)';
-  }
-
-  if (elapsed < 2000) { // Stop the animation after 2 seconds
-    previousTimeStamp = timestamp
-    window.requestAnimationFrame(step);
-  }
-}
-
-window.requestAnimationFrame(step);
-          </code>
-
-      </section>
-
-      <section>
-        <h1>CSS Transitions</h1>
-      </section>
-
-      <section>
-        <h1>CSS Transforms</h1>
-      </section>
-
-      <section>
-        <h1>WebAnimations API</h1>
-      </section>
-
       <section>
         <div class="seventy-thirty-grid">
           <div>
@@ -144,6 +67,80 @@ window.requestAnimationFrame(step);
           </div>
           <img src="assets/demo.png">
         </div>
+      </section>
+
+      <section>
+        <h1>Web Components</h1>
+        <ul>
+          <li>Benutzerdefinierte, wiederverwendbare HTML Elemente</li>
+          <li>Shadow DOM ermöglicht <em>Kapselung</em></li>
+          <li>Mit HTML-Vorlagen (<code>template</code> und <code>slot</code>) können Komponenten angepasst werden</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Registrieren</h1>
+        <ul>
+          <li>Web Component muss von <em>mindestens</em> <code>HTMLElement</code> ableiten</li>
+          <li>Name des Elements <em>muss</em> mit einem Bindestrich geschrieben werden</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            class MyElement extends HTMLElement {
+            }
+
+            customElements.define("my-element", MyElement);
+          </code>
+        </pre>
+        <p class="notes">Siehe <a href="https://javascript.info/custom-elements">Javascript.Info Custom elements</a> und <a href="https://developer.mozilla.org/de/docs/Web/API/CustomElementRegistry/define">CustomElementRegistry.define()</a> für weitere Information.</p>
+      </section>
+
+      <section>
+        <h1>Initialisieren</h1>
+        <ul>
+          <li><code>connectedCallback()</code> wird beim Einfügen im Dokument ausgeführt</li>
+          <li><code>disconnectedCallback()</code> wird beim Entfernen vom Dokument ausgeführt</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            class MyElement extends HTMLElement {
+              connectedCallback() {
+                this.innerHTML = "<b>Title</b>";
+              }
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Anpassen</h1>
+        <ul>
+          <li><code>attributeChangedCallback()</code> wird beim Anderen des Werts eines Attributs ausgeführt</li>
+          <li><code>observedAttributes()</code> liefert eine Liste von zu beachtenden Attributen</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            class MyElement extends HTMLElement {
+              static get observedAttributes() {
+                return ["a"];
+              }
+
+              attributeChangedCallback(name, oldValue, newValue) {
+                // Wird nur für Attribut "a" ausgeführt
+              }
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <a href="https://github.com/mdn/web-components-examples/tree/master/expanding-list-web-component">Expanding-list Web Component</a>
+      </section>
+
+
+      <section>
+        <h1>JSX einsetzen</h1>
+
       </section>
 
       <section>

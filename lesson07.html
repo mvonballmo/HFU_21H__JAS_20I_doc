@@ -46,110 +46,351 @@
           <li class="completed">Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
           <li class="completed">DOM &amp; Ereignisse</li>
           <li class="completed">Formulare, Eingaben &amp; Validierung</li>
-          <li class="selected">Browser-Objekte, Persistenz, Animationen, Grafik</li>
+          <li class="selected">Browser-Objekte, Persistenz, Animationen, Media</li>
           <li><b>LZ1</b>; Web Komponenten, JSX &amp; React</li>
           <li><b>MLZ Präsentationen</b>; TypeScript</li>
         </ol>
       </section>
 
       <section>
-        <h1 class="insertion">Sicherheit</h1>
+        <li>Overview Prüfung (LZ1)</li>
+        <li class="insertion">Sicherheit</li>
+        <li>Browser-Objekte</li>
+        <li>Persistenz</li>
+        <li>Animationen</li>
+        <li>Grafik</li>
+      </section>
+
+      <section>
+        <h1>Prüfung (LZ1)</h1>
         <ul>
-          <li>Sicherheit ist in die Webentwicklung ein wichtiges Thema</li>
-          <li>Das Thema ist aber sehr breit</li>
+          <li>Word Formular mit Schreibbaren Feldern</li>
+          <li>Wird am Anfang der Lektion euch zugeschickt</li>
+          <li>Digital auszufüllen und zurückzusenden</li>
+          <li>Zeit: Eine Stunde</li>
+          <li>Stoff: Folien und Quelltext für <b>Lektionen 1-7</b></li>
         </ul>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
         <div class="fifty-fifty-grid">
-          <ul>
-            <li>HTTPS</li>
-            <li>TLS</li>
-            <li>Verschlüsselung</li>
-            <li>Signierung</li>
-            <li>Autorisierung vs. Authentifizierung</li>
-            <li>Biometrie</li>
-          </ul>
-          <ul>
-            <li>Hash Algorithmen</li>
-            <li>Angriffe: "Man in the Middle", XSS</li>
-            <li>CSP (Content Security Policy)</li>
-            <li>CORS (Cross-Origin Resource Sharing)</li>
-            <li>SOP (Same Origin Policy)</li>
-            <li>SQL Injection</li>
-          </ul>
+          <img src="assets/okaaaay.jpg">
+          <div>
+            <p class="fragment">Sicher?</p>
+            <p class="fragment">Keine Frage?</p>
+            <p class="fragment">Alles klar?</p>
+            <p class="fragment">OK. 💪 👍</p>
+          </div>
         </div>
       </section>
 
-      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
-        <h1><a href="https://developer.mozilla.org/de/docs/Web/API/Document_Object_Model">Browser API</a></h1>
-        <p>Hier geht es um Elemente aus dem Dokument selektieren, manipulieren und darauf zu reagieren.</p>
+      <section>
+        <h1 class="insertion">Sicherheit</h1>
         <ul>
-          <li>Einführung</li>
-          <li>Lesen</li>
-          <li>Modifizieren</li>
+          <li>Ist ein sehr <em>breites</em> Thema</li>
+          <li>Ist in die <em>Webentwicklung</em> ein wichtiges Thema</li>
+          <li>Wird von modernen Browsers sehr gut umgesetzt</li>
+          <li>Ist nicht <em>JavaScript-spezifisch</em></li>
         </ul>
       </section>
 
-      <section>
-        <h1>Browserobjekte</h1>
-        <ul>
-          <li>Diese sind Eigenschaften und Methoden, die nur im Kontext eines Browsers ausgeführt werden können</li>
-          <li>Dafür gibt es Mocks in Jest. Die können leider nicht wirklich zur Prüfung benutzt werden</li>
-          <li>Methoden des Window-Objekts können direkt, ohne nennung von <code>window</code> aufgerufen werden</li>
-        </ul>
-
-      </section>
-
-      <section>
-        alert() • prompt() • confirm()
-      </section>
-
-      <section>
+      <section class="compact">
+        <h1>Sicherheitsthemen</h1>
+        <p>Wir werden die folgende Themen <em>nicht</em> in Detail anschauen</p>
         <table>
           <tr>
-            <th><code>outerHeight</code> &amp; <code>outerWidth</code></th>
-            <td>äussere Fenstergrösse in Pixeln</td>
+            <td><a href="https://developer.mozilla.org/docs/Glossary/https">HTTPS</a></td>
+            <td>Verschlüsselte Verbindung</td>
           </tr>
           <tr>
-            <th><code>innerHeight</code> &amp; <code>innerWidth</code></th>
-            <td>innere Festergrösse in Pixeln. Dies entspricht der Grösse des Viewports</td>
+            <td><a href="https://developer.mozilla.org/docs/Web/Security/Transport_Layer_Security">TLS</a></td>
+            <td>Transport Layer Security</td>
           </tr>
           <tr>
-            <th>screenX &amp; screenY</th>
-            <td>Abstand der linken oberen Ecke vom linken resp. oberen Rand.</td>
+            <td><a href="https://developer.mozilla.org/docs/Glossary/Cryptography">Kryptographie</a></td>
+            <td>Verschlüsselung von Informationen</td>
+          </tr>
+          <tr>
+            <td><a href="https://de.wikipedia.org/wiki/Verschlüsselung">Verschlüsselung</a></td>
+            <td>Geheimhaltung von Nachrichten</td>
+          </tr>
+          <tr>
+            <td><a href="https://de.wikipedia.org/wiki/Hashfunktion">Hashing</a></td>
+            <td>Berechnung von eindeutigen Prüfwerten</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/docs/Glossary/Key">Schlüssel</a></td>
+            <td>Steuert ein Verschlüsselungs- oder Hash-Algorithmus</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1>Sicherheitsthemen</h1>
+        <p>Wir werden die folgende Themen <em>nicht</em> in Detail anschauen</p>
+        <table>
+          <tr>
+            <td><a href="https://developer.mozilla.org/docs/Glossary/Signature/Security">Signierung</a></td>
+            <td>Bestätigung der Integrität</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/docs/Web/API/Web_Authentication_API">Authentifizierung</a></td>
+            <td>Wer bist du?</td>
+          </tr>
+          <tr>
+            <td><a href="https://de.wikipedia.org/wiki/Zugriffskontrolle">Autorisierung</a></td>
+            <td>Was darfst du?</td>
+          </tr>
+          <tr>
+            <td><a href="https://de.wikipedia.org/wiki/Biometrie#Biometrische_Erkennungsverfahren">Biometrie</a></td>
+            <td>Authentifizierung durch Verhaltens- oder Körpercharakteristika</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1>Angriffe</h1>
+        <p>Wir werden die folgende Themen <em>nicht</em> in Detail anschauen</p>
+        <table>
+          <tr>
+            <td><a href="https://developer.mozilla.org/docs/Web/Security/Types_of_attacks#cross-site_scripting_xss">XSS</a></td>
+            <td>Cross-site Scripting</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/docs/Web/Security/Types_of_attacks#cross-site_request_forgery_csrf">CSRF</a></td>
+            <td>Cross-site request forgery</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/docs/Web/Security/Types_of_attacks#man-in-the-middle_mitm">MitM</a></td>
+            <td>Man in the Middle</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy">CSP</a></td>
+            <td>Content Security Policy</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/docs/Web/HTTP/CORS">CORS</a></td>
+            <td>Cross-Origin Resource Sharing</td>
+          </tr>
+          <tr>
+            <td><a href="https://developer.mozilla.org/docs/Web/Security/Same-origin_policy">SOP</a></td>
+            <td>Same Origin Policy</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.w3schools.com/sql/sql_injection.asp">SQL Injection</a></td>
+            <td></td>
           </tr>
         </table>
       </section>
 
       <section>
-        open / close
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
 
-        können Fenster/Tabs geöffnet und geschlossen werden.
-
-        var fenster = window.open(URL, name, [strWindowFeatures]);
-        fenster.document.close();
+      <section class="compact" data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1><a href="https://developer.mozilla.org/docs/Web/API/Document_Object_Model">Browser API</a></h1>
+        <p>Hier geht es um Browser-spezifische APIs</p>
+        <ul>
+          <li>Browserobjekte</li>
+          <li>Dialogfenster</li>
+          <li>Fenstereigenschaften</li>
+          <li><code>open()</code>/<code>close()</code></li>
+          <li>Markierter Text</li>
+          <li><code>screen</code></li>
+          <li><code>history</code></li>
+          <li><code>location</code></li>
+          <li><code>navigator</code></li>
+          <li>Timers</li>
+        </ul>
       </section>
 
       <section>
-        getSelection() Markierter Text
+        <h1><code>window</code></h1>
+        <ul>
+          <li>Methoden und Eigenschaften des Window-Objekts können ohne Nennung von <code>window</code> aufgerufen werden</li>
+          <li>Viele sind <em>nur</em> im Kontext vom Browser verfügbar</li>
+          <li>Dafür gibt es Mocks in Jest. Die können leider nicht wirklich zur Prüfung benutzt werden</li>
+        </ul>
 
-        <pre>
-          <code data-trim class="language-html hljs">
-            <button id="a">Log Value</button>
-            <button id="b">Log Value</button>
-          </code>
-        </pre>
+      </section>
+
+      <section>
+        <h1>Dialogfenster</h1>
+        <table>
+          <tr>
+            <th>Methode</th>
+            <th>Beschreibung</th>
+            <th>Rückgabetyp</th>
+          </tr>
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/docs/Web/API/Window/alert">alert()</a></code></td>
+            <td>Text-Nachricht mit "OK"</td>
+            <td>keiner</td>
+          </tr>
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/docs/Web/API/Window/confirm">confirm()</a></code></td>
+            <td>Text-Nachricht mit "OK/Cancel"</td>
+            <td><code>boolean</code></td>
+          </tr>
+          <tr>
+            <td><code><a href="https://developer.mozilla.org/docs/Web/API/Window/prompt">prompt()</a></code></td>
+            <td>Text-Nachricht mit Text-Eingabefeld</td>
+            <td><code>string</code></td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Dialogfenster</h1>
+        <form id="dialogTest">
+          <span>Alert</span><button>alert("This is an alert dialog box.")</button>
+          <span>Confirm</span><button>confirm("Save this document?")</button>
+          <span>Prompt</span><button>prompt("Please enter your name.")</button>
+        </form>
+        <script>
+          const [a, c, p] = document.querySelectorAll("#dialogTest button");
+          const [la, lc, lp] = document.querySelectorAll("#dialogTest span");
+          a.addEventListener("click", e => {
+            alert("This is an alert dialog box.");
+            e.preventDefault();
+          });
+          c.addEventListener("click", e => {
+            const shouldSave = confirm("Save this document?");
+            lc.textContent = shouldSave ? "Saving..." : "Not saved.";
+            e.preventDefault();
+          });
+          p.addEventListener("click", e => {
+            const name = prompt("Please enter your name.");
+            lp.textContent = name ? `Hello ${name}.` : "Fine. Don't tell me.";
+            e.preventDefault();
+          });
+        </script>
         <pre>
           <code data-trim class="language-javascript hljs">
-            const selection = window.getSelection();
-            const buttons = document.getElementsByTagName("button");
-            for (const button of buttons) {
-              button.onclick = e => console.log(e.target.id);
-            }
+            const [a, c, p] = document.querySelectorAll("#dialogTest button");
+            const [la, lc, lp] = document.querySelectorAll("#dialogTest span");
+            a.addEventListener("click", e => {
+              alert("This is an alert dialog box.");
+            });
+            c.addEventListener("click", e => {
+              const shouldSave = confirm("Save this document?");
+              lc.textContent = shouldSave ? "Saving..." : "Not saved.";
+            });
+            p.addEventListener("click", e => {
+              const name = prompt("Please enter your name.");
+              lp.textContent = name ? `Hello ${name}.` : "Fine. Don't tell me.";
+            });
+              </code>
+        </pre>
+      </section>
+
+      <section class="compact">
+        <h1>Fenstereigenschaften</h1>
+        <p></p>
+        <table>
+          <tr>
+            <th>Eigenschaft</th>
+            <th>Beschreibung</th>
+            <th>Wert</th>
+          </tr>
+          <tr>
+            <th><code>outerWidth</code> &amp; <code>outerHeight</code></th>
+            <td>Grösse des Fensters in Pixeln</td>
+            <td><output id="outerProps"></output></td>
+          </tr>
+          <tr>
+            <th><code>innerWidth</code> &amp; <code>innerHeight</code></th>
+            <td>Grösse des Viewports in Pixeln.</td>
+            <td><output id="innerProps"></output></td>
+          </tr>
+          <tr>
+            <th><code>screenLeft</code> &amp; <code>screenTop</code></th>
+            <td>Abstand der linken oberen Ecke vom linken resp. oberen Rand.</td>
+            <td><output id="screenProps"></output></td>
+          </tr>
+        </table>
+        <script>
+          const updateWindowValues = () => {
+            const outerProps = document.getElementById("outerProps");
+            outerProps.value = `${outerWidth} x ${outerHeight}`;
+
+            const innerProps = document.getElementById("innerProps");
+            innerProps.value = `${innerWidth} x ${outerHeight}`;
+
+            const screenProps = document.getElementById("screenProps");
+            screenProps.value = `${screenLeft} x ${screenTop}`;
+          }
+
+          updateWindowValues();
+
+          window.addEventListener("resize", () => {
+            updateWindowValues();
+          })
+        </script>
+      </section>
+
+      <section class="compact">
+        <h1><code>open</code> &amp; <code>close</code></h1>
+        <p>Mit <code>open</code> &amp; <code>close</code> können Fenster/Tabs geöffnet bzw. geschlossen werden.</p>
+        <form>
+          <span></span><button id="openMLZ">MLZ Öffnen</button>
+          <span></span><button id="closeMLZ">MLZ Schliessen</button>
+        </form>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const openMLZ = document.getElementById("openMLZ");
+            openMLZ.addEventListener("click", () => {
+              const mlzWindow = window.open("./mlz.html", "MLZ", );
+              const closeMLZ = document.getElementById("closeMLZ");
+
+              closeMLZ.addEventListener("click", () => mlzWindow.close());
+            });
           </code>
+        </pre>
+        <script>
+          const openMLZ = document.getElementById("openMLZ");
+          openMLZ.addEventListener("click", () => {
+            const mlzWindow = window.open("./mlz.html", "MLZ",);
+            const closeMLZ = document.getElementById("closeMLZ");
+
+            closeMLZ.addEventListener("click", () => mlzWindow.close());
+          });
+        </script>
+      </section>
+
+      <section>
+        <h1>Markierter Text</h1>
+        <form>
+          <span></span><button id="selectText">Copy selected text to output</button>
+          <label>Selected text</label><output id="selectedText"></output>
+        </form>
+        <script>
+          const selectTextButton = document.getElementById("selectText");
+          const selectedTextOutput = document.getElementById("selectedText");
+          selectTextButton.addEventListener("click", () => {
+            const selection = window.getSelection();
+            selectedTextOutput.value = selection.rangeCount === 0 ? "Nothing selected" : selection;
+          });
+        </script>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const btn = document.getElementById("selectText");
+            const out = document.getElementById("selectedText");
+            btn.addEventListener("click", () => {
+              const s = window.getSelection();
+              out.value = s.rangeCount === 0 ? "Nothing selected" : s;
+            });
+            </code>
         </pre>
       </section>
 
       <section>
-        <p><code><a href="https://developer.mozilla.org/de/docs/Web/API/Screen">screen</a></code> liefert Informationen über den Bildschirm.</p>
+        <h1><code>screen</code></h1>
+        <p><code><a href="https://developer.mozilla.org/docs/Web/API/Screen">screen</a></code> liefert Informationen über den Bildschirm.</p>
         <table>
           <tr>
             <th><code>height</code>, <code>width</code></th>
@@ -167,13 +408,32 @@
       </section>
 
       <section>
-        Das Objekt history gibt zugriff auf die Browserhistory
-        <ul>
-          <code>length</code>: gibt die Länge der aktuellen Browserhistory an.
-          <code>forward()</code>: geht zur nächsten Seite
-          <code>back()</code>: geht zur vorherigen Seite
-          <code>go(i)</code>: Springt zum Historyeintrag mit Index i.
-        </ul>
+        <h1><code>history</code></h1>
+        <p>Das Objekt history gibt zugriff auf die Browserhistory</p>
+        <table>
+          <tr>
+            <th><code>length</code></th>
+            <td>Gibt die Länge der aktuellen Browserhistory an.</td>
+            <td>
+              <script>document.write(history.length)</script>
+            </td>
+          </tr>
+          <tr>
+            <th><code>forward()</code></th>
+            <td>Geht zur nächsten Seite</td>
+            <td><button onclick="history.forward()">&gt;</button></td>
+          </tr>
+          <tr>
+            <th><code>back()</code></th>
+            <td>Geht zur vorherigen Seite</td>
+            <td><button onclick="history.back()">&lt;</button></td>
+          </tr>
+          <tr>
+            <th><code>go(i)</code></th>
+            <td>Springt zum History-eintrag mit Index <code>i</code>.</td>
+            <td><button onclick="history.go(0)">&lt;</button></td>
+          </tr>
+        </table>
       </section>
 
       <section class="compact">
@@ -184,7 +444,8 @@
         <table>
           <tr>
             <th><code>href</code></th>
-            <td style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">https://earthli.com/news/?searchText=logic#chapter1</td>
+            <td>https://earthli.com/news/?
+              searchText=logic#chapter1</td>
           </tr>
           <tr>
             <th><code>protocol</code></th>
@@ -203,79 +464,184 @@
             <td>/news</td>
           <tr>
           <tr>
-            <th><code>hash</code></th>
-            <td>chapter1</td>
-          </tr>
-          <tr>
             <th><code>search</code></th>
             <td>searchText=logic</td>
+          </tr>
+          <tr>
+            <th><code>hash</code></th>
+            <td>chapter1</td>
           </tr>
         </table>
       </section>
 
+      <section class="compact">
+        <h1><code><a href="https://developer.mozilla.org/docs/Web/API/Navigator">navigator</a></code></h1>
+        <p>Bietet Zugang zu verschieden Eigenschaften des Browsers.</p>
+        <ul>
+          <li><a href="https://developer.mozilla.org/docs/Web/API/Navigator/languages"><code>languages</code></a></li>
+          <li><a href="https://developer.mozilla.org/docs/Web/API/Navigator/mediaCapabilities"><code>mediaCapabilities</code></a></li>
+          <li><a href="https://developer.mozilla.org/docs/Web/API/Navigator/geolocation"><code>geolocation</code></a></li>
+          <li><a href="https://developer.mozilla.org/docs/Web/API/Navigator/keyboard"><code>keyboard</code></a></li>
+          <li><a href="https://developer.mozilla.org/docs/Web/API/Navigator/deviceMemory"><code>deviceMemory</code></a></li>
+          <li><a href="https://developer.mozilla.org/docs/Web/API/Navigator/getBattery"><code>getBattery()</code></a></li>
+          <li>und viel mehr</li>
+        </ul>
+      </section>
 
-      <section>
-        cookie
-
-        Cookies sind Strings, die mit dem Browser auf dem Gerät des Users gespeichert werden.
-        • Cookies sind über document.cookie zugänglich
-        • Cookies können ein Ablaufdatum haben.
-        • User/Browser können das Ablaufdatum übersteuern
-        und Cookie vorzeitig löschen.
-        • User können das Setzen von Cookies verhindern.
-        • Die Cookies für eine Domain sind in einem String,
-        durch Semikola getrennt.
-
-        Mit <code>navigator.cookieEnabled</code>
+      <section class="compact">
+        <h1><code><a href="https://developer.mozilla.org/docs/Web/API/Navigator/userAgent">User Agent</a></code></h1>
+        <table>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/Navigator/userAgent"><code>userAgent</code></a></th>
+            <td>Identifikationstext eines Browsers</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/Navigator/userAgentData"><code>userAgentData</code></a></th>
+            <td>Strukturierte Identifikation eines Browsers
+              <ul>
+                <li><code>brands[{brand, version}]</code></li>
+                <li><code>mobile</code></li>
+                <li><code>platform</code></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/Navigator/vendor"><code>vendor</code></a></th>
+            <td>Name des Herstellers (z.B. "Apple Computer, Inc.")</td>
+          </tr>
+        </table>
       </section>
 
       <section>
-        Cookies löschen
-        Cookies werden gelöscht, in dem man ihr
-        Ablaufdatum in die Vergangenheit setzt.
+        <h1>Timers</h1>
+        <table>
+          <tr>
+            <th><a href="https://developer.mozilla.org/en-US/docs/Web/API/setTimeout"><code>setTimeout()</code></a></th>
+            <td>führt eine Funktion nach einer gewisse Zeitspanne aus</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval"><code>setInterval()</code></a></th>
+            <td>führt eine Funktion <em>wiederholend</em> nach einer gewisse Zeitspanne aus</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout"><code>clearTimeout()</code></a></th>
+            <td>bricht ein Timer ab</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1><code>setTimeout()</code> Beispiel</h1>
+        <form id="timerForm">
+          <label>Idle</label><button>Start</button>
+          <label>&nbsp;</label><button>Stop</button>
+        </form>
         <script>
-          var zeit = new Date(1);
-          document.cookie = "ErstesCookie=;expires=" +
-            zeit.toUTCString();
+          const timerForm = document.getElementById("timerForm");
+          const [start, stop] = timerForm.getElementsByTagName("button");
+          const [startLabel] = timerForm.getElementsByTagName("label");
+
+          let timerHandle;
+
+          start.addEventListener("click", e => {
+            startLabel.textContent = "Timer running...";
+            timerHandle = setTimeout(() => {
+              startLabel.textContent = "Timer done.";
+            }, 1000);
+            e.preventDefault();
+          });
+
+          stop.addEventListener("click", e => {
+            startLabel.textContent = "Timer aborted.";
+            clearTimeout(timerHandle);
+            e.preventDefault();
+          });
         </script>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            let timerHandle;
 
+            start.addEventListener("click", () => {
+              startLabel.textContent = "Timer running...";
+              timerHandle = setTimeout(() => {
+                startLabel.textContent = "Timer done.";
+              }, 1000);
+            });
+
+            stop.addEventListener("click", () => {
+              startLabel.textContent = "Timer aborted.";
+              clearTimeout(timerHandle);
+            });
+          </code>
+        </pre>
       </section>
 
-      <section>
-        <h1><a href="https://developer.mozilla.org/de/docs/Web/API/Web_Storage_API">Web Storage</a></h1>
+      <section class="compact">
+        <h1><code>setInterval()</code> Beispiel</h1>
+        <form id="intervalForm">
+          <label>Idle</label><button>Start</button>
+          <label>&nbsp;</label><button>Stop</button>
+        </form>
+        <script>
+          {
+            const intervalForm = document.getElementById("intervalForm");
+            const [start, stop] = intervalForm.getElementsByTagName("button");
+            const [startLabel] = intervalForm.getElementsByTagName("label");
 
-        • Mit HTML5 wurde clientseitiges Speichern, sogenanntes Web Storage, eingeführt.
-        • Heute ist Webstorage eine eigene API.
-        • Web Storage stellt zwei Objekte zur Verfügung: • window.localStorage für unbegrenzte
-        Speicherung.
-        • window.sessionStorage zum Speichern von
-        Daten für eine Session.
+            let timerHandle;
+            let counter = 0;
 
-        localStorage und sessionStorage sind, bis auf das Verfallsdatum, identisch.
-        • localStorage und sessionStorage sind nicht nur von der Domain sondern auch vom Protokoll abhängig. Daten, die in http erstellt werden stehen in https nicht zur verfügung.
-        • Die Speicherkapazität ist Browserabhängig
-        Test (min 5MB): http://dev-test.nemikor.com/web-storage/support-test/
-        • Der User kann den Web Storage jederzeit löschen.
+            start.addEventListener("click", e => {
+              startLabel.textContent = counter;
+              timerHandle = setInterval(() => {
+                counter += 1;
+                startLabel.textContent = counter;
+              }, 100);
+              e.preventDefault();
+            });
 
-      </section>
+            stop.addEventListener("click", e => {
+              startLabel.textContent = "Timer aborted.";
+              clearTimeout(timerHandle);
+              e.preventDefault();
+            });
+          }
+        </script>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            let timerHandle;
+            let counter = 0;
 
-      <section>
-        <h1><a href="https://developer.mozilla.org/de/docs/Web/API/Storage">Storage-Objekt</a></h1>
+            start.addEventListener("click", () => {
+              startLabel.textContent = counter;
+              timerHandle = setInterval(() => {
+                counter += 1;
+                startLabel.textContent = counter;
+              }, 100);
+            });
 
-        <code><a href="https://developer.mozilla.org/de/docs/Web/API/StorageEvent">StorageEvent</a></code>
-
+            stop.addEventListener("click", () => {
+              startLabel.textContent = "Timer aborted.";
+              clearTimeout(timerHandle);
+            });
+          </code>
+        </pre>
       </section>
 
       <section>
         <div class="seventy-thirty-grid">
           <div>
-            <h1>Ereignisse</h1>
+            <h1>Browserobjekte</h1>
             <ul>
-              <li>Event Handlers</li>
-              <li>Event Listeners</li>
-              <li>Reihenfolge</li>
-              <li>Propagieren verhindern</li>
-              <li>Default verhindern</li>
+              <li>Dialogfenster</li>
+              <li>Fenstereigenschaften</li>
+              <li><code>open()</code>/<code>close()</code></li>
+              <li>Markierter Text</li>
+              <li><code>screen</code></li>
+              <li><code>history</code></li>
+              <li><code>location</code></li>
+              <li><code>navigator</code></li>
+              <li>Timers</li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -294,8 +660,488 @@
           <div>
             <h1>Übungen</h1>
             <ul>
-              <li>Klick-Handler für ein Button schreiben</li>
-              <li>Klick-Handler für ein Link schreiben</li>
+              <li>Markierter Text in einem Dialog anzeigen</li>
+              <li>Mit JavaScript und <code>history</code> navigieren</li>
+              <li>Timer mit <code>setTimeout()</code> erstellen</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1>Persistenz</h1>
+        <p>Hier geht es um Browser-spezifische APIs</p>
+        <ul>
+          <li>Cookies</li>
+          <li>Web Storage</li>
+          <li>IndexedDB</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/docs/Web/API/Document/cookie">Cookies</a></h1>
+        <ul>
+          <li>Speichert ein Text unter einem Schlüssel</li>
+          <li>Kann ein Ablaufdatum haben</li>
+          <li>Alle Cookies für eine Domain sind in einem String, durch Semikola getrennt</li>
+          <li>Werden in HTTP Headers <em>zum Server mitgeschickt</em></li>
+          <li>Können vom Server per HTTP Header <em>gesetzt werden</em></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Cookies verfügbar?</h1>
+        <ul>
+          <li>User können das Setzen von Cookies <em>verhindern</em></li>
+          <li>Mit <code><a href="https://developer.mozilla.org/docs/Web/API/Navigator/cookieEnabled">navigator.cookieEnabled</a></code> kann geprüft werden, ob Cookies erlaubt sind</li>
+          <li>Funktioniert in alle Browsers für <em>first-party</em> Cookies</li>
+          <li>Funktioniert teilweise für <em>third-party</em> Cookies (die Separat blockiert werden können, auch wenn first-party Cookies erlaubt sind)</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1><a href="https://developer.mozilla.org/docs/Web/API/Document/cookie#write_a_new_cookie">Cookie Properties</a></h1>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Beschreibung</th>
+            <th>Default</th>
+          </tr>
+          <tr>
+            <th>path</th>
+            <td>Pfad wofür die Cookie gültig ist</td>
+            <td>Pfad des Dokuments</td>
+          </tr>
+          <tr>
+            <th>domain</th>
+            <td>Domäne wofür die Cookie gültig ist</td>
+            <td>Domäne des Dokuments</td>
+          </tr>
+          <tr>
+            <th style="white-space: nowrap">max-age</th>
+            <td>Anzahl Sekunden bis die Cookie gelöscht werden soll</td>
+            <td>Keine</td>
+          </tr>
+          <tr>
+            <th>expires</th>
+            <td>Zeit nachdem die Cookie gelöscht werden soll</td>
+            <td>Keine</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1><a href="https://developer.mozilla.org/docs/Web/API/Document/cookie#write_a_new_cookie">Cookie Properties</a></h1>
+        <table>
+          <tr>
+            <th>secure</th>
+            <td>Cookie soll nur über HTTPS geschickt werden</td>
+            <td><code>false</code></td>
+          </tr>
+          <tr>
+            <th>samesite</th>
+            <td>
+              Definiert für welche Navigationen die Cookie mitgeschickt werden soll
+              <table>
+                <tr>
+                  <th>lax</th>
+                  <td><em>same-site</em> und "top-level" <em>cross-site</em> (verhindert <em>CSRF</em>)</td>
+                </tr>
+                <tr>
+                  <th>strict</th>
+                  <td>Nur <em>same-site</em></td>
+                </tr>
+                <tr>
+                  <th>none</th>
+                  <td><em>same-site</em> und alle <em>cross-site</em></td>
+                </tr>
+              </table>
+            </td>
+            <td><code>lax</code></td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1>Cookie API</h1>
+        <ul>
+          <li>Über <code>document.cookie</code> zugänglich</li>
+          <li>Als <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty#description">"data accessors"</a> definiert: was geschrieben wird ist <em>nicht</em> das was gelesen wird</li>
+          <li><code>encodeURIComponent()</code> kann für die Normalisierung von Daten eingesetzt werden</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            document.cookie = "lastUsername=John; secure; max-age=86400";
+            document.cookie = "expertMode=true; secure; max-age=86400";
+
+            const cookie = document.cookie;
+            // cookie = "lastUsername=John; expertMode=true"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Cookies lesen</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            document.cookie = "lastUsername=John";
+            document.cookie = "expertMode=true";
+
+            const cookie = document.cookie.split(";").map(s => {
+              const [key, value] = s.trim().split("=");
+              return {key, value};
+            });
+
+            /* cookie =
+               [
+                 { key: "lastUsername", value: "John" },
+                 { key: "expertMode", value: "true" }
+               ]
+            */
+          </code>
+        </pre>
+        <p class="notes">Siehe auch NPM Modul <a href="https://www.npmjs.com/package/js-cookie">js-cookie</a> für eine ausgereifte API.</p>
+      </section>
+
+      <section>
+        <h1>Cookies löschen</h1>
+        <ul>
+          <li>User/Browser können das Ablaufdatum übersteuern und Cookie <em>vorzeitig löschen</em></li>
+          <li>Ablaufdatum in die Vergangenheit setzten</li>
+          <li>Wert auf <code>null</code> oder <code>undefined</code> setzen</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            var past = new Date(1);
+            document.cookie = `key=;expires=${past.toUTCString()}`;
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/docs/Web/API/Web_Storage_API">Web Storage</a></h1>
+        <ul>
+          <li>Mit HTML5 wurde das <a href="https://developer.mozilla.org/docs/Web/API/Storage">Storage-Objekt</a> eingeführt.</li>
+          <li>Von Domäne <em>und</em> Protokoll abhängig (<code>http</code> und <code>https</code> sind Separat).</li>
+          <li>Der User kann den Web Storage jederzeit löschen.</li>
+          <li><em>Nicht</em> auf dem Server verfügbar (benötigt weder Ablaufdatum noch "samesite" noch "secure")</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><code>local</code> vs. <code>session</code></h1>
+        <p>Web Storage stellt zwei Objekte zur Verfügung</p>
+        <ul>
+          <li><code>window.localStorage</code> für unbegrenzte Speicherung</li>
+          <li><code>window.sessionStorage</code> zum Speichern von Daten für eine Session (wird nach dem Schliessen des Fensters automatisch gelöscht)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Speicherlimit</h1>
+        <div class="seventy-thirty-grid">
+          <ul>
+            <li>Die Speicherkapazität ist Browserabhängig</li>
+            <li>Spezifizierte Minimum ist <b>5MB</b></li>
+            <li><a href="http://dev-test.nemikor.com/web-storage/support-test/">Test</a></li>
+          </ul>
+          <img src="assets/Lesson07/WebStorageTestRun.png">
+        </div>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/docs/Web/API/Storage">Storage-Objekt</a></h1>
+
+        <table>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/Storage/length">length</a></th>
+            <td>Anzahl Einträge</td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/Storage/key">key(n)</a></th>
+            <td>Name des Eintrags bei Position <code>n</code></td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/Storage/getitem">getItem(k)</a></th>
+            <td>Wert von Eintrag mit Namen <code>k</code></td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/Storage/setitem">setItem(k, v)</a></th>
+            <td>Speichert den Wert <code>v</code> unter dem Namen <code>k</code></td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/Storage/remoteitem">remoteItem(k)</a></th>
+            <td>Löscht den Wert unter dem Namen <code>k</code></td>
+          </tr>
+          <tr>
+            <th><a href="https://developer.mozilla.org/docs/Web/API/Storage/clear">clear(k)</a></th>
+            <td>Löscht alle Einträge</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="compact">
+        <h1>Storage: Beispiel</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            localStorage.setItem("lastUsername", "John");
+            localStorage.setItem("expertMode", "true");
+
+            function* getLocalStorageItems() {
+              for (let i = 0; i &lt; localStorage.length; i++) {
+                const key = localStorage.key(i);
+                yield {key, value: localStorage.getItem(key)};
+              }
+            }
+
+            const local = [...getLocalStorageItems()];
+
+            /* local =
+               [
+                 { key: "lastUsername", value: "John" },
+                 { key: "expertMode", value: "true" }
+               ]
+            */
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><code><a href="https://developer.mozilla.org/docs/Web/API/WindowEventHandlers/onstorage">Storage Ereignis</a></code></h1>
+        <ul>
+          <li>Kann auf dem <code>window</code> abonniert werden</li>
+          <li>Ereignis ist vom Typ <code><a href="https://developer.mozilla.org/docs/Web/API/StorageEvent">StorageEvent</a></code></li>
+        </ul>
+        <table>
+          <tr>
+            <th><code>key</code></th>
+            <td>Schlüssel welcher geändert wurde</td>
+          </tr>
+          <tr>
+            <th><code>newValue</code></th>
+            <td>Neuer Wert</td>
+          </tr>
+          <tr>
+            <th><code>oldValue</code></th>
+            <td>Vorheriger Wert</td>
+          </tr>
+          <tr>
+            <th><code>storageArea</code></th>
+            <td>Referenz zu dem geänderten <code>Storage</code> Objekt (local oder session)</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h1><code><a href="https://developer.mozilla.org/docs/Web/API/IndexedDB_API">IndexedDB</a></code></h1>
+        <ul>
+          <li>Ist eine vollständige Objekt-Datenbank mit einem Schema, Schlüsseln, Indexes, Transaktionen, usw.</li>
+          <li>Nützlich für Offline-Apps</li>
+          <li>Ist ein <em>low-level</em> API und <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology">viel komplexer</a> als die andere Lösungen</li>
+          <li>Siehe <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB">Using IndexedDB</a> für weitere Infos</li>
+          <li>Evtl. ein Wrapper wie <a href="https://dexie.org/">Dexie</a> wäre nützlich</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1 class="deprecated"><a href="https://en.wikipedia.org/wiki/Web_SQL_Database">Web SQL Database</a></h1>
+        <ul>
+          <li>Ist <em>deprecated</em> und wurde nie zum Standard</li>
+          <li><a href="https://caniuse.com/?search=Web%20SQL%20Database">Unterstützt</a> von Blink-basierten Browsers (Chrome, Edge, Opera)</li>
+          <li><em>Nicht</em> unterstützt von Firefox und Safari</li>
+          <li><a href="https://hacks.mozilla.org/2010/06/beyond-html5-database-apis-and-the-road-to-indexeddb/">Das Problem</a> damit war, dass es "nur" eine Umhüllung von <a href="http://www.sqlite.org/">SQLite</a> war und damit zu breit ein Standard</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Persistenz</h1>
+            <ul>
+              <li>Cookies</li>
+              <li>Web Storage</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Cookie schreiben und wieder einlesen (Test oder im Browser)</li>
+              <li><code>localStorage</code> schreiben und wieder einlesen (Test oder im Browser)</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1>Animationen</h1>
+        <p>Hier geht es um Elemente aus dem Dokument in Bewegung zu bringen.</p>
+        <ul>
+          <li>Naives Vorgehen ("good old days")</li>
+          <li><code>requestAnimationFrame</code></li>
+          <li>CSS Transitions</li>
+          <li>CSS Transforms</li>
+          <li>WebAnimations API</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Naives Animieren</h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            var transparenzVerweis, transparenzWert = 1;
+            function aendernTransparenz()
+            {
+                 if (transparenzWert <= 0.3)
+                 window.clearInterval(transparenzVerweis);
+                 else
+                 {
+                 transparenzWert -= 0.01;
+                 document.getElementById("idSofi").style.opacity =
+                     transparenzWert;
+                 document.getElementById("idSofi").style.filter =
+                     "alpha(opacity=" + (transparenzWert * 100) + ")";
+                 }
+       }
+            function animiereTransparenz()
+            {
+                 transparenzVerweis = window.setInterval(aendernTransparenz, 20);
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><code><a href="https://developer.mozilla.org/docs/Web/API/window/requestAnimationFrame">requestAnimationFrame</a></code></h1>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const element = document.getElementById('some-element-you-want-to-animate');
+let start, previousTimeStamp;
+
+function step(timestamp) {
+  if (start === undefined)
+    start = timestamp;
+  const elapsed = timestamp - start;
+
+  if (previousTimeStamp !== timestamp) {
+    // Math.min() is used here to make sure the element stops at exactly 200px
+    const count = Math.min(0.1 * elapsed, 200);
+    element.style.transform = 'translateX(' + count + 'px)';
+  }
+
+  if (elapsed < 2000) { // Stop the animation after 2 seconds
+    previousTimeStamp = timestamp
+    window.requestAnimationFrame(step);
+  }
+}
+
+window.requestAnimationFrame(step);
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>CSS Transitions</h1>
+      </section>
+
+      <section>
+        <h1>CSS Transforms</h1>
+      </section>
+
+      <section>
+        <h1>WebAnimations API</h1>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Animationen</h1>
+            <ul>
+              <li>CSS Transitions</li>
+              <li>CSS Transforms</li>
+              <li>WebAnimations API</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Element mit CSS Transitions animieren</li>
+              <li>Element mit CSS Transforms animieren</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1>Media</h1>
+        <p>Hier geht es um eine Übersicht von Media Unterstützung im Browser.</p>
+        <ul>
+          <li>Grafikformate</li>
+          <li>SVG</li>
+          <li>Canvas</li>
+          <li>Video</li>
+          <li>Audio</li>
+          <li>WebGL</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Media</h1>
+            <ul>
+              <li>Canvas</li>
+              <li>Grafikformate</li>
+              <li>SVG</li>
+              <li>Video</li>
+              <li>Audio</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>SVG Grafik definieren und mit CSS animieren</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">

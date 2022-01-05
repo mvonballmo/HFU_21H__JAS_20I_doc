@@ -14,8 +14,12 @@
   text-align: left;
 }
 
-.reveal h1.insertion:before {
+.reveal *.insertion:before {
   content: "👉 ";
+}
+
+.reveal *.deprecated:before {
+  content: "👎 ";
 }
 
 .reveal table {
@@ -153,4 +157,3 @@ input:invalid {
   outline: 1px dotted red;
   background-color: mistyrose;
 }
-
