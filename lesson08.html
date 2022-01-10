@@ -30,11 +30,11 @@
       <section data-background="assets/looking-back-dimmed.jpg">
         <h1>Rückblick</h1>
         <ul>
-          <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a></li>
-          <li><a href="https://developer.mozilla.org/docs/Web/API/Fetch_API"><code>fetch()</code></a>,
-            <code>async</code>/<code>await</code>
-          </li>
-          <li>Refactoring</li>
+          <li>Sicherheit</li>
+          <li>Browser-Objekte</li>
+          <li>Persistenz</li>
+          <li>Animationen</li>
+          <li>Media</li>
         </ul>
       </section>
 
@@ -54,27 +54,48 @@
       </section>
 
       <section>
-        <div class="seventy-thirty-grid">
-          <div>
-            <h1>Ereignisse</h1>
-            <ul>
-              <li>Event Handlers</li>
-              <li>Event Listeners</li>
-              <li>Reihenfolge</li>
-              <li>Propagieren verhindern</li>
-              <li>Default verhindern</li>
-            </ul>
-          </div>
-          <img src="assets/demo.png">
-        </div>
+        <h1>Prüfung (LK1)</h1>
+        <ul>
+          <li>Word Formular mit Schreibbaren Feldern</li>
+          <li class="fragment">Wird euch gerade zugeschickt</li>
+          <li class="fragment">Habt ihr das Dokument 📄 bekommen?</li>
+          <li class="fragment">Eine Stunde 🕐 <span class="fragment">ab jetzt!</span></li>
+          <li class="fragment">Good luck! ☘️</li>
+        </ul>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1>Komponenten</h1>
+        <ul>
+          <li><a href="https://developer.mozilla.org/de/docs/Web/Web_Components/Using_custom_elements">Web Components</a></li>
+          <li><a href="https://reactjs.org/docs/introducing-jsx.html">JSX</a></li>
+          <li><a href="https://reactjs.org/">React</a></li>
+        </ul>
       </section>
 
       <section>
-        <h1>Web Components</h1>
+        <h1><a href="https://developer.mozilla.org/de/docs/Web/Web_Components/Using_custom_elements">Web Components</a></h1>
         <ul>
           <li>Benutzerdefinierte, wiederverwendbare HTML Elemente</li>
-          <li>Shadow DOM ermöglicht <em>Kapselung</em></li>
-          <li>Mit HTML-Vorlagen (<code>template</code> und <code>slot</code>) können Komponenten angepasst werden</li>
+          <li>In JavaScript als Klasse definiert</li>
+          <li>In HTML als Tag angewendet</li>
+          <li>Eine sehr gute Einführung: <a href="https://javascript.info/custom-elements">JavaScript.info Custom elements</a></li>
+          <li>MDN Beispiel: <a href="https://github.com/mdn/web-components-examples/tree/master/expanding-list-web-component">Expanding-list Web Component</a></li>
+          <li>Ein ausgereiftes Beispiel: <a href="https://md-block.verou.me/#features">Markdown in HTML</a> (<a href="https://md-block.verou.me/md-block.js">Komponente</a>)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM">Shadow DOM</a></h1>
+        <ul>
+          <li>Shadow DOM ermöglicht <em>verbesserte Kapselung</em></li>
+          <li>Damit kann CSS nur für eine Komponente statt Global definiert werden</li>
+          <li>Mit <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow"><code>this.attachShadow({mode: 'open'})</code></a>
+            bekommt man ein
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot"><code>ShadowRoot</code></a>
+          </li>
+          <li>Mit <code>innerHTML</code> oder <code>appendChild()</code> füllen</li>
+          <li>Suchfunktionen wie <code>getElementsByTagName()</code> gibt es nicht</li>
         </ul>
       </section>
 
@@ -115,7 +136,7 @@
       <section>
         <h1>Anpassen</h1>
         <ul>
-          <li><code>attributeChangedCallback()</code> wird beim Anderen des Werts eines Attributs ausgeführt</li>
+          <li><code>attributeChangedCallback()</code> wird beim Ändern des Werts eines Attributs ausgeführt</li>
           <li><code>observedAttributes()</code> liefert eine Liste von zu beachtenden Attributen</li>
         </ul>
         <pre>
@@ -134,13 +155,29 @@
       </section>
 
       <section>
-        <a href="https://github.com/mdn/web-components-examples/tree/master/expanding-list-web-component">Expanding-list Web Component</a>
+        <h1>HTML Web Components</h1>
+        <ul>
+          <li>Z.Z. können Komponenten nur in JavaScript definiert werden</li>
+          <li>Viele Komponenten wollen eigene Ressourcen (Styles, Bilder) einbinden</li>
+          <li>HTML wäre dafür prädestiniert</li>
+          <li>Geht z.Z. nur mit einem "polyfill"</li>
+          <li><a href="https://medium.com/@getflourish/why-dont-we-use-html-to-author-web-components-10440432390e">Why don't we use HTML to author Web Components?</a> von stellt ein <a href="https://codepen.io/getflourish/pen/a721fbd12caf190153451b3a7ff3acef">Beispiel</a> (CodePen) vor</li>
+        </ul>
+        <p class="notes">Siehe auch <a href="https://gist.github.com/getflourish/a87b990265db8fc243c897f34d32f860">Import CustomElements from .html files</a> (10.2021)</p>
       </section>
 
-
       <section>
-        <h1>JSX einsetzen</h1>
-
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1><a href="https://developer.mozilla.org/de/docs/Web/Web_Components/Using_custom_elements">Web Components</a></h1>
+            <ul>
+              <li>Registrieren</li>
+              <li>Initialisieren</li>
+              <li>Anpassen/Attributen</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
       </section>
 
       <section>
@@ -155,8 +192,244 @@
           <div>
             <h1>Übungen</h1>
             <ul>
-              <li>Klick-Handler für ein Button schreiben</li>
-              <li>Klick-Handler für ein Link schreiben</li>
+              <li>Web Component erstellen, als Modul einbinden und als Tag einsetzen</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section class="compact">
+        <h1>React</h1>
+        <ul>
+          <li>Bibliothek womit man UIs definiert und aktualisiert</li>
+          <li>Benutzt <em>JSX</em> direkt in JavaScript statt HTML-artige Templates</li>
+          <li>Aktualisiert automatisch bei Modell-Änderungen</li>
+          <li>Hat sehr umfangreiche <a href="https://reactjs.org/">Dokumentation</a> inklusive <a href="https://reactjs.org/tutorial/tutorial.html">Tutorial</a></li>
+          <li>Kann <a href="https://reactjs.org/docs/getting-started.html#try-react">sehr einfach in einer Seite</a> eingebettet werden</li>
+          <li>Kann auch mit <a href="https://reactjs.org/docs/create-a-new-react-app.html">ein Toolchain</a>
+            erstellt werden (z.B.
+            <code><a href="https://reactjs.org/docs/create-a-new-react-app.html#create-react-app">create-react-app</a></code>
+          </li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1>JSX</h1>
+        <ul>
+          <li>Wurde mit React eingeführt</li>
+          <li>JSX erlaubt HTML-artige Tags direkt in JavaScript</li>
+          <li>Bettet JavaScript mit <code>{}</code> ein</li>
+          <li>Benötigt ein <em>Transpiler</em> wie Babel oder TypeScript</li>
+          <li>Unterstützt (&lt;&gt; und &lt;/&gt;) wenn nur ein Tag erwartet wird</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            function AppHeader({metadata, selected}) {
+              return &lt;>
+                <h1>{selected.pluralCaption}</h1>
+                <ul>
+                  {metadata.map(m => <li key={m.caption}><a href="#">{m.pluralCaption}</a></li>)}
+                </ul>
+              &lt;/>;
+            }
+          </code>
+        </pre>
+        <p class="notes">Siehe <a href="https://reactjs.org/docs/introducing-jsx.html">Introducing JSX</a> (reactjs)</p>
+      </section>
+
+      <section>
+        <h1 class="insertion">JSX ohne React</h1>
+        <ul>
+          <li>JSX kann auch ohne React eingesetzt werden</li>
+          <li>Wir werden das <em>nicht</em> anschauen</li>
+          <li>Ressourcen:
+            <ul>
+              <li><a href="https://adostes.medium.com/you-dont-need-react-to-use-jsx-b78dd2a95c27">You don't need React to use JSX</a> (09.2020)</li>
+              <li><a href="https://dev.to/kartiknair/using-jsx-without-react-28eb">Using JSX without react</a> (07.2020)</li>
+              <li><a href="https://blog.r0b.io/post/using-jsx-without-react/">Using jsx WITHOUT React</a> (01.2020)</li>
+              <li><a href="https://blog.stchur.com/jsx-without-react/">JSX without React</a> (11.2018)</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>React: Setup</h1>
+        <ul>
+          <li>React empfiehlt das einfache Einbinden als Modul</li>
+          <li>Benötigt <a href="https://babeljs.io/en/setup/#installation">BabelJS</a></li>
+          <li><em>JSX</em> benötigt <code>type="text/babel"</code></li>
+          <li><code>import</code> benötigt <code>data-type="module"</code></li>
+        </ul>
+        <pre>
+          <code data-trim class="language-html hljs">
+            <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+            <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+            <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+            <script src="index.js" type="text/babel" data-type="module"></script>
+          </code>
+        </pre>
+        <p class="notes">Siehe <a href="https://javascript.tutorialink.com/using-es-modules-with-babel-standalone/">Using ES Modules with <code>babel-standalone</code></a></p>
+      </section>
+
+      <section>
+        <h1>Komponenten</h1>
+        <ul>
+          <li>Eine JavaScript Funktion ist eine React Komponente</li>
+          <li>Attributen vom Tag werden zu Parameter-Properties gewiesen</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            function AppHeader({count}) {
+              return <b>{count}</b>;
+            }
+
+            function App() {
+              const count = 0;
+              return <AppHeader count={count}></AppHeader>
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1><a href="https://developer.mozilla.org/de/docs/Web/Web_Components/Using_custom_elements">Web Components</a></h1>
+            <ul>
+              <li>React</li>
+              <li>JSX</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>React-Seite mit einer einfachen Komponenten aufsetzen</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section class="compact">
+        <h1><a href="https://reactjs.org/docs/hooks-reference.html#usecontext"><code>useContext()</code></a></h1>
+        <ul>
+          <li>Kontexte sind eine Alternative zu Attributen</li>
+          <li><code>React.createContext()</code> erstellt ein Kontext</li>
+          <li>Kontext wird mit <a href="https://reactjs.org/docs/hooks-reference.html#usecontext"><code>useContext()</code></a> benutzt</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const count = 0;
+            const CountContext = React.createContext({ count });
+
+            function AppHeader() {
+              const {count} = React.useContext(CountContext);
+              return <b>{count}</b>;
+            }
+
+            function App() {
+              return
+              <CountContext.Provider>
+                <AppHeader count={count}></AppHeader>
+              </CountContext.Provider>
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://reactjs.org/docs/hooks-reference.html#usestate"><code>useState()</code></a></h1>
+        <ul>
+          <li>Komponenten haben eigene Daten (oder "state")</li>
+          <li><a href="https://reactjs.org/docs/hooks-reference.html#usestate"><code>useState()</code></a>
+            gibt einen Wert und Funktion womit den Wert geändert werden kann zurück</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            function AppHeader() {
+              const [count, setCount] = useState(0);
+              return
+                &lt;>
+                  Count: <b>{count}</b>
+                  <button onClick="{() =&gt; setCount(0)}">Reset</button>
+                  <button onClick="{() =&gt; setCount(prevCount => prevCount - 1)}">-</button>
+                  <button onClick="{() =&gt; setCount(prevCount => prevCount + 1)}">+</button>
+                &lt;/>
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://reactjs.org/docs/hooks-reference.html#useeffect"><code>useEffect()</code></a></h1>
+        <ul>
+          <li>Komponenten sind "pure" (keine Seiteneffekte)</li>
+          <li><a href="https://reactjs.org/docs/hooks-reference.html#useeffect"><code>useEffect()</code></a> ist die Schnittstelle zu Seiteneffekten (z.B. Daten laden)</li>
+          <li>Die zweite Parameter gibt Abhängigkeiten an</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const [loading, setLoading] = React.useState(false);
+            const [items, setItems] = React.useState([]);
+
+            React.useEffect(async () => {
+              setLoading(true);
+              const crud = new Crud(selected.rootUrl);
+              setItems(await crud.getAll())
+              setLoading(false);
+            },[selected])
+          </code>
+        </pre>
+
+      </section>
+
+      <section>
+        <h1><a href="https://reactjs.org/docs/hooks-reference.html#usereducer"><code>useReducer()</code></a></h1>
+        <a href="https://reactjs.org/docs/hooks-reference.html#usereducer"><code>useReducer()</code></a>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1><a href="https://developer.mozilla.org/de/docs/Web/Web_Components/Using_custom_elements">Web Components</a></h1>
+            <ul>
+              <li><a href="https://reactjs.org/docs/hooks-reference.html#usestate"><code>useState()</code></a></li>
+              <li><a href="https://reactjs.org/docs/hooks-reference.html#useContext"><code>useContext()</code></a></li>
+              <li><a href="https://reactjs.org/docs/hooks-reference.html#useReducer"><code>useReducer()</code></a></li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li><code>useState()</code> in einer Komponente Benutzen</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
