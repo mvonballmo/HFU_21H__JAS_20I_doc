@@ -58,7 +58,7 @@
         <li>Browser-Objekte</li>
         <li>Persistenz</li>
         <li>Animationen</li>
-        <li>Grafik</li>
+        <li>Media</li>
       </section>
 
       <section>
@@ -1450,11 +1450,13 @@
           <li>Video</li>
           <li>Audio</li>
           <li>WebGL</li>
+          <li>Charts</li>
+          <li>Sensoren</li>
         </ul>
       </section>
 
       <section>
-        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG</a></h1>
+        <h1><a href="https://developer.mozilla.org/docs/Web/SVG">SVG</a></h1>
         <ul>
           <li>[S]calable [V]ector [G]raphics definiert Zweidimensionale Grafiken</li>
           <li>Sind XML-Basiert und können in HTML eingebettet oder in eigenen SVG-Dateien gespeichert werden</li>
@@ -1478,7 +1480,7 @@
       </section>
 
       <section>
-        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">Canvas</a></h1>
+        <h1><a href="https://developer.mozilla.org/docs/Web/API/Canvas_API">Canvas</a></h1>
         <ul>
           <li><code>&lt;canvas&gt;</code> Tag erstellt eine leere Leinwand</li>
           <li>Bietet ein sehr umfangreiches API</li>
@@ -1511,14 +1513,15 @@
         </pre>
       </section>
 
-      <section>
+      <section class="compact">
         <h1><a href="https://developer.mozilla.org/docs/Web/HTML/Element/video">Video</a></h1>
         <div class="seventy-thirty-grid">
           <ul>
             <li>Unterstützt mehrere Quellen</li>
-            <li>Bietet Umfangreichen Controls an, die mit <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement">HTMLMediaElement</a> angepasst werden können</li>
+            <li>Die default <code>controls</code> können mit <a href="https://developer.mozilla.org/docs/Web/API/HTMLMediaElement">HTMLMediaElement</a> angepasst werden</li>
             <li>Kann mit JavaScript manipuliert und mit <a href="https://developer.mozilla.org/docs/Web/Guide/Audio_and_video_delivery/Video_player_styling_basics">CSS gestylt</a> werden</li>
             <li>Child-Elemente werden im Fallback-Modus angezeigt</li>
+            <li>Das <code>poster</code> Attribut zeigt aum einem Platzhalterbild</li>
           </ul>
           <video controls src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217">
             Sorry, your browser doesn't support embedded videos,
@@ -1526,6 +1529,16 @@
             and watch it with your favorite video player!
           </video>
         </div>
+        <pre>
+          <code data-trim class="language-html hljs">
+            <video
+            controls src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+            poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+            >
+              Your browser doesn't support embedded video. <a href="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4">Download the video instead.</a>
+            </video>
+            </code>
+        </pre>
       </section>
 
       <section>
@@ -1533,22 +1546,56 @@
         <div class="seventy-thirty-grid">
           <ul>
             <li>Unterstützt mehrere Quellen</li>
-            <li>Bietet Umfangreichen Controls an, die mit <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement">HTMLMediaElement</a> angepasst werden können</li>
+            <li>Die default <code>controls</code> können mit <a href="https://developer.mozilla.org/docs/Web/API/HTMLMediaElement">HTMLMediaElement</a> angepasst werden</li>
             <li>Kann mit JavaScript manipuliert und mit <a href="https://developer.mozilla.org/docs/Web/Guide/Audio_and_video_delivery/Video_player_styling_basics">CSS gestylt</a> werden</li>
             <li>Child-Elemente werden im Fallback-Modus angezeigt</li>
           </ul>
-          <audio src="https://archive.org/download/testmp3testfile/mpthreetest.mp3" controls></audio>
+          <audio src="https://archive.org/download/testmp3testfile/mpthreetest.mp3" controls>
+            Your browser doesn't support embedded audio. <a href="https://archive.org/download/testmp3testfile/mpthreetest.mp3">Download the audio instead.</a>
+          </audio>
         </div>
       </section>
 
       <section>
-        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL</a></h1>
+        <h1><a href="https://developer.mozilla.org/docs/Web/API/WebGL_API">WebGL</a></h1>
         <ul>
           <li>Ermöglicht 3D-Rendering in einem Browser</li>
           <li>Bietet ein sehr umfangreiches API</li>
+          <li>Wird meisten auf einem <code>canvas</code> gerendert</li>
           <li>Das API ist ziemlich "low-level" und ermöglicht fast alles was ein auf einem modernen 3D-Rendering zu Verfügung steht</li>
           <li>Siehe <a href="https://developer.mozilla.org/docs/Web/API/WebGL_API/Tutorial">WebGL tutorial</a> für eine vertiefte Anleitung</li>
-          <li>Dazu gibt es zahlreiche <a href="https://developer.mozilla.org/docs/Web/API/WebGL_API#libraries">Libraries</a> die das Arbeiten mit WebGL vereinfachen (z.B. <a href="https://threejs.org/">three.js</a>)</li>
+          <li>Dafür gibt es zahlreiche <a href="https://developer.mozilla.org/docs/Web/API/WebGL_API#libraries">Libraries</a>, die das Arbeiten mit WebGL vereinfachen (z.B. <a href="https://threejs.org/">three.js</a>)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Charts</h1>
+        <ul>
+          <li>Ermöglichen das "live" Anzeigen von Daten im grafischen Form</li>
+          <li>Dafür gibt es zahlreiche <a href="https://developer.mozilla.org/docs/Web/API/WebGL_API#libraries">Libraries</a> die das Arbeiten mit WebGL vereinfachen
+            <ul>
+              <li><a href="https://d3js.org/">D3.js</a> (<a href="https://observablehq.com/@d3/gallery">Beispiele</a>)</li>
+              <li><a href="https://observablehq.com/@observablehq/plot">Observable Plot</a></li>
+              <li><a href="https://vega.github.io/vega-lite/">Vega-Lite</a> (<a href="https://vega.github.io/vega-lite/examples/">Beispiele</a>)</li>
+            </ul>
+          </li>
+          <li>Werden meistens auf einem <code>canvas</code> oder als SVG gerendert</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Sensoren</h1>
+        <ul>
+          <li>Kamera &amp; Mikrophon:
+            <ul>
+              <li><a href="https://developer.mozilla.org/docs/Web/API/Media_Streams_API"></a>Media Capture and Streams API</a></li>
+              <li><a href="https://developer.mozilla.org/docs/Web/API/ImageCapture"><code>ImageCapture</code></a></li>
+              <li><a href="https://developer.mozilla.org/docs/Web/API/MediaDevices/getDisplayMedia"><code>MediaDevices.getDisplayMedia()</code></a></li>
+              <li><a href="https://developer.mozilla.org/docs/Web/API/MediaDevices/getUserMedia"><code>MediaDevices.getUserMedia()</code></a></li>
+            </ul>
+          </li>
+          <li><a href="https://developer.mozilla.org/docs/Web/API/Geolocation_API"><code>navigator.geolocation</code></a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs">Sensor APIs (Lagesensor, Beschleunigungssensor, usw.</a>); wird z.Z. nur von Blink unterstützt</li>
         </ul>
       </section>
 
@@ -1562,6 +1609,8 @@
               <li>Video</li>
               <li>Audio</li>
               <li>WebGL</li>
+              <li>Charts</li>
+              <li>Sensoren</li>
             </ul>
           </div>
           <img src="assets/demo.png">
