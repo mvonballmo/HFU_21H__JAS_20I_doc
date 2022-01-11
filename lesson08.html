@@ -264,8 +264,8 @@
         </ul>
         <pre>
           <code data-trim class="language-html hljs">
-            <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-            <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+            <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+            <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
             <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
             <script src="index.js" type="text/babel" data-type="module"></script>
           </code>
@@ -296,7 +296,7 @@
       <section>
         <div class="seventy-thirty-grid">
           <div>
-            <h1><a href="https://developer.mozilla.org/de/docs/Web/Web_Components/Using_custom_elements">Web Components</a></h1>
+            <h1>React</h1>
             <ul>
               <li>React</li>
               <li>JSX</li>
@@ -323,33 +323,6 @@
           </div>
           <img src="assets/cog-wheels.png">
         </div>
-      </section>
-
-      <section class="compact">
-        <h1><a href="https://reactjs.org/docs/hooks-reference.html#usecontext"><code>useContext()</code></a></h1>
-        <ul>
-          <li>Kontexte sind eine Alternative zu Attributen</li>
-          <li><code>React.createContext()</code> erstellt ein Kontext</li>
-          <li>Kontext wird mit <a href="https://reactjs.org/docs/hooks-reference.html#usecontext"><code>useContext()</code></a> benutzt</li>
-        </ul>
-        <pre>
-          <code data-trim class="language-javascript hljs">
-            const count = 0;
-            const CountContext = React.createContext({ count });
-
-            function AppHeader() {
-              const {count} = React.useContext(CountContext);
-              return <b>{count}</b>;
-            }
-
-            function App() {
-              return
-              <CountContext.Provider>
-                <AppHeader count={count}></AppHeader>
-              </CountContext.Provider>
-            }
-          </code>
-        </pre>
       </section>
 
       <section>
@@ -395,7 +368,33 @@
             },[selected])
           </code>
         </pre>
+      </section>
 
+      <section class="compact">
+        <h1><a href="https://reactjs.org/docs/hooks-reference.html#usecontext"><code>useContext()</code></a></h1>
+        <ul>
+          <li>Kontexte sind eine Alternative zu Attributen</li>
+          <li><code>React.createContext()</code> erstellt ein Kontext</li>
+          <li>Kontext wird mit <a href="https://reactjs.org/docs/hooks-reference.html#usecontext"><code>useContext()</code></a> benutzt</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const count = 0;
+            const CountContext = React.createContext({ count });
+
+            function AppHeader() {
+              const {count} = React.useContext(CountContext);
+              return <b>{count}</b>;
+            }
+
+            function App() {
+              return
+              <CountContext.Provider>
+                <AppHeader count={count}></AppHeader>
+              </CountContext.Provider>
+            }
+          </code>
+        </pre>
       </section>
 
       <section>
