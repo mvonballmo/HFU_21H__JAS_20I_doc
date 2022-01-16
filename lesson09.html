@@ -360,51 +360,100 @@
       </section>
 
       <section>
-        <h1>Warum ein Builder?</h1>
+        <h1>Builder: Hauptaufgaben</h1>
         <ul>
-          <li>TypeScript nach JS Umwandeln</li>
-          <li>JSX/TSX nach JS Umwandeln</li>
-          <li>Less/Sass nach CSS Umwandeln</li>
-          <li>HMR (Hot Module Reload/Replacement): automatisches und präzises Neuladen ohne F5</li>
-        </ul>
-      </section>
-
-      <section>
-        <h1>Builder Features</h1>
-        <ul>
-          <li>HMR</li>
-          <li>CSS Modules / PostCSS</li>
-          <li>SSR (Server-side Rendering)</li>
-          <li>Bundling vs. Separate Dateien</li>
-          <li>TypeScript Umwandlung vs. Typprüfung</li>
-          <li>SourceMaps</li>
-        </ul>
-      </section>
-
-      <section>
-        <h1>Builders</h1>
-        <ul>
-          <li>Die <a href="https://reactjs.org/docs/create-a-new-react-app.html">Offizielle Anleitung</a> listet viele Optionen auf</li>
-          <li><a href="https://create-react-app.dev/docs/adding-typescript/"><code>create-react-app</code></a> benutzt <a href="https://webpack.js.org/">webpack</a></li>
-          <li>Der Artikel <a href="https://css-tricks.com/comparing-the-new-generation-of-build-tools/">Comparing the New Generation of Build Tools</a> analysiert die folgende Möglichkeiten
+          <li>Umwandlung von Quelltext
             <ul>
-              <li><a href="https://github.com/evanw/esbuild">esbuild</a> (mit <a href="https://github.com/pradel/create-react-app-esbuild">create-react-app-esbuild</a>)</li>
-              <li><a href="https://www.snowpack.dev/tutorials/react">Snowpack</a></li>
-              <li><a href="https://github.com/preactjs/wmr">wmr</a></li>
-              <li><a href="https://vitejs.dev/guide/">Vite</a></li>
+              <li>TypeScript nach JS Umwandeln</li>
+              <li>JSX/TSX nach JS Umwandeln</li>
+              <li>Less/Sass nach CSS Umwandeln</li>
+              <li>Typisiertes Einbinden von Bilder, CSS, jSON, usw.</li>
+              <li>Mit <em>SourceMaps</em> zu den originalen Dateien</li>
             </ul>
           </li>
+          <li><em>Bundling</em> von Ressourcen zu einer Datei (war vor HTTP2 wichtiger)</li>
         </ul>
       </section>
 
       <section>
-        <h1>Jedes Jahr neu evaluieren?</h1>
+        <h1>Builder: Zusatzaufgaben</h1>
+        <ul>
+          <li>HMR (Hot Module Reload/Replacement): automatisches und präzises Neuladen ohne F5</li>
+          <li>SSR (Server-side Rendering)</li>
+          <li>CSS Modules / PostCSS</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Einflüsse Performance</h1>
+        <ul>
+          <li>Entwicklungssprache (JS langsamer als Go/Rust)</li>
+          <li>Bundling ist aufwendiger als Modul-Referenzen</li>
+          <li>TypeScript <em>konvertieren</em> geht schnell</li>
+          <li>TypeScript <em>prüfen</em> ist langsam</li>
+          <li>Vorkompiliert vs. Kompilieren auf Anfrage</li>
+          <li>Grösse des Projekts (wir gut skaliert der Ansatz eines Builders?)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Builder Auswahl</h1>
+        <ul>
+          <li>Die <a href="https://reactjs.org/docs/create-a-new-react-app.html">React Anleitung</a> listet diverse Optionen auf</li>
+          <li><a href="https://webpack.js.org/">Webpack</a> (von <a href="https://create-react-app.dev/docs/adding-typescript/"><code>create-react-app</code></a> eingesetzt)</li>
+          <li><a href="https://parceljs.org/">Parcel</a></li>
+          <li><a href="https://www.rollupjs.org/guide">Rollup</a></li>
+          <li><a href="https://github.com/evanw/esbuild">esbuild</a></li>
+          <li><a href="https://www.snowpack.dev/tutorials/react">Snowpack</a></li>
+          <li><a href="https://github.com/preactjs/wmr">wmr</a></li>
+          <li><a href="https://vitejs.dev/guide/">Vite</a></li>
+        </ul>
+        <p class="notes">Siehe <a href="https://css-tricks.com/comparing-the-new-generation-of-build-tools/">Comparing the New Generation of Build Tools</a> für eine vertiefte Analyse von esbuild, Vite, Snowpack und wmr</p>
+      </section>
+
+      <section>
+        <h1>Builder: Bemerkungen</h1>
+        <ul>
+          <li><a href="https://github.com/evanw/esbuild">esbuild</a>, <a href="https://www.rollupjs.org/guide">Rollup</a>, <a href="https://webpack.js.org/">Webpack</a> und <a href="https://parceljs.org/">Parcel</a> sind <em>Bundlers</em></li>
+          <li><a href="https://www.snowpack.dev/tutorials/react">Snowpack</a>, <a href="https://github.com/preactjs/wmr">wmr</a> und <a href="https://vitejs.dev/guide/">Vite</a> benutzen <em>ES Modulen</em></li>
+          <li><a href="https://github.com/evanw/esbuild">esbuild</a> ist mit <a href="https://go.dev/">Go</a> geschrieben, <a href="https://parceljs.org/">Parcel</a> mit <a href="https://www.rust-lang.org/">Rust</a></li>
+          <li><a href="https://www.snowpack.dev/tutorials/react">Snowpack</a> benutzt <a href="https://www.rollupjs.org/guide">Rollup</a> und <a href="https://vitejs.dev/guide/">Vite</a> <a href="https://github.com/evanw/esbuild">esbuild</a> für Produktion/Bundling</li>
+          <li><a href="https://www.snowpack.dev/tutorials/react">Snowpack</a> und <a href="https://vitejs.dev/guide/">Vite</a> unterstützen zero-config React/TypeScript und Kompilieren auf Anfrage</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Warum nicht Webpack?</h1>
+        <ul>
+          <li>Unterstützt <em>nur</em> Bundling</li>
+          <li>Unterstützt nur <em>Vorkompilieren</em></li>
+          <li>Skaliert weniger gut als neuere Lösungen</li>
+          <li>Wird schon mit mittelgrossen Projekten langsam </li>
+          <li>Hatte immer wieder Problemen mit Caching</li>
+          <li>War für ein anderes Ära geschrieben</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Die Qual der Wahl</h1>
         <div class="fifty-fifty-grid">
           <img src="assets/look_of_disapproval.jpg">
           <div>
             <p><a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f">How it feels to learn JavaScript in <span class="fragment strike semi-fade-out" data-fragment-index="0">2016</span><span class="fragment fade-in" data-fragment-index="0">2022</span></a></p>
           </div>
         </div>
+      </section>
+
+      <section>
+        <h1>Entwicklerkomfort</h1>
+        <ul>
+          <li>Muss <em>korrekt</em> sein</li>
+          <li>Muss <em>schnell</em> sein</li>
+          <li>HMR ist wichtig</li>
+          <li>Bundling unerwünscht</li>
+          <li>Caching darf nichts kaputt machen</li>
+          <li>Sollte TypeScript nur kompilieren (IDE prüft schon)</li>
+        </ul>
       </section>
 
       <section>
@@ -428,8 +477,8 @@
           <div>
             <h1>Builders</h1>
             <ul>
-              <li>Vite Setup für React JS</li>
-              <li>Vite Setup für React TS</li>
+              <li>Vite mit React JavaScript</li>
+              <li>Vite mit React TypeScript</li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -448,7 +497,7 @@
           <div>
             <h1>Übungen</h1>
             <ul>
-              <li>Vite Projekt mit React und TS aufsetzen</li>
+              <li>Vite Projekt mit React und TypeScript aufsetzen</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
@@ -466,42 +515,25 @@
       </section>
 
       <section>
-        <h1>Unterschiede zu JS</h1>
+        <h1>Übersicht</h1>
         <ul>
-          <li>Assertion Operator: <code>!</code></li>
-          <li>Generics: <code>MouseEvent&lt;HTMLButtonElement></code></li>
-          <li>Enums: <code>enum</code></li>
-          <li><a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#unions">Unions</a>: <code>A | B | C</code></li>
-          <li><a href="https://www.typescriptlang.org/docs/handbook/2/objects.html#intersection-types">Intersections</a>: <code>A & B & C</code></li>
-          <li><code>readonly</code></li>
-          <li><code>const</code></li>
+          <li>Die folgende Folien umfassen nur einen kurzen Überflug von TypeScript</li>
+          <li>Wie schauen hauptsächlich Konzepte an, die für das Konvertieren des Beispielprojekts wichtig waren</li>
         </ul>
       </section>
 
       <section>
-        <h1>Type Assertions</h1>
+        <h1>Typen deklarieren</h1>
         <ul>
-          <li><a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions">Type Assertions</a></li>
-          <li><a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html">Narrowing</a> schränkt ein Typ anhand einer Bedingung weiter ein (mit z.B. ein "guard")</li>
+          <li><a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#type-aliases">Type Aliases</a> mit <code>type</code></li>
+          <li><a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#interfaces">Interfaces</a> mit <code>interface</code></li>
+          <li><a href="https://www.typescriptlang.org/docs/handbook/2/classes.html">Classes</a> mit <code>class</code></li>
         </ul>
-        <pre>
-          <code data-trim class="language-javascript hljs">
-            export const AppContext = createContext<TAppContext>(null as unknown as TAppContext);
-
-            let entity = state.entity;  // typeof entity == Entity | null
-            if (!entity) {
-              throw new Error("The entity must be assigned in order to be saved.");
-            }
-            // typeof entity == Entity
-          </code>
-        </pre>
       </section>
 
       <section>
-        <h1>TypeScript Typsystem</h1>
-        <ul>
-          <li>Typen sind auf <a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#structural-typing">Strukturen</a> statt Namen basiert</li>
-        </ul>
+        <h1>Strukturelle Typen</h1>
+        <p>Typen sind auf <a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#structural-typing">Strukturen</a> statt Namen basiert</p>
         <pre>
           <code data-trim class="language-typescript hljs">
             type One = { p: string };
@@ -515,33 +547,95 @@
             let x: One = { p: "hi" };
             let two: Two = x;
             two = new Three();
+            two = { p: "World" };
           </code>
         </pre>
       </section>
 
       <section>
-        <h1>TypeScript: Typarten</h1>
+        <h1>Strukturen definieren</h1>
         <ul>
-          <li><a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#type-aliases">Type Aliases</a>: <code>type Point = {x: number, y: number}</code></li>
-          <li>Interfaces</li>
-          <li>Classes</li>
+          <li>Eine <a href="https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures">Index Signature</a> erlaubt beliebig Properties</li>
+          <li><code>?</code> erlaubt <code>undefined</code> oder <code>null</code></li>
+          <li><code>unknown</code> ist mit unbekanntem Typ zugewiesen</li>
+          <li><code>readonly</code> und <code>private</code> für "immutability"</li>
         </ul>
-      </section>
-
-      <section>
-        <h1><a href="https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures">Index Signature</a></h1>
         <pre>
           <code data-trim class="language-typescript hljs">
             type Entity = {
-              id: number;
+              private id: number;
+              readonly extra?: string;
               [otherOptions: string]: unknown;
             };
           </code>
         </pre>
       </section>
 
+
       <section>
+        <h1>Ergänzungen zu JS</h1>
+        <ul>
+          <li>Generics: <code>MouseEvent&lt;HTMLButtonElement></code></li>
+          <li><a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#unions">Union Types</a>: <code>A | B | C</code></li>
+          <li><a href="https://www.typescriptlang.org/docs/handbook/2/objects.html#intersection-types">Intersection Types</a>: <code>A & B & C</code></li>
+          <li>Enums: <code>enum { a, b }</code></li>
+          <li>Werte dürfen per Default nicht <code>null</code> sein</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions">Type Assertions</a></h1>
+        <ul>
+          <li>Mit <code>as</code> kann den von TypeScript angenommenen Typ übersteuert werden</li>
+          <li>Mit <code>!</code> kann den von TypeScript angenommenen "nullability" übersteuert werden</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-typescript hljs">
+            const a = "2";              // typeof a == string
+            const b = a as number;      // typeof b == number
+            const c = "text";           // typeof c == string
+            const d = "text" as const;  // typeof d == "text"
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html">Narrowing</a></h1>
+        <ul>
+          <li>Schränkt ein Typ anhand einer Bedingung weiter ein (mit z.B. ein "guard")</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-typescript hljs">
+            export const AppContext = createContext&lt;TAppContext>(null as unknown as TAppContext);
+
+            let entity = state.entity;  // typeof entity == Entity | null
+            if (!entity) {
+              throw new Error("The entity must be assigned in order to be saved.");
+            }
+            // typeof entity == Entity
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
         <h1>JS in TS umwandeln</h1>
+        <ul>
+          <li>Ansatz</li>
+          <li>Properties typisieren</li>
+          <li><code>useEffect()</code> mit <code>async</code> korrigieren</li>
+          <li><code>reducer</code> typisieren</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>JS => TS: Ansatz</h1>
         <ul>
           <li><code>*.d.ts</code> Dateien können <code>*.js</code> Dateien "typisieren"</li>
           <li>Code kann auch direkt in TypeScript geschrieben werden (ersetzt das JS)</li>
@@ -563,19 +657,12 @@
       </section>
 
       <section>
-        <h1>Fragen?</h1>
-        <div class="fifty-fifty-grid">
-          <img src="assets/okaaaay.jpg">
-        </div>
-      </section>
-
-      <section>
-        <h1>TypeScript React</h1>
+        <h1>JS => TS: React Props</h1>
         <ul>
-          <li>Props müssen deklariert werden</li>
+          <li>Eigenschaften müssen nun typisiert werden</li>
         </ul>
         <pre>
-          <code data-trim class="language-javascript hljs">
+          <code data-trim class="language-typescript hljs">
             import { PropertyMetadata } from "../../common/Metadata";
 
             type InputRowProps = {
@@ -589,14 +676,11 @@
         </pre>
       </section>
 
-      <section>
+      <section class="compact">
         <h1><a href="https://reactjs.org/docs/hooks-reference.html#useeffect"><code>useEffect()</code></a> mit <code>async</code></h1>
-        <ul>
-          <li><a href="https://devtrium.com/posts/async-functions-useeffect">How to use async functions in <code>useEffect</code></a></li>
-          <li><a href="https://www.benmvp.com/blog/successfully-using-async-functions-useeffect-react/">Successfully using async functions in React <code>useEffect</code></a></li>
-        </ul>
+        <p>Obwohl es scheint zu funktionieren unterstützt <code>useEffect()</code> <code>async</code>-Funktionen nicht. So geht's besser:</p>
         <pre>
-          <code data-trim class="language-javascript hljs">
+          <code data-trim class="language-typescript hljs">
             useEffect(() => {
               async function setEntities() {
                 setLoading(true);
@@ -611,13 +695,15 @@
             }, [classMetadata]);
           </code>
         </pre>
+        <p class="notes">Siehe <a href="https://devtrium.com/posts/async-functions-useeffect">How to use async functions in <code>useEffect</code></a>
+          und <a href="https://www.benmvp.com/blog/successfully-using-async-functions-useeffect-react/">Successfully using async functions in React <code>useEffect</code></a> für weitere Information.</p>
       </section>
 
       <section class="compact">
-        <h1>Reducer Typisiert</h1>
+        <h1>Reducer Typisieren</h1>
         <p>Actions müssen typisiert werden. Z.B. mit <code>interfaces</code></p>
         <pre>
-          <code data-trim class="language-javascript hljs">
+          <code data-trim class="language-typescript hljs">
             interface SetMetadataAction {
               type: "setMetadata";
               classMetadata: ClassMetadata;
@@ -634,9 +720,9 @@
         <p class="notes">Siehe <a href="https://codewithstyle.info/Typing-a-useReducer-React-hook-in-TypeScript/">Typing a <code>useReducer</code> React hook in TypeScript</a> für weitere Information</p>
       </section>
 
-      <section>
-        <h1>Reducer Typisiert II</h1>
-        <p>Oder mit <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#returntypetype"><code>ReturnType&lt;Type&gt;</code></a></p>
+      <section class="compact">
+        <h1>Reducer Typisieren II</h1>
+        <p><code>interfaces</code> mit Methoden ersetzen und <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#returntypetype"><code>ReturnType</code></a> einsetzen</p>
         <pre>
           <code data-trim class="language-javascript hljs">
             export const CreateSetMetadataAction = (classMetadata: ClassMetadata) => ({
@@ -655,6 +741,13 @@
           </code>
         </pre>
         <p class="notes">Siehe auch andere nützliche <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html">Utility Types</a></p>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
       </section>
 
       <section>
