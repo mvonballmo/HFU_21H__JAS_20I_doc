@@ -227,10 +227,10 @@
           <code data-trim class="language-javascript hljs">
             function AppHeader({metadata, selected}) {
               return &lt;>
-                <h1>{selected.pluralCaption}</h1>
-                <ul>
-                  {metadata.map(m => <li key={m.caption}><a href="#">{m.pluralCaption}</a></li>)}
-                </ul>
+                &lt;h1>{selected.pluralCaption}</h1>
+                &lt;ul>
+                  {metadata.map(m => &lt;li key={m.caption}>&lt;a href="#">{m.pluralCaption}&lt;/a>&lt;/li>)}
+                &lt;/ul>
               &lt;/>;
             }
           </code>
@@ -287,7 +287,7 @@
 
             function App() {
               const count = 0;
-              return <AppHeader count={count}></AppHeader>
+              return &lt;AppHeader count={count}>&lt;/AppHeader>
             }
           </code>
         </pre>
@@ -325,6 +325,15 @@
         </div>
       </section>
 
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1><a href="https://reactjs.org/docs/hooks-overview.html">React Hooks</a></h1>
+        <ul>
+          <li><a href="https://reactjs.org/docs/hooks-reference.html#usestate"><code>useState()</code></a></li>
+          <li><a href="https://reactjs.org/docs/hooks-reference.html#useeffect"><code>useEffect()</code></a></li>
+          <li><a href="https://reactjs.org/docs/hooks-reference.html#usecontext"><code>useContext()</code></a></li>
+        </ul>
+      </section>
+
       <section>
         <h1><a href="https://reactjs.org/docs/hooks-reference.html#usestate"><code>useState()</code></a></h1>
         <ul>
@@ -339,9 +348,9 @@
               return
                 &lt;>
                   Count: <b>{count}</b>
-                  <button onClick="{() =&gt; setCount(0)}">Reset</button>
-                  <button onClick="{() =&gt; setCount(prevCount => prevCount - 1)}">-</button>
-                  <button onClick="{() =&gt; setCount(prevCount => prevCount + 1)}">+</button>
+                  &lt;button onClick={() =&gt; setCount(0)}>Reset</button>
+                  &lt;button onClick={() =&gt; setCount(prevCount => prevCount - 1)}>-</button>
+                  &lt;button onClick={() =&gt; setCount(prevCount => prevCount + 1)}>+</button>
                 &lt;/>
             }
           </code>
@@ -353,7 +362,7 @@
         <ul>
           <li>Komponenten sind "pure" (keine Seiteneffekte)</li>
           <li><a href="https://reactjs.org/docs/hooks-reference.html#useeffect"><code>useEffect()</code></a> ist die Schnittstelle zu Seiteneffekten (z.B. Daten laden)</li>
-          <li>Die zweite Parameter gibt Abhängigkeiten an</li>
+          <li>Der zweite Parameter gibt Abhängigkeiten an</li>
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
@@ -379,8 +388,7 @@
         </ul>
         <pre>
           <code data-trim class="language-javascript hljs">
-            const count = 0;
-            const CountContext = React.createContext({ count });
+            const CountContext = React.createContext(null);
 
             function AppHeader() {
               const {count} = React.useContext(CountContext);
@@ -388,28 +396,24 @@
             }
 
             function App() {
-              return
-              <CountContext.Provider>
-                <AppHeader count={count}></AppHeader>
-              </CountContext.Provider>
-            }
+              const count = 0;
+              return (
+                &lt;CountContext.Provider value="{ count }">
+                  &lt;AppHeader />
+                &lt;/CountContext.Provider>
+            )}
           </code>
         </pre>
       </section>
 
       <section>
-        <h1><a href="https://reactjs.org/docs/hooks-reference.html#usereducer"><code>useReducer()</code></a></h1>
-        <a href="https://reactjs.org/docs/hooks-reference.html#usereducer"><code>useReducer()</code></a>
-      </section>
-
-      <section>
         <div class="seventy-thirty-grid">
           <div>
-            <h1><a href="https://developer.mozilla.org/de/docs/Web/Web_Components/Using_custom_elements">Web Components</a></h1>
+            <h1><a href="https://reactjs.org/docs/hooks-overview.html">React Hooks</a></h1>
             <ul>
               <li><a href="https://reactjs.org/docs/hooks-reference.html#usestate"><code>useState()</code></a></li>
+              <li><a href="https://reactjs.org/docs/hooks-reference.html#useeffect"><code>useEffect()</code></a></li>
               <li><a href="https://reactjs.org/docs/hooks-reference.html#useContext"><code>useContext()</code></a></li>
-              <li><a href="https://reactjs.org/docs/hooks-reference.html#useReducer"><code>useReducer()</code></a></li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -428,7 +432,7 @@
           <div>
             <h1>Übungen</h1>
             <ul>
-              <li><code>useState()</code> in einer Komponente Benutzen</li>
+              <li><code>useState()</code> und <code>useEffect()</code>in einer Komponente Benutzen</li>
             </ul>
           </div>
           <img src="assets/cog-wheels.png">
