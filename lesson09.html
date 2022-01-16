@@ -52,6 +52,13 @@
       </section>
 
       <section>
+        <h1>Fragen zur LZ1?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
         <h1>MLZ Präsentationen</h1>
         <ul>
           <li>Nico Weidmann</li>
@@ -66,9 +73,594 @@
       <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
         <h1>TypeScript</h1>
         <ul>
-          <li>TypeScript aufsetzen</li>
-          <li>Projekt konvertieren</li>
-          <li>Ausführen</li>
+          <li>React Tipps</li>
+          <li>React Advanced Hooks</li>
+          <li>Performantes React</li>
+          <li>Reducers (State &amp; Dispatch)</li>
+          <li>Builders</li>
+          <li>TypeScript</li>
+          <li>TypeScript &amp; React</li>
+          <li>TypeScript &amp; Jest</li>
+        </ul>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1 class="insertion">React Tipps</h1>
+        <ul>
+          <li><a href="https://github.com/facebook/react/tree/main/packages/react-devtools">React Developer Tools</a></li>
+          <li><a href="https://reactjs.org/docs/strict-mode.html"><code>StrictMode</code></a></li>
+          <li>Debugging: Stack Traces</li>
+          <li><code><a href="https://eslint.org/">eslint</a></code> ergänzen</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://github.com/facebook/react/tree/main/packages/react-devtools">React Developer Tools</a></h1>
+        <div class="seventy-thirty-grid">
+          <ul>
+            <li>Im Browser als Extension installieren</li>
+            <li>Oder als Desktop-App (mit <code>npm i -g react-devtools</code>) installieren</li>
+          </ul>
+          <img src="assets/Lesson 09/ReactToolsComponentList.png">
+        </div>
+      </section>
+
+      <section class="compact">
+        <h1><a href="https://reactjs.org/docs/strict-mode.html"><code>StrictMode</code></a></h1>
+        <ul>
+          <li>Schaltet erweiterte semantische Prüfung ein</li>
+          <li>In <em>debug</em> Versionen automatisch dabei</li>
+          <li>Kann mit der <a href="https://reactjs.org/docs/strict-mode.html"><code>React.StrictMode</code></a> Komponenten eingeschaltet werden</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            import React from "react";
+            import ReactDOM from "react-dom";
+            import App from "./Components/App";
+
+            ReactDOM.render(
+              &lt;React.StrictMode>
+                &lt;App />
+              &lt;/React.StrictMode>,
+              document.getElementById("root"),
+            );
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Debugging: Stack Traces</h1>
+        <div class="seventy-thirty-grid">
+          <div>
+            <ol>
+              <li>Vollständiges Stack-Trace anzeigen mit dem Pfeil links von der Fehlermeldung</li>
+              <li>Stack-Trace nach eigenem Code durchsuchen</li>
+            </ol>
+            <p class="notes">Siehe <a href="https://github.com/facebook/react/issues/18178#issuecomment-595846312">Javascript/React Stack analysieren</a> für weitere Information</p>
+          </div>
+          <img src="assets/Lesson 09/ReactStackTrace.png">
+        </div>
+      </section>
+
+      <section class="compact">
+        <h1><code><a href="https://eslint.org/">eslint</a></code> ergänzen</h1>
+        <p>Die folgende Plugins mit <code>npm i -D</code> installieren und einbinden</p>
+        <ul>
+          <li><a href="https://www.npmjs.com/package/eslint-plugin-react-hooks#installation">eslint-plugin-react-hooks</a></li>
+          <li><a href="https://babeljs.io/docs/en/babel-preset-react/">@babel/preset-react</a></li>
+          <li><a href="https://github.com/babel/babel/tree/main/eslint/babel-eslint-parser">@babel/eslint-parser</a></li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            "extends": ["eslint:recommended", "prettier", "plugin:react-hooks/recommended"],
+            "parser": "@babel/eslint-parser",
+            "parserOptions": {
+              "ecmaVersion": 13,
+              "sourceType": "module",
+              "babelOptions": {
+                "presets": ["@babel/preset-react"]
+              }
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Advanced React und TS?</h1>
+        <div class="fragment fifty-fifty-grid">
+          <p>Legen wir los...</p>
+          <img src="assets/fyeah.png">
+        </div>
+      </section>
+
+      <section>
+        <h1><em>Controlled</em> Inputs</h1>
+        <ul>
+          <li>Der <code>value</code> einer <a href="https://reactjs.org/docs/uncontrolled-components.html">Uncontrolled</a> Komponenten wird <em>vom DOM</em> verwaltet.</li>
+          <li>Der <code>value</code> einer <a href="https://reactjs.org/docs/forms.html#controlled-components">Controlled</a> Komponenten wird <em>von React</em> als <em>state</em> verwaltet.</li>
+          <li>Controlled Komponenten sind präferiert</li>
+          <li>Siehe <a href="https://scriptverse.academy/tutorials/reactjs-defaultvalue-value.html">React/ReactJS: Difference between defaultValue and value</a> für weitere Information</li>
+        </ul>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1><a href="https://reactjs.org/docs/hooks-overview.html">React Advanced Hooks</a></h1>
+        <ul>
+          <li><a href="https://reactjs.org/docs/hooks-reference.html#usereducer"><code>useReducer()</code></a></li>
+          <li><a href="https://reactjs.org/docs/hooks-reference.html#useref"><code>useRef()</code></a></li>
+          <li><a href="https://reactjs.org/docs/hooks-reference.html#usememo"><code>useMemo()</code></a></li>
+          <li><a href="https://reactjs.org/docs/hooks-reference.html#usecallback"><code>useCallback()</code></a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://reactjs.org/docs/hooks-reference.html#usereducer"><code>useReducer()</code></a></h1>
+        <ul>
+          <li>Erzeugt einen <code>state</code> und eine <code>dispatch</code> Funktion womit ein neues <code>state</code> erstellt werden kann</li>
+          <li>Bewahrt die Daten einer Applikation oder einem Teil davon auf</li>
+          <li>Siehe <a href="https://www.robinwieruch.de/react-update-item-in-list/">Update an Item in a List in React</a> (May 2020) für weitere Information</li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1><a href="https://reactjs.org/docs/hooks-reference.html#usereducer"><code>useReducer()</code></a> &amp; Service</h1>
+        <ul>
+          <li><a href="https://reactjs.org/docs/hooks-reference.html#usereducer"><code>useReducer()</code></a> klappt nicht mit <code>async</code></li>
+          <li>Ein <em>Service</em> umhüllt <code>dispatch</code> und <code>async</code> Methoden in einem einfacheren API</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            export class AppService {
+              async deleteEntity(state: AppState) {
+                const entity = state.entity;
+
+                await state.crud.delete(entity);
+
+                this.dispatch(CreateDeleteEntityAction(entity));
+              }
+            }
+          </code>
+        </pre>
+        <p class="notes">Siehe <a href="https://gist.github.com/astoilkov/013c513e33fe95fa8846348038d8fe42">Async Operations with useReducer Hook</a> für weitere Information</p>
+      </section>
+
+      <section>
+        <h1><a href="https://reactjs.org/docs/hooks-reference.html#useref"><code>useRef()</code></a></h1>
+        <ul>
+          <li>Erstellt eine Referenz, die mit <code>current</code> zugegriffen werden kann</li>
+          <li>Wird üblicherweise mit DOM-Elementen benutzt</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const saveButton = React.useRef(null);
+
+            const inputChange = e => {
+              saveButton.current.disabled = !e.target.form.checkValidity();
+            };
+
+            return &lt;button ref={saveButton} onClick={() => saveEntity(entity)}>
+              Save
+            &lt;/button>;
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1 class="insertion">Performance</h1>
+        <ul>
+          <li><em>Reconciliation</em> Algorithmus
+            <ol>
+              <li>baut die aktuellen Komponenten auf</li>
+              <li>vergleicht mit den bestehenden Komponenten</li>
+              <li>gleicht ab mit möglichst wenig DOM-Änderungen</li>
+            </ol>
+          </li>
+          <li>Es ist <em>günstig</em> Komponenten zu erstellen
+            <ul class="fragment pro fade-in">
+              <li>👍 Meistens kein bis wenig Impact</li>
+            </ul>
+          </li>
+          <li>Es ist <em>teuer</em> das DOM anzupassen
+            <ul class="fragment contra fade-in">
+              <li>👎 Möglichst zu vermeiden</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1><a href="https://reactjs.org/docs/hooks-reference.html#usememo"><code>useMemo()</code></a></h1>
+        <ul>
+          <li><a href="https://reactjs.org/docs/hooks-reference.html#usememo"><code>useMemo()</code></a>
+            erstellt einen Datenbehälter, die nur bedingt neu berechnet wird</a></li>
+          <li>Bedingungen sind im zweiten Parameter aufgelistet</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            const isSelected = entity.id === selectedEntity?.id;
+
+            return React.useMemo(
+              () => (
+                &lt;>
+                  <a className={isSelected ? "selected" : ""} href="#" onClick={() => service.setEntity(entity)}>
+                    {classMetadata.getTitle(entity)}
+                  </a>
+                &lt;/>
+              ),
+              [isSelected, entity, classMetadata],
+            );
+          </code>
+        </pre>
+        <p class="notes"><a href="https://dev.to/adevnadia/how-to-write-performant-react-code-rules-patterns-dos-and-donts-40gk">How to write performant React code: rules, patterns, do's and don'ts</a></p>
+      </section>
+
+      <section>
+        <h1><a href="https://reactjs.org/docs/hooks-reference.html#usecallback"><code>useCallback()</code></a></h1>
+        <ul>
+          <li>Ähnlich zu <code>useMemo()</code> aber für Funktionen</li>
+          <li>Mit leeren Abhängigkeiten <code>[]</code> wird nie mutiert</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            function List() {
+              const { state } = React.useContext(AppContext);
+              const { entities } = state;
+
+              const logClick = React.useCallback(() => console.log("selection changed"), []);
+
+              return entities.map(e => &lt;Item key={e.id ?? 0} entity={e} log={logClick} />);
+            }
+          </code>
+        </pre>
+        <p class="notes">Siehe <a href="https://dmitripavlutin.com/dont-overuse-react-usecallback/">Your Guide to React.useCallback()</a> für weitere Information</p>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1><a href="https://reactjs.org/docs/hooks-overview.html">Advanced Hooks</a></h1>
+            <ul>
+              <li><a href="https://reactjs.org/docs/hooks-reference.html#usereducer"><code>useReducer()</code></a></li>
+              <li><a href="https://reactjs.org/docs/hooks-reference.html#useref"><code>useRef()</code></a></li>
+              <li><a href="https://reactjs.org/docs/hooks-reference.html#usememo"><code>useMemo()</code></a></li>
+              <li><a href="https://reactjs.org/docs/hooks-reference.html#usecallback"><code>useCallback()</code></a></li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li><code>useCallback()</code> und <code>useMemo()</code>in einer Komponente Benutzen</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1>Builders</h1>
+        <ul>
+          <li>Übersicht</li>
+          <li>Sortiment</li>
+          <li>Vergleich</li>
+          <li><a href="https://vitejs.dev/guide/">Vite</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Warum ein Builder?</h1>
+        <ul>
+          <li>TypeScript nach JS Umwandeln</li>
+          <li>JSX/TSX nach JS Umwandeln</li>
+          <li>Less/Sass nach CSS Umwandeln</li>
+          <li>HMR (Hot Module Reload/Replacement): automatisches und präzises Neuladen ohne F5</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Builder Features</h1>
+        <ul>
+          <li>HMR</li>
+          <li>CSS Modules / PostCSS</li>
+          <li>SSR (Server-side Rendering)</li>
+          <li>Bundling vs. Separate Dateien</li>
+          <li>TypeScript Umwandlung vs. Typprüfung</li>
+          <li>SourceMaps</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Builders</h1>
+        <ul>
+          <li>Die <a href="https://reactjs.org/docs/create-a-new-react-app.html">Offizielle Anleitung</a> listet viele Optionen auf</li>
+          <li><a href="https://create-react-app.dev/docs/adding-typescript/"><code>create-react-app</code></a> benutzt <a href="https://webpack.js.org/">webpack</a></li>
+          <li>Der Artikel <a href="https://css-tricks.com/comparing-the-new-generation-of-build-tools/">Comparing the New Generation of Build Tools</a> analysiert die folgende Möglichkeiten
+            <ul>
+              <li><a href="https://github.com/evanw/esbuild">esbuild</a> (mit <a href="https://github.com/pradel/create-react-app-esbuild">create-react-app-esbuild</a>)</li>
+              <li><a href="https://www.snowpack.dev/tutorials/react">Snowpack</a></li>
+              <li><a href="https://github.com/preactjs/wmr">wmr</a></li>
+              <li><a href="https://vitejs.dev/guide/">Vite</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Jedes Jahr neu evaluieren?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/look_of_disapproval.jpg">
+          <div>
+            <p><a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f">How it feels to learn JavaScript in <span class="fragment strike semi-fade-out" data-fragment-index="0">2016</span><span class="fragment fade-in" data-fragment-index="0">2022</span></a></p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h1><a href="https://vitejs.dev/guide/">Vite</a></h1>
+        <p><code>npm init vite@latest</code> ausführen</p>
+        <div class="fifty-fifty-grid">
+          <div>
+            <h2>React w/JS</h2>
+            <img src="assets/Lesson 09/ViteReactJS.png">
+          </div>
+          <div>
+            <h2>React w/TS</h2>
+            <img src="assets/Lesson 09/ViteReactTS.png">
+          </div>
+
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Builders</h1>
+            <ul>
+              <li>Vite Setup für React JS</li>
+              <li>Vite Setup für React TS</li>
+            </ul>
+          </div>
+          <img src="assets/demo.png">
+        </div>
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="seventy-thirty-grid">
+          <div>
+            <h1>Übungen</h1>
+            <ul>
+              <li>Vite Projekt mit React und TS aufsetzen</li>
+            </ul>
+          </div>
+          <img src="assets/cog-wheels.png">
+        </div>
+      </section>
+
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1>TypeScript</h1>
+        <ul>
+          <li>Übersicht</li>
+          <li>Typsystem</li>
+          <li>JS "typisieren"</li>
+          <li>JS ersetzen</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Unterschiede zu JS</h1>
+        <ul>
+          <li>Assertion Operator: <code>!</code></li>
+          <li>Generics: <code>MouseEvent&lt;HTMLButtonElement></code></li>
+          <li>Enums: <code>enum</code></li>
+          <li><a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#unions">Unions</a>: <code>A | B | C</code></li>
+          <li><a href="https://www.typescriptlang.org/docs/handbook/2/objects.html#intersection-types">Intersections</a>: <code>A & B & C</code></li>
+          <li><code>readonly</code></li>
+          <li><code>const</code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Type Assertions</h1>
+        <ul>
+          <li><a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions">Type Assertions</a></li>
+          <li><a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html">Narrowing</a> schränkt ein Typ anhand einer Bedingung weiter ein (mit z.B. ein "guard")</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            export const AppContext = createContext<TAppContext>(null as unknown as TAppContext);
+
+            let entity = state.entity;  // typeof entity == Entity | null
+            if (!entity) {
+              throw new Error("The entity must be assigned in order to be saved.");
+            }
+            // typeof entity == Entity
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>TypeScript Typsystem</h1>
+        <ul>
+          <li>Typen sind auf <a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#structural-typing">Strukturen</a> statt Namen basiert</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-typescript hljs">
+            type One = { p: string };
+            interface Two {
+              p: string;
+            }
+            class Three {
+              p = "Hello";
+            }
+
+            let x: One = { p: "hi" };
+            let two: Two = x;
+            two = new Three();
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>TypeScript: Typarten</h1>
+        <ul>
+          <li><a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#type-aliases">Type Aliases</a>: <code>type Point = {x: number, y: number}</code></li>
+          <li>Interfaces</li>
+          <li>Classes</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures">Index Signature</a></h1>
+        <pre>
+          <code data-trim class="language-typescript hljs">
+            type Entity = {
+              id: number;
+              [otherOptions: string]: unknown;
+            };
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>JS in TS umwandeln</h1>
+        <ul>
+          <li><code>*.d.ts</code> Dateien können <code>*.js</code> Dateien "typisieren"</li>
+          <li>Code kann auch direkt in TypeScript geschrieben werden (ersetzt das JS)</li>
+          <li>Umwandlungsschritte:
+            <ul>
+              <li>JS direkt benutzen (Typfehlern vorhanden)</li>
+              <li><code>*.d.ts</code> erstellen (keine Typfehlern bleiben übrig)</li>
+              <li>JS-Dateien kopieren und nach TS umwandeln</li>
+              <li>Typfehlern korrigieren</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="compact">
+        <h1>Problems Ansicht</h1>
+        <p>Für das Korrigieren hat WebStorm ein "Project Errors" Ansicht</p>
+        <img src="assets/Lesson 09/WebStormProblemsView.png" class="screenshot">
+      </section>
+
+      <section>
+        <h1>Fragen?</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/okaaaay.jpg">
+        </div>
+      </section>
+
+      <section>
+        <h1>TypeScript React</h1>
+        <ul>
+          <li>Props müssen deklariert werden</li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            import { PropertyMetadata } from "../../common/Metadata";
+
+            type InputRowProps = {
+              p: PropertyMetadata;
+              validate: (e: HTMLElement) => void;
+            };
+
+            export function InputRow({ p, validate }: InputRowProps) {
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://reactjs.org/docs/hooks-reference.html#useeffect"><code>useEffect()</code></a> mit <code>async</code></h1>
+        <ul>
+          <li><a href="https://devtrium.com/posts/async-functions-useeffect">How to use async functions in <code>useEffect</code></a></li>
+          <li><a href="https://www.benmvp.com/blog/successfully-using-async-functions-useeffect-react/">Successfully using async functions in React <code>useEffect</code></a></li>
+        </ul>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            useEffect(() => {
+              async function setEntities() {
+                setLoading(true);
+                const data = await state.crud.getAll();
+                service.setEntities(data);
+                setLoading(false);
+              }
+
+              setEntities().catch(e => {
+                throw e;
+              });
+            }, [classMetadata]);
+          </code>
+        </pre>
+      </section>
+
+      <section class="compact">
+        <h1>Reducer Typisiert</h1>
+        <p>Actions müssen typisiert werden. Z.B. mit <code>interfaces</code></p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            interface SetMetadataAction {
+              type: "setMetadata";
+              classMetadata: ClassMetadata;
+            }
+
+            interface SetEntityAction {
+              type: "setEntity";
+              entity: Entity;
+            }
+
+            type AppAction = SetMetadataAction | SetEntityAction;
+          </code>
+        </pre>
+        <p class="notes">Siehe <a href="https://codewithstyle.info/Typing-a-useReducer-React-hook-in-TypeScript/">Typing a <code>useReducer</code> React hook in TypeScript</a> für weitere Information</p>
+      </section>
+
+      <section>
+        <h1>Reducer Typisiert II</h1>
+        <p>Oder mit <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#returntypetype"><code>ReturnType&lt;Type&gt;</code></a></p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            export const CreateSetMetadataAction = (classMetadata: ClassMetadata) => ({
+              type: "setMetadata" as const,
+              classMetadata,
+            });
+
+            export const CreateSetEntityAction = (entity: Entity) => ({
+              type: "setEntity" as const,
+              entity
+            });
+
+            export type AppAction =
+            | ReturnType&lt;typeof CreateSetMetadataAction>
+            | ReturnType&lt;typeof CreateSetEntityAction>
+          </code>
+        </pre>
+        <p class="notes">Siehe auch andere nützliche <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html">Utility Types</a></p>
+      </section>
+
+      <section>
+        <h1>TypeScript &amp; Jest</h1>
+        <ul>
+          <li>Komponenten testen</li>
         </ul>
       </section>
 
