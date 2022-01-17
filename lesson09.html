@@ -71,7 +71,7 @@
       </section>
 
       <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
-        <h1>TypeScript</h1>
+        <h1>React &amp; TypeScript</h1>
         <ul>
           <li>React Tipps</li>
           <li>React Advanced Hooks</li>
@@ -80,7 +80,7 @@
           <li>Builders</li>
           <li>TypeScript</li>
           <li>TypeScript &amp; React</li>
-          <li>TypeScript &amp; Jest</li>
+          <li>TypeScript, React &amp; Jest</li>
         </ul>
       </section>
 
@@ -252,7 +252,7 @@
             <ol>
               <li>baut die aktuellen Komponenten auf</li>
               <li>vergleicht mit den bestehenden Komponenten</li>
-              <li>gleicht ab mit möglichst wenig DOM-Änderungen</li>
+              <li>gleicht mit möglichst wenig DOM-Änderungen ab</li>
             </ol>
           </li>
           <li>Es ist <em>günstig</em> Komponenten zu erstellen
@@ -282,9 +282,9 @@
             return React.useMemo(
               () => (
                 &lt;>
-                  <a className={isSelected ? "selected" : ""} href="#" onClick={() => service.setEntity(entity)}>
+                  &lt;a className={isSelected ? "selected" : ""} href="#" onClick={() => service.setEntity(entity)}>
                     {classMetadata.getTitle(entity)}
-                  </a>
+                  &lt;/a>
                 &lt;/>
               ),
               [isSelected, entity, classMetadata],
@@ -387,7 +387,7 @@
       <section>
         <h1>Einflüsse Performance</h1>
         <ul>
-          <li>Entwicklungssprache (JS langsamer als Go/Rust)</li>
+          <li>Entwicklungssprache des Tools (JS &lt; Go/Rust)</li>
           <li>Bundling ist aufwendiger als Modul-Referenzen</li>
           <li>TypeScript <em>konvertieren</em> geht schnell</li>
           <li>TypeScript <em>prüfen</em> ist langsam</li>
@@ -435,16 +435,6 @@
       </section>
 
       <section>
-        <h1>Die Qual der Wahl</h1>
-        <div class="fifty-fifty-grid">
-          <img src="assets/look_of_disapproval.jpg">
-          <div>
-            <p><a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f">How it feels to learn JavaScript in <span class="fragment strike semi-fade-out" data-fragment-index="0">2016</span><span class="fragment fade-in" data-fragment-index="0">2022</span></a></p>
-          </div>
-        </div>
-      </section>
-
-      <section>
         <h1>Entwicklerkomfort</h1>
         <ul>
           <li>Muss <em>korrekt</em> sein</li>
@@ -454,6 +444,16 @@
           <li>Caching darf nichts kaputt machen</li>
           <li>Sollte TypeScript nur kompilieren (IDE prüft schon)</li>
         </ul>
+      </section>
+
+      <section>
+        <h1>Die Qual der Wahl</h1>
+        <div class="fifty-fifty-grid">
+          <img src="assets/look_of_disapproval.jpg">
+          <div>
+            <p><a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f">How it feels to learn JavaScript in <span class="fragment strike semi-fade-out" data-fragment-index="0">2016</span><span class="fragment fade-in" data-fragment-index="0">2022</span></a></p>
+          </div>
+        </div>
       </section>
 
       <section>
@@ -571,7 +571,6 @@
         </pre>
       </section>
 
-
       <section>
         <h1>Ergänzungen zu JS</h1>
         <ul>
@@ -678,7 +677,7 @@
 
       <section class="compact">
         <h1><a href="https://reactjs.org/docs/hooks-reference.html#useeffect"><code>useEffect()</code></a> mit <code>async</code></h1>
-        <p>Obwohl es scheint zu funktionieren unterstützt <code>useEffect()</code> <code>async</code>-Funktionen nicht. So geht's besser:</p>
+        <p>Obwohl es scheint zu funktionieren, unterstützt <code>useEffect()</code> <code>async</code>-Funktionen nicht. So geht's besser:</p>
         <pre>
           <code data-trim class="language-typescript hljs">
             useEffect(() => {
@@ -750,20 +749,136 @@
         </div>
       </section>
 
-      <section>
-        <h1>TypeScript &amp; Jest</h1>
+      <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
+        <h1>TS/React mit Jest</h1>
         <ul>
-          <li>Komponenten testen</li>
+          <li>Einleitung</li>
+          <li>Packages installieren</li>
+          <li><a href="https://testing-library.com/">Testing Library</a> (<a href="https://testing-library.com/docs/react-testing-library/">React</a>)</li>
+          <li>Test mit Komponente erstellen</li>
         </ul>
+      </section>
+
+      <section>
+        <h1>Einleitung</h1>
+        <ul>
+          <li>Vite unterstützt TS und React bereits. Was ist das Problem?</li>
+          <li>Vite benutzt ESBuild und hat kein Testing per Default</li>
+          <li>Jest arbeitet mit Babel</li>
+          <li>Babel und Jest müssen für TypeScript und React konfiguriert werden</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Packages installieren</h1>
+        <p>Ausführen: <code>npm i -D jest babel-jest react-test-renderer @babel/preset-env @babel/preset-react @babel/preset-typescript identity-obj-proxy</code></p>
+        <p class="notes">Eine Erklärung für die Notwendigkeit diesen Packages gibt es in
+          <a href="https://egghead.io/lessons/jest-adding-jest-with-typescript-support-to-a-vite-application">Adding Jest with TypeScript Support to a Vite Application</a>. Diese ist ein Teil eines Kurses mit vielen anderen interessanten Lektionen.
+        </p>
+      </section>
+
+      <section>
+        <h1>Babel konfigurieren</h1>
+        <p><code>babel.config.js</code> mit folgenden Inhalt Erstellen:</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            module.exports = {
+              presets: [
+                [
+                  "@babel/preset-env",
+                  {
+                    targets: {
+                      node: "current",
+                    },
+                  },
+                ],
+                "@babel/preset-react",
+                "@babel/preset-typescript",
+              ],
+            };
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Jest konfigurieren</h1>
+        <p>In <code>packages.config</code>:</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            "jest": {
+              "testEnvironment": "jsdom",
+              "setupFilesAfterEnv": [
+                "&lt;rootDir>/jest-setup.ts"
+              ],
+              "collectCoverage": true,
+              "collectCoverageFrom": [
+                "src/**/*.{ts,tsx,js,jsx}",
+                "!src/**/*.d.ts"
+              ],
+              "moduleNameMapper": {
+                "\\.(css|less|scss)$": "identity-obj-proxy"
+              }
+            }
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1><a href="https://testing-library.com/docs/react-testing-library/intro/">React Testing Library</a></h1>
+        <ul>
+          <li>Ergänzt Jest um das Aufsetzen und Testen von React Komponenten zu vereinfachen</li>
+          <li><code>render(&lt;Component>)</code> gibt eine gerenderte Komponente zurück</li>
+          <li>Funktioniert mit normalen Snapshots</li>
+          <li>Bietet aber viel, viel mehr (sieht <a href="https://testing-library.com/docs/react-testing-library/example-intro">React Testing Library Example</a>)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>React Testing Installieren</h1>
+        <p>Ausführen: <code>npm i -D <a href="https://testing-library.com/docs/react-testing-library/intro/">@testing-library/react</a>
+          <a href="https://testing-library.com/docs/ecosystem-jest-dom/">@testing-library/jest-dom</a>
+          <a href="https://testing-library.com/docs/ecosystem-user-event/">@testing-library/user-event</a></code></p>
+        <p class="notes">Installiert die Basis plus verbesserte DOM und Ereignis Testing APIs</p>
+      </section>
+
+      <section>
+        <h1>Testing Library einbinden</h1>
+        <p><code>jest-setup.ts</code> mit folgenden Inhalt Erstellen:</p>
+        <pre>
+          <code data-trim class="language-javascript hljs">
+            import "@testing-library/jest-dom";
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h1>Komponente Snapshot</h1>
+        <p><code>App.test.tsx</code> mit folgenden Inhalt Erstellen:</p>
+        <pre>
+          <code data-trim class="language-typescript hljs">
+            import { describe, expect, test } from "@jest/globals";
+            import React from "react";
+            import { render } from "@testing-library/react";
+            import App from "./Components/App";
+
+            describe("App Component", () => {
+              test("App initial contents", () => {
+                const { container } = render(&lt;App />);
+
+                expect(container.innerHTML).toMatchSnapshot();
+              });
+            });
+          </code>
+        </pre>
       </section>
 
       <section>
         <div class="seventy-thirty-grid">
           <div>
-            <h1>Topic</h1>
+            <h1>TS/React mit Jest</h1>
             <ul>
-              <li>...</li>
-              <li>...</li>
+              <li>Installieren und aufsetzen</li>
+              <li>Test mit Komponente erstellen</li>
             </ul>
           </div>
           <img src="assets/demo.png">
@@ -774,18 +889,6 @@
         <h1>Fragen?</h1>
         <div class="fifty-fifty-grid">
           <img src="assets/okaaaay.jpg">
-        </div>
-      </section>
-
-      <section>
-        <div class="seventy-thirty-grid">
-          <div>
-            <h1>Übungen</h1>
-            <ul>
-              <li>Ein Teil des Projekts konvertieren</li>
-            </ul>
-          </div>
-          <img src="assets/cog-wheels.png">
         </div>
       </section>
 
