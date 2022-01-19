@@ -14,6 +14,6 @@ The course is in German.
 - [Lesson 4](lesson04.html): Externe Abfrage: JSON &amp; Fetch; Refactoring
 - [Lesson 5](lesson05.html): DOM &amp; Ereignisse
 - [Lesson 6](lesson06.html): Formulare, Inputs, Validierung &amp; Lokale Persistenz
-- [Lesson 7](lesson07.html): Web Komponenten, JSX &amp; React
-- [Lesson 8](lesson08.html): LZ1; Animationen &amp; Grafik (Audio/Video)
-- [Lesson 9](lesson09.html): MLZ Präsentationen; TypeScript
+- [Lesson 7](lesson07.html): Browser-Objekte, Persistenz, Animationen, Media
+- [Lesson 8](lesson08.html): LZ1; Web Komponenten, JSX &amp; React
+- [Lesson 9](lesson09.html): MLZ Präsentationen; React, Builders &amp; TypeScript
