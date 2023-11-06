@@ -27,15 +27,44 @@
         </p>
       </section>
 
+
       <section>
-        <h1>Dozent</h1>
+        <h1>Wer bin ich?</h1>
         <h2>Marco von Ballmoos</h2>
         <ul>
-          <li>Partner & Senior Entwickler bei <a href="https://encodo.ch">Encodo Systems AG</a></li>
-          <li>BA Mathematics (<a href="https://hamilton.edu">Hamilton College</a>, USA)</li>
-          <li>Unterricht bei HFU seit 2020</li>
-          <li>Hobbies: Radfahren, Wandern, Camping</li>
+          <li><em>DevOps System Engineer</em>
+            <ul>
+              <li><a href="https://uster.com">Uster Technologies AG</a></li>
+            </ul>
+          </li>
+          <li>BA Mathematik<ul>
+              <li><a href="https://hamilton.edu">Hamilton College</a>, USA</li>
+            </ul>
+          </li>
+          <li>Dozent bei HFU seit 2020<ul>
+              <li><em>JavaScript</em> Grundkurs</li>
+              <li>Mobile Applikationsentwicklung</li>
+            </ul>
+          </li>
         </ul>
+      </section>
+
+      <section>
+        <h1><a href="https://www.earthli.com/users/marco/cv/2022_09.php?full=1">Qualifikationen</a></h1>
+        <table>
+          <tr>
+            <th>Sprachen</th>
+            <td>C#, TS/JS, CSS/HTML, Delphi, Java, Swift, PHP, C++, u.a.</td>
+          </tr>
+          <tr>
+            <th>Plattformen</th>
+            <td>Web, Windows, iOS, Android, MacOS, Linux</td>
+          </tr>
+          <tr>
+            <th>Branchen</th>
+            <td>Industrie, Banking, Pharma, Schulverwaltung, Frameworks</td>
+          </tr>
+        </table>
       </section>
 
       <section>
@@ -43,10 +72,10 @@
         <p>Bitte stellt euch kurz vor:</p>
         <ul>
           <li>Name</li>
-          <li>Beruf</li>
-          <li>Motivation</li>
-          <li>Vorkenntnisse / Erfahrung allgemein</li>
+          <li>Beruf &amp; Arbeitgeber</li>
+          <li>Vorkenntnisse / Erfahrung / Technologien</li>
           <li>Erfahrung mit JavaScript?</li>
+          <li>Motivation</li>
           <li>Ziele für das Modul</li>
         </ul>
       </section>
@@ -79,48 +108,35 @@
 
       <section>
         <h1>Planung</h1>
-        <table class="compact">
-          <tr>
-            <th>Zeit</th>
-            <th>Dauer</th>
-            <th>Beschreibung</th>
-          </tr>
-          <tr>
-            <td>17:50</td>
-            <td>01:10</td>
-            <td>Unterricht</td>
-          </tr>
-          <tr>
-            <td>19:00</td>
-            <td>00:20</td>
-            <td>Pause</td>
-          </tr>
-          <tr>
-            <td>19:20</td>
-            <td>01:00</td>
-            <td>Unterricht</td>
-          </tr>
-          <tr>
-            <td>20:20</td>
-            <td>00:05</td>
-            <td>Pause</td>
-          </tr>
-          <tr>
-            <td>20:25</td>
-            <td>00:50</td>
-            <td>Unterricht</td>
-          </tr>
-          <tr>
-            <td>21:15</td>
-            <td>00:05</td>
-            <td>Pause</td>
-          </tr>
-          <tr>
-            <td>21:20</td>
-            <td>00:20</td>
-            <td>Projekt-Arbeit & Fragen</td>
-          </tr>
-        </table>
+        <style>
+          .pause {
+            background-color: cornsilk
+          }
+
+          .school {
+            background-color: lightblue
+          }
+
+          .project {
+            background-color: orange
+          }
+        </style>
+        <div class="schedule" style="display: grid; grid-template-columns: repeat(24, 1fr);">
+          <div style="grid-row: 1; grid-column: 1 / span 7;">17:50</div>
+          <div class="pause" style="grid-row: 1 / span 8; grid-column: 8 / span 2;">19h</div>
+          <div style="grid-row: 1; grid-column: 10 / span 6;">19:20</div>
+          <div class="pause" style="grid-row: 1 / span 8; grid-column: 16 / span 1;">20:20</div>
+          <div style="grid-row: 1; grid-column: 17 / span 3;">20:30</div>
+          <div class="pause" style="grid-row: 1 / span 8; grid-column: 20 / span 1;">21h</div>
+          <div style="grid-row: 1; grid-column: 21 / span 3;">21:10</div>
+          <div class="school" style="grid-row: 2; grid-column: 1 / span 7;">1:10</div>
+          <div class="pause" style="grid-row: 3; grid-column: 8 / span 2;">0:20</div>
+          <div class="school" style="grid-row: 4; grid-column: 10 / span 6;">1:00</div>
+          <div class="pause" style="grid-row: 5; grid-column: 16 / span 1;">0:10</div>
+          <div class="school" style="grid-row: 6; grid-column: 17 / span 3;">0:30</div>
+          <div class="pause" style="grid-row: 7; grid-column: 20 / span 1;">0:10</div>
+          <div class="project" style="grid-row: 8; grid-column: 21 / span 3;">0:30</div>
+        </div>
       </section>
 
       <section>
@@ -133,25 +149,30 @@
           </tr>
           <tr>
             <td>Prüfung (LK1)</td>
-            <td>10.01.2022</td>
+            <td>05.06.2022</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Prüfung (LK2)</td>
+            <td>26.06.2022</td>
             <td>25%</td>
           </tr>
           <tr>
             <td>Projekt (MLZ)</td>
-            <td>17.01.2022</td>
-            <td>75%</td>
+            <td>10.07.2022</td>
+            <td>50%</td>
           </tr>
         </table>
         <p class="notes">Für das Runden wird die Aktive Beteiligung im Unterricht berücksichtigt</p>
       </section>
 
       <section>
-        <h1>Prüfung (LK1)</h1>
+        <h1>Prüfungen (LK1 &amp; LK2)</h1>
         <ul>
-          <li>Word Formular mit schreibbaren Feldern</li>
-          <li>Wird am Anfang der Lektion zugeschickt</li>
+          <li>Git Repo</li>
+          <li>URL wird am Anfang der Lektion zugeschickt</li>
           <li>1 Stunde Zeit</li>
-          <li>Digital auszufüllen und zurückzusenden</li>
+          <li>Ausführen, Kommitten, und Pushen</li>
         </ul>
       </section>
 
@@ -161,13 +182,13 @@
           <li>Ist ein eigenes JavaScript Projekt</li>
           <li>Wird am Ende des Moduls präsentiert</li>
           <li><a href="mlz.html">Beschreibung und Bewertungskriterien</a></li>
-          <li>Bis <b>22.11.2021</b>
+          <li>Bis <b>18.12.2023</b>
             <ul>
               <li>Bewertungsdokument anschauen</li>
               <li>Idee/Konzept per mail einreichen</li>
             </ul>
           </li>
-          <li>Bis <b>17.01.2022</b>
+          <li>Bis <b>22.01.2024</b>
             <ul>
               <li>Ausbauen</li>
               <li>Fertigstellen</li>
@@ -221,15 +242,15 @@
       <section>
         <h1>Übersicht Lektionen</h1>
         <ol class="compact">
-          <li class="selected">Einführung &amp; IDE Aufsetzen</li>
-          <li>Grundlagen: Typen, Operatoren, Statements, Funktionen I</li>
-          <li>Grundlagen: Funktionen II, Klassen, Modulen</li>
-          <li>Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
-          <li>DOM &amp; Ereignisse</li>
-          <li>Formulare, Eingaben &amp; Validierung</li>
-          <li>Browser-Objekte, Persistenz, Animationen, Media</li>
-          <li><b>LK1</b>; Web Komponenten, JSX &amp; React</li>
-          <li><b>MLZ Präsentationen</b>; React, Builders &amp; TypeScript</li>
+          <li class="selected"><strong>2023-11-06:</strong> Einführung &amp; IDE Aufsetzen</li>
+          <li><strong>2023-11-20:</strong> Grundlagen: Typen, Operatoren, Statements, Funktionen I</li>
+          <li><strong>2023-11-27:</strong> Grundlagen: Funktionen II, Klassen, Modulen</li>
+          <li><strong>2023-12-04:</strong> Externe Abfrage: JSON &amp; Fetch; Refactoring</li>
+          <li><strong>2023-12-11:</strong> <b>LK1</b>; DOM &amp; Ereignisse</li>
+          <li><strong>2023-12-18:</strong> Formulare, Eingaben, Validierung, &amp; Web Komponenten</li>
+          <li><strong>2024-01-08:</strong> Browser-Objekte, Persistenz, Animationen, Media</li>
+          <li><strong>2024-01-15:</strong> <b>LK2</b>; JSX &amp; React</li>
+          <li><strong>2024-01-22:</strong> <b>MLZ Präsentationen</b>; React, Builders &amp; TypeScript</li>
         </ol>
       </section>
 
@@ -325,28 +346,41 @@
         <h1>Was benötigen wir?</h1>
         <h2>Werkzeuge</h2>
         <ul>
-          <li>Einfaches Tracking von Aufgaben: <a href="https://www.trello.com/">Trello</a></li>
+          <li>Einfaches Tracking von Aufgaben: <a href="https://www.gitub.com/">GitHub Issues</a></li>
           <li>Source-Kontrolle: <a href="https://www.syntevo.com/smartgit/">SmartGit</a> und <a href="https://git-scm.com/">Git</a></li>
           <li>Online Code Repo: <a href="https://github.com/">GitHub</a></li>
-          <li>IDE: <a href="https://code.visualstudio.com/">Visual Studio Code</a> (VSC) und <a href="https://www.jetbrains.com/webstorm/">WebStorm</a></li>
+          <li>IDE: <a href="https://code.visualstudio.com/">Visual Studio Code</a> (VSC) oder <a href="https://www.jetbrains.com/webstorm/">WebStorm</a></li>
           <li>Laufzeitumgebung & Package Manager: <a href="https://nodejs.org/">Node</a> und <a href="https://www.npmjs.com/">NPM</a></li>
           <li>Testing Framework: <a href="https://jestjs.io/">Jest</a></li>
         </ul>
       </section>
 
       <section>
-        <h1>Einführung <a href="https://www.trello.com/">Trello</a></h1>
+        <h1>GitHub Einrichten</h1>
+        <ul>
+          <li>Konto auf <a href="https://github.com/">GitHub</a> erstellen</li>
+          <li>Github Repository erstellen (z.B. "HFU_21H__JAS_20I_app")
+            <ul>
+              <li><em>Entweder</em> veröffentlichen</li>
+              <li><em>Oder</em> mich (<b>mvonballmo</b>) einladen</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Einführung <a href="https://www.github.com/">GitHub Issues</a></h1>
         <ul>
           <li>Gratis für nicht kommerzielle Zwecke</li>
           <li>Unterstützt die Projektführung
             <ul>
-              <li>Workspaces</li>
+              <li>Projekte</li>
               <li>Boards</li>
               <li>Karten</li>
               <li>Spalten/Status</li>
             </ul>
           </li>
-          <li><b>Aufgaben:</b> Konto, Workspace, Board, und eine Karte erstellen</li>
+          <li><b>Aufgaben:</b> Konto, Projekt, Board, und eine Karte erstellen</li>
         </ul>
       </section>
 
@@ -355,7 +389,8 @@
           <div>
             <h1>Wo steht ihr?</h1>
             <ul>
-              <li><em>Trello</em> ist eingerichtet</li>
+              <li class="done"><em>GitHub</em> ist eingerichtet</li>
+              <li><em>GitHub Issues</em> ist eingerichtet</li>
             </ul>
           </div>
           <img src="assets/checklist.png">
@@ -383,19 +418,6 @@
         <div class="fifty-fifty-grid">
           <img src="assets/okaaaay.jpg">
         </div>
-      </section>
-
-      <section>
-        <h1>GitHub Einrichten</h1>
-        <ul>
-          <li>Konto auf <a href="https://github.com/">GitHub</a> erstellen</li>
-          <li>Github Repository erstellen (z.B. "HFU_21H__JAS_20I_app")
-            <ul>
-              <li><em>Entweder</em> veröffentlichen</li>
-              <li><em>Oder</em> mich (<b>mvonballmo</b>) einladen</li>
-            </ul>
-          </li>
-        </ul>
       </section>
 
       <section>
@@ -439,8 +461,8 @@
           <div>
             <h1>Wo steht ihr?</h1>
             <ul>
-              <li class="done"><em>Trello</em> ist eingerichtet</li>
-              <li><em>GitHub</em> ist eingerichtet</li>
+              <li class="done"><em>GitHub</em> ist eingerichtet</li>
+              <li class="done"><em>GitHub Issues</em> ist eingerichtet</li>
               <li><em>SmartGit</em> ist eingerichtet</li>
               <li>"app" und "doc" Repositories sind bei euch lokal verfügbar</li>
             </ul>
@@ -489,8 +511,8 @@
         <div class="seventy-thirty-grid">
           <div>
             <ul>
-              <li class="done"><em>Trello</em> ist eingerichtet</li>
               <li class="done"><em>GitHub</em> ist eingerichtet</li>
+              <li class="done"><em>GitHub Issues</em> ist eingerichtet</li>
               <li class="done"><em>SmartGit</em> ist eingerichtet</li>
               <li class="done">"app" und "doc" Repositories sind lokal verfügbar</li>
               <li><em>node</em> und <em>npm</em> können ausgeführt werden</li>
