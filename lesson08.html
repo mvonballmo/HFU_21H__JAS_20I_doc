@@ -53,150 +53,51 @@
         </ol>
       </section>
 
-      <section>
-        <h1>Prüfung (LK1)</h1>
-        <ul>
-          <li>Word Formular mit Schreibbaren Feldern</li>
-          <li class="fragment">Wird euch gerade zugeschickt</li>
-          <li class="fragment">Habt ihr das Dokument 📄 bekommen?</li>
-          <li class="fragment">Eine Stunde 🕐 <span class="fragment">ab jetzt!</span></li>
-          <li class="fragment">Good luck! ☘️</li>
-        </ul>
+      <section class="compact">
+        <h2>LZ2</h2>
+        <div class="fifty-fifty-grid">
+          <div>
+            <ul>
+              <li>Mein "App" Repo aktualisieren (fetch)</li>
+              <li>Branch <code>feature/lk1</code> auschecken (switch)</li>
+              <li>Verzeichnis <code>LK1</code> aus <code>/tests-2023</code> nach eigenem Projekt-Repo kopieren</li>
+              <li>Verzeichnis <code>LK1</code> mit VSC oder WebStorm öffnen</li>
+              <li><code>npm install</code> ausführen</li>
+              <li>Tests ausführen</li>
+            </ul>
+          </div>
+          <div>
+            <img src="assets/Lesson05/copyLK1Folder.jpg">
+            <img src="assets/Lesson05/pasteLK1ToTheRootFolder.jpg">
+          </div>
+        </div>
+      </section>
+
+      <section class="compact">
+        <h2>LZ2</h2>
+        <div class="fifty-fifty-grid">
+          <div>
+            <ul>
+              <li>⛔️ 24 / 25 Tests schlagen fehl</li>
+              <li>😓 Eure Aufgabe?</li>
+              <li>✅ Möglichst viele Tests zum Laufen bringen</li>
+              <li>💾 Änderungen speichern (commit)</li>
+              <li>⬆️ Nach eigenem GitHub hochladen (push)</li>
+              <li>🕐 Eine Stunde Zeit</li>
+            </ul>
+          </div>
+          <div>
+            <img src="assets/Lesson05/24Of25Testsfail.jpg">
+          </div>
+        </div>
       </section>
 
       <section data-background="assets/macro-focus-cogwheel-gear-159275-dimmed.jpg">
         <h1>Komponenten</h1>
         <ul>
-          <li><a href="https://developer.mozilla.org/de/docs/Web/Web_Components/Using_custom_elements">Web Components</a></li>
           <li><a href="https://reactjs.org/docs/introducing-jsx.html">JSX</a></li>
           <li><a href="https://reactjs.org/">React</a></li>
         </ul>
-      </section>
-
-      <section>
-        <h1><a href="https://developer.mozilla.org/de/docs/Web/Web_Components/Using_custom_elements">Web Components</a></h1>
-        <ul>
-          <li>Benutzerdefinierte, wiederverwendbare HTML Elemente</li>
-          <li>In JavaScript als Klasse definiert</li>
-          <li>In HTML als Tag angewendet</li>
-          <li>Eine sehr gute Einführung: <a href="https://javascript.info/custom-elements">JavaScript.info Custom elements</a></li>
-          <li>MDN Beispiel: <a href="https://github.com/mdn/web-components-examples/tree/master/expanding-list-web-component">Expanding-list Web Component</a></li>
-          <li>Ein ausgereiftes Beispiel: <a href="https://md-block.verou.me/#features">Markdown in HTML</a> (<a href="https://md-block.verou.me/md-block.js">Komponente</a>)</li>
-        </ul>
-      </section>
-
-      <section>
-        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM">Shadow DOM</a></h1>
-        <ul>
-          <li>Shadow DOM ermöglicht <em>verbesserte Kapselung</em></li>
-          <li>Damit kann CSS nur für eine Komponente statt Global definiert werden</li>
-          <li>Mit <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow"><code>this.attachShadow({mode: 'open'})</code></a>
-            bekommt man ein
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot"><code>ShadowRoot</code></a>
-          </li>
-          <li>Mit <code>innerHTML</code> oder <code>appendChild()</code> füllen</li>
-          <li>Suchfunktionen wie <code>getElementsByTagName()</code> gibt es nicht</li>
-        </ul>
-      </section>
-
-      <section>
-        <h1>Registrieren</h1>
-        <ul>
-          <li>Web Component muss von <em>mindestens</em> <code>HTMLElement</code> ableiten</li>
-          <li>Name des Elements <em>muss</em> mit einem Bindestrich geschrieben werden</li>
-        </ul>
-        <pre>
-          <code data-trim class="language-javascript hljs">
-            class MyElement extends HTMLElement {
-            }
-
-            customElements.define("my-element", MyElement);
-          </code>
-        </pre>
-        <p class="notes">Siehe <a href="https://javascript.info/custom-elements">Javascript.Info Custom elements</a> und <a href="https://developer.mozilla.org/docs/Web/API/CustomElementRegistry/define">CustomElementRegistry.define()</a> für weitere Information.</p>
-      </section>
-
-      <section>
-        <h1>Initialisieren</h1>
-        <ul>
-          <li><code>connectedCallback()</code> wird beim Einfügen im Dokument ausgeführt</li>
-          <li><code>disconnectedCallback()</code> wird beim Entfernen vom Dokument ausgeführt</li>
-        </ul>
-        <pre>
-          <code data-trim class="language-javascript hljs">
-            class MyElement extends HTMLElement {
-              connectedCallback() {
-                this.innerHTML = "<b>Title</b>";
-              }
-            }
-          </code>
-        </pre>
-      </section>
-
-      <section>
-        <h1>Anpassen</h1>
-        <ul>
-          <li><code>attributeChangedCallback()</code> wird beim Ändern des Werts eines Attributs ausgeführt</li>
-          <li><code>observedAttributes()</code> liefert eine Liste von zu beachtenden Attributen</li>
-        </ul>
-        <pre>
-          <code data-trim class="language-javascript hljs">
-            class MyElement extends HTMLElement {
-              static get observedAttributes() {
-                return ["a"];
-              }
-
-              attributeChangedCallback(name, oldValue, newValue) {
-                // Wird nur für Attribut "a" ausgeführt
-              }
-            }
-          </code>
-        </pre>
-      </section>
-
-      <section>
-        <h1>HTML Web Components</h1>
-        <ul>
-          <li>Z.Z. können Komponenten nur in JavaScript definiert werden</li>
-          <li>Viele Komponenten wollen eigene Ressourcen (Styles, Bilder) einbinden</li>
-          <li>HTML wäre dafür prädestiniert</li>
-          <li>Geht z.Z. nur mit einem "polyfill"</li>
-          <li><a href="https://medium.com/@getflourish/why-dont-we-use-html-to-author-web-components-10440432390e">Why don't we use HTML to author Web Components?</a> von stellt ein <a href="https://codepen.io/getflourish/pen/a721fbd12caf190153451b3a7ff3acef">Beispiel</a> (CodePen) vor</li>
-        </ul>
-        <p class="notes">Siehe auch <a href="https://gist.github.com/getflourish/a87b990265db8fc243c897f34d32f860">Import CustomElements from .html files</a> (10.2021)</p>
-      </section>
-
-      <section>
-        <div class="seventy-thirty-grid">
-          <div>
-            <h1><a href="https://developer.mozilla.org/de/docs/Web/Web_Components/Using_custom_elements">Web Components</a></h1>
-            <ul>
-              <li>Registrieren</li>
-              <li>Initialisieren</li>
-              <li>Anpassen/Attributen</li>
-            </ul>
-          </div>
-          <img src="assets/demo.png">
-        </div>
-      </section>
-
-      <section>
-        <h1>Fragen?</h1>
-        <div class="fifty-fifty-grid">
-          <img src="assets/okaaaay.jpg">
-        </div>
-      </section>
-
-      <section>
-        <div class="seventy-thirty-grid">
-          <div>
-            <h1>Übungen</h1>
-            <ul>
-              <li>Web Component erstellen, als Modul einbinden und als Tag einsetzen</li>
-            </ul>
-          </div>
-          <img src="assets/cog-wheels.png">
-        </div>
       </section>
 
       <section class="compact">

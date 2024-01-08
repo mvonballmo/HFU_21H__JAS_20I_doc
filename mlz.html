@@ -48,6 +48,37 @@
     nav ul {
       padding-inline-start: 1.5rem;
     }
+
+    main .requirements {
+      position: relative;
+    }
+
+    main .requirements li:before {
+      position: absolute;
+      left: -1.5rem;
+      opacity: 50%;
+      font-weight: bold;
+    }
+
+    main .requirements li.onePoint:before {
+      content: "[1] ";
+    }
+
+    main .requirements li.twoPoints:before {
+      content: "[2] ";
+    }
+
+    main .requirements li.threePoints:before {
+      content: "[3] ";
+    }
+
+    main .requirements li.fourPoints:before {
+      content: "[4] ";
+    }
+
+    main .requirements li.fivePoints:before {
+      content: "[5] ";
+    }
   </style>
 </head>
 
@@ -67,56 +98,70 @@
       <li>Die Daten können auch gelöscht werden. <a href="lesson04.html">4️⃣</a></li>
     </ul>
     <h2 id="bewertung-aspekte">Bewertung Aspekte</h2>
-    <h3 id="erfolderlich">Erforderlich</h3>
-    <p>Der App beinhaltet zumindest die folgende Aspekte</p>
+    <h3>Punkte</h3>
     <ul>
-      <li>Daten von mindestens einer Entität sollen vom Server abgeholt und in einer Liste angezeigt werden. <a href="lesson04.html">4️⃣</a></li>
-      <li>Details einer Entität können angezeigt werden (Liste/Detail). <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
-      <li>Die Daten sollen aus verschiedenen Typen (z.B. Datum, Text, Zahlen, Boolean, usw.) bestehen. <a href="lesson06.html">6️⃣</a></li>
-      <li>Einen Datensatz kann in einem Formular editiert werden, mit Validierung von den verschiedenen Typen. Zumindest
+      <li>Maximal Punktzahl: <b>96</b></li>
+      <li>Minimum Punktzahl: <b>42</b> (Note = 4)</li>
+    </ul>
+    <h3 id="erfolderlich">Präsentation</h3>
+    <ul class="requirements">
+      <li class="fivePoints">Allgemeiner Eindruck.</li>
+    </ul>
+    <h3 id="erfolderlich">Präsentation</h3>
+    <ul class="requirements">
+      <li class="threePoints">Die Präsentation hat eine Einführung.</li>
+      <li class="threePoints">Die Präsentation ist sachlogisch aufgebaut.</li>
+      <li class="threePoints">Die wesentlichen Funktionen werden vorgeführt.</li>
+      <li class="threePoints">Die Zeit (10 Minuten) wird eingehalten.</li>
+    </ul>
+    <h3 id="erfolderlich">Hauptfunktionalität</h3>
+    <p>Der App beinhaltet zumindest die folgende Aspekte</p>
+    <ul class="requirements">
+      <li class="fivePoints">Daten von mindestens einer Entität sollen vom Server abgeholt und in einer Liste angezeigt werden. <a href="lesson04.html">4️⃣</a></li>
+      <li class="fivePoints">Details einer Entität können angezeigt werden (Liste/Detail). <a href="lesson05.html">5️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
+      <li class="threePoints">Die Daten sollen aus verschiedenen Typen (z.B. Datum, Text, Zahlen, Boolean, usw.) bestehen. <a href="lesson06.html">6️⃣</a></li>
+      <li class="fivePoints">Einen Datensatz kann in einem Formular editiert werden, mit Validierung von den verschiedenen Typen. Zumindest
         ein Feld muss ein Zwangsfeld sein. <a href="lesson06.html">6️⃣</a></li>
-      <li>Die Validierung muss mindestens so ausgeprägt sein, dass Fehler auf der Seite beim Drücken des Speichern-Buttons
+      <li class="fivePoints">Die Validierung muss mindestens so ausgeprägt sein, dass Fehler auf der Seite beim Drücken des Speichern-Buttons
         angezeigt werden. Dies darf nicht über einen <code>alert</code> geschehen, sondern die Infos müssen per JavaScript
         dem DOM hinzugefügt werden. <a href="lesson06.html">6️⃣</a></li>
-      <li>Ist das Formular fehlerfrei und der Benutzer klickt auf den Speichern-Button soll ein JSON Objekt mit allen
+      <li class="fivePoints">Ist das Formular fehlerfrei und der Benutzer klickt auf den Speichern-Button soll ein JSON Objekt mit allen
         eingegebenen Informationen anzeigt an dem lokalen Server gesendet werden. <a href="lesson04.html">4️⃣</a>, <a href="lesson06.html">6️⃣</a></li>
-      <li>Ein neues Objekt kann erstellt werden. <a href="lesson04.html">4️⃣</a></li>
+      <li class="threePoints">Ein neues Objekt kann erstellt werden. <a href="lesson04.html">4️⃣</a></li>
     </ul>
-    <h3 id="optional">Optional</h3>
-    <p>Zusatzpunkte gibt's für:</p>
-    <h4>Ausgereifte Validierung</h4>
-    <ul>
-      <li>Die benötigten Felder müssen vorgängig validiert werden und der Button zum Abschicken des Kontaktformulars soll
+    <h3>Ausgereifte Validierung</h3>
+    <ul class="requirements">
+      <li class="threePoints">Die benötigten Felder müssen vorgängig validiert werden und der Button zum Abschicken des Kontaktformulars soll
         nur aktiv sein, falls keine Fehler mehr vorhanden sind. <a href="lesson06.html">6️⃣</a></li>
-      <li>Fehler sollen direkt dort angezeigt werden wo sie entstehen (beispielsweise mit einem roten Rahmen und einem
+      <li class="threePoints">Fehler sollen direkt dort angezeigt werden wo sie entstehen (beispielsweise mit einem roten Rahmen und einem
         Informationstext über dem Problem). <a href="lesson06.html">6️⃣</a></li>
-      <li>Einschränkung der Länge von Text-Feldern validieren (z.b. eine Maximallänge) <a href="lesson06.html">6️⃣</a></li>
+      <li class="twoPoints">Einschränkung der Länge von Text-Feldern validieren (z.b. eine Maximallänge) <a href="lesson06.html">6️⃣</a></li>
     </ul>
-    <h4>Suchen</h4>
-    <ul>
-      <li>Der Benutzer kann nach Freitext in den Feldern suchen, um passenden Entitäten zu finden. Die gefundene
+    <h3>Suchen</h3>
+    <ul class="requirements">
+      <li class="fivePoints">Der Benutzer kann nach Freitext in den Feldern suchen, um passenden Entitäten zu finden. Die gefundene
         Entitäten werden in einer Liste angezeigt. <a href="lesson03.html">3️⃣</a>, <a href="lesson05.html">5️⃣</a></li>
-      <li>Der Benutzer kann einschränken, welche Felder durchgesucht werden. <a href="lesson03.html">3️⃣</a></li>
-      <li>Die gefundene Texte aus den Entitäten werden angezeigt. <a href="lesson03.html">3️⃣</a>, <a href="lesson05.html">5️⃣</a></li>
-      <li>Der Suchtext wird in den gefundenen Texten hervorgehoben (highlighted) <a href="lesson03.html">3️⃣</a>, <a href="lesson05.html">5️⃣</a></li>
+      <li class="fivePoints">Der Benutzer kann einschränken, welche Felder durchgesucht werden. <a href="lesson03.html">3️⃣</a></li>
+      <li class="threePoints">Die gefundene Texte aus den Entitäten werden angezeigt. <a href="lesson03.html">3️⃣</a>, <a href="lesson05.html">5️⃣</a></li>
+      <li class="threePoints">Der Suchtext wird in den gefundenen Texten hervorgehoben (highlighted) <a href="lesson03.html">3️⃣</a>, <a href="lesson05.html">5️⃣</a></li>
     </ul>
-    <h4>Benutzerkomfort</h4>
-    <ul>
-      <li>Gewisse Felder mit localStorage im Browser des Users speichern. Wenn der User die Seite wieder aufruft,
+    <h3>Benutzerkomfort</h3>
+    <ul class="requirements">
+      <li class="fivePoints">Gewisse Felder mit localStorage im Browser des Users speichern. Wenn der User die Seite wieder aufruft,
         sollen die Felder mit den gespeicherten Werten ausgefüllt werden. <a href="lesson07.html">7️⃣</a></li>
-      <li>Der Benutzer kann Test-Daten erstellen lassen.</li>
-      <li>Der Benutzer kann allen Daten löschen.</li>
+      <li class="threePoints">Der Benutzer kann Test-Daten erstellen lassen.</li>
+      <li class="threePoints">Der Benutzer kann allen Daten löschen.</li>
     </ul>
-    <h4>Multi-Entität</h4>
-    <ul>
-      <li>Die App hat mehrere miteinander verbundene Objekttypen (z.B. Firmen und Personen und Herkunftsländer). In dem
+    <h3>Multi-Entität</h3>
+    <ul class="requirements">
+      <li class="fivePoints">Die App hat mehrere miteinander verbundene Objekttypen (z.B. Firmen und Personen und Herkunftsländer). In dem
         einen Formular kann Entitäten aus einer anderen Listen selektiert werden (z.B. bei einer Person die Firma
         selektieren).</li>
     </ul>
-    <h4>Mandantenfähigkeit</h4>
-    <ul>
-      <li>Der Benutzer kann sich anmelden und nur die eigenen Daten anzeigen lassen.</li>
-      <li>Die Anmeldung ist mit einem Passwort gesichert.</li>
+    <h3>Mandantenfähigkeit</h3>
+    <ul class="requirements">
+      <li class="fivePoints">Der Benutzer kann sich anmelden und nur die eigenen Daten anzeigen lassen.</li>
+      <li class="threePoints">Die Anmeldung ist mit einem Passwort gesichert.</li>
     </ul>
     <h2 id="allgemeine-bewertung">Allgemeine Bewertung</h2>
     <h3 id="architektur">Architektur</h3>
