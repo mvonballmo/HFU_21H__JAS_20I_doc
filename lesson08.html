@@ -246,13 +246,14 @@
           <code data-trim class="language-javascript hljs">
             function AppHeader() {
               const [count, setCount] = useState(0);
-              return
+              return (
                 &lt;>
                   Count: <b>{count}</b>
-                  &lt;button onClick={() =&gt; setCount(0)}>Reset</button>
-                  &lt;button onClick={() =&gt; setCount(prevCount => prevCount - 1)}>-</button>
-                  &lt;button onClick={() =&gt; setCount(prevCount => prevCount + 1)}>+</button>
+                  &lt;button onClick={() =&gt; setCount(0)}>Reset&lt;/button>
+                  &lt;button onClick={() =&gt; setCount(prevCount => prevCount - 1)}>-&lt;/button>
+                  &lt;button onClick={() =&gt; setCount(prevCount => prevCount + 1)}>+&lt;/button>
                 &lt;/>
+                )
             }
           </code>
         </pre>
@@ -299,7 +300,7 @@
             function App() {
               const count = 0;
               return (
-                &lt;CountContext.Provider value="{ count }">
+                &lt;CountContext.Provider value={ count }>
                   &lt;AppHeader />
                 &lt;/CountContext.Provider>
             )}
