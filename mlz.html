@@ -4,18 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Beschreibung und Bewertungskriterien MLZ</title>
+  <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="slides.css">
   <style>
     body {
       display: grid;
-      grid-template-rows: 250px minmax(100px, 1fr);
+      grid-template-rows: 400px minmax(100px, 1fr);
       gap: 1rem;
       line-height: 1.75;
       font-size: 1.25em;
+      /* font-size: clamp(1rem, calc(1rem * 3vw), 2rem); */
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     }
 
-    @media (min-width: 600px) {
+    nav,
+    main {
+      overflow: auto;
+      margin: 1.5rem;
+    }
+
+    @media (min-width: 1000px) {
       body {
         grid-template-rows: auto;
         grid-template-columns: 300px minmax(10px, 70ch);
@@ -37,12 +45,6 @@
     a:link,
     a:visited {
       text-decoration: none;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      align-self: start;
     }
 
     nav ul {
